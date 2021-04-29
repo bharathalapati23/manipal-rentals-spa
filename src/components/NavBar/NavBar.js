@@ -54,7 +54,7 @@ function NavBar() {
             <AppBar position="absolute" className={classes.appBar} style={{position: 'fixed'}}>
                 <Toolbar>
                     <Typography variant="h6" className={classes.title} >
-                        ManipalRentals
+                        PROJET01
                     </Typography>
                     {
                         !isMobile &&

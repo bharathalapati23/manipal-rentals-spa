@@ -1,7 +1,19 @@
+const homeFeatures = {
+    wifi: false,
+    geyser: false,
+    washingMachine: false,
+    cookingHub: false,
+    fridge: false,
+    couch: false,
+    coffeeTable: false,
+    chairs: false,
+}
+
 const initialState = {
     bedroom: [],
     priceRange: [],
-    furnishing: []
+    homeFeatures: homeFeatures,
+    zone:[],
 }
 
 export default (filters = initialState, action) => {
@@ -21,10 +33,17 @@ export default (filters = initialState, action) => {
             }
             return newState
         }
-        case 'SET_FURNISHING_FILTER': {
+        case 'SET_ZONE_FITLER': {
             let newState = {
                 ...filters,
-                furnishing: action.payload
+                zone: action.payload
+            }
+            return newState
+        }
+        case 'SET_HOME_FEATURES_FILTER': {
+            let newState = {
+                ...filters,
+                homeFeatures: action.payload
             }
             return newState
         }

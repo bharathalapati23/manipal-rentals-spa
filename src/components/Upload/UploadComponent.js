@@ -1,24 +1,56 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { TextField, Button, Typography, Paper, Select } from '@material-ui/core'
+import { TextField, Button, Typography, Paper, Select, Switch } from '@material-ui/core'
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
 
-import useStyles from './styles';
+import useStyles from '../styles';
 
-import { createPost, getPosts } from '../actions/posts.js'
-import { storage } from './Firebase'
+import { createPost, getPosts } from '../../actions/posts.js'
+import { storage } from '../Firebase'
 
-// const useStyles = makeStyles((theme) => ({
-//     root: {
-//         display: 'flex',
-//         marginTop: '80px',
-//     },
-// }));
+import SwitchComponent from './SwitchComponent'
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+const bedroomObj = {
+    singleBed: false,
+    doubleBed: false,
+    wardrobe: false,
+    studyTable: false,
+    chair: false,
+    attachedToilet: false,
+    attachedBalcony: false,
+    airConditioner: false,
+}
+
+const initialConfig = {
+    bedroom: 0,
+    rent: 0,
+    bathroom: 0,
+    desc: '',
+    zone: 'Syndicate Circle',
+    apOrBung: 'Apartment',
+    images: [],
+    bedroomDetails: [],
+    homeFeatures: {
+        wifi: false,
+        geyser: false,
+        washingMachine: false,
+        cookingHub: false,
+        fridge: false,
+        couch: false,
+        coffeeTable: false,
+        chairs: false,
+    }
+}
 
 const UploadComponent = () => {
-    const [postData, setPostData] = useState({ bedroom: 0, rent: 0, bathroom: 0, desc: '', label: '', zone: '', apOrBung: 'Apartment', images: [], furnishing: 0 });
+    const [postData, setPostData] = useState(initialConfig);
     const [images, setImages] = useState([])
+    const [bedroom, setBedroom] = useState(0)
     const dispatch = useDispatch();
     const classes = useStyles();
 
@@ -42,11 +74,12 @@ const UploadComponent = () => {
         Promise.all(promises).then(() => {
             let finalObj = {
                 ...postData,
-                images:[...x]
+                images: [...x]
             }
             dispatch(createPost(finalObj))
         });
-        
+        //console.log(postData)
+
     };
 
     useEffect(() => {
@@ -86,6 +119,22 @@ const UploadComponent = () => {
     const clear = (e) => {
     };
 
+    const bedroomChange = (event) => {
+        let bedroomsFeaturesObj = []
+        if (event.target.value < 1) {
+            event.target.value = 0
+            setBedroom(0)
+            setPostData({ ...postData, bedroomDetails: bedroomsFeaturesObj })
+        }
+        else {
+            for (let i = 0; i < Number(event.target.value); i++) {
+                bedroomsFeaturesObj.push(bedroomObj)
+            }
+            setPostData({ ...postData, bedroom: event.target.value, bedroomDetails: bedroomsFeaturesObj })
+            setBedroom(Number(event.target.value))
+        }
+    }
+
     return (
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
@@ -94,14 +143,7 @@ const UploadComponent = () => {
                     type={"number"}
                     variant="outlined"
                     fullWidth
-                    onChange={(event) => {
-                        if (event.target.value < 1) {
-                            event.target.value = 0
-                        }
-                        else {
-                            setPostData({ ...postData, bedroom: event.target.value })
-                        }
-                    }}
+                    onChange={bedroomChange}
                     name='bedroom'
                     label='Bedroom'
                 />
@@ -136,13 +178,6 @@ const UploadComponent = () => {
                     label='Bathroom'
                 />
                 <TextField name="desc" variant="outlined" label="Desc" fullWidth multiline rows={4} value={postData.desc} onChange={(e) => setPostData({ ...postData, desc: e.target.value })} />
-                <TextField name="label" variant="outlined" label="Label" fullWidth value={postData.tags} onChange={(e) => setPostData({ ...postData, label: e.target.value })} />
-                <div className={classes.fileInput}>
-                    {/* <FileBase type="file" multiple={true} onDone={(images) => {
-                    let base64Arr = images.map((image) => image.base64)
-                    setPostData({ ...postData, images: base64Arr })
-                }} /> */}
-                </div>
                 <div className={classes.fileInput}>
                     <input type='file' multiple onChange={handleChange}></input>
                 </div>
@@ -161,21 +196,44 @@ const UploadComponent = () => {
                 </Select>
                 <Select
                     native
-                    defaultValue={0}
-                    onChange={(e) => setPostData({ ...postData, furnishing: e.target.value })}
-                >
-                    <option value={0}>No</option>
-                    <option value={1}>Semi</option>
-                    <option value={2}>Full</option>
-                </Select>
-                <Select
-                    native
                     defaultValue='Apartment'
                     onChange={(e) => setPostData({ ...postData, apOrBung: e.target.value })}
                 >
                     <option value={'apartment'}>Apartment</option>
                     <option value={'Bungalow'}>Bungalow</option>
                 </Select>
+                <Accordion >
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                    >
+                        <Typography variant="h6">Home Features</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        {Object.keys(postData.homeFeatures).map((key, index) => {
+                            return <SwitchComponent name={key} feature={'home'} postData={postData} setPostData={setPostData} />
+                        })}
+                    </AccordionDetails>
+                </Accordion>
+                {[...Array(bedroom)].map((e, bedroomIndex) => {
+                    return (
+                        <Accordion >
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                            >
+                                <Typography variant="h6">Bedroom {bedroomIndex + 1} Features</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                {Object.keys(bedroomObj).map((key, index) => {
+                                    return <SwitchComponent name={key} feature={'bedroom'} postData={postData} setPostData={setPostData} bedroomIndex={bedroomIndex} />
+                                })}
+                            </AccordionDetails>
+                        </Accordion>
+                    )
+                })}
                 <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
                 <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
             </form>
@@ -184,3 +242,5 @@ const UploadComponent = () => {
 }
 
 export default UploadComponent
+
+

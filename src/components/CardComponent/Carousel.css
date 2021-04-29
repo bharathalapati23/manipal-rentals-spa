@@ -9,7 +9,7 @@
     visibility: hidden;
 }
 
-@media (min-width:500px) {
+@media (min-width:960px) {
 
     .carousel .slide img {
         max-height: 150px;  /* change this to whatever you want */

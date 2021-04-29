@@ -14,9 +14,17 @@ export const setPriceRangeFilter = (priceRange) => async (dispatch) => {
     }
 }
 
-export const setFurnishingFilter = (furnishing) => async (dispatch) => {
+export const setZoneFilter = (zones) => async (dispatch) => {
     try {
-        dispatch({ type: 'SET_FURNISHING_FILTER', payload: furnishing })
+        dispatch({ type: 'SET_ZONE_FITLER', payload: zones })
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+export const setHomeFeaturesFilter = (homeFeatures) => async (dispatch) => {
+    try {
+        dispatch({ type: 'SET_HOME_FEATURES_FILTER', payload: homeFeatures })
     } catch (error) {
         console.log(error.message)
     }

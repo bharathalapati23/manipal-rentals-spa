@@ -7,6 +7,7 @@ export default makeStyles((theme) => ({
         },
         display: 'flex',
         marginTop: '80px',
+        flexDirection:'column'
     },
     paper: {
         padding: theme.spacing(2),

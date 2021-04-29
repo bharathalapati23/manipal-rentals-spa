@@ -13,7 +13,10 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useDispatch } from 'react-redux'
-import { setBedroomFilter, setFurnishingFilter } from '../../actions/filters'
+import { setBedroomFilter } from '../../actions/filters'
+import HomeFeaturesFilter from './HomeFeaturesFilter.js'
+import ZoneFilter from './ZoneFilter.js'
+import ApartmentFilter from './ApartmentFilter.js'
 
 const useStyles = makeStyles((theme) => ({
     filterContainer: {
@@ -42,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
 const FilterCardComponent = () => {
     const classes = useStyles();
     const [checkedBedrooms, setCheckedBedrooms] = useState([])
-    const [checkedFurnishing, setCheckedFurnishing] = useState([])
     const dispatch = useDispatch();
 
     const handleBedroomChange = (event) => {
@@ -57,20 +59,6 @@ const FilterCardComponent = () => {
         }
         setCheckedBedrooms(changedBedrooms)
         dispatch(setBedroomFilter(changedBedrooms))
-    };
-
-    const handleFurnishingChange = (event) => {
-        let changedFurnishing = JSON.parse(JSON.stringify(checkedFurnishing))
-        if (event.target.checked)
-            changedFurnishing.push(Number(event.target.name))
-        else {
-            const index = changedFurnishing.indexOf(Number(event.target.name));
-            if (index > -1) {
-                changedFurnishing.splice(index, 1)
-            }
-        }
-        setCheckedFurnishing(changedFurnishing)
-        dispatch(setFurnishingFilter(changedFurnishing))
     };
 
     return (
@@ -132,34 +120,10 @@ const FilterCardComponent = () => {
                         </FormControl>
                     </AccordionDetails>
                 </Accordion>
-                <Divider />
-                <Accordion style={{ boxShadow: "none" }} defaultExpanded>
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                    >
-                        <Typography className={classes.heading}>Furnishing</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <FormControl required component="fieldset" className={classes.formControl}>
-                            <FormGroup>
-                                <FormControlLabel
-                                    control={<Checkbox onChange={handleFurnishingChange} name="0" />}
-                                    label="No"
-                                />
-                                <FormControlLabel
-                                    control={<Checkbox onChange={handleFurnishingChange} name="1" />}
-                                    label="Semi"
-                                />
-                                <FormControlLabel
-                                    control={<Checkbox onChange={handleFurnishingChange} name="2" />}
-                                    label="Full"
-                                />
-                            </FormGroup>
-                        </FormControl>
-                    </AccordionDetails>
-                </Accordion>
+                <ZoneFilter />
+
+                <HomeFeaturesFilter />
+                <ApartmentFilter />
                 <div style={{ height: '5px' }}>
 
                 </div>

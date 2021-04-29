@@ -5,7 +5,6 @@ import BottomNavigationComponent from './BottomNavigationComponent'
 import FilterCardComponent from './FilterComponent/FilterCardComponent'
 import Grid from '@material-ui/core/Grid';
 import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 
 import CardComponent from './CardComponent/CardComponent'
@@ -21,7 +20,13 @@ const useStyles = makeStyles((theme) => ({
 		width: '80%',
 		justifyContent: 'center',
 		flexDirection: 'row',
-		margin: 'auto'
+		margin: 'auto',
+		[theme.breakpoints.down('md')]: {
+			width: '99%'
+		},
+		[theme.breakpoints.up('md')]: {
+			minWidth: '950px',
+		}
 		// flexWrap: 'wrap',
 		// justifyContent: 'center',
 		// alignItems: 'center'
@@ -34,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
 		// borderStyle: 'solid', 
 		display: 'flex',
 		flexGrow: '6',
-		height: '2000px',
 		marginTop: '20px'
 	},
 	formControl: {
@@ -52,11 +56,18 @@ export default function DashboardComponent() {
 	const filteredObj = posts.filter((ob) => {
 		if (filter.bedroom.length && !filter.bedroom.includes(ob.bedroom)) return false
 
+		if (filter.zone.length && !filter.zone.includes(ob.zone)) return false
+
 		if (filter.priceRange.length && (ob.rent > filter.priceRange[1] || ob.rent < filter.priceRange[0])) return false
 
-		if (filter.furnishing.length && !filter.furnishing.includes(ob.furnishing)) return false
+		let homeFeaturesFlag = true
 
-		return true
+		Object.keys(filter.homeFeatures).map((key) => {
+			if (filter.homeFeatures[key] === true && ob.homeFeatures[key] === false)
+				homeFeaturesFlag = false
+		})
+
+		return homeFeaturesFlag
 	})
 
 	const getListings = (sortOrder) => {
@@ -76,7 +87,12 @@ export default function DashboardComponent() {
 
 	return (
 		<div className={classes.root}>
-			<div className={classes.filterContainer}>{!isMobile && <FilterCardComponent />}</div>
+			{
+				!isMobile &&
+				<div className={classes.filterContainer}>
+					<FilterCardComponent />
+				</div>
+			}
 			{/* <div className={classes.cardContainer}>Box 2</div> */}
 
 			<div className={classes.cardContainer}>
