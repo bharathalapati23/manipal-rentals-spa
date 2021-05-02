@@ -11,6 +11,7 @@ import './Carousel.css'
 import SingleBedIcon from '@material-ui/icons/SingleBed';
 import GroupIcon from '@material-ui/icons/Group';
 import { useHistory } from 'react-router-dom'
+import ImageGalleryComponent from '../PropertyInfoComponent/ImageGalleryComponent'
 
 const useStyles = makeStyles((theme) => ({
 	title: {
@@ -60,12 +61,15 @@ export default function CardComponent({ cardObj }) {
 	const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 	let history = useHistory();
 
-	const navigateToProperty = () => {
-		history.push({
-			pathname: '/property',
-			search: '?query=abc',
-			state: { listing: cardObj }
-		})
+	const navigateToProperty = (e) => {
+		e.preventDefault()
+		e.stopPropagation()
+		if (e.target.classList[0] != 'control-arrow')
+			history.push({
+				pathname: '/property',
+				search: '?query=abc',
+				state: { listing: cardObj }
+			})
 	}
 	return (
 		<Grid item >
@@ -75,7 +79,7 @@ export default function CardComponent({ cardObj }) {
 						{isMobile && <Typography variant="h5" component="h2">
 							{cardObj.desc}
 						</Typography>}
-						<Carousel showThumbs={false} showIndicators={false} className={classes.carousel}>
+						<Carousel showThumbs={false} showIndicators={false} className={classes.carousel} >
 							{cardObj.images.map((image, index) => (
 								<div>
 									<img src={image} className={classes.img} />
@@ -97,10 +101,10 @@ export default function CardComponent({ cardObj }) {
 									<Typography className={classes.title} color="textSecondary" gutterBottom style={{ fontFamily: 'Poppins', fontWeight: 'bolder', verticalAlign: 'middle' }}>
 										<SingleBedIcon style={{ paddingTop: '5px', verticalAlign: 'middle' }} />
 										{cardObj.bedroom}BHK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<GroupIcon style={{ paddingTop: '5px', verticalAlign: 'middle' }} /> 3 capacity
-										</Typography>
+									</Typography>
 									<Typography className={classes.pos} color="textSecondary" style={{ fontFamily: 'Poppins', fontWeight: 'bolder', verticalAlign: 'middle' }}>
 										{cardObj.rent}/month
-        								</Typography>
+        							</Typography>
 								</div>
 
 							</div>

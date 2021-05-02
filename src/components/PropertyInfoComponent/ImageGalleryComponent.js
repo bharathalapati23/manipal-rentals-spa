@@ -72,12 +72,12 @@ const ImageGalleryComponent = () => {
     const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 
     return (
-        <div style={{ height: '400px', visibility: `${nloaded == 3 ? 'visible': 'hidden'}` }}>
+        <div style={{ visibility: `${nloaded == 3 ? 'visible': 'hidden'}` }}>
             <ImageGallery items={images} thumbnailPosition={isMobile ? 'bottom' : 'right'}
                 onImageLoad={() => {
                     isLoaded('visible')
                     isNLoaded(nloaded + 1)
-                }} />;
+                }} />
         </div>
     )
 

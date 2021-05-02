@@ -69,7 +69,6 @@ const HomeFeaturesFilter = () => {
 
     return (
         <>
-            <Divider />
             <Accordion style={{ boxShadow: "none" }} >
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}

@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useMediaQuery } from 'react-responsive';
 import BottomNavigationComponent from './BottomNavigationComponent'
 import FilterCardComponent from './FilterComponent/FilterCardComponent'
+import MobileFilterComponent from './FilterComponent/MobileFilterComponent.js'
 import Grid from '@material-ui/core/Grid';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
@@ -21,8 +22,9 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: 'center',
 		flexDirection: 'row',
 		margin: 'auto',
+		minHeight: '84vh',
 		[theme.breakpoints.down('md')]: {
-			width: '99%'
+			width: '100%'
 		},
 		[theme.breakpoints.up('md')]: {
 			minWidth: '950px',
@@ -49,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
 export default function DashboardComponent() {
 	const classes = useStyles();
 	const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
+	const [isFilterPage, setFilterPage] = useState(false)
 	const posts = useSelector((state) => state.posts)
 	const filter = useSelector((state) => state.filters)
 	const dispatch = useDispatch();
@@ -86,51 +89,55 @@ export default function DashboardComponent() {
 	console.log(posts)
 
 	return (
-		<div className={classes.root}>
-			{
-				!isMobile &&
-				<div className={classes.filterContainer}>
-					<FilterCardComponent />
-				</div>
-			}
-			{/* <div className={classes.cardContainer}>Box 2</div> */}
-
-			<div className={classes.cardContainer}>
-				<Grid container direction={'column'} spacing={24}>
-					<div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '4px' }}>
-						<div style={{ fontFamily: 'Poppins', color: '#4D505C' }}>
-							Properties
-						</div>
-						<div>
-							<FormControl variant="outlined" size="small">
-								<Select
-									native
-									defaultValue={0}
-									style={{
-										width: '200px',
-										fontFamily: 'Poppins',
-										fontSize: '14px'
-									}}
-
-									onChange={(e) => {
-										dispatch(clearPosts())
-										getListings(e.target.value)
-									}}
-								>
-									Sort By:
-									<option value={0}>Recently Added</option>
-									<option value={1}>Price:High to Low</option>
-									<option value={2}>Price:Low to High</option>
-								</Select>
-							</FormControl>
-						</div>
+		<>
+			<div className={classes.root}>
+				{
+					!isMobile &&
+					<div className={classes.filterContainer}>
+						<FilterCardComponent />
 					</div>
-					{filteredObj.map((cardObj, index) => (
-						<CardComponent cardObj={cardObj} />
-					))}
-					{isMobile && <BottomNavigationComponent className={classes.stickToBottom} />}
-				</Grid>
+				}
+				{/* <div className={classes.cardContainer}>Box 2</div> */}
+				{ isFilterPage && isMobile && <MobileFilterComponent />}
+
+				{!isFilterPage && <div className={classes.cardContainer}>
+					<Grid container direction={'column'} spacing={24}>
+						<div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '4px' }}>
+							<div style={{ fontFamily: 'Poppins', color: '#4D505C' }}>
+								Properties
+						</div>
+							<div>
+								<FormControl variant="outlined" size="small">
+									<Select
+										native
+										defaultValue={0}
+										style={{
+											width: '200px',
+											fontFamily: 'Poppins',
+											fontSize: '14px'
+										}}
+
+										onChange={(e) => {
+											dispatch(clearPosts())
+											getListings(e.target.value)
+										}}
+									>
+										Sort By:
+									<option value={0}>Recently Added</option>
+										<option value={1}>Price:High to Low</option>
+										<option value={2}>Price:Low to High</option>
+									</Select>
+								</FormControl>
+							</div>
+						</div>
+						{filteredObj.map((cardObj, index) => (
+							<CardComponent cardObj={cardObj} />
+						))}
+
+					</Grid>
+				</div> }
 			</div>
-		</div>
+			{isMobile && <BottomNavigationComponent className={classes.stickToBottom} setFilterPage={setFilterPage}/>}
+		</>
 	);
 }

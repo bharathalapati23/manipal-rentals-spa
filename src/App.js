@@ -10,12 +10,12 @@ function App() {
   return (
     <>
       <Router>
-        <NavBar />
-        <Switch>
-          <Route path='/' exact> <DashboardComponent /> </Route>
-          <Route path='/upload' exact> <UploadComponent /> </Route>
-          <Route path='/property' exact> <PropertyInfoComponent /> </Route>
-        </Switch>
+          <NavBar />
+          <Switch>
+            <Route path='/' exact> <DashboardComponent /> </Route>
+            <Route path='/upload' exact> <UploadComponent /> </Route>
+            <Route path='/property' exact> <PropertyInfoComponent /> </Route>
+          </Switch>
       </Router>
     </>
   )

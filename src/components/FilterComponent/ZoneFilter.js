@@ -49,7 +49,7 @@ const ZoneFilter = () => {
 
     return (
         <>
-            <Divider />
+            {/* <Divider /> */}
             <Accordion style={{ boxShadow: "none" }}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}

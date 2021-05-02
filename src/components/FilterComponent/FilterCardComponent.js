@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     filterContainer: {
         position: 'sticky',
         margin: '20px',
-        fontFamily: 'Poppins'
+        fontFamily: 'Poppins',
     },
     formControl: {
         // margin: theme.spacing(3),
@@ -120,9 +120,11 @@ const FilterCardComponent = () => {
                         </FormControl>
                     </AccordionDetails>
                 </Accordion>
+                <Divider />
                 <ZoneFilter />
-
+                <Divider />
                 <HomeFeaturesFilter />
+                <Divider />
                 <ApartmentFilter />
                 <div style={{ height: '5px' }}>
 

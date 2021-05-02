@@ -49,7 +49,6 @@ const ApartmentFilter = () => {
 
     return (
         <>
-            <Divider />
             <Accordion style={{ boxShadow: "none" }}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
