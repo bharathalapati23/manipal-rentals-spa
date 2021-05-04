@@ -4,13 +4,14 @@ import { useLocation } from "react-router-dom";
 import Typography from '@material-ui/core/Typography';
 import { useMediaQuery } from 'react-responsive';
 import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom'
 
 
 
-import AmenitiesComponent from './AmenitiesComponent'
+import AmenitiesComponent from './Amenities/AmenitiesComponent'
 import ImageGalleryComponent from './ImageGalleryComponent'
 import DescriptionComponent from './DescriptionComponent'
-
+import MobileStickyBottom from './MobileStickyBottom'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -20,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         justifyContent: 'center',
         margin: '0 auto',
+        padding:'8px',
         [theme.breakpoints.up('md')]: {
             minWidth: '960px',
         },
@@ -27,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
             width: '100%',
             marginLeft: '0px'
         },
+        boxSizing:'border-box'
     },
     propertyName: {
         fontFamily: 'Bebas Neue',
@@ -46,12 +49,14 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: 'Poppins',
         fontSize: '14px',
         fontWeight: 'bold',
-        color: '#D0D0D0'
+        color: '#D0D0D0',
+        cursor: 'pointer'
     },
     zoneStyle: {
         fontFamily: 'Poppins',
         fontSize: '14px',
         fontWeight: 'bold',
+        color: '#e5e5e5'
     },
     rentStyle: {
         display: 'flex',
@@ -61,8 +66,16 @@ const useStyles = makeStyles((theme) => ({
 
 const PropertyInfoComponent = () => {
     const classes = useStyles();
+    let history = useHistory();
     const location = useLocation();
     const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
+    const listingInfo = location.state.listing
+
+    const navigateToProperties = () => {
+        history.push({
+            pathname: '/',
+        })
+    }
 
     return (
         <>
@@ -70,40 +83,40 @@ const PropertyInfoComponent = () => {
                 {!isMobile &&
                     <div className={classes.title}>
                         <div className={classes.propertyName}>
-                            PROPERTY NAME
-        	            </div>
-                        <div className={classes.backToProperties}>
+                            {listingInfo.desc}
+                        </div>
+                        <div className={classes.backToProperties} onClick={navigateToProperties}>
                             Back to all properties
                     </div>
                     </div>
                 }
                 <div>
-                    <ImageGalleryComponent />
+                    <ImageGalleryComponent images={listingInfo.images} />
                 </div>
                 {isMobile &&
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                         <div>
-                            <Typography variant="h6" component="h2" className={classes.propertyName}>
-                                PROPERTY NAME
-                            </Typography>
+                            <div className={classes.propertyName}>
+                                {listingInfo.desc}
+                            </div>
                             <div className={classes.zoneStyle}>
                                 Zone
                         </div>
                         </div>
                         <div>
                             <div className={classes.rentStyle}>
-                                <div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '20px', paddingRight: '3px' }}>Rs. 10000</div>
-                                <div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '10px' }}>per month</div>
+                                <div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '20px', paddingRight: '3px', color: '#f36802' }}>Rs. 10000</div>
+                                <div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '10px', color: '#e5e5e5' }}>per month</div>
                             </div>
                             <div className={classes.rentStyle}>
-                                <div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '15px', paddingRight: '3px' }}>Rs. 10000</div>
-                                <div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '3px' }}>deposit</div>
+                                <div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '15px', paddingRight: '3px', color: '#e5e5e5' }}>Rs. 10000</div>
+                                <div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '3px', color: '#e5e5e5' }}>deposit</div>
                             </div>
                         </div>
                     </div>
                 }
                 <div style={{ 'paddingTop': '20px' }}>
-                    <DescriptionComponent />
+                    <DescriptionComponent listingInfo={listingInfo} />
                 </div>
                 <div style={{ 'paddingTop': '20px' }}>
                     <AmenitiesComponent homeFeatures={location.state.listing.homeFeatures} bedroomDetails={location.state.listing.bedroomDetails} />
@@ -111,32 +124,7 @@ const PropertyInfoComponent = () => {
 
             </div>
             {isMobile &&
-                <div style={{
-                    width: '95%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    position: 'sticky',
-                    bottom: 10,
-                    margin: '0 auto',
-                    backgroundColor: 'black',
-                    padding: '10px',
-                }}>
-                    <Button variant="contained"
-                        buttonStyle={{ borderRadius: 25 }}
-                        style={{ borderRadius: 25, marginBottom: '4px' }}
-                        color="red"
-                    >
-                        SCHEDULE PROPERTY TOUR
-                </Button>
-                    <Button variant="contained"
-                        buttonStyle={{ borderRadius: 25 }}
-                        style={{ borderRadius: 25 }}
-                        color="red"
-                    >
-                        SEE MORE PROPERTIES
-                </Button>
-                </div>
+                <MobileStickyBottom navigateToProperties={navigateToProperties}/>
             }
         </>
     )

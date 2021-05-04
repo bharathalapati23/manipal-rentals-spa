@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const DescriptionComponent = () => {
+const DescriptionComponent = ({ listingInfo }) => {
     const classes = useStyles();
     const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 
@@ -61,7 +61,7 @@ const DescriptionComponent = () => {
                     </div>
                     <div className={classes.seeMoreProperties}>
                         <div className={classes.rentStyle}>
-                            <div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '24px', paddingRight: '3px', color:'#f36802' }}>Rs. 10000</div>
+                            <div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '24px', paddingRight: '3px', color:'#f36802' }}>Rs. {listingInfo.rent}</div>
                             <div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '12px', color:'#e5e5e5' }}>per month</div>
                         </div>
                         <div className={classes.rentStyle}>
@@ -70,7 +70,7 @@ const DescriptionComponent = () => {
                         </div>
                         <Button variant="contained"
                             buttonStyle={{ borderRadius: 25 }}
-                            style={{ borderRadius: 25 }}
+                            style={{ borderRadius: 25, backgroundColor:'#f36802', color:'white', fontWeight:'bold' }}
                             color="red"
                         >
                             SCHEDULE PROPERTY TOUR

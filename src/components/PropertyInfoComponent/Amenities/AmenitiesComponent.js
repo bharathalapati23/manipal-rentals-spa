@@ -11,13 +11,10 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Divider from '@material-ui/core/Divider';
 
-
-import SingleBedIcon from '@material-ui/icons/SingleBed';
-import WeekendIcon from '@material-ui/icons/Weekend';
-import ChairIcon from '../../icons/ChairIcon.js'
-
-import WifiIcon from '@material-ui/icons/Wifi';
 import { useMediaQuery } from 'react-responsive';
+
+import BedroomDetailsComponent from './BedroomDetailsComponent'
+import HomeFeaturesComponent from './HomeFeaturesComponent'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,64 +27,18 @@ const useStyles = makeStyles((theme) => ({
     amenitiesTitle: {
         fontFamily: 'Bebas Neue',
         fontSize: '28px',
+        color: '#e5e5e5'
     },
     tabLabel: {
         fontFamily: 'Poppins',
         fontSize: '17px',
     },
+    accordionStyle: {
+        boxShadow: "none",
+        backgroundColor: 'transparent',
+        color: '#e5e5e5'
+    }
 }));
-
-
-function BedroomDetailsPanel({ value, index }) {
-
-    return (
-        <div
-            hidden={value !== index}
-        >
-            {value === index && (
-                <Box style={{ width: '100%' }}>
-                    <SingleBedIcon />
-                    <WeekendIcon />
-                </Box>
-            )}
-        </div>
-    );
-}
-
-function HomeFeaturesPanel({ value, index, homeFeatures, isMobile }) {
-
-    return (
-        <div
-            hidden={value !== index}
-        >
-            {value === index && (
-                <Box style={{ width: '100%', verticalAlign: 'center' }}>
-                    {Object.keys(homeFeatures).map((homeFeature, index) => {
-                        if (index % 2 == 1) return
-                        return (
-                            <>
-                                <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                    <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'row' }}>
-                                        <WifiIcon style={{ color: 'red' }} />
-                                        <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', fontWeight: 'bold' }}>WIFI</div>
-                                    </div>
-                                    <div style={{ flexGrow: 3, display: 'flex', flexDirection: 'row' }}>
-                                        <WifiIcon style={{ color: 'red' }} />
-                                        <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', fontWeight: 'bold' }}>Cooking Hub</div>
-                                    </div>
-                                </div>
-                                <br></br>
-                            </>)
-                    })}
-
-                </Box>
-            )
-            }
-        </div >
-    );
-}
-
-
 
 const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
     const classes = useStyles();
@@ -97,7 +48,6 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
-        console.log(newValue)
     };
 
     return (
@@ -117,9 +67,9 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
                     </Tabs>
                 </AppBar>
                 <div style={{ 'paddingTop': '20px' }}>
-                    <HomeFeaturesPanel value={value} index={0} homeFeatures={homeFeatures} />
+                    <HomeFeaturesComponent value={value} index={0} homeFeatures={homeFeatures} />
                     {bedroomDetails.map((bedroom, index) => {
-                        return <BedroomDetailsPanel value={value} index={index + 1} />
+                        return <BedroomDetailsComponent value={value} index={index + 1} bedroomDetails={bedroom} />
                     })}
                 </div>
             </div>}
@@ -134,7 +84,7 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
             { isMobile &&
                 <>
                     <Divider />
-                    <Accordion style={{ boxShadow: "none" }}>
+                    <Accordion className={classes.accordionStyle}>
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
                             aria-controls="panel1a-content"
@@ -143,14 +93,14 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
                             <Typography className={classes.heading}>Accomodation Type</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <HomeFeaturesPanel value={value} index={0} homeFeatures={homeFeatures} isMobile={true} />
+                            <HomeFeaturesComponent value={value} index={0} homeFeatures={homeFeatures} isMobile={true} />
                         </AccordionDetails>
                     </Accordion>
                     {bedroomDetails.map((bedroom, index) => {
                         return (
                             <>
                                 <Divider />
-                                <Accordion style={{ boxShadow: "none" }}>
+                                <Accordion className={classes.accordionStyle}>
                                     <AccordionSummary
                                         expandIcon={<ExpandMoreIcon />}
                                         aria-controls="panel1a-content"
@@ -159,7 +109,7 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
                                         <Typography className={classes.heading}>Bedroom {index + 1}</Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
-                                        <HomeFeaturesPanel value={value} index={0} homeFeatures={homeFeatures} isMobile={true} />
+                                        <BedroomDetailsComponent value={value} index={index + 1} bedroomDetails={bedroom} />
                                     </AccordionDetails>
                                 </Accordion>
                             </>)

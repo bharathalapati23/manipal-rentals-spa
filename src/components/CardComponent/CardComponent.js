@@ -12,6 +12,7 @@ import SingleBedIcon from '@material-ui/icons/SingleBed';
 import GroupIcon from '@material-ui/icons/Group';
 import { useHistory } from 'react-router-dom'
 import ImageGalleryComponent from '../PropertyInfoComponent/ImageGalleryComponent'
+import { Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
 	title: {
@@ -21,13 +22,17 @@ const useStyles = makeStyles((theme) => ({
 		marginBottom: 12,
 	},
 	card: {
-		//	marginLeft: 275,
-		//marginBottom: 5,
 		width: '100%',
-		marginBottom: '10px'
+		marginBottom: '10px',
+		backgroundColor: '#2e2e2e',
+
 	},
 	mobileCard: {
 		marginBottom: 5,
+		backgroundColor: '#2e2e2e',
+		'& .MuiCardContent-root': {
+			padding: '10px'
+		}
 	},
 	cardContainer: {
 		display: 'flex',
@@ -73,12 +78,23 @@ export default function CardComponent({ cardObj }) {
 	}
 	return (
 		<Grid item >
-			<Card className={isMobile ? classes.mobileCard : classes.card} variant="outlined" style={{ borderRadius: '10' }} onClick={navigateToProperty}>
+			<Card className={isMobile ? classes.mobileCard : classes.card} variant="outlined" style={{ borderRadius: '15px' }} onClick={navigateToProperty}>
 				<CardContent>
 					<div className={isMobile ? classes.mobileCardContainer : classes.cardContainer}>
-						{isMobile && <Typography variant="h5" component="h2">
-							{cardObj.desc}
-						</Typography>}
+						{isMobile &&
+							<div style={{
+								color: '#e5e5e5',
+								fontFamily: 'Poppins',
+								display: 'flex',
+								flexDirection: 'row',
+								justifyContent: 'space-between',
+								alignItems: 'center'
+							}}>
+								<div>
+									<SingleBedIcon style={{ verticalAlign: 'middle', color: '#e5e5e5' }} />3BHK
+								</div>
+								{cardObj.zone}
+							</div>}
 						<Carousel showThumbs={false} showIndicators={false} className={classes.carousel} >
 							{cardObj.images.map((image, index) => (
 								<div>
@@ -86,25 +102,41 @@ export default function CardComponent({ cardObj }) {
 								</div>
 							))}
 						</Carousel>
-
+						{isMobile &&
+							<div style={{
+								color: '#e5e5e5',
+								fontFamily: 'Poppins',
+								display: 'flex',
+								flexDirection: 'row',
+								justifyContent: 'space-between',
+								alignItems: 'center'
+							}}>
+								<div color="textSecondary" style={{
+									display: 'flex',
+									flexDirection: 'row',
+								}}>
+									<div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '20px', paddingRight: '3px', color: '#f36802' }}>Rs. 10000</div>
+									<div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '8px', color: '#e5e5e5', alignSelf:'flex-start' }}>per month</div>
+								</div>
+							</div>}
 						{!isMobile &&
-							<div style={{ marginLeft: '10px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+							<div style={{ marginLeft: '10px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', }}>
 								<div>
-									<Typography variant="h5" component="h2" style={{ fontFamily: 'Poppins', fontWeight: 'bolder' }}>
+									<div variant="h5" component="h2" style={{ fontFamily: 'Poppins', fontWeight: 'bolder', fontSize: '24px', color: '#e5e5e5' }}>
 										{cardObj.desc}
-									</Typography>
-									<Typography className={classes.title} color="textSecondary" gutterBottom style={{ fontFamily: 'Poppins', fontWeight: 'bolder' }}>
+									</div>
+									<div className={classes.title} color="textSecondary" gutterBottom style={{ fontFamily: 'Poppins', color: '#e5e5e5' }}>
 										{cardObj.zone}
-									</Typography>
+									</div>
 								</div>
 								<div>
-									<Typography className={classes.title} color="textSecondary" gutterBottom style={{ fontFamily: 'Poppins', fontWeight: 'bolder', verticalAlign: 'middle' }}>
-										<SingleBedIcon style={{ paddingTop: '5px', verticalAlign: 'middle' }} />
-										{cardObj.bedroom}BHK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<GroupIcon style={{ paddingTop: '5px', verticalAlign: 'middle' }} /> 3 capacity
-									</Typography>
-									<Typography className={classes.pos} color="textSecondary" style={{ fontFamily: 'Poppins', fontWeight: 'bolder', verticalAlign: 'middle' }}>
-										{cardObj.rent}/month
-        							</Typography>
+									<div className={classes.title} color="textSecondary" gutterBottom style={{ fontFamily: 'Poppins', verticalAlign: 'middle', color: '#e5e5e5' }}>
+										<SingleBedIcon style={{ paddingTop: '5px', verticalAlign: 'middle', color: '#e5e5e5' }} />
+										{cardObj.bedroom}BHK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<GroupIcon style={{ paddingTop: '5px', verticalAlign: 'middle', color: '#e5e5e5' }} /> 3 capacity
+									</div>
+									<div className={classes.pos} color="textSecondary" style={{ fontFamily: 'Poppins', verticalAlign: 'middle', color: '#e5e5e5' }}>
+										Rs. {cardObj.rent}/month
+        							</div>
 								</div>
 
 							</div>

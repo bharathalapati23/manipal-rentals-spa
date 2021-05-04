@@ -12,6 +12,8 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { setHomeFeaturesFilter } from '../../actions/filters.js'
 import { useDispatch } from 'react-redux'
+import ExpandIconCompnent from './ExpandIconCompnent';
+
 
 const initialHomeFeatures = {
     wifi: false,
@@ -39,11 +41,19 @@ const useStyles = makeStyles((theme) => ({
     heading: {
         fontFamily: 'Poppins',
         textAlign: 'center',
-        fontWeight: 'bold',
     },
     formControl: {
         // margin: theme.spacing(3),
         margin: '0 auto'
+    },
+    accordionStyle: {
+        boxShadow: "none",
+        backgroundColor: 'transparent',
+        color: '#e5e5e5',
+        boxShadow: "none",
+        display: 'flex',
+        justifyContent: 'center',
+        flexDirection: 'column'
     },
 }));
 
@@ -67,15 +77,26 @@ const HomeFeaturesFilter = () => {
         dispatch(setHomeFeaturesFilter(newHomeFeatures))
     };
 
+    const [expanded, setExpanded] = React.useState(false);
+    const handleExpand = (event, isExpanded) => {
+        setExpanded(isExpanded)
+    }
+
+    let selectedHomeFeatures = Object.keys(homeFeatures).reduce((total, homeFeature) => {
+        if (homeFeatures[homeFeature] === true)
+            return total + 1
+        return total
+    }, 0)
+
     return (
         <>
-            <Accordion style={{ boxShadow: "none" }} >
+            <Accordion className={classes.accordionStyle} onChange={handleExpand}>
                 <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
+                    expandIcon={<ExpandIconCompnent expanded={expanded} value={selectedHomeFeatures} />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <Typography className={classes.heading}>Home Features</Typography>
+                    <div className={classes.heading}>Home Features</div>
                 </AccordionSummary>
                 <AccordionDetails>
                     <FormControl required component="fieldset" className={classes.formControl}>
@@ -83,9 +104,15 @@ const HomeFeaturesFilter = () => {
                             {Object.keys(homeFeatures).map((key, index) => {
                                 return <
                                     FormControlLabel
-                                    control={<Checkbox name="1" />}
+                                    control={
+                                        <Checkbox name="1"
+                                            labelStyle={{ color: 'white' }}
+                                            iconStyle={{ fill: 'white' }}
+                                            style={{ color: 'white' }}
+                                        />
+                                    }
                                     label={displayNameHomeFeatures[key]}
-                                    onChange={(event)=>handleFilterChange(event, key)}
+                                    onChange={(event) => handleFilterChange(event, key)}
                                 />
                             })}
                         </FormGroup>

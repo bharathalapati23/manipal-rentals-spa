@@ -7,12 +7,23 @@ import SortIcon from '@material-ui/icons/Sort';
 import Badge from '@material-ui/core/Badge';
 
 const useStyles = makeStyles({
+    // stickToBottom: {
+    //     width: '100%',
+    //     position: 'sticky',
+    //     bottom: 0,
+    //     backgroundColor: 'grey',
+    //     margin: '0 auto'
+    // },
     stickToBottom: {
-        width: '100%',
-        position: 'sticky',
+        position: 'fixed',
         bottom: 0,
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
         backgroundColor: 'grey',
-        margin: '0 auto'
+        height: '40px',
+        alignItems: 'center'
     },
 });
 
@@ -26,18 +37,7 @@ const BottomNavigationComponent = ({ setFilterPage }) => {
         setValue(newValue);
     };
     return (
-        <div style={{
-            width: '96%',
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            position: 'sticky',
-            bottom: 0,
-            margin: '0 auto',
-            backgroundColor: 'grey',
-            padding: '10px',
-            zIndex: 10000
-        }}>
+        <div className={classes.stickToBottom}>
             <div onClick={() => setFilterPage(true)}>
                 <Badge badgeContent={4} color="primary">
                     <FilterListIcon />

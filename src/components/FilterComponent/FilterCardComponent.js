@@ -17,12 +17,15 @@ import { setBedroomFilter } from '../../actions/filters'
 import HomeFeaturesFilter from './HomeFeaturesFilter.js'
 import ZoneFilter from './ZoneFilter.js'
 import ApartmentFilter from './ApartmentFilter.js'
+import BedroomFilter from './BedroomFilter.js'
 
 const useStyles = makeStyles((theme) => ({
     filterContainer: {
         position: 'sticky',
         margin: '20px',
         fontFamily: 'Poppins',
+        backgroundColor: '#2e2e2e',
+        borderRadius:'10px'
     },
     formControl: {
         // margin: theme.spacing(3),
@@ -33,33 +36,17 @@ const useStyles = makeStyles((theme) => ({
         padding: '10px',
         fontFamily: 'Poppins',
         fontWeight: 'bold',
-        color: '#6167E7'
+        color: '#E5E5E5'
     },
     heading: {
         fontFamily: 'Poppins',
         textAlign: 'center',
-        fontWeight: 'bold',
-    }
+    },
 }));
 
 const FilterCardComponent = () => {
     const classes = useStyles();
-    const [checkedBedrooms, setCheckedBedrooms] = useState([])
     const dispatch = useDispatch();
-
-    const handleBedroomChange = (event) => {
-        let changedBedrooms = JSON.parse(JSON.stringify(checkedBedrooms))
-        if (event.target.checked)
-            changedBedrooms.push(Number(event.target.name))
-        else {
-            const index = changedBedrooms.indexOf(Number(event.target.name));
-            if (index > -1) {
-                changedBedrooms.splice(index, 1)
-            }
-        }
-        setCheckedBedrooms(changedBedrooms)
-        dispatch(setBedroomFilter(changedBedrooms))
-    };
 
     return (
         <div className={classes.filterContainer}>
@@ -75,51 +62,9 @@ const FilterCardComponent = () => {
                     FILTERS
         		</Typography>
                 <Divider />
-                {/* <Divider /> */}
-                <Accordion style={{
-                    boxShadow: "none", display: 'flex',
-                    justifyContent: 'center',
-                    flexDirection: 'column'
-                }} defaultExpanded>
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                    >
-                        <Typography className={classes.heading}>Budget</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <SliderComponent />
-                    </AccordionDetails>
-                </Accordion>
+                <SliderComponent />
                 <Divider />
-                <Accordion style={{ boxShadow: "none" }} defaultExpanded>
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                    >
-                        <Typography className={classes.heading}>Bedroom</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <FormControl required component="fieldset" className={classes.formControl}>
-                            <FormGroup>
-                                <FormControlLabel
-                                    control={<Checkbox onChange={handleBedroomChange} name="1" />}
-                                    label="1BHK"
-                                />
-                                <FormControlLabel
-                                    control={<Checkbox onChange={handleBedroomChange} name="2" />}
-                                    label="2BHK"
-                                />
-                                <FormControlLabel
-                                    control={<Checkbox onChange={handleBedroomChange} name="3" />}
-                                    label="3BHK"
-                                />
-                            </FormGroup>
-                        </FormControl>
-                    </AccordionDetails>
-                </Accordion>
+                <BedroomFilter />
                 <Divider />
                 <ZoneFilter />
                 <Divider />

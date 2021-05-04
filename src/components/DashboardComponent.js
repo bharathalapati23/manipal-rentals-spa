@@ -7,6 +7,7 @@ import MobileFilterComponent from './FilterComponent/MobileFilterComponent.js'
 import Grid from '@material-ui/core/Grid';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
+import MenuItem from '@material-ui/core/MenuItem';
 
 import CardComponent from './CardComponent/CardComponent'
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,11 +25,16 @@ const useStyles = makeStyles((theme) => ({
 		margin: 'auto',
 		minHeight: '84vh',
 		[theme.breakpoints.down('md')]: {
-			width: '100%'
+			width: '100%',
+			paddingBottom:'40px'
 		},
-		[theme.breakpoints.up('md')]: {
+		[theme.breakpoints.up('lg')]: {
 			minWidth: '950px',
-		}
+		},
+		paddingLeft:'8px',
+		paddingRight:'8px',
+		boxSizing:'border-box',
+		paddingBottom:'40px'
 		// flexWrap: 'wrap',
 		// justifyContent: 'center',
 		// alignItems: 'center'
@@ -46,6 +52,25 @@ const useStyles = makeStyles((theme) => ({
 	formControl: {
 		margin: theme.spacing(3),
 	},
+	sortSelect: {
+		width: '200px',
+		fontFamily: 'Poppins',
+		fontSize: '14px',
+		color: '#e5e5e5',
+		border: 'solid',
+		borderColor: '#d0d0d0',
+		borderWidth: 'thin',
+		backgroundColor: '#121212',
+		"& option": {
+			backgroundColor: "#black",
+		},
+		"& li": {
+			fontSize: 12,
+		},
+	},
+	dropdownStyle: {
+		backgroundColor: 'lightgrey'
+	}
 }));
 
 export default function DashboardComponent() {
@@ -86,8 +111,6 @@ export default function DashboardComponent() {
 		getListings(0)
 	}, [dispatch]);
 
-	console.log(posts)
-
 	return (
 		<>
 			<div className={classes.root}>
@@ -97,13 +120,12 @@ export default function DashboardComponent() {
 						<FilterCardComponent />
 					</div>
 				}
-				{/* <div className={classes.cardContainer}>Box 2</div> */}
-				{ isFilterPage && isMobile && <MobileFilterComponent />}
+				{isFilterPage && isMobile && <MobileFilterComponent />}
 
 				{!isFilterPage && <div className={classes.cardContainer}>
 					<Grid container direction={'column'} spacing={24}>
 						<div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '4px' }}>
-							<div style={{ fontFamily: 'Poppins', color: '#4D505C' }}>
+							<div style={{ fontFamily: 'Poppins', color: '#E5E5E5' }}>
 								Properties
 						</div>
 							<div>
@@ -111,19 +133,15 @@ export default function DashboardComponent() {
 									<Select
 										native
 										defaultValue={0}
-										style={{
-											width: '200px',
-											fontFamily: 'Poppins',
-											fontSize: '14px'
-										}}
-
 										onChange={(e) => {
 											dispatch(clearPosts())
 											getListings(e.target.value)
 										}}
+										className={classes.sortSelect}
+										MenuProps={{ classes: { paper: classes.dropdownStyle } }}
 									>
 										Sort By:
-									<option value={0}>Recently Added</option>
+										<option value={0}>Recently Added</option>
 										<option value={1}>Price:High to Low</option>
 										<option value={2}>Price:Low to High</option>
 									</Select>
@@ -135,9 +153,10 @@ export default function DashboardComponent() {
 						))}
 
 					</Grid>
-				</div> }
+				</div>}
+				{isMobile && <div style={{height: '1000px', clear:'both'}}></div>}
 			</div>
-			{isMobile && <BottomNavigationComponent className={classes.stickToBottom} setFilterPage={setFilterPage}/>}
+			{isMobile && <BottomNavigationComponent setFilterPage={setFilterPage} />}
 		</>
 	);
 }
