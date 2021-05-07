@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Checkbox from '@material-ui/core/Checkbox';
 import Accordion from '@material-ui/core/Accordion';
@@ -11,8 +11,47 @@ import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { setZoneFilter } from '../../actions/filters.js'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import ExpandIconCompnent from './ExpandIconCompnent';
+
+const initialZoneState = [
+    {
+        label: 'Syndicate Circle',
+        checked: false,
+        name: 'Syndicate Circle'
+    },
+    {
+        label: 'Venugopal Temple',
+        checked: false,
+        name: 'Venugopal Temple'
+    },
+    {
+        label: 'Eshwar Nagar',
+        checked: false,
+        name: 'Eshwar Nagar'
+    },
+    {
+        label: 'Ananth Nagar',
+        checked: false,
+        name: 'Ananth Nagar'
+    },
+    {
+        label: 'End Point Road',
+        checked: false,
+        name: 'End Point Road'
+    },
+    {
+        label: 'Perampalli Road',
+        checked: false,
+        name: 'Perampalli Road'
+    },
+    {
+        label: 'Vidyaratna Nagar',
+        checked: false,
+        name: 'Vidyaratna Nagar'
+    },
+
+]
 
 
 const useStyles = makeStyles((theme) => ({
@@ -39,19 +78,30 @@ const useStyles = makeStyles((theme) => ({
 const ZoneFilter = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const [checkedZones, setCheckedZones] = useState([])
+    const zoneFilters = useSelector((state) => state.filters.zone)
+    const [zoneState, setZoneState] = useState(initialZoneState)
+
+    useEffect(() => {
+        let newZoneState = zoneState.map((zone) => {
+            if (zoneFilters.includes(Number(zone.name))) {
+                zone.checked = true
+            }
+            return zone
+        })
+        setZoneState(newZoneState)
+    }, [zoneFilters])
 
     const handleZoneChange = (event) => {
-        let changedZones = JSON.parse(JSON.stringify(checkedZones))
-        if (event.target.checked)
-            changedZones.push(event.target.name)
-        else {
-            const index = changedZones.indexOf(event.target.name);
-            if (index > -1) {
-                changedZones.splice(index, 1)
+        let changedZones = []
+        let newZoneState = zoneState.map((zone) => {
+            if (zone.name === event.target.name) {
+                zone.checked = event.target.checked
             }
-        }
-        setCheckedZones(changedZones)
+            if (zone.checked === true)
+                changedZones.push(zone.name)
+            return zone
+        })
+        setZoneState(newZoneState)
         dispatch(setZoneFilter(changedZones))
     };
 
@@ -65,7 +115,7 @@ const ZoneFilter = () => {
             {/* <Divider /> */}
             <Accordion className={classes.accordionStyle} onChange={handleExpand}>
                 <AccordionSummary
-                    expandIcon={<ExpandIconCompnent expanded={expanded} value={checkedZones.length} />}
+                    expandIcon={<ExpandIconCompnent expanded={expanded} value={zoneFilters.length} />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
@@ -74,82 +124,20 @@ const ZoneFilter = () => {
                 <AccordionDetails>
                     <FormControl required component="fieldset" className={classes.formControl}>
                         <FormGroup>
-                            <FormControlLabel
-                                control={
-                                    <Checkbox name="Syndicate Circle"
-                                        labelStyle={{ color: 'white' }}
-                                        iconStyle={{ fill: 'white' }}
-                                        style={{ color: 'white' }}
-                                    />}
-                                label="Syndicate Circle"
-                                onChange={handleZoneChange}
-                            />
-                            <FormControlLabel
-                                control={
-                                    <Checkbox name="Venugopal Temple"
-                                        labelStyle={{ color: 'white' }}
-                                        iconStyle={{ fill: 'white' }}
-                                        style={{ color: 'white' }}
-                                    />
-                                }
-                                label="Venugopal Temple"
-                                onChange={handleZoneChange}
-                            />
-                            <FormControlLabel
-                                control={
-                                    <Checkbox name="Eshwar Nagar"
-                                        labelStyle={{ color: 'white' }}
-                                        iconStyle={{ fill: 'white' }}
-                                        style={{ color: 'white' }}
-                                    />
-                                }
-                                label="Eshwar Nagar"
-                                onChange={handleZoneChange}
-                            />
-                            <FormControlLabel
-                                control={
-                                    <Checkbox name="Ananth Nagar"
-                                        labelStyle={{ color: 'white' }}
-                                        iconStyle={{ fill: 'white' }}
-                                        style={{ color: 'white' }}
-                                    />
-                                }
-                                label="Ananth Nagar"
-                                onChange={handleZoneChange}
-                            />
-                            <FormControlLabel
-                                control={
-                                    <Checkbox name="End Point Road"
-                                        labelStyle={{ color: 'white' }}
-                                        iconStyle={{ fill: 'white' }}
-                                        style={{ color: 'white' }}
-                                    />
-                                }
-                                label="End Point Road"
-                                onChange={handleZoneChange}
-                            />
-                            <FormControlLabel
-                                control={
-                                    <Checkbox name="Perampalli Road"
-                                        labelStyle={{ color: 'white' }}
-                                        iconStyle={{ fill: 'white' }}
-                                        style={{ color: 'white' }}
-                                    />
-                                }
-                                label="Perampalli Road"
-                                onChange={handleZoneChange}
-                            />
-                            <FormControlLabel
-                                control={
-                                    <Checkbox name="Vidyaratna Nagar"
-                                        labelStyle={{ color: 'white' }}
-                                        iconStyle={{ fill: 'white' }}
-                                        style={{ color: 'white' }}
-                                    />
-                                }
-                                label="Vidyaratna Nagar"
-                                onChange={handleZoneChange}
-                            />
+                            {zoneState.map((zone, index) => {
+                                return <FormControlLabel
+                                    control={
+                                        <Checkbox name={zone.name}
+                                            labelStyle={{ color: 'white' }}
+                                            iconStyle={{ fill: 'white' }}
+                                            style={{ color: 'white' }}
+                                        />}
+                                    onChange={handleZoneChange}
+                                    label={zone.label}
+                                    checked={zone.checked}
+                                    key={'zoneFilter'+index}
+                                />
+                            })}
                         </FormGroup>
                     </FormControl>
                 </AccordionDetails>

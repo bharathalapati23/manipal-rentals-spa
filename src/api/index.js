@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url = 'http://localhost:5000/posts'
+const url = 'https://manipal-rentals-backend.herokuapp.com/posts'
 
 export const fetchPosts = (sortOrder) => {
     return axios.get(url, {

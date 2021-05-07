@@ -11,7 +11,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { setHomeFeaturesFilter } from '../../actions/filters.js'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import ExpandIconCompnent from './ExpandIconCompnent';
 
 
@@ -60,12 +60,12 @@ const useStyles = makeStyles((theme) => ({
 const HomeFeaturesFilter = () => {
     const classes = useStyles();
     const dispatch = useDispatch()
+    const homeFilters = useSelector((state) => state.filters.homeFeatures)
     const [homeFeatures, setHomeFeatures] = useState(initialHomeFeatures)
 
     useEffect(() => {
-        console.log(homeFeatures)
-
-    }, [homeFeatures])
+        setHomeFeatures(homeFilters)
+    }, [homeFilters])
 
     const handleFilterChange = (event, key) => {
         let newHomeFeatures = {
@@ -109,6 +109,7 @@ const HomeFeaturesFilter = () => {
                                             labelStyle={{ color: 'white' }}
                                             iconStyle={{ fill: 'white' }}
                                             style={{ color: 'white' }}
+                                            checked={homeFeatures[key]}
                                         />
                                     }
                                     label={displayNameHomeFeatures[key]}

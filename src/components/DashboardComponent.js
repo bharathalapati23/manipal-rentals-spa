@@ -26,15 +26,15 @@ const useStyles = makeStyles((theme) => ({
 		minHeight: '84vh',
 		[theme.breakpoints.down('md')]: {
 			width: '100%',
-			paddingBottom:'40px'
+			paddingBottom: '40px'
 		},
 		[theme.breakpoints.up('lg')]: {
 			minWidth: '950px',
 		},
-		paddingLeft:'8px',
-		paddingRight:'8px',
-		boxSizing:'border-box',
-		paddingBottom:'40px'
+		paddingLeft: '8px',
+		paddingRight: '8px',
+		boxSizing: 'border-box',
+		paddingBottom: '40px'
 		// flexWrap: 'wrap',
 		// justifyContent: 'center',
 		// alignItems: 'center'
@@ -69,7 +69,10 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	dropdownStyle: {
-		backgroundColor: 'lightgrey'
+		backgroundColor: 'black'
+	},
+	selectIcon: {
+		fill: '#e5e5e5'
 	}
 }));
 
@@ -88,14 +91,19 @@ export default function DashboardComponent() {
 
 		if (filter.priceRange.length && (ob.rent > filter.priceRange[1] || ob.rent < filter.priceRange[0])) return false
 
-		let homeFeaturesFlag = true
+		let homeFeaturesFlag = false
+		let homeFeaturesFilterPresent = false
 
-		Object.keys(filter.homeFeatures).map((key) => {
-			if (filter.homeFeatures[key] === true && ob.homeFeatures[key] === false)
-				homeFeaturesFlag = false
+		Object.keys(filter.homeFeatures).map((homeFeature) => {
+			if (filter.homeFeatures[homeFeature] === true && ob.homeFeatures[homeFeature] === true)
+				homeFeaturesFlag = true
+			if(filter.homeFeatures[homeFeature] === true)
+				homeFeaturesFilterPresent = true
 		})
 
-		return homeFeaturesFlag
+		if(homeFeaturesFilterPresent)
+			return homeFeaturesFlag
+		else return true
 	})
 
 	const getListings = (sortOrder) => {
@@ -125,10 +133,15 @@ export default function DashboardComponent() {
 				{!isFilterPage && <div className={classes.cardContainer}>
 					<Grid container direction={'column'} spacing={24}>
 						<div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '4px' }}>
-							<div style={{ fontFamily: 'Poppins', color: '#E5E5E5' }}>
-								Properties
-						</div>
-							<div>
+							<div style={{ fontFamily: 'Poppins', color: '#E5E5E5', display:'flex', flexDirection:'column' }}>
+								<div style={{fontSize:'20px'}}>
+									Properties
+								</div>
+								<div style={{fontSize:'14px'}}>
+									Showing 1-20 of 3437 places
+								</div>
+							</div>
+							<div style={{alignSelf:'center'}}>
 								<FormControl variant="outlined" size="small">
 									<Select
 										native
@@ -139,6 +152,11 @@ export default function DashboardComponent() {
 										}}
 										className={classes.sortSelect}
 										MenuProps={{ classes: { paper: classes.dropdownStyle } }}
+										inputProps={{
+											classes: {
+												icon: classes.selectIcon,
+											},
+										}}
 									>
 										Sort By:
 										<option value={0}>Recently Added</option>
@@ -154,7 +172,7 @@ export default function DashboardComponent() {
 
 					</Grid>
 				</div>}
-				{isMobile && <div style={{height: '1000px', clear:'both'}}></div>}
+				{isMobile && <div style={{ height: '1000px', clear: 'both' }}></div>}
 			</div>
 			{isMobile && <BottomNavigationComponent setFilterPage={setFilterPage} />}
 		</>
