@@ -12,6 +12,7 @@ import AmenitiesComponent from './Amenities/AmenitiesComponent'
 import ImageGalleryComponent from './ImageGalleryComponent'
 import DescriptionComponent from './DescriptionComponent'
 import MobileStickyBottom from './MobileStickyBottom'
+import EnquiryFormModal from './EnquiryFormModal'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -126,6 +127,7 @@ const PropertyInfoComponent = () => {
             {isMobile &&
                 <MobileStickyBottom navigateToProperties={navigateToProperties}/>
             }
+            <EnquiryFormModal/>
         </>
     )
 }

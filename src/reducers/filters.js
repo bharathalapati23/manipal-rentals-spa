@@ -9,15 +9,27 @@ const homeFeatures = {
     chairs: false,
 }
 
+const bedroomDetails = {
+    singleBed: false,
+    doubleBed: false,
+    wardrobe: false,
+    studyTable: false,
+    chair: false,
+    attachedToilet: false,
+    attachedBalcony: false,
+    airConditioner: false,
+}
+
 const initialState = {
     bedroom: [],
     priceRange: [],
     homeFeatures: homeFeatures,
     zone:[],
+    accomodationType: [],
+    bedroomDetails:bedroomDetails
 }
 
 export default (filters = initialState, action) => {
-    // console.log(action)
     switch (action.type) {
         case 'SET_BEDROOM_FITLER': {
             let newState = {
@@ -40,10 +52,30 @@ export default (filters = initialState, action) => {
             }
             return newState
         }
+        case 'SET_ACCOMODATION_TYPE_FITLER': {
+            let newState = {
+                ...filters,
+                accomodationType: action.payload
+            }
+            return newState
+        }
         case 'SET_HOME_FEATURES_FILTER': {
             let newState = {
                 ...filters,
                 homeFeatures: action.payload
+            }
+            return newState
+        }
+        case 'SET_BEDROOM_DETAILS_FILTER': {
+            let newState = {
+                ...filters,
+                bedroomDetails: action.payload
+            }
+            return newState
+        }
+        case 'CLEAR_FILTERS': {
+            let newState = {
+                ...initialState,
             }
             return newState
         }

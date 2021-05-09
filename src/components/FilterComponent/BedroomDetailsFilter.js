@@ -10,31 +10,31 @@ import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { setHomeFeaturesFilter } from '../../actions/filters.js'
+import { setBedroomDetailsFilter } from '../../actions/filters.js'
 import { useSelector, useDispatch } from 'react-redux'
 import ExpandIconCompnent from './ExpandIconCompnent';
 
 
-const initialHomeFeatures = {
-    wifi: false,
-    geyser: false,
-    washingMachine: false,
-    cookingHub: false,
-    fridge: false,
-    couch: false,
-    coffeeTable: false,
-    chairs: false,
+const initialBedroomDetails = {
+    singleBed: false,
+    doubleBed: false,
+    wardrobe: false,
+    studyTable: false,
+    chair: false,
+    attachedToilet: false,
+    attachedBalcony: false,
+    airConditioner: false,
 }
 
-const displayNameHomeFeatures = {
-    wifi: 'Wifi',
-    geyser: 'Geyser',
-    washingMachine: 'Washing Machine',
-    cookingHub: 'Cooking Hub',
-    fridge: 'Fridge',
-    couch: 'Couch',
-    coffeeTable: 'Coffee Table',
-    chairs: 'Chairs',
+const displayNameBedroomDetails = {
+    singleBed: 'Single Bed',
+    doubleBed: 'Double Bed',
+    wardrobe: 'Wardrobe',
+    studyTable: 'Study Table',
+    chair: 'Chair',
+    attachedToilet: 'Attached Toilet',
+    attachedBalcony: 'Attached Balcony',
+    airConditioner: 'Air Conditioner',
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -57,23 +57,23 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const HomeFeaturesFilter = () => {
+const BedroomDetailsFilter = () => {
     const classes = useStyles();
     const dispatch = useDispatch()
-    const homeFilters = useSelector((state) => state.filters.homeFeatures)
-    const [homeFeatures, setHomeFeatures] = useState(initialHomeFeatures)
+    const bedroomFilters = useSelector((state) => state.filters.bedroomDetails)
+    const [bedroomDetails, setBedroomDetails] = useState(initialBedroomDetails)
 
     useEffect(() => {
-        setHomeFeatures(homeFilters)
-    }, [homeFilters])
+        setBedroomDetails(bedroomFilters)
+    }, [bedroomFilters])
 
     const handleFilterChange = (event, key) => {
-        let newHomeFeatures = {
-            ...homeFeatures,
+        let newBedroomDetails = {
+            ...bedroomDetails,
             [key]: event.target.checked
         }
-        setHomeFeatures(newHomeFeatures)
-        dispatch(setHomeFeaturesFilter(newHomeFeatures))
+        setBedroomDetails(newBedroomDetails)
+        dispatch(setBedroomDetailsFilter(newBedroomDetails))
     };
 
     const [expanded, setExpanded] = React.useState(false);
@@ -81,8 +81,8 @@ const HomeFeaturesFilter = () => {
         setExpanded(isExpanded)
     }
 
-    let selectedHomeFeatures = Object.keys(homeFeatures).reduce((total, homeFeature) => {
-        if (homeFeatures[homeFeature] === true)
+    let selectedBedroomDetails = Object.keys(bedroomDetails).reduce((total, bedroomDetail) => {
+        if (bedroomDetails[bedroomDetail] === true)
             return total + 1
         return total
     }, 0)
@@ -91,16 +91,16 @@ const HomeFeaturesFilter = () => {
         <>
             <Accordion className={classes.accordionStyle} onChange={handleExpand}>
                 <AccordionSummary
-                    expandIcon={<ExpandIconCompnent expanded={expanded} value={selectedHomeFeatures} />}
+                    expandIcon={<ExpandIconCompnent expanded={expanded} value={selectedBedroomDetails} />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <div className={classes.heading}>Home Features</div>
+                    <div className={classes.heading}>Bedroom Details</div>
                 </AccordionSummary>
                 <AccordionDetails>
                     <FormControl required component="fieldset" className={classes.formControl}>
                         <FormGroup>
-                            {Object.keys(homeFeatures).map((key, index) => {
+                            {Object.keys(bedroomDetails).map((key, index) => {
                                 return <
                                     FormControlLabel
                                     control={
@@ -108,10 +108,10 @@ const HomeFeaturesFilter = () => {
                                             labelStyle={{ color: 'white' }}
                                             iconStyle={{ fill: 'white' }}
                                             style={{ color: 'white' }}
-                                            checked={homeFeatures[key]}
+                                            checked={bedroomDetails[key]}
                                         />
                                     }
-                                    label={displayNameHomeFeatures[key]}
+                                    label={displayNameBedroomDetails[key]}
                                     onChange={(event) => handleFilterChange(event, key)}
                                 />
                             })}
@@ -123,4 +123,4 @@ const HomeFeaturesFilter = () => {
     )
 }
 
-export default HomeFeaturesFilter
+export default BedroomDetailsFilter

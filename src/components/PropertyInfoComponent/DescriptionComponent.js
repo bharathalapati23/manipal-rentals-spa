@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '14px',
         paddingRight: '10px',
         color: '#ffffff'
-    }
+    },
 }));
 
 
@@ -61,16 +61,16 @@ const DescriptionComponent = ({ listingInfo }) => {
                     </div>
                     <div className={classes.seeMoreProperties}>
                         <div className={classes.rentStyle}>
-                            <div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '24px', paddingRight: '3px', color:'#f36802' }}>Rs. {listingInfo.rent}</div>
-                            <div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '12px', color:'#e5e5e5' }}>per month</div>
+                            <div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '24px', paddingRight: '3px', color: '#f36802' }}>Rs. {listingInfo.rent}</div>
+                            <div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '12px', color: '#e5e5e5' }}>per month</div>
                         </div>
                         <div className={classes.rentStyle}>
-                            <div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '19px', paddingRight: '3px', color:'#e5e5e5' }}>Rs. 10000</div>
-                            <div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '7px', color:'#e5e5e5' }}>deposit</div>
+                            <div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '19px', paddingRight: '3px', color: '#e5e5e5' }}>Rs. 10000</div>
+                            <div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '7px', color: '#e5e5e5' }}>deposit</div>
                         </div>
                         <Button variant="contained"
                             buttonStyle={{ borderRadius: 25 }}
-                            style={{ borderRadius: 25, backgroundColor:'#f36802', color:'white', fontWeight:'bold' }}
+                            style={{ borderRadius: 25, backgroundColor: '#f36802', color: 'white', fontWeight: 'bold' }}
                             color="red"
                         >
                             SCHEDULE PROPERTY TOUR

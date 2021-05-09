@@ -18,6 +18,7 @@ import HomeFeaturesFilter from './HomeFeaturesFilter.js'
 import ZoneFilter from './ZoneFilter.js'
 import ApartmentFilter from './ApartmentFilter.js'
 import BedroomFilter from './BedroomFilter.js'
+import BedroomDetailsFilter from './BedroomDetailsFilter.js'
 
 const useStyles = makeStyles((theme) => ({
     filterContainer: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
         margin: '20px',
         fontFamily: 'Poppins',
         backgroundColor: '#2e2e2e',
-        borderRadius:'10px'
+        borderRadius: '10px'
     },
     formControl: {
         // margin: theme.spacing(3),
@@ -71,6 +72,8 @@ const FilterCardComponent = () => {
                 <HomeFeaturesFilter />
                 <Divider />
                 <ApartmentFilter />
+                <Divider />
+                <BedroomDetailsFilter />
                 <div style={{ height: '5px' }}>
 
                 </div>

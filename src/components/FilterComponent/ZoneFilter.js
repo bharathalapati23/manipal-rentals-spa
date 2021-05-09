@@ -82,11 +82,12 @@ const ZoneFilter = () => {
     const [zoneState, setZoneState] = useState(initialZoneState)
 
     useEffect(() => {
-        let newZoneState = zoneState.map((zone) => {
-            if (zoneFilters.includes(Number(zone.name))) {
-                zone.checked = true
+        let newZoneState = initialZoneState.map((zone) => {
+            let newZone = JSON.parse(JSON.stringify(zone))
+            if (zoneFilters.includes(newZone.name)) {
+                newZone.checked = true
             }
-            return zone
+            return newZone
         })
         setZoneState(newZoneState)
     }, [zoneFilters])

@@ -4,18 +4,20 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import DashboardComponent from './components/DashboardComponent'
 import UploadComponent from './components/Upload/UploadComponent'
 import PropertyInfoComponent from './components/PropertyInfoComponent/PropertyInfoComponent.js'
+import FooterComponent from './components/FooterComponent.js'
 import './App.css'
 
 function App() {
   return (
     <>
       <Router>
-          <NavBar />
-          <Switch>
-            <Route path='/' exact> <DashboardComponent /> </Route>
-            <Route path='/upload' exact> <UploadComponent /> </Route>
-            <Route path='/property' exact> <PropertyInfoComponent /> </Route>
-          </Switch>
+        <NavBar />
+        <Switch>
+          <Route path='/' exact> <DashboardComponent /> </Route>
+          <Route path='/upload' exact> <UploadComponent /> </Route>
+          <Route path='/property' exact> <PropertyInfoComponent /> </Route>
+        </Switch>
+        <FooterComponent />
       </Router>
     </>
   )

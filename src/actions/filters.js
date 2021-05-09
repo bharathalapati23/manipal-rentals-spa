@@ -22,6 +22,14 @@ export const setZoneFilter = (zones) => async (dispatch) => {
     }
 }
 
+export const setAccomodationTypeFilter = (accomodationTypes) => async (dispatch) => {
+    try {
+        dispatch({ type: 'SET_ACCOMODATION_TYPE_FITLER', payload: accomodationTypes })
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
 export const setHomeFeaturesFilter = (homeFeatures) => async (dispatch) => {
     try {
         dispatch({ type: 'SET_HOME_FEATURES_FILTER', payload: homeFeatures })
@@ -30,3 +38,18 @@ export const setHomeFeaturesFilter = (homeFeatures) => async (dispatch) => {
     }
 }
 
+export const setBedroomDetailsFilter = (bedroomDetails) => async (dispatch) => {
+    try {
+        dispatch({ type: 'SET_BEDROOM_DETAILS_FILTER', payload: bedroomDetails })
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+export const clearFilters = () => async (dispatch) => {
+    try {
+        dispatch({ type: 'CLEAR_FILTERS' })
+    } catch (error) {
+        console.log(error.message)
+    }
+}

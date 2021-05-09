@@ -125,12 +125,12 @@ export default function CardComponent({ cardObj }) {
 									<div variant="h5" component="h2" style={{ fontFamily: 'Poppins', fontWeight: 'bolder', fontSize: '24px', color: '#e5e5e5' }}>
 										{cardObj.desc}
 									</div>
-									<div className={classes.title} color="textSecondary" gutterBottom style={{ fontFamily: 'Poppins', color: '#e5e5e5' }}>
+									<div className={classes.title} color="textSecondary" style={{ fontFamily: 'Poppins', color: '#e5e5e5' }}>
 										{cardObj.zone}
 									</div>
 								</div>
 								<div>
-									<div className={classes.title} color="textSecondary" gutterBottom style={{ fontFamily: 'Poppins', verticalAlign: 'middle', color: '#e5e5e5' }}>
+									<div className={classes.title} color="textSecondary" style={{ fontFamily: 'Poppins', verticalAlign: 'middle', color: '#e5e5e5' }}>
 										<SingleBedIcon style={{ paddingTop: '5px', verticalAlign: 'middle', color: '#e5e5e5' }} />
 										{cardObj.bedroom}BHK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<GroupIcon style={{ paddingTop: '5px', verticalAlign: 'middle', color: '#e5e5e5' }} /> 3 capacity
 									</div>
