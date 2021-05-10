@@ -23,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
 		marginTop: '80px',
-		width: '80%',
+		width: '100%',
+		maxWidth:'1300px',
 		justifyContent: 'center',
 		flexDirection: 'row',
 		margin: 'auto',
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 			// paddingBottom: '40px'
 		},
 		[theme.breakpoints.up('lg')]: {
-			minWidth: '950px',
+			// minWidth: '950px',
 		},
 		paddingLeft: '8px',
 		paddingRight: '8px',

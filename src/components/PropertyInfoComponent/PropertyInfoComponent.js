@@ -17,14 +17,15 @@ import EnquiryFormModal from './EnquiryFormModal'
 const useStyles = makeStyles((theme) => ({
     root: {
         marginTop: '80px',
-        width: '60%',
+        width: '100%',
+        maxWidth:'1300px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         margin: '0 auto',
         padding:'8px',
         [theme.breakpoints.up('md')]: {
-            minWidth: '960px',
+            //minWidth: '960px',
         },
         [theme.breakpoints.down('md')]: {
             width: '100%',

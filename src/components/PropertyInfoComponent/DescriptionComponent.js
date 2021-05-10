@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { useMediaQuery } from 'react-responsive';
+import { useDispatch } from 'react-redux'
+import { openModal } from '../../actions/enquiryModal'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -11,11 +13,11 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'space-between'
     },
     descContainer: {
-        flexGrow: 3,
+        flexGrow: 8,
         maxWidth: '75%'
     },
     seeMoreProperties: {
-        flexGrow: 1,
+        flexGrow: 3,
     },
     rentStyle: {
         display: 'flex',
@@ -43,6 +45,11 @@ const useStyles = makeStyles((theme) => ({
 const DescriptionComponent = ({ listingInfo }) => {
     const classes = useStyles();
     const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
+    const dispatch = useDispatch();
+
+    const openEnquiryModal = () => {
+        dispatch(openModal())
+    }
 
     return (
         <>
@@ -72,6 +79,7 @@ const DescriptionComponent = ({ listingInfo }) => {
                             buttonStyle={{ borderRadius: 25 }}
                             style={{ borderRadius: 25, backgroundColor: '#f36802', color: 'white', fontWeight: 'bold' }}
                             color="red"
+                            onClick={openEnquiryModal}
                         >
                             SCHEDULE PROPERTY TOUR
                         </Button>
