@@ -14,7 +14,7 @@
 
 .image-gallery-content img{
     object-position: center center !important;
-    object-fit: cover !important;
+    object-fit: contain !important;
     max-height: 400px !important;
 
 
@@ -22,8 +22,8 @@
 
 .image-gallery-content.fullscreen img{
     object-position: center center !important;
-    object-fit: cover !important;
-    max-height: 100% !important;
+    object-fit: contain !important;
+    max-height: 100vh !important;
 
 
 }

@@ -15,6 +15,8 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import Axios from 'axios'
+
 const bedroomObj = {
     singleBed: false,
     doubleBed: false,
@@ -54,12 +56,33 @@ const UploadComponent = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
 
-    const posts = useSelector((state) => state.posts)
+    //const posts = useSelector((state) => state.posts)
+    const posts = 1
 
     // console.log(postData)
     useEffect(() => {
         console.log(posts)
     }, [posts])
+
+    const uploadImage = async () => {
+        const formData = new FormData()
+        formData.append('file', images[0])
+        formData.append('upload_preset', 'ypjwoflk')
+        try {
+            Axios.post('https://api.cloudinary.com/v1_1/dkmd4aqmt/image/upload', formData, {
+                folder: 'testing'
+            }).then((resp) => {
+                console.log(resp)
+            })
+        } catch (error) {
+            console.log(error)
+        }
+
+
+        // const res = await fetch('https://api.cloudinary.com/v1_1/dkmd4aqmt/image/upload', { method: 'POST', body: formData })
+        // const file = await res.json()
+        // console.log(file.url)
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -76,11 +99,15 @@ const UploadComponent = () => {
                 ...postData,
                 images: [...x]
             }
+            console.log('finalObj', finalObj)
             dispatch(createPost(finalObj))
         });
-        //console.log(postData)
+        // //console.log(postData)
+        //uploadImage()
 
     };
+
+
 
     useEffect(() => {
         dispatch(getPosts());
@@ -94,25 +121,17 @@ const UploadComponent = () => {
 
     const handleUpload = (image) => {
         return new Promise((resolve, reject) => {
-            const uploadTask = storage.ref(`images/${image.name}`).put(image);
-
-            uploadTask.on(
-                "state_changed",
-                snapshot => { },
-                error => {
-                    console.log(error)
-                    reject(error)
-                },
-                () => {
-                    storage
-                        .ref('images')
-                        .child(image.name)
-                        .getDownloadURL()
-                        .then(url => {
-                            resolve(url)
-                        })
-                }
-            )
+            const formData = new FormData()
+            formData.append('file', image)
+            formData.append('upload_preset', 'ypjwoflk')
+            try {
+                Axios.post('https://api.cloudinary.com/v1_1/dkmd4aqmt/image/upload', formData)
+                    .then((resp) => {
+                        resolve(resp.data.url)
+                    })
+            } catch (error) {
+                console.log(error)
+            }
         })
     }
 
