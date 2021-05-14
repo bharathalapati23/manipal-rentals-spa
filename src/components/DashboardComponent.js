@@ -16,15 +16,14 @@ import { useLocation } from 'react-router-dom'
 import queryString from 'query-string'
 import { setZoneFilter } from '../actions/filters.js'
 
-
-
+import VisibilitySensor from 'react-visibility-sensor'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
 		marginTop: '80px',
 		width: '100%',
-		maxWidth:'1300px',
+		maxWidth: '1300px',
 		justifyContent: 'center',
 		flexDirection: 'row',
 		margin: 'auto',
@@ -85,6 +84,7 @@ export default function DashboardComponent() {
 	const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 	const [isFilterPage, setFilterPage] = useState(false)
 	const posts = useSelector((state) => state.posts)
+	const realposts = [...posts, ...posts, ...posts]
 	const filter = useSelector((state) => state.filters)
 	const dispatch = useDispatch();
 
@@ -104,7 +104,7 @@ export default function DashboardComponent() {
 	}
 
 
-	const filteredPosts = posts.filter((listing) => {
+	const filteredPosts = realposts.filter((listing) => {
 		if (filter.bedroom.length && !filter.bedroom.includes(listing.bedroom)) return false
 
 		if (filter.zone.length && !filter.zone.includes(listing.zone)) return false
@@ -164,14 +164,21 @@ export default function DashboardComponent() {
 		getListings(0)
 	}, [dispatch]);
 
+	const onVisibilityChange = (isVisible) => {
+		console.log('asdasdsa', isVisible)
+	}
+
+
 	return (
 		<>
 			<div className={classes.root}>
 				{
 					!isMobile &&
-					<div className={classes.filterContainer}>
-						<FilterCardComponent />
-					</div>
+					<VisibilitySensor onChange={onVisibilityChange} partialVisibility={true} scrollCheck={true}>
+						<div className={classes.filterContainer}>
+							<FilterCardComponent />
+						</div>
+					</VisibilitySensor>
 				}
 				{isFilterPage && isMobile && <MobileFilterComponent />}
 
