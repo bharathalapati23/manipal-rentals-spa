@@ -52,7 +52,7 @@ const WhyUsCardsComponent = () => {
 
     const cardsConfigArr = [
         {
-            icon: <ShowerIcon className={classes.iconStyle} />,
+            icon: <DepositIcon style={{fill:'blue'}} className={classes.iconStyle} />,
             content: 'Save money & Deposit secured.'
         },
         {

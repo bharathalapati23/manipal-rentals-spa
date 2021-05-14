@@ -61,7 +61,8 @@ const FilterCardComponent = () => {
     const { ref, inView } = useInView({
         /* Optional options */
         threshold: 0,
-        rootMargin: '-80px 0px 0px 0px'
+        rootMargin: '-80px 0px 0px 0px',
+        initialInView: true
     });
 
     const scrollToTop = () => {
@@ -76,11 +77,10 @@ const FilterCardComponent = () => {
                     border={1}
                     borderRadius={10}
                     borderColor="rgba(0,0,0,0.2)"
-                    container
                 >
                     <Typography variant="h5" component="h2" className={classes.filterHeading}>
                         FILTERS
-        		</Typography>
+        		    </Typography>
                     <Divider />
                     <SliderComponent />
                     <Divider />

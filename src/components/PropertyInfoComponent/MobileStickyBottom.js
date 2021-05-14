@@ -49,7 +49,6 @@ const MobileStickyBottom = ({navigateToProperties}) => {
             <Button variant="contained"
                 buttonStyle={{ borderRadius: 25, }}
                 className={classes.registerButton}
-                color="red"
             >
                 SCHEDULE PROPERTY TOUR
             </Button>

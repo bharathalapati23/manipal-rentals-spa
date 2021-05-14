@@ -95,7 +95,7 @@ const BedroomDetailsFilter = () => {
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <div className={classes.heading}>Bedroom Details</div>
+                    <Typography className={classes.heading}>Bedroom Details</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <FormControl required component="fieldset" className={classes.formControl}>
@@ -105,14 +105,13 @@ const BedroomDetailsFilter = () => {
                                     FormControlLabel
                                     control={
                                         <Checkbox name="1"
-                                            labelStyle={{ color: 'white' }}
-                                            iconStyle={{ fill: 'white' }}
                                             style={{ color: 'white' }}
                                             checked={bedroomDetails[key]}
                                         />
                                     }
                                     label={displayNameBedroomDetails[key]}
                                     onChange={(event) => handleFilterChange(event, key)}
+                                    key={`${index}bedroomdetailsfilter`}
                                 />
                             })}
                         </FormGroup>

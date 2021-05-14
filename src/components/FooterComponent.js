@@ -131,18 +131,13 @@ const FooterComponent = () => {
                             <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                                 {zones.map((zone, index) => {
                                     return (
-                                        <>
-                                            <div className={classes.linkStyle} onClick={(event) => navigateToPropertiesZoneFilter(event, zone)}>
-                                                {zone}
-                                            </div>
-                                            <div className={classes.linkStyle}>
-                                                &nbsp;.&nbsp;
-                                            </div>
-                                        </>
+                                        <div className={classes.linkStyle} onClick={(event) => navigateToPropertiesZoneFilter(event, zone)} key={`footerzone${index}`}>
+                                            {`${zone} .`}
+                                        </div>
                                     )
                                 })}
                             </div>
-                            <div style={{marginTop:'20px'}}>
+                            <div style={{ marginTop: '20px' }}>
                                 Useful Links
                             </div>
                             <div className={classes.linkStyle}>
@@ -220,14 +215,9 @@ const FooterComponent = () => {
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
                                 {zones.map((zone, index) => {
                                     return (
-                                        <>
-                                            <div className={classes.linkStyle} onClick={(event) => navigateToPropertiesZoneFilter(event, zone)}>
-                                                {zone}
-                                            </div>
-                                            <div className={classes.linkStyle}>
-                                                &nbsp;.&nbsp;
-                                            </div>
-                                        </>
+                                        <div className={classes.linkStyle} onClick={(event) => navigateToPropertiesZoneFilter(event, zone)} key={`footerzone${index}`}>
+                                            {`${zone} .`}
+                                        </div>
                                     )
                                 })}
                             </div>

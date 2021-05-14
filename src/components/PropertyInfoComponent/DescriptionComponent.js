@@ -76,9 +76,7 @@ const DescriptionComponent = ({ listingInfo }) => {
                             <div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '7px', color: '#e5e5e5' }}>deposit</div>
                         </div>
                         <Button variant="contained"
-                            buttonStyle={{ borderRadius: 25 }}
                             style={{ borderRadius: 25, backgroundColor: '#f36802', color: 'white', fontWeight: 'bold' }}
-                            color="red"
                             onClick={openEnquiryModal}
                         >
                             SCHEDULE PROPERTY TOUR

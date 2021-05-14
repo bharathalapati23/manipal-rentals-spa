@@ -11,11 +11,12 @@ import FormControl from '@material-ui/core/FormControl';
 import CardComponent from './CardComponent/CardComponent'
 import { useDispatch, useSelector } from 'react-redux';
 import { getPosts, clearPosts } from '../actions/posts.js'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useHistory } from 'react-router-dom'
 import queryString from 'query-string'
 import { setZoneFilter } from '../actions/filters.js'
 
-// import Pagination from '@material-ui/lab/Pagination';
+// import { Pagination } from 'antd';
+import Pagination from '@material-ui/lab/Pagination';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -74,16 +75,26 @@ const useStyles = makeStyles((theme) => ({
 	},
 	selectIcon: {
 		fill: '#e5e5e5'
+	},
+	paginationStyles: {
+		color: '#e5e5e5',
+		'& .MuiPaginationItem-root': {
+			backgroundColor: 'transparent',
+			color: '#e5e5e5',
+		},
 	}
 }));
 
 export default function DashboardComponent() {
 	const classes = useStyles();
 	const location = useLocation();
+    const history = useHistory();
 	const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 	const [isFilterPage, setFilterPage] = useState(false)
 	const posts = useSelector((state) => state.posts)
 	const realposts = [...posts, ...posts, ...posts]
+	const [page, setPage] = React.useState(1);
+
 	const filter = useSelector((state) => state.filters)
 	const dispatch = useDispatch();
 
@@ -93,11 +104,17 @@ export default function DashboardComponent() {
 		if (Object.keys(parsedQuery).includes('zone')) {
 			dispatch(setZoneFilter([parsedQuery.zone]))
 		}
-		window.scrollTo(0, 0)
-	}, [])
+
+		if (Object.keys(parsedQuery).includes('page')) {
+			setPage(Number(parsedQuery.page))
+			window.scrollTo(0, 0)
+		}
+		console.log('MOUNTED AGAIN')
+		// window.scrollTo(0, 0)
+	},[])
 
 	if (location.search) {
-		if (Object.keys(parsedQuery).includes('zone')) {
+		if (Object.keys(parsedQuery).includes('zone') || Object.keys(parsedQuery).includes('page')) {
 			window.scrollTo(0, 0)
 		}
 	}
@@ -150,6 +167,19 @@ export default function DashboardComponent() {
 		return true
 	})
 
+	const handleChangePage = (event, newPage) => {
+		setPage(newPage)
+		history.push({
+            pathname: '/',
+            search: `?page=${newPage}`,
+        })
+	};
+
+	//Pagination
+	const pagePosts1 = filteredPosts.slice((page - 1) * 10, page * 10)
+
+	const totalPages = Math.ceil(filteredPosts.length / 10)
+
 	const getListings = (sortOrder) => {
 		if (Number(sortOrder) == 0)
 			dispatch(getPosts({ rent: 0 }));
@@ -163,6 +193,10 @@ export default function DashboardComponent() {
 		getListings(0)
 	}, [dispatch]);
 
+
+
+
+
 	return (
 		<>
 			<div className={`${classes.root}`}>
@@ -174,49 +208,69 @@ export default function DashboardComponent() {
 				}
 				{isFilterPage && isMobile && <MobileFilterComponent />}
 
-				{!isFilterPage && <div className={classes.cardContainer}>
-					<Grid container direction={'column'} spacing={24}>
-						<div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '4px' }}>
-							<div style={{ fontFamily: 'Poppins', color: '#E5E5E5', display: 'flex', flexDirection: 'column' }}>
-								<div style={{ fontSize: '20px' }}>
-									Properties
-								</div>
-								<div style={{ fontSize: '14px' }}>
-									Showing 1-20 of 3437 places
-								</div>
-							</div>
-							<div style={{ alignSelf: 'center' }}>
-								<FormControl variant="outlined" size="small">
-									<Select
-										native
-										defaultValue={0}
-										onChange={(e) => {
-											dispatch(clearPosts())
-											getListings(e.target.value)
-										}}
-										className={classes.sortSelect}
-										MenuProps={{ classes: { paper: classes.dropdownStyle } }}
-										inputProps={{
-											classes: {
-												icon: classes.selectIcon,
-											},
-										}}
-									>
-										Sort By:
+				{!isFilterPage &&
+					<>
+						<div className={classes.cardContainer}>
+							<Grid container direction={'column'}>
+								<div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '4px' }}>
+									<div style={{ fontFamily: 'Poppins', color: '#E5E5E5', display: 'flex', flexDirection: 'column' }}>
+										<div style={{ fontSize: '20px' }}>
+											Properties
+										</div>
+										<div style={{ fontSize: '14px' }}>
+											Showing 1-20 of 3437 places
+										</div>
+									</div>
+									<div style={{ alignSelf: 'center' }}>
+										<FormControl variant="outlined" size="small">
+											<Select
+												native
+												defaultValue={0}
+												onChange={(e) => {
+													dispatch(clearPosts())
+													getListings(e.target.value)
+												}}
+												className={classes.sortSelect}
+												MenuProps={{ classes: { paper: classes.dropdownStyle } }}
+												inputProps={{
+													classes: {
+														icon: classes.selectIcon,
+													},
+												}}
+											>
+												Sort By:
 										<option value={0}>Recently Added</option>
-										<option value={1}>Price:High to Low</option>
-										<option value={2}>Price:Low to High</option>
-									</Select>
-								</FormControl>
-							</div>
+												<option value={1}>Price:High to Low</option>
+												<option value={2}>Price:Low to High</option>
+											</Select>
+										</FormControl>
+									</div>
+								</div>
+								{pagePosts1.map((cardObj, index) => (
+									<CardComponent cardObj={cardObj} key={`Card${index}`} />
+								))}
+								<Pagination
+									count={totalPages}
+									color="primary"
+									variant="outlined"
+									shape="rounded"
+									style={{ alignSelf: 'center' }}
+									className={classes.paginationStyles}
+									onChange={handleChangePage}
+									page={page}
+								/>
+							</Grid>
 						</div>
-						{filteredPosts.map((cardObj, index) => (
-							<CardComponent cardObj={cardObj} />
-						))}
-
-					</Grid>
-				</div>}
+					</>
+				}
 			</div>
+			{/* <Pagination
+				total={85}
+				showTotal={(total, range) => `${range[0]}-${range[1]} of ${total} items`}
+				defaultPageSize={20}
+				defaultCurrent={1}
+			/> */}
+
 			{isMobile && <BottomNavigationComponent setFilterPage={setFilterPage} />}
 		</>
 	);

@@ -58,8 +58,8 @@ const HomeFeaturesComponent = ({ value, index, homeFeatures }) => {
                     {filteredHomeFeatures.map((homeFeature, index) => {
                         if (index % 2 == 1) return
                         return (
-                            <>
-                                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                            <React.Fragment key={`homefeature${index}`}>
+                                <div style={{ display: 'flex', flexDirection: 'row' }} >
                                     <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'row' }}>
                                         {homeFeature.icon}
                                         <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', color: 'white' }}>
@@ -77,7 +77,7 @@ const HomeFeaturesComponent = ({ value, index, homeFeatures }) => {
                                     }
                                 </div>
                                 <br></br>
-                            </>)
+                            </React.Fragment>)
                     })}
 
                 </Box>

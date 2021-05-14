@@ -97,7 +97,7 @@ export default function CardComponent({ cardObj }) {
 							</div>}
 						<Carousel showThumbs={false} showIndicators={false} className={classes.carousel} >
 							{cardObj.images.map((image, index) => (
-								<div>
+								<div key={`cardimage${index}`}>
 									<img src={image} className={classes.img} />
 								</div>
 							))}

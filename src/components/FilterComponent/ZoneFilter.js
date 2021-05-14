@@ -4,12 +4,11 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { useHistory } from 'react-router-dom'
 import { setZoneFilter } from '../../actions/filters.js'
 import { useSelector, useDispatch } from 'react-redux'
 import ExpandIconCompnent from './ExpandIconCompnent';
@@ -78,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
 const ZoneFilter = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const history = useHistory();
     const zoneFilters = useSelector((state) => state.filters.zone)
     const [zoneState, setZoneState] = useState(initialZoneState)
 
@@ -104,6 +104,10 @@ const ZoneFilter = () => {
         })
         setZoneState(newZoneState)
         dispatch(setZoneFilter(changedZones))
+        // history.push({
+        //     pathname: '/',
+        //     search: `?zone=${changedZones}`,
+        // })
     };
 
     const [expanded, setExpanded] = React.useState(false);
@@ -120,7 +124,7 @@ const ZoneFilter = () => {
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <div className={classes.heading}>Zone</div>
+                    <Typography className={classes.heading}>Zone</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <FormControl required component="fieldset" className={classes.formControl}>
@@ -129,8 +133,6 @@ const ZoneFilter = () => {
                                 return <FormControlLabel
                                     control={
                                         <Checkbox name={zone.name}
-                                            labelStyle={{ color: 'white' }}
-                                            iconStyle={{ fill: 'white' }}
                                             style={{ color: 'white' }}
                                         />}
                                     onChange={handleZoneChange}

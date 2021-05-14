@@ -45,7 +45,6 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
     const [value, setValue] = React.useState(0);
     const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -62,14 +61,14 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
                     >
                         <Tab label="Home" className={classes.tabLabel} />
                         {bedroomDetails.map((bedroom, index) => {
-                            return <Tab label={`Bedroom ${index + 1}`} className={classes.tabLabel} />
+                            return <Tab label={`Bedroom ${index + 1}`} className={classes.tabLabel} key={`bedroomDetails${index}`}/>
                         })}
                     </Tabs>
                 </AppBar>
                 <div style={{ 'paddingTop': '20px' }}>
                     <HomeFeaturesComponent value={value} index={0} homeFeatures={homeFeatures} />
                     {bedroomDetails.map((bedroom, index) => {
-                        return <BedroomDetailsComponent value={value} index={index + 1} bedroomDetails={bedroom} />
+                        return <BedroomDetailsComponent value={value} index={index + 1} bedroomDetails={bedroom} key={`bedroomDetails${index}`}/>
                     })}
                 </div>
             </div>}
@@ -98,7 +97,7 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
                     </Accordion>
                     {bedroomDetails.map((bedroom, index) => {
                         return (
-                            <>
+                            <React.Fragment key={`bedroomDetails${index}`}>
                                 <Divider />
                                 <Accordion className={classes.accordionStyle}>
                                     <AccordionSummary
@@ -112,7 +111,7 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
                                         <BedroomDetailsComponent value={value} index={index + 1} bedroomDetails={bedroom} />
                                     </AccordionDetails>
                                 </Accordion>
-                            </>)
+                            </React.Fragment>)
                     })}
 
                 </>}

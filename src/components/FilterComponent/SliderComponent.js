@@ -95,7 +95,7 @@ export default function SliderComponent() {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
             >
-                <div className={classes.heading}>Budget</div>
+                <Typography className={classes.heading}>Budget</Typography>
             </AccordionSummary>
             <AccordionDetails>
 

@@ -97,17 +97,16 @@ const ApartmentFilter = () => {
             <AccordionDetails>
                 <FormControl required component="fieldset" className={classes.formControl}>
                     <FormGroup>
-                        {apartmentState.map((apartmentType) => {
+                        {apartmentState.map((apartmentType, index) => {
                             return <FormControlLabel
                                 control={
                                     <Checkbox name={apartmentType.name}
-                                        labelStyle={{ color: 'white' }}
-                                        iconStyle={{ fill: 'white' }}
                                         style={{ color: 'white' }}
                                     />}
                                 label={apartmentType.label}
                                 onChange={handleApartmentTypeChange}
                                 checked={apartmentType.checked}
+                                key={`${index}apartmentfilter`}
                             />
                         })}
                     </FormGroup>
