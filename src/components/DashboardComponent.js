@@ -7,7 +7,6 @@ import MobileFilterComponent from './FilterComponent/MobileFilterComponent.js'
 import Grid from '@material-ui/core/Grid';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
-import MenuItem from '@material-ui/core/MenuItem';
 
 import CardComponent from './CardComponent/CardComponent'
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,7 +15,7 @@ import { useLocation } from 'react-router-dom'
 import queryString from 'query-string'
 import { setZoneFilter } from '../actions/filters.js'
 
-import VisibilitySensor from 'react-visibility-sensor'
+// import Pagination from '@material-ui/lab/Pagination';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -164,21 +163,14 @@ export default function DashboardComponent() {
 		getListings(0)
 	}, [dispatch]);
 
-	const onVisibilityChange = (isVisible) => {
-		console.log('asdasdsa', isVisible)
-	}
-
-
 	return (
 		<>
-			<div className={classes.root}>
+			<div className={`${classes.root}`}>
 				{
 					!isMobile &&
-					<VisibilitySensor onChange={onVisibilityChange} partialVisibility={true} scrollCheck={true}>
-						<div className={classes.filterContainer}>
-							<FilterCardComponent />
-						</div>
-					</VisibilitySensor>
+					<div className={classes.filterContainer}>
+						<FilterCardComponent />
+					</div>
 				}
 				{isFilterPage && isMobile && <MobileFilterComponent />}
 

@@ -7,6 +7,9 @@ import SmartphoneIcon from '@material-ui/icons/Smartphone';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import DescriptionIcon from '@material-ui/icons/Description';
 
+import DepositIcon from '../../icons/HowItWorksIcons/DepositIcon'
+import ShowerIcon from '../../icons/ShowerIcon'
+
 const useStyles = makeStyles((theme) => ({
     root: {
         marginTop: '20px',
@@ -49,7 +52,7 @@ const WhyUsCardsComponent = () => {
 
     const cardsConfigArr = [
         {
-            icon: <AccountBalanceIcon className={classes.iconStyle} />,
+            icon: <ShowerIcon className={classes.iconStyle} />,
             content: 'Save money & Deposit secured.'
         },
         {
