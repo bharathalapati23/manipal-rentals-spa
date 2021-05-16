@@ -85,7 +85,7 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
                     <Divider />
                     <Accordion className={classes.accordionStyle}>
                         <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
+                            expandIcon={<ExpandMoreIcon style={{ color: '#e5e5e5' }}/>}
                             aria-controls="panel1a-content"
                             id="panel1a-header"
                         >
@@ -101,7 +101,7 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
                                 <Divider />
                                 <Accordion className={classes.accordionStyle}>
                                     <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon />}
+                                        expandIcon={<ExpandMoreIcon style={{ color: '#e5e5e5' }}/>}
                                         aria-controls="panel1a-content"
                                         id="panel1a-header"
                                     >

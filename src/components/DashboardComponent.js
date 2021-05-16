@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPosts, clearPosts } from '../actions/posts.js'
 import { useLocation, useHistory } from 'react-router-dom'
 import queryString from 'query-string'
-import { setZoneFilter } from '../actions/filters.js'
+import { setZoneFilter, clearFilters, setLocationFilter } from '../actions/filters.js'
 
 // import { Pagination } from 'antd';
 import Pagination from '@material-ui/lab/Pagination';
@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
 		marginTop: '80px',
+		[theme.breakpoints.down('sm')]: {
+            marginTop: '40px',
+        },
 		width: '100%',
 		maxWidth: '1300px',
 		justifyContent: 'center',
@@ -48,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 		// border: '1 1 solid', 
 		// borderStyle: 'solid', 
 		display: 'flex',
-		flexGrow: '6',
+		flexGrow: '5',
 		marginTop: '20px'
 	},
 	formControl: {
@@ -88,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
 export default function DashboardComponent() {
 	const classes = useStyles();
 	const location = useLocation();
-    const history = useHistory();
+	const history = useHistory();
 	const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 	const [isFilterPage, setFilterPage] = useState(false)
 	const posts = useSelector((state) => state.posts)
@@ -100,24 +103,34 @@ export default function DashboardComponent() {
 
 
 	const parsedQuery = queryString.parse(location.search);
+	
 	useEffect(() => {
-		if (Object.keys(parsedQuery).includes('zone')) {
-			dispatch(setZoneFilter([parsedQuery.zone]))
-		}
+		if (!Object.keys(parsedQuery).length) dispatch(clearFilters())
 
-		if (Object.keys(parsedQuery).includes('page')) {
-			setPage(Number(parsedQuery.page))
-			window.scrollTo(0, 0)
-		}
-		console.log('MOUNTED AGAIN')
-		// window.scrollTo(0, 0)
-	},[])
+		// else if (Object.keys(parsedQuery).includes('page')) {
+		// 	setPage(Number(parsedQuery.page))
+		// 	window.scrollTo(0, 0)
+		// }
 
-	if (location.search) {
-		if (Object.keys(parsedQuery).includes('zone') || Object.keys(parsedQuery).includes('page')) {
-			window.scrollTo(0, 0)
+		else {
+			// if (Object.keys(parsedQuery).includes('zone')) {
+			// 	dispatch(setZoneFilter(parsedQuery.zone.split(',')))
+			// }
+			dispatch(setLocationFilter(parsedQuery))
 		}
-	}
+		if (!isFilterPage)
+			window.scrollTo(0, 0)
+	}, [location])
+
+	// if (location.search) {
+	// 	if (Object.keys(parsedQuery).includes('zone') || Object.keys(parsedQuery).includes('page')) {
+	// 		window.scrollTo(0, 0)
+	// 	}
+	// }
+
+	useEffect(() => {
+		window.scrollTo(0, 0)
+	}, [page])
 
 
 	const filteredPosts = realposts.filter((listing) => {
@@ -169,14 +182,28 @@ export default function DashboardComponent() {
 
 	const handleChangePage = (event, newPage) => {
 		setPage(newPage)
-		history.push({
-            pathname: '/',
-            search: `?page=${newPage}`,
-        })
+		// history.push({
+		// 	pathname: '/',
+		// 	search: `${location.search}&page=${newPage}`,
+		// })
+		// parsedQuery.page = newPage
+		// let newLocationString = ''
+		// Object.keys(parsedQuery).map((filter) => {
+		//     if(parsedQuery[filter].length) {
+		//         newLocationString += filter + '='
+		//         newLocationString += parsedQuery[filter]
+		//         newLocationString += '&'
+		//     }
+		// })
+
+		// history.push({
+		//     pathname: '/',
+		//     search: `?${newLocationString}`,
+		// })
 	};
 
 	//Pagination
-	const pagePosts1 = filteredPosts.slice((page - 1) * 10, page * 10)
+	const pagePosts = filteredPosts.slice((page - 1) * 10, page * 10)
 
 	const totalPages = Math.ceil(filteredPosts.length / 10)
 
@@ -190,10 +217,24 @@ export default function DashboardComponent() {
 	}
 
 	useEffect(() => {
+		setPage(1)
+	}, [filter])
+
+
+	useEffect(() => {
 		getListings(0)
 	}, [dispatch]);
 
+	const noOfResults = {
+		start: (page - 1) * 10 + 1,
+		end: 0,
+		total: filteredPosts.length
+	}
 
+	if (page * 10 - filteredPosts.length < 10 && page * 10 > filteredPosts.length)
+		noOfResults.end = filteredPosts.length
+	else 
+		noOfResults.end = page * 10
 
 
 
@@ -218,7 +259,7 @@ export default function DashboardComponent() {
 											Properties
 										</div>
 										<div style={{ fontSize: '14px' }}>
-											Showing 1-20 of 3437 places
+											{noOfResults.start} - {noOfResults.end} of {noOfResults.total} results
 										</div>
 									</div>
 									<div style={{ alignSelf: 'center' }}>
@@ -246,7 +287,7 @@ export default function DashboardComponent() {
 										</FormControl>
 									</div>
 								</div>
-								{pagePosts1.map((cardObj, index) => (
+								{pagePosts.map((cardObj, index) => (
 									<CardComponent cardObj={cardObj} key={`Card${index}`} />
 								))}
 								<Pagination

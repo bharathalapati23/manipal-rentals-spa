@@ -29,6 +29,8 @@ const bedroomObj = {
 }
 
 const initialConfig = {
+    refId: 0,
+    title:'',
     bedroom: 0,
     rent: 0,
     bathroom: 0,
@@ -158,6 +160,8 @@ const UploadComponent = () => {
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
                 <Typography variant="h6">Create a Listing</Typography>
+                <TextField type={"number"} name="refId" variant="outlined" label="Reference Id" fullWidth value={postData.refId} onChange={(e) => setPostData({ ...postData, refId: e.target.value })} />
+                <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
                 <TextField
                     type={"number"}
                     variant="outlined"

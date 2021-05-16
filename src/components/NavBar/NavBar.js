@@ -11,19 +11,26 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useHistory } from 'react-router-dom'
 
+import LogoIcon from '../../icons/LogoIcon'
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
-        backgroundColor:'grey'
+        backgroundColor: 'grey'
     },
     menuButton: {
         marginRight: theme.spacing(2),
     },
     title: {
         flexGrow: 1,
+        fontFamily: 'poppins',
+        fontSize:'35px',
+        marginLeft:'5px',
+        color: '#2E2E2E',
+        fontWeight: 'bolder'
     },
 }));
 
@@ -52,10 +59,11 @@ function NavBar() {
 
     return (
         <div className={classes.root}>
-            <AppBar position="absolute" className={classes.appBar} style={{position: 'fixed'}}>
+            <AppBar position="absolute" className={classes.appBar} style={{ position: 'fixed' }}>
                 <Toolbar>
+                    <LogoIcon style={{fontSize:'60px'}}/>
                     <Typography variant="h6" className={classes.title} >
-                        PROJET01
+                        wolpa
                     </Typography>
                     {
                         !isMobile &&

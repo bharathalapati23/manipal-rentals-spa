@@ -13,6 +13,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { setHomeFeaturesFilter } from '../../actions/filters.js'
 import { useSelector, useDispatch } from 'react-redux'
 import ExpandIconCompnent from './ExpandIconCompnent';
+import queryString from 'query-string'
+import { useHistory, useLocation } from 'react-router-dom'
 
 
 const initialHomeFeatures = {
@@ -60,6 +62,10 @@ const useStyles = makeStyles((theme) => ({
 const HomeFeaturesFilter = () => {
     const classes = useStyles();
     const dispatch = useDispatch()
+
+    const history = useHistory();
+    const location = useLocation();
+
     const homeFilters = useSelector((state) => state.filters.homeFeatures)
     const [homeFeatures, setHomeFeatures] = useState(initialHomeFeatures)
 
@@ -68,12 +74,34 @@ const HomeFeaturesFilter = () => {
     }, [homeFilters])
 
     const handleFilterChange = (event, key) => {
+        let homeFeaturesFilterArr = []
         let newHomeFeatures = {
             ...homeFeatures,
             [key]: event.target.checked
         }
         setHomeFeatures(newHomeFeatures)
-        dispatch(setHomeFeaturesFilter(newHomeFeatures))
+        // dispatch(setHomeFeaturesFilter(newHomeFeatures))
+        Object.keys(newHomeFeatures).map((newHomeFeature) => {
+            if (newHomeFeatures[newHomeFeature] === true)
+                homeFeaturesFilterArr.push(newHomeFeature)
+        })
+        const parsedLocation = queryString.parse(location.search);
+        parsedLocation.homeFeatures = homeFeaturesFilterArr
+        let newLocationString = ''
+        Object.keys(parsedLocation).map((filter, index) => {
+            if(filter === 'page') return
+            if(parsedLocation[filter].length) {
+                newLocationString += filter + '='
+                newLocationString += parsedLocation[filter]
+                if(index !== Object.keys(parsedLocation).length-1)
+                newLocationString += '&'
+            }
+        })
+
+        history.push({
+            pathname: '/',
+            search: `?${newLocationString}`,
+        })
     };
 
     const [expanded, setExpanded] = React.useState(false);

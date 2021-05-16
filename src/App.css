@@ -1,8 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 @import "~react-image-gallery/styles/css/image-gallery.css";
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-@import '~antd/dist/antd.css';
 
 html, body {
     margin: 0;
-}
+}	
+
+.st0{fill:#2E2E2E;}
+.st1{fill:#E5E5E5;}
+.st2{fill:#E4E4E4;}
+.st3{fill:none;stroke:#2E2E2E;stroke-width:12.7883;stroke-miterlimit:10;}
+.st4{fill:none;stroke:#FF5D00;stroke-width:13;stroke-miterlimit:10;}
+.st5{fill:none;stroke:#2E2E2E;stroke-width:0.384;stroke-miterlimit:10;}
+.st6{fill:none;stroke:#FF5D00;stroke-width:0.3903;stroke-miterlimit:10;}
+.st7{fill:none;stroke:#E4E4E4;stroke-width:12.7883;stroke-miterlimit:10;}
+.st8{fill:none;stroke:#E5E5E5;stroke-width:0.384;stroke-miterlimit:10;}

@@ -18,6 +18,7 @@ import HomeFeaturesFilter from './HomeFeaturesFilter.js'
 import ZoneFilter from './ZoneFilter.js'
 import ApartmentFilter from './ApartmentFilter.js'
 import BedroomFilter from './BedroomFilter'
+import BedroomDetailsFilter from './BedroomDetailsFilter.js'
 
 const useStyles = makeStyles((theme) => ({
     filterContainer: {
@@ -54,10 +55,10 @@ const MobileFilterComponent = () => {
             <SliderComponent />
             <Divider />
             <BedroomFilter />
-            <ZoneFilter />
-
-            <HomeFeaturesFilter />
             <ApartmentFilter />
+            <ZoneFilter />
+            <HomeFeaturesFilter />
+            <BedroomDetailsFilter />
             <div style={{ height: '5px' }}>
 
             </div>

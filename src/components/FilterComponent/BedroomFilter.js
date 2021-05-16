@@ -12,6 +12,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useSelector, useDispatch } from 'react-redux'
 import Typography from '@material-ui/core/Typography';
 import ExpandIconCompnent from './ExpandIconCompnent';
+import queryString from 'query-string'
+import { useHistory, useLocation } from 'react-router-dom'
+
 
 const initialBedroomState = [
     {
@@ -56,6 +59,9 @@ const BedroomFilter = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
 
+    const history = useHistory();
+    const location = useLocation();
+
     const bedroomFilters = useSelector((state) => state.filters.bedroom)
     const [bedroomState, setBedroomState] = useState(initialBedroomState)
 
@@ -80,7 +86,24 @@ const BedroomFilter = () => {
             return bedroom
         })
         setBedroomState(newBedroomState)
-        dispatch(setBedroomFilter(changedBedrooms))
+        // dispatch(setBedroomFilter(changedBedrooms))
+        const parsedLocation = queryString.parse(location.search);
+        parsedLocation.bedroom = changedBedrooms
+        let newLocationString = ''
+        Object.keys(parsedLocation).map((filter, index) => {
+            if(filter === 'page') return
+            if(parsedLocation[filter].length) {
+                newLocationString += filter + '='
+                newLocationString += parsedLocation[filter]
+                if(index !== Object.keys(parsedLocation).length-1)
+                newLocationString += '&'
+            }
+        })
+        
+        history.push({
+            pathname: '/',
+            search: `?${newLocationString}`,
+        })
 
     };
 
@@ -110,7 +133,6 @@ const BedroomFilter = () => {
                                 label={bedroom.label}
                                 onChange={handleBedroomChange}
                                 checked={bedroom.checked}
-                                labelPlacement="start"
                                 key={`bedroomfilter${index}`}
                             />
                         })}

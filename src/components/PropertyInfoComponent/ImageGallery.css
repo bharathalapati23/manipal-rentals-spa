@@ -12,27 +12,23 @@
     
 } */
 
-.image-gallery-content img{
+#propertyinfoimages .image-gallery-content img{
     object-position: center center !important;
     object-fit: contain !important;
     max-height: 400px !important;
-
-
 }
 
-.image-gallery-content.fullscreen img{
+#propertyinfoimages .image-gallery-content.fullscreen img{
     object-position: center center !important;
     object-fit: contain !important;
     max-height: 100vh !important;
-
-
 }
 
 @media only screen and (max-width: 768px) {
-    .image-gallery-content{
+    #propertyinfoimages .image-gallery-content{
         max-width: 100vw !important;
     }
-    .image-gallery-image{
+    #propertyinfoimages .image-gallery-image{
         height: 35vh !important;
     
     

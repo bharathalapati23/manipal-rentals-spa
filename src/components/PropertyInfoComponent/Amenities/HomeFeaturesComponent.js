@@ -42,10 +42,10 @@ const HomeFeaturesComponent = ({ value, index, homeFeatures }) => {
     const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
     const hidden = isMobile || value === index
 
-    const filteredHomeFeatures = Object.keys(homeFeatures).map((homeFeature) => {
-        if (homeFeatures[homeFeature] === false)
-            return false
-        return homeFeaturesDisplay[homeFeature]
+    let filteredHomeFeatures = []
+    Object.keys(homeFeatures).forEach((homeFeature) => {
+        if (!homeFeatures[homeFeature] === false)
+            filteredHomeFeatures.push(homeFeaturesDisplay[homeFeature])
     })
     console.log(filteredHomeFeatures)
 

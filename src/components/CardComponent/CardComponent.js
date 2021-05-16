@@ -11,6 +11,7 @@ import './Carousel.css'
 import SingleBedIcon from '@material-ui/icons/SingleBed';
 import GroupIcon from '@material-ui/icons/Group';
 import { useHistory } from 'react-router-dom'
+import CardImageGallery from './CardImageGallery'
 import ImageGalleryComponent from '../PropertyInfoComponent/ImageGalleryComponent'
 import { Divider } from '@material-ui/core';
 
@@ -95,13 +96,14 @@ export default function CardComponent({ cardObj }) {
 								</div>
 								{cardObj.zone}
 							</div>}
-						<Carousel showThumbs={false} showIndicators={false} className={classes.carousel} >
+						{/* <Carousel showThumbs={false} showIndicators={false} className={classes.carousel} >
 							{cardObj.images.map((image, index) => (
 								<div key={`cardimage${index}`}>
 									<img src={image} className={classes.img} />
 								</div>
 							))}
-						</Carousel>
+						</Carousel> */}
+						<CardImageGallery images={cardObj.images} navigateToProperty={navigateToProperty}/>
 						{isMobile &&
 							<div style={{
 								color: '#e5e5e5',
@@ -116,7 +118,7 @@ export default function CardComponent({ cardObj }) {
 									flexDirection: 'row',
 								}}>
 									<div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '20px', paddingRight: '3px', color: '#f36802' }}>Rs. 10000</div>
-									<div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '8px', color: '#e5e5e5', alignSelf:'flex-start' }}>per month</div>
+									<div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '8px', color: '#e5e5e5', alignSelf: 'flex-start' }}>per month</div>
 								</div>
 							</div>}
 						{!isMobile &&

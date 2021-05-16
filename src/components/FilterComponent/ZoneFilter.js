@@ -8,10 +8,11 @@ import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import { setZoneFilter } from '../../actions/filters.js'
 import { useSelector, useDispatch } from 'react-redux'
 import ExpandIconCompnent from './ExpandIconCompnent';
+import queryString from 'query-string'
 
 const initialZoneState = [
     {
@@ -78,6 +79,7 @@ const ZoneFilter = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const history = useHistory();
+    const location = useLocation();
     const zoneFilters = useSelector((state) => state.filters.zone)
     const [zoneState, setZoneState] = useState(initialZoneState)
 
@@ -103,11 +105,25 @@ const ZoneFilter = () => {
             return zone
         })
         setZoneState(newZoneState)
-        dispatch(setZoneFilter(changedZones))
-        // history.push({
-        //     pathname: '/',
-        //     search: `?zone=${changedZones}`,
-        // })
+        // dispatch(setZoneFilter(changedZones))
+        const parsedLocation = queryString.parse(location.search);
+        parsedLocation.zone = changedZones
+        let newLocationString = ''
+        Object.keys(parsedLocation).map((filter, index) => {
+            if(filter === 'page') return
+            if(parsedLocation[filter].length) {
+                newLocationString += filter + '='
+                newLocationString += parsedLocation[filter]
+                if(index !== Object.keys(parsedLocation).length-1)
+                newLocationString += '&'
+            }
+        })
+        
+        history.push({
+            pathname: '/',
+            search: `?${newLocationString}`,
+        })
+
     };
 
     const [expanded, setExpanded] = React.useState(false);
@@ -138,7 +154,7 @@ const ZoneFilter = () => {
                                     onChange={handleZoneChange}
                                     label={zone.label}
                                     checked={zone.checked}
-                                    key={'zoneFilter'+index}
+                                    key={'zoneFilter' + index}
                                 />
                             })}
                         </FormGroup>

@@ -45,11 +45,11 @@ const useStyles = makeStyles((theme) => ({
         // left: '50%',
         // transform: 'translate(-50%, 0)',
         position: 'fixed',
-        top:'80px',
-        marginLeft:'40px',
+        top: '80px',
+        marginLeft: '40px',
         backgroundColor: '#2e2e2e',
         color: '#e5e5e5',
-        fontFamily:'Poppins'
+        fontFamily: 'Poppins'
 
     }
 }));
@@ -66,7 +66,7 @@ const FilterCardComponent = () => {
     });
 
     const scrollToTop = () => {
-        window.scrollTo({top: 0, behavior: 'smooth'})
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }
 
     return (
@@ -78,19 +78,24 @@ const FilterCardComponent = () => {
                     borderRadius={10}
                     borderColor="rgba(0,0,0,0.2)"
                 >
-                    <Typography variant="h5" component="h2" className={classes.filterHeading}>
-                        FILTERS
-        		    </Typography>
+                    <div style={{display:'flex', flexDirection:'row', justifyContent: 'center', position:'relative'}}>
+                        <Typography variant="h5" component="h2" className={classes.filterHeading}>
+                            FILTERS
+        		        </Typography>
+                        <Button size="small" variant="outlined" style={{height:'30px', alignSelf: 'flex-end', position:'absolute', right:'0%', bottom:'2%', fontSize:'10px'}}>
+                            Clear
+                        </Button>
+                    </div>
                     <Divider />
                     <SliderComponent />
                     <Divider />
                     <BedroomFilter />
                     <Divider />
+                    <ApartmentFilter />
+                    <Divider />
                     <ZoneFilter />
                     <Divider />
                     <HomeFeaturesFilter />
-                    <Divider />
-                    <ApartmentFilter />
                     <Divider />
                     <BedroomDetailsFilter />
                     <div style={{ height: '5px' }}>

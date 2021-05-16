@@ -12,6 +12,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useSelector, useDispatch } from 'react-redux'
 import Typography from '@material-ui/core/Typography';
 import ExpandIconCompnent from './ExpandIconCompnent';
+import { useHistory, useLocation } from 'react-router-dom'
+import queryString from 'query-string'
 
 const initialApartmentState = [
     {
@@ -50,6 +52,8 @@ const useStyles = makeStyles((theme) => ({
 const ApartmentFilter = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const history = useHistory();
+    const location = useLocation();
 
     const accomodationTypeFilters = useSelector((state) => state.filters.accomodationType)
     const [apartmentState, setApartmentState] = useState(initialApartmentState)
@@ -76,7 +80,24 @@ const ApartmentFilter = () => {
             return apartmentType
         })
         setApartmentState(newApartmentState)
-        dispatch(setAccomodationTypeFilter(changedApartmentType))
+        // dispatch(setAccomodationTypeFilter(changedApartmentType))
+        const parsedLocation = queryString.parse(location.search);
+        parsedLocation.accomodationType = changedApartmentType
+        let newLocationString = ''
+        Object.keys(parsedLocation).map((filter, index) => {
+            if(filter === 'page') return
+            if(parsedLocation[filter].length) {
+                newLocationString += filter + '='
+                newLocationString += parsedLocation[filter]
+                if(index !== Object.keys(parsedLocation).length-1)
+                newLocationString += '&'
+            }
+        })
+        
+        history.push({
+            pathname: '/',
+            search: `?${newLocationString}`,
+        })
 
     };
 
@@ -85,10 +106,14 @@ const ApartmentFilter = () => {
         setExpanded(isExpanded)
     }
 
+    const selectedApartmentFilters = accomodationTypeFilters.length
+
+    // console.log('apartmentfilters', selectedApartmentFilters)
+
     return (
-        <Accordion className={classes.accordionStyle} onChange={handleExpand}>
+        <Accordion className={classes.accordionStyle} defaultExpanded onChange={handleExpand}>
             <AccordionSummary
-                expandIcon={<ExpandIconCompnent expanded={expanded} value={accomodationTypeFilters.length} />}
+                expandIcon={<ExpandIconCompnent expanded={expanded} value={selectedApartmentFilters} />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
             >
@@ -106,7 +131,7 @@ const ApartmentFilter = () => {
                                 label={apartmentType.label}
                                 onChange={handleApartmentTypeChange}
                                 checked={apartmentType.checked}
-                                key={`${index}apartmentfilter`}
+                                key={`apartmentfilter${index}`}
                             />
                         })}
                     </FormGroup>

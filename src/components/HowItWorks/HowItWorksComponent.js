@@ -21,13 +21,17 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '45px',
         color: '#FFFFFF',
         [theme.breakpoints.down('sm')]: {
-            fontSize: '24px',
+            fontSize: '40px',
         },
+        // letterSpacing: '0.5px'
     },
 }));
 
 const HowItWorksComponent = () => {
     const classes = useStyles();
+    React.useEffect(()=> {
+        window.scrollTo(0,0)
+    },[])
 
     return (
         <div className={classes.root}>

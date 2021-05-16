@@ -13,6 +13,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { setBedroomDetailsFilter } from '../../actions/filters.js'
 import { useSelector, useDispatch } from 'react-redux'
 import ExpandIconCompnent from './ExpandIconCompnent';
+import queryString from 'query-string'
+import { useHistory, useLocation } from 'react-router-dom'
 
 
 const initialBedroomDetails = {
@@ -60,6 +62,10 @@ const useStyles = makeStyles((theme) => ({
 const BedroomDetailsFilter = () => {
     const classes = useStyles();
     const dispatch = useDispatch()
+
+    const history = useHistory();
+    const location = useLocation();
+
     const bedroomFilters = useSelector((state) => state.filters.bedroomDetails)
     const [bedroomDetails, setBedroomDetails] = useState(initialBedroomDetails)
 
@@ -68,12 +74,35 @@ const BedroomDetailsFilter = () => {
     }, [bedroomFilters])
 
     const handleFilterChange = (event, key) => {
+        let bedroomDetailsFilterArr = []
+
         let newBedroomDetails = {
             ...bedroomDetails,
             [key]: event.target.checked
         }
         setBedroomDetails(newBedroomDetails)
-        dispatch(setBedroomDetailsFilter(newBedroomDetails))
+        //dispatch(setBedroomDetailsFilter(newBedroomDetails))
+        Object.keys(newBedroomDetails).map((newBedroomDetail) => {
+            if (newBedroomDetails[newBedroomDetail] === true)
+                bedroomDetailsFilterArr.push(newBedroomDetail)
+        })
+        const parsedLocation = queryString.parse(location.search);
+        parsedLocation.bedroomDetails = bedroomDetailsFilterArr
+        let newLocationString = ''
+        Object.keys(parsedLocation).map((filter, index) => {
+            if (filter === 'page') return
+            if (parsedLocation[filter].length) {
+                newLocationString += filter + '='
+                newLocationString += parsedLocation[filter]
+                if (index !== Object.keys(parsedLocation).length - 1)
+                    newLocationString += '&'
+            }
+        })
+
+        history.push({
+            pathname: '/',
+            search: `?${newLocationString}`,
+        })
     };
 
     const [expanded, setExpanded] = React.useState(false);

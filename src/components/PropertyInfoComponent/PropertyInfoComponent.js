@@ -17,6 +17,9 @@ import EnquiryFormModal from './EnquiryFormModal'
 const useStyles = makeStyles((theme) => ({
     root: {
         marginTop: '80px',
+        [theme.breakpoints.down('sm')]: {
+            marginTop: '40px',
+        },
         width: '100%',
         maxWidth:'1300px',
         display: 'flex',

@@ -77,6 +77,12 @@ const FooterComponent = () => {
         })
     }
 
+    const navigateToHowItWorks = () => {
+        history.push({
+            pathname: '/how-it-works'
+        })
+    }
+
     return (
         <>
             { isMobile &&
@@ -101,7 +107,7 @@ const FooterComponent = () => {
                                 Need Help?
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <div className={classes.linkStyle}>
+                                <div className={classes.linkStyle} onClick={navigateToHowItWorks}>
                                     How it works
                                 </div>
                                 <div className={classes.linkStyle}>
@@ -131,9 +137,14 @@ const FooterComponent = () => {
                             <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                                 {zones.map((zone, index) => {
                                     return (
-                                        <div className={classes.linkStyle} onClick={(event) => navigateToPropertiesZoneFilter(event, zone)} key={`footerzone${index}`}>
-                                            {`${zone} .`}
-                                        </div>
+                                        <React.Fragment key={`footerzone${index}`}>
+                                            <div className={classes.linkStyle} onClick={(event) => navigateToPropertiesZoneFilter(event, zone)}>
+                                                {zone}
+                                            </div>
+                                            <div className={classes.linkStyle}>
+                                                &nbsp;.&nbsp;
+                                            </div>
+                                        </React.Fragment>
                                     )
                                 })}
                             </div>
@@ -185,7 +196,7 @@ const FooterComponent = () => {
                                 Need Help?
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <div className={classes.linkStyle}>
+                                <div className={classes.linkStyle} onClick={navigateToHowItWorks}>
                                     How it works
                                 </div>
                                 <div className={classes.linkStyle}>
@@ -215,9 +226,14 @@ const FooterComponent = () => {
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
                                 {zones.map((zone, index) => {
                                     return (
-                                        <div className={classes.linkStyle} onClick={(event) => navigateToPropertiesZoneFilter(event, zone)} key={`footerzone${index}`}>
-                                            {`${zone} .`}
-                                        </div>
+                                        <React.Fragment key={`footerzone${index}`}>
+                                            <div className={classes.linkStyle} onClick={(event) => navigateToPropertiesZoneFilter(event, zone)}>
+                                                {zone}
+                                            </div>
+                                            <div className={classes.linkStyle}>
+                                                &nbsp;.&nbsp;
+                                            </div>
+                                        </React.Fragment>
                                     )
                                 })}
                             </div>

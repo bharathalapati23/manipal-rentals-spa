@@ -1,10 +1,12 @@
 import React from 'react'
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import { useDispatch } from 'react-redux'
+import { openModal } from '../../actions/enquiryModal'
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: '95%',
+        width: '100%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -15,7 +17,8 @@ const useStyles = makeStyles((theme) => ({
         padding: '10px',
         borderTop: 'solid',
         borderTopColor: '#e5e5e5',
-        borderWidth: 'thin'
+        borderWidth: 'thin',
+        boxSizing:'border-box'
     },
     registerButton: {
         borderRadius: 25,
@@ -44,11 +47,16 @@ const useStyles = makeStyles((theme) => ({
 const MobileStickyBottom = ({navigateToProperties}) => {
     const classes = useStyles();
 
+    const dispatch = useDispatch();
+    const openEnquiryModal = () => {
+        dispatch(openModal())
+    }
     return (
         <div className={classes.root}>
             <Button variant="contained"
                 buttonStyle={{ borderRadius: 25, }}
                 className={classes.registerButton}
+                onClick={openEnquiryModal}
             >
                 SCHEDULE PROPERTY TOUR
             </Button>
