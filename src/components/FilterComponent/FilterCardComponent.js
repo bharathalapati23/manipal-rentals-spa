@@ -82,9 +82,9 @@ const FilterCardComponent = () => {
                         <Typography variant="h5" component="h2" className={classes.filterHeading}>
                             FILTERS
         		        </Typography>
-                        <Button size="small" variant="outlined" style={{height:'30px', alignSelf: 'flex-end', position:'absolute', right:'0%', bottom:'2%', fontSize:'10px'}}>
+                        {/* <Button size="small" variant="outlined" style={{height:'30px', alignSelf: 'flex-end', position:'absolute', right:'0%', bottom:'2%', fontSize:'10px'}}>
                             Clear
-                        </Button>
+                        </Button> */}
                     </div>
                     <Divider />
                     <SliderComponent />

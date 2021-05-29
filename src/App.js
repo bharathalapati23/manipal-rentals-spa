@@ -6,18 +6,40 @@ import UploadComponent from './components/Upload/UploadComponent'
 import PropertyInfoComponent from './components/PropertyInfoComponent/PropertyInfoComponent.js'
 import FooterComponent from './components/FooterComponent.js'
 import HowItWorksComponent from './components/HowItWorks/HowItWorksComponent.js'
+import EnquiryComponent from './components/AssistedBooking/EnquiryComponent.js'
+import HomeComponent from './components/HomeComponent/HomeComponent'
 import './App.css'
 
 function App() {
   return (
     <>
       <Router>
-        <NavBar />
+
         <Switch>
-          <Route path='/' exact> <DashboardComponent /> </Route>
-          <Route path='/upload' exact> <UploadComponent /> </Route>
-          <Route path='/property' exact> <PropertyInfoComponent /> </Route>
-          <Route path='/how-it-works' exact> <HowItWorksComponent /> </Route>
+          <Route path='/' exact> <HomeComponent /> </Route>
+          <>
+
+            <Route path='/properties' exact>
+              <NavBar />
+              <DashboardComponent />
+            </Route>
+            <Route path='/upload' exact>
+              <NavBar />
+              <UploadComponent />
+            </Route>
+            <Route path='/property' exact>
+              <NavBar />
+              <PropertyInfoComponent />
+            </Route>
+            <Route path='/how-it-works' exact>
+              <NavBar />
+              <HowItWorksComponent />
+            </Route>
+            <Route path='/assisted-booking' exact>
+              <NavBar />
+              <EnquiryComponent />
+            </Route>
+          </>
         </Switch>
         <FooterComponent />
       </Router>

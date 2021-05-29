@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         marginTop: '20px',
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: props => props.enquiryForm ? 'column' : 'row',
         width: '100%',
         margin: '0 auto',
         maxWidth: '1300px',
@@ -34,7 +34,8 @@ const useStyles = makeStyles((theme) => ({
         color: '#e5e5e5',
         fontWeight: 'bolder',
         letterSpacing: '0.04rem',
-        fontSize: '23px'
+        fontSize: '23px',
+        borderRadius: '15px',
     },
     cardContentStyle: {
         display: 'flex',
@@ -43,12 +44,23 @@ const useStyles = makeStyles((theme) => ({
     iconStyle: {
         fontSize: '100px',
         color: '#f36802',
-    }
+    },
+    enquiryCardStyle: {
+        width: '90%',
+        marginBottom: '20px',
+        backgroundColor: '#2e2e2e',
+        fontFamily: 'poppins',
+        color: '#e5e5e5',
+        fontWeight: 'bolder',
+        letterSpacing: '0.04rem',
+        fontSize: '23px',
+        margin:'0 auto'
+    },
 }));
 
 
-const WhyUsCardsComponent = () => {
-    const classes = useStyles();
+const WhyUsCardsComponent = (props) => {
+    const classes = useStyles(props);
 
     const cardsConfigArr = [
         {
@@ -69,9 +81,9 @@ const WhyUsCardsComponent = () => {
         <div className={classes.root}>
             {cardsConfigArr.map((cardConfig) => {
                 return (
-                    <Card variant="outlined" style={{ borderRadius: '15px' }} className={classes.cardStyle}>
+                    <Card variant="outlined" className={props.enquiryForm ? classes.enquiryCardStyle: classes.cardStyle}>
                         <CardContent className={classes.cardContentStyle}>
-                            <div style={{ margin: '0 auto'}}>
+                            <div style={{ margin: '0 auto' }}>
                                 {cardConfig.icon}
                             </div>
                             {cardConfig.content}

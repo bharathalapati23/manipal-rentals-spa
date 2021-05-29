@@ -1,0 +1,135 @@
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles';
+
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import SmartphoneIcon from '@material-ui/icons/Smartphone';
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
+import DescriptionIcon from '@material-ui/icons/Description';
+
+import DepositIcon from '../../icons/HowItWorksIcons/DepositIcon'
+import ShowerIcon from '../../icons/ShowerIcon'
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        marginTop: '20px',
+        display: 'flex',
+        flexDirection: 'row',
+        width: '100%',
+        margin: '0 auto',
+        maxWidth: '1300px',
+        justifyContent: 'space-between',
+        [theme.breakpoints.down('sm')]: {
+            flexWrap: 'wrap',
+        },
+        marginBottom: '20px',
+    },
+    cardStyle: {
+        width: '24%',
+        [theme.breakpoints.down('sm')]: {
+            width: '49%',
+            marginBottom: '20px'
+        },
+        backgroundColor: '#2e2e2e',
+        fontFamily: 'poppins',
+        color: '#e5e5e5',
+        fontWeight: 'bolder',
+        letterSpacing: '0.04rem',
+        fontSize: '23px',
+        borderRadius: '15px',
+    },
+    cardContentStyle: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    iconStyle: {
+        fontSize: '100px',
+        color: '#f36802',
+    },
+    whyRentHeading: {
+        marginTop: '20px',
+        fontFamily: 'Bebas Neue',
+        fontSize: '45px',
+        color: '#FFFFFF',
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '40px',
+        },
+        textAlign: 'center'
+        // letterSpacing: '0.5px'
+    },
+    learnButton: {
+        borderRadius: 10,
+        marginBottom: '4px',
+        backgroundColor: 'transparent',
+        color: 'white',
+        fontSize: '20px',
+        fontFamily: 'Poppins',
+        borderColor: '#e5e5e5',
+        border: 'solid',
+        borderWidth: 'thin',
+        left: '50%',
+        transform: 'translate(-50%, 0)',
+        borderColor: '#f36802',
+        [theme.breakpoints.down('xs')]: {
+            width: '100%',
+        },
+    }
+}));
+
+
+const HowItWorks = (props) => {
+    const classes = useStyles(props);
+    const { isMobile } = props
+
+    const cardsConfigArr = [
+        {
+            icon: <DepositIcon className={classes.iconStyle} />,
+            content: 'Select your home.'
+        },
+        {
+            icon: <DescriptionIcon className={classes.iconStyle} />,
+            content: 'Schedule Property Tour.'
+        },
+        {
+            icon: <SmartphoneIcon className={classes.iconStyle} />,
+            content: 'Confirm your slot.'
+        },
+        {
+            icon: <SmartphoneIcon className={classes.iconStyle} />,
+            content: 'Move-in.'
+        }
+    ]
+
+    return (
+        <>
+
+
+            <div className={classes.whyRentHeading}>
+                HOW IT WORKS
+				</div>
+            <div className={classes.root}>
+                {cardsConfigArr.map((cardConfig) => {
+                    return (
+                        <Card variant="outlined" className={classes.cardStyle}>
+                            <CardContent className={classes.cardContentStyle}>
+                                <div style={{ margin: '0 auto' }}>
+                                    {cardConfig.icon}
+                                </div>
+                                {cardConfig.content}
+                            </CardContent>
+                        </Card>
+                    )
+                })}
+            </div>
+
+            <Button variant="contained"
+                className={classes.learnButton}
+            >
+                LEARN HOW IT WORKS
+            </Button>
+        </>
+    )
+}
+
+export default HowItWorks

@@ -11,3 +11,9 @@ export const createPost = (newPost) => {
     axios.post(url, newPost)
     console.log(newPost)
 }
+
+const leadsUrl = 'http://localhost:5000/leads'
+
+export const createLead = (leadInfo) => {
+    console.log(leadInfo, leadsUrl)
+}

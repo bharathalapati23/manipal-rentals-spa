@@ -99,7 +99,7 @@ const HomeFeaturesFilter = () => {
         })
 
         history.push({
-            pathname: '/',
+            pathname: '/properties',
             search: `?${newLocationString}`,
         })
     };

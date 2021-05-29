@@ -60,10 +60,7 @@ const DescriptionComponent = ({ listingInfo }) => {
                             DESCRIPTION
         	            </div>
                         <div className={classes.description}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Quisque condimentum, odio at efficitur venenatis, magna tellus maximus odio, a fringilla velit dolor nec ligula.
-                            Aenean ac ligula mattis, luctus elit eget, congue nunc. Pellentesque habitant morbi tristique senectus et netus et
-                            malesuada fames ac turpis egestas.
+                            {listingInfo.desc}
                         </div>
                     </div>
                     <div className={classes.seeMoreProperties}>
@@ -72,7 +69,7 @@ const DescriptionComponent = ({ listingInfo }) => {
                             <div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '12px', color: '#e5e5e5' }}>per month</div>
                         </div>
                         <div className={classes.rentStyle}>
-                            <div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '19px', paddingRight: '3px', color: '#e5e5e5' }}>Rs. 10000</div>
+                            <div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '19px', paddingRight: '3px', color: '#e5e5e5' }}>Rs. 100000</div>
                             <div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '7px', color: '#e5e5e5' }}>deposit</div>
                         </div>
                         <Button variant="contained"
@@ -91,10 +88,7 @@ const DescriptionComponent = ({ listingInfo }) => {
                         DESCRIPTION
         	        </Typography>
                     <div className={classes.description}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Quisque condimentum, odio at efficitur venenatis, magna tellus maximus odio, a fringilla velit dolor nec ligula.
-                        Aenean ac ligula mattis, luctus elit eget, congue nunc. Pellentesque habitant morbi tristique senectus et netus et
-                        malesuada fames ac turpis egestas.
+                        {listingInfo.desc}
                     </div>
                 </>
             }

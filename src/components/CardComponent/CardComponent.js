@@ -117,7 +117,7 @@ export default function CardComponent({ cardObj }) {
 									display: 'flex',
 									flexDirection: 'row',
 								}}>
-									<div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '20px', paddingRight: '3px', color: '#f36802' }}>Rs. 10000</div>
+									<div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '20px', paddingRight: '3px', color: '#f36802' }}>Rs. {cardObj.rent}</div>
 									<div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '8px', color: '#e5e5e5', alignSelf: 'flex-start' }}>per month</div>
 								</div>
 							</div>}
@@ -125,7 +125,7 @@ export default function CardComponent({ cardObj }) {
 							<div style={{ marginLeft: '10px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', }}>
 								<div>
 									<div variant="h5" component="h2" style={{ fontFamily: 'Poppins', fontWeight: 'bolder', fontSize: '24px', color: '#e5e5e5' }}>
-										{cardObj.desc}
+										{cardObj.title}
 									</div>
 									<div className={classes.title} color="textSecondary" style={{ fontFamily: 'Poppins', color: '#e5e5e5' }}>
 										{cardObj.zone}
@@ -136,7 +136,7 @@ export default function CardComponent({ cardObj }) {
 										<SingleBedIcon style={{ paddingTop: '5px', verticalAlign: 'middle', color: '#e5e5e5' }} />
 										{cardObj.bedroom}BHK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<GroupIcon style={{ paddingTop: '5px', verticalAlign: 'middle', color: '#e5e5e5' }} /> 3 capacity
 									</div>
-									<div className={classes.pos} color="textSecondary" style={{ fontFamily: 'Poppins', verticalAlign: 'middle', color: '#e5e5e5' }}>
+									<div className={classes.pos} color="textSecondary" style={{ fontFamily: 'Poppins', verticalAlign: 'middle', color: '#f36802' }}>
 										Rs. {cardObj.rent}/month
         							</div>
 								</div>

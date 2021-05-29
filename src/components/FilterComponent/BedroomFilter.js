@@ -101,7 +101,7 @@ const BedroomFilter = () => {
         })
         
         history.push({
-            pathname: '/',
+            pathname: '/properties',
             search: `?${newLocationString}`,
         })
 

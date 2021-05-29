@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		marginTop: '80px',
 		[theme.breakpoints.down('sm')]: {
-            marginTop: '40px',
+            marginTop: '50px',
         },
 		width: '100%',
 		maxWidth: '1300px',
