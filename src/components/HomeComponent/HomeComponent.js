@@ -10,7 +10,7 @@ import NavBar from '../NavBar/NavBar'
 import HowItWorks from './HowItWorks'
 import AboutUs from './AboutUs'
 import SearchComponent from './SearchComponent'
-import { useLocation } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -87,16 +87,29 @@ const HomeComponent = () => {
 	const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 
 	const location = useLocation()
+	const history = useHistory()
 
-	React.useEffect(()=> {
-		window.scrollTo(0,0)
-	},[location])
+	const navigateToProperties = () => {
+		history.push({
+			pathname: '/properties',
+		})
+	}
+
+	const navigateToHowItWorks = () => {
+        history.push({
+            pathname: '/how-it-works'
+        })
+    }
+
+	React.useEffect(() => {
+		window.scrollTo(0, 0)
+	}, [location])
 
 	return (
 		<>
 			<div className={classes.root}>
 				<NavBar homePage={true} />
-				<div style={{ top: '50%', left: '50%', height: '100%', width: '100%', display:'flex', justifyContent:'center', alignItems:'center'}}>
+				<div style={{ top: '50%', left: '50%', height: '100%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 					<SearchComponent></SearchComponent>
 				</div>
 			</div>
@@ -137,6 +150,7 @@ const HomeComponent = () => {
 					<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 						<Button variant="contained"
 							className={classes.seeMoreButton}
+							onClick={navigateToProperties}
 						>
 							VIEW PROPERTIES
             			</Button>
@@ -146,7 +160,7 @@ const HomeComponent = () => {
 							CONTACT US
             			</Button>
 					</div>
-					<HowItWorks />
+					<HowItWorks navigateToHowItWorks={navigateToHowItWorks}/>
 					<AboutUs />
 				</div>
 			}
@@ -176,6 +190,7 @@ const HomeComponent = () => {
 					<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 						<Button variant="contained"
 							className={classes.seeMoreButton}
+							onClick={navigateToProperties}
 						>
 							VIEW PROPERTIES
             			</Button>
@@ -185,7 +200,7 @@ const HomeComponent = () => {
 							CONTACT US
             			</Button>
 					</div>
-					<HowItWorks />
+					<HowItWorks navigateToHowItWorks={navigateToHowItWorks}/>
 					<AboutUs />
 				</div>
 

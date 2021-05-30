@@ -96,6 +96,12 @@ const FooterComponent = () => {
         })
     }
 
+    const navigateToProperties = () => {
+        history.push({
+            pathname: '/properties',
+        })
+    }
+
     return (
         <>
             { isMobile &&
@@ -164,16 +170,16 @@ const FooterComponent = () => {
                             <div style={{ marginTop: '20px' }}>
                                 Useful Links
                             </div>
-                            <div className={classes.linkStyle}>
+                            <div className={classes.linkStyle} onClick={navigateToProperties}>
                                 Student accomodation in Manipal
                             </div>
-                            <div className={classes.linkStyle}>
+                            <div className={classes.linkStyle} onClick={navigateToProperties}>
                                 Apartments in Manipal
                             </div>
-                            <div className={classes.linkStyle}>
+                            <div className={classes.linkStyle} onClick={navigateToProperties}>
                                 Rental Flats in Manipal
                             </div>
-                            <div className={classes.linkStyle}>
+                            <div className={classes.linkStyle} onClick={navigateToProperties}>
                                 Student Housing in Manipal
                             </div>
                             <div className={classes.linkStyle} onClick={() => navigateToPropertiesBedFilter(2)}>
@@ -235,7 +241,7 @@ const FooterComponent = () => {
                             </div>
                             <div>
                                 Zones
-                                    </div>
+                            </div>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
                                 {zones.map((zone, index) => {
                                     return (
@@ -255,16 +261,16 @@ const FooterComponent = () => {
                             <div>
                                 Useful Links
                             </div>
-                            <div className={classes.linkStyle}>
+                            <div className={classes.linkStyle} onClick={navigateToProperties}>
                                 Student accomodation in Manipal
                             </div>
-                            <div className={classes.linkStyle}>
+                            <div className={classes.linkStyle} onClick={navigateToProperties}>
                                 Apartments in Manipal
                             </div>
-                            <div className={classes.linkStyle}>
+                            <div className={classes.linkStyle} onClick={navigateToProperties}>
                                 Rental Flats in Manipal
                             </div>
-                            <div className={classes.linkStyle}>
+                            <div className={classes.linkStyle} onClick={navigateToProperties}>
                                 Student Housing in Manipal
                             </div>
                             <div className={classes.linkStyle} onClick={() => navigateToPropertiesBedFilter(2)}>

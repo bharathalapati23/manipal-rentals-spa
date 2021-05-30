@@ -14,7 +14,10 @@ const useStyles = makeStyles((theme) => ({
     root: {
         marginTop: '20px',
         display: 'flex',
-        flexDirection: props => props.enquiryForm ? 'column' : 'row',
+        [theme.breakpoints.up('md')]: {
+            flexDirection: props => props.enquiryForm ? 'column' : 'row',
+        },
+        
         width: '100%',
         margin: '0 auto',
         maxWidth: '1300px',

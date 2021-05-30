@@ -4,12 +4,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import SmartphoneIcon from '@material-ui/icons/Smartphone';
-import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
-import DescriptionIcon from '@material-ui/icons/Description';
-
-import DepositIcon from '../../icons/HowItWorksIcons/DepositIcon'
-import ShowerIcon from '../../icons/ShowerIcon'
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
+import HomeIcon from '@material-ui/icons/Home';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -80,23 +78,23 @@ const useStyles = makeStyles((theme) => ({
 
 const HowItWorks = (props) => {
     const classes = useStyles(props);
-    const { isMobile } = props
+    const { navigateToHowItWorks } = props
 
     const cardsConfigArr = [
         {
-            icon: <DepositIcon className={classes.iconStyle} />,
+            icon: <HomeIcon className={classes.iconStyle} />,
             content: 'Select your home.'
         },
         {
-            icon: <DescriptionIcon className={classes.iconStyle} />,
+            icon: <QueryBuilderIcon className={classes.iconStyle} />,
             content: 'Schedule Property Tour.'
         },
         {
-            icon: <SmartphoneIcon className={classes.iconStyle} />,
+            icon: <CheckCircleOutlineIcon className={classes.iconStyle} />,
             content: 'Confirm your slot.'
         },
         {
-            icon: <SmartphoneIcon className={classes.iconStyle} />,
+            icon: <ArrowForwardIcon className={classes.iconStyle} />,
             content: 'Move-in.'
         }
     ]
@@ -125,6 +123,7 @@ const HowItWorks = (props) => {
 
             <Button variant="contained"
                 className={classes.learnButton}
+                onClick={navigateToHowItWorks}
             >
                 LEARN HOW IT WORKS
             </Button>
