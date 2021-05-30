@@ -100,7 +100,7 @@ const EnquiryComponent = () => {
     const handleSubmit = () => {
         setSubmitClicked(true)
         if (enquiryForm.name.length && enquiryForm.contactNumber.length && enquiryForm.maxBudget.length) {
-            axios.post(`http://localhost:5000/leads`, enquiryForm)
+            axios.post(`https://manipal-rentals-backend.herokuapp.com/leads`, enquiryForm)
                 .then(res => {
                     console.log(res)
                     setEnquiryForm(initialFormState)

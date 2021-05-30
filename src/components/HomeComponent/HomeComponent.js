@@ -10,6 +10,7 @@ import NavBar from '../NavBar/NavBar'
 import HowItWorks from './HowItWorks'
 import AboutUs from './AboutUs'
 import SearchComponent from './SearchComponent'
+import { useLocation } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -84,6 +85,12 @@ const useStyles = makeStyles((theme) => ({
 const HomeComponent = () => {
 	const classes = useStyles();
 	const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
+
+	const location = useLocation()
+
+	React.useEffect(()=> {
+		window.scrollTo(0,0)
+	},[location])
 
 	return (
 		<>

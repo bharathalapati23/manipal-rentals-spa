@@ -84,7 +84,8 @@ const ZoneFilter = () => {
     const [zoneState, setZoneState] = useState(initialZoneState)
 
     useEffect(() => {
-        let newZoneState = initialZoneState.map((zone) => {
+        let newZoneState = JSON.parse(JSON.stringify(initialZoneState))
+        newZoneState = initialZoneState.map((zone) => {
             let newZone = JSON.parse(JSON.stringify(zone))
             if (zoneFilters.includes(newZone.name)) {
                 newZone.checked = true

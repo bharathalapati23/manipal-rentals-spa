@@ -78,7 +78,7 @@ const PropertyInfoComponent = () => {
 
     const navigateToProperties = () => {
         history.push({
-            pathname: '/',
+            pathname: '/properties',
         })
     }
 

@@ -66,7 +66,8 @@ const BedroomFilter = () => {
     const [bedroomState, setBedroomState] = useState(initialBedroomState)
 
     useEffect(() => {
-        let newBedroomState = bedroomState.map((bedroom) => {
+        let newBedroomState = JSON.parse(JSON.stringify(initialBedroomState))
+        newBedroomState = newBedroomState.map((bedroom) => {
             if (bedroomFilters.includes(Number(bedroom.name))) {
                 bedroom.checked = true
             }

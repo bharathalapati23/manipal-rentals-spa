@@ -7,7 +7,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { setZoneFilter, clearFilters } from '../actions/filters.js'
+import { clearFilters } from '../actions/filters.js'
 
 
 const zones = ['Syndicate Circle', 'Venugopal Temple', 'Eshwar Nagar', 'Ananth Nagar', 'End Point Road', 'Perampalli Road', 'Vidyaratna Nagar']
@@ -70,10 +70,23 @@ const FooterComponent = () => {
     const navigateToPropertiesZoneFilter = (event, zone) => {
         console.log(zone)
         dispatch(clearFilters())
-        dispatch(setZoneFilter([zone]))
         history.push({
-            pathname: '/',
+            pathname: '/properties',
             search: `?zone=${zone}`,
+        })
+    }
+
+    const navigateToPropertiesBedFilter = (bed) => {
+        dispatch(clearFilters())
+        history.push({
+            pathname: '/properties',
+            search: `?bedroom=${bed}`,
+        })
+    }
+
+    const navigateToHome = () => {
+        history.push({
+            pathname: '/'
         })
     }
 
@@ -93,7 +106,7 @@ const FooterComponent = () => {
                                 Company Name
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <div className={classes.linkStyle}>
+                                <div className={classes.linkStyle} onClick={navigateToHome}>
                                     Home
                                 </div>
                                 <div className={classes.linkStyle}>
@@ -163,10 +176,10 @@ const FooterComponent = () => {
                             <div className={classes.linkStyle}>
                                 Student Housing in Manipal
                             </div>
-                            <div className={classes.linkStyle}>
+                            <div className={classes.linkStyle} onClick={() => navigateToPropertiesBedFilter(2)}>
                                 2 Bedroom Manipal
                             </div>
-                            <div className={classes.linkStyle}>
+                            <div className={classes.linkStyle} onClick={() => navigateToPropertiesBedFilter(3)}>
                                 3 Bedroom Manipal
                             </div>
                         </div>
@@ -182,7 +195,7 @@ const FooterComponent = () => {
                                 Company Name
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <div className={classes.linkStyle}>
+                                <div className={classes.linkStyle} onClick={navigateToHome}>
                                     Home
                                 </div>
                                 <div className={classes.linkStyle}>
@@ -254,10 +267,10 @@ const FooterComponent = () => {
                             <div className={classes.linkStyle}>
                                 Student Housing in Manipal
                             </div>
-                            <div className={classes.linkStyle}>
+                            <div className={classes.linkStyle} onClick={() => navigateToPropertiesBedFilter(2)}>
                                 2 Bedroom Manipal
                             </div>
-                            <div className={classes.linkStyle}>
+                            <div className={classes.linkStyle} onClick={() => navigateToPropertiesBedFilter(3)}>
                                 3 Bedroom Manipal
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url = 'http://localhost:5000/posts'
+const url = 'https://manipal-rentals-backend.herokuapp.com/posts'
 
 export const fetchPosts = (sortOrder) => {
     return axios.get(url, {
@@ -12,8 +12,11 @@ export const createPost = (newPost) => {
     console.log(newPost)
 }
 
-const leadsUrl = 'http://localhost:5000/leads'
+const leadsUrl = 'https://manipal-rentals-backend.herokuapp.com/leads'
 
 export const createLead = (leadInfo) => {
     console.log(leadInfo, leadsUrl)
+    axios.post(leadsUrl).then(()=> {
+        
+    })
 }
