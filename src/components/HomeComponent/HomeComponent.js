@@ -96,10 +96,10 @@ const HomeComponent = () => {
 	}
 
 	const navigateToHowItWorks = () => {
-        history.push({
-            pathname: '/how-it-works'
-        })
-    }
+		history.push({
+			pathname: '/how-it-works'
+		})
+	}
 
 	React.useEffect(() => {
 		window.scrollTo(0, 0)
@@ -110,7 +110,7 @@ const HomeComponent = () => {
 			<div className={classes.root}>
 				<NavBar homePage={true} />
 				<div style={{ top: '50%', left: '50%', height: '100%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-					<SearchComponent></SearchComponent>
+					{!isMobile && <SearchComponent></SearchComponent>}
 				</div>
 			</div>
 			{!isMobile &&
@@ -160,7 +160,7 @@ const HomeComponent = () => {
 							CONTACT US
             			</Button>
 					</div>
-					<HowItWorks navigateToHowItWorks={navigateToHowItWorks}/>
+					<HowItWorks navigateToHowItWorks={navigateToHowItWorks} />
 					<AboutUs />
 				</div>
 			}
@@ -200,7 +200,7 @@ const HomeComponent = () => {
 							CONTACT US
             			</Button>
 					</div>
-					<HowItWorks navigateToHowItWorks={navigateToHowItWorks}/>
+					<HowItWorks navigateToHowItWorks={navigateToHowItWorks} />
 					<AboutUs />
 				</div>
 

@@ -5,10 +5,9 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import { useMediaQuery } from 'react-responsive';
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { clearFilters } from '../actions/filters.js'
-
 
 const zones = ['Syndicate Circle', 'Venugopal Temple', 'Eshwar Nagar', 'Ananth Nagar', 'End Point Road', 'Perampalli Road', 'Vidyaratna Nagar']
 
@@ -24,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: '10px',
         boxSizing: 'border-box',
         [theme.breakpoints.down('md')]: {
-            marginBottom: '40px',
             paddingLeft: '10px',
             paddingRight: '10px',
         },
@@ -65,6 +63,8 @@ const FooterComponent = () => {
     const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 
     const history = useHistory();
+    const location = useLocation();
+    const isPropertiesPage = location.pathname.includes('properties')
     const dispatch = useDispatch();
 
     const navigateToPropertiesZoneFilter = (event, zone) => {
@@ -102,10 +102,14 @@ const FooterComponent = () => {
         })
     }
 
+    const navigateToAssistedBooking = () => {
+        history.push('/assisted-booking')
+    }
+
     return (
         <>
             { isMobile &&
-                <div className={classes.root}>
+                <div className={classes.root} style={{ marginBottom: `${isPropertiesPage ? '40px' : ''}` }}>
                     <div className={classes.topPart}>
                         <div className={classes.box1}>
                             <div>
@@ -132,7 +136,7 @@ const FooterComponent = () => {
                                 <div className={classes.linkStyle}>
                                     &nbsp;.&nbsp;
                                 </div>
-                                <div className={classes.linkStyle}>
+                                <div className={classes.linkStyle} onClick={navigateToAssistedBooking}>
                                     Contact Us
                                 </div>
                             </div>
@@ -191,6 +195,9 @@ const FooterComponent = () => {
                         </div>
                     </div>
                     <Divider style={{ backgroundColor: '#e5e5e5' }} />
+                    <div style={{ fontSize: '10px', paddingTop: '5px' }}>
+                        Privacy Policy | Terms | SiteMap | 2021 ABC LLP
+                    </div>
                 </div>
             }
             { !isMobile &&
@@ -221,7 +228,7 @@ const FooterComponent = () => {
                                 <div className={classes.linkStyle}>
                                     &nbsp;.&nbsp;
                                 </div>
-                                <div className={classes.linkStyle}>
+                                <div className={classes.linkStyle} onClick={navigateToAssistedBooking}>
                                     Contact Us
                                 </div>
                             </div>
@@ -297,7 +304,7 @@ const FooterComponent = () => {
                     <Divider style={{ backgroundColor: '#e5e5e5' }} />
                     <div style={{ fontSize: '10px', paddingTop: '5px' }}>
                         Privacy Policy | Terms | SiteMap | 2021 ABC LLP
-            </div>
+                    </div>
                 </div>
             }
         </>

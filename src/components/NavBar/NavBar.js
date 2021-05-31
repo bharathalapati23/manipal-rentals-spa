@@ -67,14 +67,17 @@ function NavBar({ homePage }) {
     }
 
     const navigateToProperties = () => {
+        if (isMobile) handleClose()
         history.push('/properties')
     }
 
     const navigateToHowItWorks = () => {
+        if (isMobile) handleClose()
         history.push('/how-it-works')
     }
 
     const navigateToAssistedBooking = () => {
+        if (isMobile) handleClose()
         history.push('/assisted-booking')
     }
 
@@ -143,9 +146,9 @@ function NavBar({ homePage }) {
                                 }}
                                 PopoverClasses={{ paper: classes.popoverPaper }}
                             >
-                                <MenuItem onClick={handleClose} classes={{ root: classes.menuItemRoot }}>Properties</MenuItem>
-                                <MenuItem onClick={handleClose} classes={{ root: classes.menuItemRoot }}>How it Works</MenuItem>
-                                <MenuItem onClick={handleClose} classes={{ root: classes.menuItemRoot }}>Assisted Booking</MenuItem>
+                                <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToProperties}>Properties</MenuItem>
+                                <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToHowItWorks}>How it Works</MenuItem>
+                                <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToAssistedBooking}>Assisted Booking</MenuItem>
                                 <MenuItem onClick={handleClose} classes={{ root: classes.menuItemRoot }}>About Us</MenuItem>
                                 <MenuItem onClick={handleClose} classes={{ root: classes.menuItemRoot }}>Contact Us</MenuItem>
                             </Menu>

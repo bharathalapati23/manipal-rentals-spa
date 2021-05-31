@@ -3,27 +3,33 @@ import SingleBedIcon from '@material-ui/icons/SingleBed';
 import WeekendIcon from '@material-ui/icons/Weekend';
 import Box from '@material-ui/core/Box';
 import { useMediaQuery } from 'react-responsive'
+import WardrobeIcon from '../../../icons/Amenities/Bedroom/WardrobeIcon'
+import TableIcon from '../../../icons/Amenities/Bedroom/TableIcon'
+import ChairIcon from '../../../icons/Amenities/Home/ChairIcon'
+import BalconyIcon from '../../../icons/Amenities/Bedroom/BalconyIcon'
+import AcUnitIcon from '@material-ui/icons/AcUnit';
+
 
 const bedroomDetailsDisplay = {
     singleBed: {
         name: 'Single Bed',
-        icon: <WeekendIcon style={{ color: 'white' }} />
+        icon: <SingleBedIcon style={{ color: 'white' }} />
     },
     doubleBed: {
         name: 'Double Bed',
-        icon: <WeekendIcon style={{ color: 'white' }} />
+        icon: <SingleBedIcon style={{ color: 'white' }} />
     },
     wardrobe: {
         name: 'Wardrobe',
-        icon: <WeekendIcon style={{ color: 'white' }} />
+        icon: <WardrobeIcon style={{ color: 'white' }} />
     },
     studyTable: {
         name: 'Study Table',
-        icon: <WeekendIcon style={{ color: 'white' }} />
+        icon: <TableIcon style={{ color: 'white' }} />
     },
     chair: {
         name: 'Chair',
-        icon: <WeekendIcon style={{ color: 'white' }} />
+        icon: <ChairIcon style={{ color: 'white' }} />
     },
     attachedToilet: {
         name: 'Attached Toilet',
@@ -31,11 +37,11 @@ const bedroomDetailsDisplay = {
     },
     attachedBalcony: {
         name: 'Attached Balcony',
-        icon: <WeekendIcon style={{ color: 'white' }} />
+        icon: <BalconyIcon style={{ color: 'white' }} />
     },
     airConditioner: {
         name: 'Air Conditioner',
-        icon: <WeekendIcon style={{ color: 'white' }} />
+        icon: <AcUnitIcon style={{ color: 'white' }} />
     },
 }
 
