@@ -59,6 +59,7 @@ const HomeFeaturesComponent = ({ value, index, homeFeatures }) => {
 
     return (
         <div
+            style={{ width: '100%' }}
             hidden={!hidden}
         >
             {hidden && (
@@ -67,15 +68,15 @@ const HomeFeaturesComponent = ({ value, index, homeFeatures }) => {
                         if (index % 2 == 1) return
                         return (
                             <React.Fragment key={`homefeature${index}`}>
-                                <div style={{ display: 'flex', flexDirection: 'row' }} >
-                                    <div style={{ width:'30%', display: 'flex', flexDirection: 'row' }}>
+                                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%' }} >
+                                    <div style={{ width: `${isMobile ? '50%' : '30%'}`, display: 'flex', flexDirection: 'row' }}>
                                         {homeFeature.icon}
                                         <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', color: 'white' }}>
                                             {homeFeature.name}
                                         </div>
                                     </div>
                                     {filteredHomeFeatures[index + 1] &&
-                                        (<div style={{ width:'60%', display: 'flex', flexDirection: 'row' }}>
+                                        (<div style={{ width: `${isMobile ? '50%' : '60%'}`, display: 'flex', flexDirection: 'row' }}>
                                             {filteredHomeFeatures[index + 1].icon}
                                             <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', color: 'white' }}>
                                                 {filteredHomeFeatures[index + 1].name}

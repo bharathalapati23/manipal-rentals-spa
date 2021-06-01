@@ -15,3 +15,5 @@ html, body {
 .st6{fill:none;stroke:#FF5D00;stroke-width:0.3903;stroke-miterlimit:10;}
 .st7{fill:none;stroke:#E4E4E4;stroke-width:12.7883;stroke-miterlimit:10;}
 .st8{fill:none;stroke:#E5E5E5;stroke-width:0.384;stroke-miterlimit:10;}
+
+.MuiTouchRipple-root {display: none}

@@ -136,7 +136,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: 10,
         marginBottom: '4px',
         backgroundColor: '#f36802',
-        color: 'white',
+        color: '#d5d5d5',
         fontWeight: 'bold',
         fontSize: '20px',
         fontFamily: 'Poppins',

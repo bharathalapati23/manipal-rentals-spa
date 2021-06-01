@@ -24,13 +24,15 @@ const useStyles = makeStyles((theme) => ({
     },
     menuButton: {
         marginRight: theme.spacing(2),
+        paddingRight: '0px'
     },
     title: {
         fontFamily: 'poppins',
         fontSize: '35px',
         marginLeft: '5px',
         color: '#2E2E2E',
-        fontWeight: 'bolder'
+        fontWeight: 'bolder',
+        cursor:'pointer'
     },
     popoverPaper: {
         left: '0 !important'
@@ -93,7 +95,7 @@ function NavBar({ homePage }) {
                 ref={ref}
             >
                 <Toolbar>
-                    <IconButton onClick={navigateToHome} disableRipple>
+                    <IconButton onClick={navigateToHome} style={{ padding: 0 }}>
                         <LogoIcon style={{ fontSize: '50px' }} />
                     </IconButton>
 
@@ -120,7 +122,7 @@ function NavBar({ homePage }) {
                         </>
                     }
                     {isMobile &&
-                        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                        <IconButton edge="end" className={classes.menuButton} color="inherit" aria-label="menu">
                             {!Boolean(anchorEl) ? <MenuIcon onClick={handleClick} /> : <CloseIcon />}
                             <Menu
                                 id="simple-menu"

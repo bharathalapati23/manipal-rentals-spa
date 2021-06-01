@@ -84,6 +84,14 @@ const FooterComponent = () => {
         })
     }
 
+    const navigateToPropertiesAccomodationTypeFilter = (accomodationType) => {
+        dispatch(clearFilters())
+        history.push({
+            pathname: '/properties',
+            search: `?accomodationType=${accomodationType}`,
+        })
+    }
+
     const navigateToHome = () => {
         history.push({
             pathname: '/'
@@ -175,10 +183,10 @@ const FooterComponent = () => {
                                 Useful Links
                             </div>
                             <div className={classes.linkStyle} onClick={navigateToProperties}>
-                                Student accomodation in Manipal
+                                Apartments in Manipal
                             </div>
                             <div className={classes.linkStyle} onClick={navigateToProperties}>
-                                Apartments in Manipal
+                                Bungalows in Manipal
                             </div>
                             <div className={classes.linkStyle} onClick={navigateToProperties}>
                                 Rental Flats in Manipal
@@ -268,11 +276,11 @@ const FooterComponent = () => {
                             <div>
                                 Useful Links
                             </div>
-                            <div className={classes.linkStyle} onClick={navigateToProperties}>
-                                Student accomodation in Manipal
-                            </div>
-                            <div className={classes.linkStyle} onClick={navigateToProperties}>
+                            <div className={classes.linkStyle} onClick={() => navigateToPropertiesAccomodationTypeFilter('Apartment')}>
                                 Apartments in Manipal
+                            </div>
+                            <div className={classes.linkStyle} onClick={() => navigateToPropertiesAccomodationTypeFilter('Bungalow')}>
+                                Bungalows in Manipal
                             </div>
                             <div className={classes.linkStyle} onClick={navigateToProperties}>
                                 Rental Flats in Manipal

@@ -89,7 +89,7 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
                             aria-controls="panel1a-content"
                             id="panel1a-header"
                         >
-                            <Typography className={classes.heading}>Accomodation Type</Typography>
+                            <Typography className={classes.heading}>Home Features</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                             <HomeFeaturesComponent value={value} index={0} homeFeatures={homeFeatures} isMobile={true} />
@@ -97,7 +97,7 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
                     </Accordion>
                     {bedroomDetails.map((bedroom, index) => {
                         return (
-                            <React.Fragment key={`bedroomDetails${index}`}>
+                            <React.Fragment key={`amenities${index}`}>
                                 <Divider />
                                 <Accordion className={classes.accordionStyle}>
                                     <AccordionSummary

@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     heading: {
-        marginTop: '20px',
+        marginTop: '30px',
         fontFamily: 'Bebas Neue',
         fontSize: '45px',
         color: '#FFFFFF',
@@ -16,14 +16,14 @@ const useStyles = makeStyles((theme) => ({
     },
     content: {
         fontFamily: 'poppins',
-        color: 'white',
+        color: '#d5d5d5',
         fontSize: '20px'
     },
     listButton: {
 		borderRadius: 10,
 		marginBottom: '4px',
 		backgroundColor: 'transparent',
-		color: 'white',
+		color: '#d5d5d5',
 		fontSize: '20px',
 		fontFamily: 'Poppins',
 		borderColor: '#e5e5e5',

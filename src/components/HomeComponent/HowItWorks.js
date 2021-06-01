@@ -11,7 +11,6 @@ import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        marginTop: '20px',
         display: 'flex',
         flexDirection: 'row',
         width: '100%',
@@ -21,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('sm')]: {
             flexWrap: 'wrap',
         },
-        marginBottom: '20px',
+        textAlign: 'center'
     },
     cardStyle: {
         width: '24%',
@@ -29,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
             width: '49%',
             marginBottom: '20px'
         },
-        backgroundColor: '#2e2e2e',
+        backgroundColor: '#212121',
         fontFamily: 'poppins',
         color: '#e5e5e5',
         fontWeight: 'bolder',
@@ -60,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: 10,
         marginBottom: '4px',
         backgroundColor: 'transparent',
-        color: 'white',
+        color: '#d5d5d5',
         fontSize: '20px',
         fontFamily: 'Poppins',
         borderColor: '#e5e5e5',

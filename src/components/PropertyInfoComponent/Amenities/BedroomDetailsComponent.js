@@ -47,11 +47,11 @@ const bedroomDetailsDisplay = {
 
 
 const BedroomDetailsComponent = ({ value, index, bedroomDetails }) => {
-	const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
+    const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
     const hidden = isMobile || value === index
 
     const filteredBedroomDetails = Object.keys(bedroomDetails).filter((bedroomDetail) => {
-        if (bedroomDetails[bedroomDetail] === false || bedroomDetail=='_id')
+        if (bedroomDetails[bedroomDetail] === false || bedroomDetail == '_id')
             return false
         return true
     })
@@ -61,6 +61,7 @@ const BedroomDetailsComponent = ({ value, index, bedroomDetails }) => {
 
     return (
         <div
+            style={{ width: '100%' }}
             hidden={!hidden}
         >
             {hidden && (
@@ -68,16 +69,16 @@ const BedroomDetailsComponent = ({ value, index, bedroomDetails }) => {
                     {filteredBedroomDisplay.map((filteredBedroom, index) => {
                         if (index % 2 == 1) return
                         return (
-                            <>
-                                <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                    <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'row' }}>
+                            <React.Fragment key={`bedroomdetails${index}`}>
+                                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
+                                    <div style={{ width: `${isMobile ? '50%' : '30%'}`, display: 'flex', flexDirection: 'row' }}>
                                         {filteredBedroom.icon}
                                         <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', color: 'white' }}>
                                             {filteredBedroom.name}
                                         </div>
                                     </div>
                                     {filteredBedroomDisplay[index + 1] &&
-                                        (<div style={{ flexGrow: 3, display: 'flex', flexDirection: 'row' }}>
+                                        (<div style={{ width: `${isMobile ? '50%' : '60%'}`, display: 'flex', flexDirection: 'row' }}>
                                             {filteredBedroomDisplay[index + 1].icon}
                                             <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', color: 'white' }}>
                                                 {filteredBedroomDisplay[index + 1].name}
@@ -87,7 +88,7 @@ const BedroomDetailsComponent = ({ value, index, bedroomDetails }) => {
                                     }
                                 </div>
                                 <br></br>
-                            </>)
+                            </React.Fragment>)
                     })}
 
                 </Box>

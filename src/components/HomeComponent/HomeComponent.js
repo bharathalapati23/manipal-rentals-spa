@@ -1,15 +1,12 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { useMediaQuery } from 'react-responsive';
-
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import NavBar from '../NavBar/NavBar'
 import HowItWorks from './HowItWorks'
 import AboutUs from './AboutUs'
 import SearchComponent from './SearchComponent'
+import PropertiesDescription from './PropertiesDescription'
 import { useHistory, useLocation } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
@@ -31,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 		height: '100%'
 	},
 	whyRentHeading: {
-		marginTop: '20px',
+		marginTop: '10px',
 		fontFamily: 'Bebas Neue',
 		fontSize: '45px',
 		color: '#FFFFFF',
@@ -52,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	cardContent: {
 		fontFamily: 'poppins',
-		color: 'white',
+		color: '#d5d5d5',
 		fontSize: '20px',
 		boxSizing: 'border-box',
 		padding: '10px'
@@ -61,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 		borderRadius: 10,
 		marginBottom: '4px',
 		backgroundColor: '#f36802',
-		color: 'white',
+		color: '#d5d5d5',
 		fontWeight: 'bold',
 		fontSize: '20px',
 		fontFamily: 'Poppins',
@@ -71,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
 		borderRadius: 10,
 		marginBottom: '4px',
 		backgroundColor: 'transparent',
-		color: 'white',
+		color: '#d5d5d5',
 		fontSize: '20px',
 		fontFamily: 'Poppins',
 		borderColor: '#e5e5e5',
@@ -118,35 +115,24 @@ const HomeComponent = () => {
 					<div className={classes.whyRentHeading}>
 						WHY RENT WITH WOLPA?
 					</div>
-					<div className={classes.whyRentHeading} style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-						<div style={{ width: '50%', backgroundColor: '#2e2e2e', marginRight: '10px' }}>
+					<div className={classes.whyRentHeading} style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', borderRadius: 15 }}>
+						<div style={{ width: '50%', backgroundColor: '#212121', marginRight: '10px' }}>
 							No Brokerage
 							<div>
 								For the first time in Manipal!
 							</div>
 						</div>
 						<div style={{ width: '50%', marginLeft: '10px', marginRight: '10px' }}>
-							<div style={{ marginBottom: '10px', backgroundColor: '#2e2e2e', }}>
+							<div style={{ marginBottom: '10px', backgroundColor: '#212121', }}>
 								Full Assistance in Renting
 							</div>
-							<div style={{ backgroundColor: '#2e2e2e', }}>
+							<div style={{ backgroundColor: '#212121', }}>
 								Book from the comfort of home
 							</div>
 						</div>
 					</div>
 
-					<div className={classes.whyRentHeading}>
-						PROPERTIES BY WOLPA
-					</div>
-					<div className={classes.cardContent} style={{ marginBottom: '10px', backgroundColor: '#2e2e2e', }}>
-						Identify your best fit. Our properties are carefull chosen to meet the requirements of the university or college students
-					<ul>
-							<li>Closest Zone to your college</li>
-							<li>Amenities in your home and specific rooms</li>
-							<li>Budget</li>
-							<li>Verified Photographs</li>
-						</ul>
-					</div>
+					<PropertiesDescription />
 					<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 						<Button variant="contained"
 							className={classes.seeMoreButton}
@@ -169,24 +155,13 @@ const HomeComponent = () => {
 					<div className={classes.whyRentHeading}>
 						WHY RENT WITH WOLPA?
 					</div>
-					<div className={classes.whyRentHeading} style={{ width: '100%', backgroundColor: '#2e2e2e' }}>
+					<div className={classes.whyRentHeading} style={{ width: '100%', backgroundColor: '#212121', borderRadius: 15 }}>
 						No Brokerage
 							<div>
 							For the first time in Manipal!
 							</div>
 					</div>
-					<div className={classes.whyRentHeading}>
-						PROPERTIES BY WOLPA
-					</div>
-					<div className={classes.cardContent} style={{ marginBottom: '10px', backgroundColor: '#2e2e2e', }}>
-						Identify your best fit. Our properties are carefull chosen to meet the requirements of the university or college students
-					<ul>
-							<li>Closest Zone to your college</li>
-							<li>Amenities in your home and specific rooms</li>
-							<li>Budget</li>
-							<li>Verified Photographs</li>
-						</ul>
-					</div>
+					<PropertiesDescription />
 					<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 						<Button variant="contained"
 							className={classes.seeMoreButton}
