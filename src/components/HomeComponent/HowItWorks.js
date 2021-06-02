@@ -56,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
         // letterSpacing: '0.5px'
     },
     learnButton: {
+        marginTop:'10px',
         borderRadius: 10,
         marginBottom: '4px',
         backgroundColor: 'transparent',

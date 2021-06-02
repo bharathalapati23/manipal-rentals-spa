@@ -21,12 +21,12 @@ const useStyles = makeStyles((theme) => ({
             marginTop: '50px',
         },
         width: '100%',
-        maxWidth:'1300px',
+        maxWidth: '1300px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         margin: '0 auto',
-        padding:'8px',
+        padding: '8px',
         [theme.breakpoints.up('md')]: {
             //minWidth: '960px',
         },
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
             width: '100%',
             marginLeft: '0px'
         },
-        boxSizing:'border-box'
+        boxSizing: 'border-box'
     },
     propertyName: {
         fontFamily: 'Bebas Neue',
@@ -99,26 +99,28 @@ const PropertyInfoComponent = () => {
                     <ImageGalleryComponent images={listingInfo.images} />
                 </div>
                 {isMobile &&
-                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <div>
-                            <div className={classes.propertyName}>
-                                {listingInfo.title}
+                    <>
+                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                            <div>
+                                <div className={classes.propertyName}>
+                                    {listingInfo.title}
+                                </div>
+                                <div className={classes.zoneStyle}>
+                                    {listingInfo.zone}
+                                </div>
                             </div>
-                            <div className={classes.zoneStyle}>
-                            {listingInfo.zone}
                         </div>
-                        </div>
-                        <div>
+                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginTop:'10px' }}>
                             <div className={classes.rentStyle}>
                                 <div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '20px', paddingRight: '3px', color: '#f36802' }}>Rs. {listingInfo.rent}</div>
                                 <div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '10px', color: '#e5e5e5' }}>per month</div>
                             </div>
                             <div className={classes.rentStyle}>
-                                <div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '15px', paddingRight: '3px', color: '#e5e5e5' }}>Rs. 100000</div>
-                                <div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '3px', color: '#e5e5e5' }}>deposit</div>
+                                <div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '20px', paddingRight: '3px', color: '#e5e5e5' }}>Rs. 100000</div>
+                                <div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '10px', color: '#e5e5e5' }}>deposit</div>
                             </div>
                         </div>
-                    </div>
+                    </>
                 }
                 <div style={{ 'paddingTop': '20px' }}>
                     <DescriptionComponent listingInfo={listingInfo} />
@@ -129,9 +131,9 @@ const PropertyInfoComponent = () => {
 
             </div>
             {isMobile &&
-                <MobileStickyBottom navigateToProperties={navigateToProperties}/>
+                <MobileStickyBottom navigateToProperties={navigateToProperties} />
             }
-            <EnquiryFormModal/>
+            <EnquiryFormModal />
         </>
     )
 }

@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField';
 import { useSelector, useDispatch } from 'react-redux'
 import { closeModal } from '../../actions/enquiryModal'
-
+import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
     modalStyle: {
@@ -79,12 +79,24 @@ const CssTextField = withStyles({
     },
 })(TextField);
 
+const initialFormState = {
+    name: '',
+    contactNumber: '',
+    maxBudget: '',
+    preferredZones: [],
+    preferredConfig: [],
+    enquiryDesc: '',
+    preferredTime: ''
+}
+
 const EnquiryFormModal = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const open = useSelector((state) => state.enquiryModal)
-    // const open = true
+
     const [openSuccessModal, setOpenSuccessModal] = React.useState(false);
+    const [submitClicked, setSubmitClicked] = React.useState(false)
+    const [enquiryForm, setEnquiryForm] = React.useState(initialFormState)
 
     const handleSuccessOpen = () => {
         setOpenSuccessModal(true);
@@ -99,6 +111,20 @@ const EnquiryFormModal = () => {
         dispatch(closeModal())
     }
 
+    const handleSubmit = () => {
+        console.log(enquiryForm)
+        setSubmitClicked(true)
+        if (enquiryForm.name.length && enquiryForm.contactNumber.length) {
+            handleSuccessOpen()
+            setEnquiryForm(initialFormState)
+            setSubmitClicked(false)
+            axios.post(`http://localhost:5000/leads`, enquiryForm)
+                .then(res => {
+
+                })
+        }
+    }
+
     return (
         <>
             <Modal
@@ -108,27 +134,29 @@ const EnquiryFormModal = () => {
                 <div className={classes.modalStyle}>
                     <Typography variant="h5" component="h2" className={classes.filterHeading}>
                         PROPERTY TOUR
-        		</Typography>
+        		    </Typography>
                     <div className={classes.heading}>Name</div>
                     <CssTextField variant="outlined"
+                        error={submitClicked && !enquiryForm.name.length}
+                        helperText={submitClicked && !enquiryForm.name.length ? 'This field is required.' : ''}
                         InputProps={{
                             className: classes.input
                         }}
                         className={classes.textFieldStyles}
+                        value={enquiryForm.name}
+                        onChange={(e) => setEnquiryForm({ ...enquiryForm, name: e.target.value })}
                     />
                     <div className={classes.heading}>Contact Number</div>
                     <CssTextField variant="outlined"
+                        error={submitClicked && !enquiryForm.contactNumber.length}
+                        helperText={submitClicked && !enquiryForm.contactNumber.length ? 'This field is required.' : ''}
                         InputProps={{
                             className: classes.input
                         }}
                         className={classes.textFieldStyles}
-                    />
-                    <div className={classes.heading}>Email ID</div>
-                    <CssTextField variant="outlined"
-                        InputProps={{
-                            className: classes.input
-                        }}
-                        className={classes.textFieldStyles}
+                        value={enquiryForm.contactNumber}
+                        type="number"
+                        onChange={(e) => setEnquiryForm({ ...enquiryForm, contactNumber: e.target.value })}
                     />
                     <div className={classes.heading}>Preferred Time</div>
                     <CssTextField variant="outlined"
@@ -136,13 +164,15 @@ const EnquiryFormModal = () => {
                             className: classes.input
                         }}
                         className={classes.textFieldStyles}
+                        type="time"
+                        onChange={(e) => setEnquiryForm({ ...enquiryForm, preferredTime: e.target.value })}
                     />
                     <Button variant="contained"
                         buttonStyle={{ borderRadius: 25 }}
                         className={classes.submitButton}
                         onClick={() => {
-                            handleSuccessOpen()
                             closeEnquiryModal()
+                            handleSubmit()
                         }}
                     >
                         SCHEDULE PROPERTY TOUR
@@ -156,11 +186,11 @@ const EnquiryFormModal = () => {
                 <div className={classes.modalStyle}>
                     <Typography variant="h5" component="h2" className={classes.filterHeading}>
                         Submitted Successfully!
-         		</Typography>
+         		    </Typography>
                     <div className={classes.heading}>
                         Thank you for placing your enquiry, our representative will get in touch shortly.
                         Call us on 9876543210 to connect with us immediately.
-                </div>
+                    </div>
                 </div>
             </Modal>
         </>

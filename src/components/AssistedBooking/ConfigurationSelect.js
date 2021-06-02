@@ -70,10 +70,9 @@ const useStyles = makeStyles((theme) => ({
 
 const ConfigurationSelect = ({ enquiryForm, setEnquiryForm }) => {
     const classes = useStyles()
-    const [personName, setPersonName] = React.useState([]);
+    const personName = enquiryForm.preferredConfig
 
     const handleChange = (event) => {
-        setPersonName(event.target.value);
         setEnquiryForm({ ...enquiryForm, preferredConfig: event.target.value })
     };
 

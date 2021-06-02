@@ -91,10 +91,10 @@ const useStyles = makeStyles((theme) => ({
 
 const ZoneSelect = ({ enquiryForm, setEnquiryForm }) => {
     const classes = useStyles()
-    const [personName, setPersonName] = React.useState([]);
-
+    // const [personName, setPersonName] = React.useState([]);
+    const personName = enquiryForm.preferredZones
     const handleChange = (event) => {
-        setPersonName(event.target.value);
+        // setPersonName(event.target.value);
         setEnquiryForm({ ...enquiryForm, preferredZones: event.target.value })
     };
 
