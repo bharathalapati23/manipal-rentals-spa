@@ -118,7 +118,7 @@ const EnquiryFormModal = () => {
             handleSuccessOpen()
             setEnquiryForm(initialFormState)
             setSubmitClicked(false)
-            axios.post(`http://localhost:5000/leads`, enquiryForm)
+            axios.post(`https://manipal-rentals-backend.herokuapp.com/leads`, enquiryForm)
                 .then(res => {
 
                 })
