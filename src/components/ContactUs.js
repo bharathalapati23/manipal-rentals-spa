@@ -64,11 +64,12 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: '1300px',
         display: 'flex',
         flexDirection: 'column',
+        justifyContent: 'center',
         padding: '10px',
         boxSizing: 'border-box',
         color: 'white',
         [theme.breakpoints.up('md')]: {
-            height: 'calc(100vh - 366px)'
+            minHeight: 'calc(100vh - 366px)'
         },
 
     },
@@ -101,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '30px',
         color: '#FFFFFF',
         [theme.breakpoints.down('sm')]: {
-            fontSize: '40px',
+            fontSize: '30px',
         },
         textAlign: 'center'
     },
