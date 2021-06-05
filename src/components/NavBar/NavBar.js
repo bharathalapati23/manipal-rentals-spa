@@ -83,6 +83,11 @@ function NavBar({ homePage }) {
         history.push('/assisted-booking')
     }
 
+    const navigateToContactUs = () => {
+        if (isMobile) handleClose()
+        history.push('/contact-us')
+    }
+
     return (
         <div className={classes.root}>
             <AppBar position={homePage ? 'static' : 'fixed'}
@@ -118,7 +123,7 @@ function NavBar({ homePage }) {
                         <>
 
                             <Button style={{ textTransform: 'none' }} color="inherit" onClick={navigateToHome}>About Us</Button>
-                            <Button style={{ textTransform: 'none' }} color="inherit">Contact Us</Button>
+                            <Button style={{ textTransform: 'none' }} color="inherit" onClick={navigateToContactUs}>Contact Us</Button>
                         </>
                     }
                     {isMobile &&
@@ -152,7 +157,7 @@ function NavBar({ homePage }) {
                                 <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToHowItWorks}>How it Works</MenuItem>
                                 <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToAssistedBooking}>Assisted Booking</MenuItem>
                                 <MenuItem onClick={handleClose} classes={{ root: classes.menuItemRoot }}>About Us</MenuItem>
-                                <MenuItem onClick={handleClose} classes={{ root: classes.menuItemRoot }}>Contact Us</MenuItem>
+                                <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToContactUs}>Contact Us</MenuItem>
                             </Menu>
                         </IconButton>
                     }
