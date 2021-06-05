@@ -4,6 +4,7 @@ export const getPosts = (sortOrder) => async (dispatch) => {
     try {
         const { data } = await api.fetchPosts(sortOrder);
         dispatch({ type: 'FETCH_ALL', payload: data })
+        dispatch({ type: 'SET_LOADING_FALSE'})
     } catch (error) {
         console.log(error.message)    
     }

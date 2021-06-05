@@ -15,7 +15,7 @@ import { useLocation, useHistory } from 'react-router-dom'
 import queryString from 'query-string'
 import { setZoneFilter, clearFilters, setLocationFilter } from '../actions/filters.js'
 
-// import { Pagination } from 'antd';
+import NoResultsComponent from './NoResultsComponent'
 import Pagination from '@material-ui/lab/Pagination';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		marginTop: '80px',
 		[theme.breakpoints.down('sm')]: {
-            marginTop: '50px',
-        },
+			marginTop: '50px',
+		},
 		width: '100%',
 		maxWidth: '1300px',
 		justifyContent: 'center',
@@ -103,7 +103,7 @@ export default function DashboardComponent() {
 
 
 	const parsedQuery = queryString.parse(location.search);
-	
+
 	useEffect(() => {
 		if (!Object.keys(parsedQuery).length) dispatch(clearFilters())
 
@@ -233,7 +233,7 @@ export default function DashboardComponent() {
 
 	if (page * 10 - filteredPosts.length < 10 && page * 10 > filteredPosts.length)
 		noOfResults.end = filteredPosts.length
-	else 
+	else
 		noOfResults.end = page * 10
 
 
@@ -280,26 +280,31 @@ export default function DashboardComponent() {
 												}}
 											>
 												Sort By:
-										<option value={0}>Recently Added</option>
+												<option value={0}>Recently Added</option>
 												<option value={1}>Price:High to Low</option>
 												<option value={2}>Price:Low to High</option>
 											</Select>
 										</FormControl>
 									</div>
 								</div>
-								{pagePosts.map((cardObj, index) => (
-									<CardComponent cardObj={cardObj} key={`Card${index}`} />
-								))}
-								<Pagination
-									count={totalPages}
-									color="primary"
-									variant="outlined"
-									shape="rounded"
-									style={{ alignSelf: 'center' }}
-									className={classes.paginationStyles}
-									onChange={handleChangePage}
-									page={page}
-								/>
+								{!filteredPosts.length && <NoResultsComponent />}
+								{filteredPosts.length &&
+									<>
+										{pagePosts.map((cardObj, index) => (
+											<CardComponent cardObj={cardObj} key={`Card${index}`} />
+										))}
+										<Pagination
+											count={totalPages}
+											color="primary"
+											variant="outlined"
+											shape="rounded"
+											style={{ alignSelf: 'center' }}
+											className={classes.paginationStyles}
+											onChange={handleChangePage}
+											page={page}
+										/>
+									</>
+								}
 							</Grid>
 						</div>
 					</>
