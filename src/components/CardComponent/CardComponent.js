@@ -67,19 +67,19 @@ export default function CardComponent({ cardObj }) {
 	const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 	let history = useHistory();
 
-	const navigateToProperty = (e) => {
+	const navigateToProperty = (e, id) => {
 		e.preventDefault()
 		e.stopPropagation()
 		if (e.target.classList[0] != 'control-arrow')
 			history.push({
 				pathname: '/property',
-				search: '?query=abc',
+				search: `?search-id=${id}`,
 				state: { listing: cardObj }
 			})
 	}
 	return (
 		<Grid item >
-			<Card className={isMobile ? classes.mobileCard : classes.card} variant="outlined" style={{ borderRadius: '15px' }} onClick={navigateToProperty}>
+			<Card className={isMobile ? classes.mobileCard : classes.card} variant="outlined" style={{ borderRadius: '15px' }} onClick={(e) => navigateToProperty(e, cardObj._id)}>
 				<CardContent>
 					<div className={isMobile ? classes.mobileCardContainer : classes.cardContainer}>
 						{isMobile &&
@@ -92,7 +92,7 @@ export default function CardComponent({ cardObj }) {
 								alignItems: 'center'
 							}}>
 								<div>
-									<SingleBedIcon style={{ verticalAlign: 'middle', color: '#e5e5e5' }} />3BHK
+									<SingleBedIcon style={{ verticalAlign: 'middle', color: '#e5e5e5' }} />{cardObj.bedroom}BHK
 								</div>
 								{cardObj.zone}
 							</div>}
@@ -103,7 +103,7 @@ export default function CardComponent({ cardObj }) {
 								</div>
 							))}
 						</Carousel> */}
-						<CardImageGallery images={cardObj.images} navigateToProperty={navigateToProperty}/>
+						<CardImageGallery images={cardObj.images} navigateToProperty={navigateToProperty} />
 						{isMobile &&
 							<div style={{
 								color: '#e5e5e5',
