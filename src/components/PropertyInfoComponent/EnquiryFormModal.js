@@ -86,10 +86,11 @@ const initialFormState = {
     preferredZones: [],
     preferredConfig: [],
     enquiryDesc: '',
-    preferredTime: ''
+    preferredTime: '',
+    searchId: ''
 }
 
-const EnquiryFormModal = () => {
+const EnquiryFormModal = ({ searchId }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const open = useSelector((state) => state.enquiryModal)
@@ -97,6 +98,10 @@ const EnquiryFormModal = () => {
     const [openSuccessModal, setOpenSuccessModal] = React.useState(false);
     const [submitClicked, setSubmitClicked] = React.useState(false)
     const [enquiryForm, setEnquiryForm] = React.useState(initialFormState)
+
+    React.useEffect(()=> {
+        setEnquiryForm({ ...enquiryForm, searchId: searchId })
+    }, [])
 
     const handleSuccessOpen = () => {
         setOpenSuccessModal(true);

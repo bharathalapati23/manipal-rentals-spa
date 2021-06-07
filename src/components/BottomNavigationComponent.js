@@ -1,8 +1,9 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import FilterListIcon from '@material-ui/icons/FilterList';
-import SortIcon from '@material-ui/icons/Sort';
+import FilterAltIcon from '@material-ui/icons/FilterAlt';
+import ListIcon from '@material-ui/icons/List';
 import Badge from '@material-ui/core/Badge';
+import FilterIcon from '../icons/BottomNavigationIcons/FilterIcon'
 
 import { useSelector } from 'react-redux';
 
@@ -14,7 +15,6 @@ const useStyles = makeStyles({
         width: '100%',
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-around',
         backgroundColor: 'grey',
         height: '40px',
         alignItems: 'center',
@@ -48,16 +48,24 @@ const BottomNavigationComponent = ({ setFilterPage }) => {
             <div onClick={() => {
                 window.scrollTo(0, 0)
                 setFilterPage(true)
-            }}>
-                <Badge badgeContent={numFilters} color="primary">
-                    <FilterListIcon />
+            }}
+                style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'center', width: '50%' }}>
+                <Badge badgeContent={numFilters} color="primary" style={{ width: '100%', left: '50%' }}>
+                    <FilterAltIcon style={{ transform: 'translate(-50%, 0)'}}/>
                 </Badge>
+                <div style={{ fontFamily: 'Poppins', fontSize: '13px', lineHeight:'13px', marginBottom: '3px' }}>
+                    Filters
+                </div>
             </div>
             <div onClick={() => {
                 window.scrollTo(0, 0)
                 setFilterPage(false)
-            }}>
-                <SortIcon />
+            }}
+                style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'center', width: '50%' }}>
+                <ListIcon style={{ width: '100%', left: '50%' }}/>
+                <div style={{ fontFamily: 'Poppins', fontSize: '13px', lineHeight:'13px', marginBottom: '3px' }}>
+                    Listings
+                </div>
             </div>
         </div>
     )

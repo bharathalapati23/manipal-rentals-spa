@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
         // letterSpacing: '0.5px'
     },
     learnButton: {
-        marginTop:'10px',
+        marginTop: '10px',
         borderRadius: 10,
         marginBottom: '4px',
         backgroundColor: 'transparent',
@@ -72,6 +72,9 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('xs')]: {
             width: '100%',
         },
+        "&:hover": {
+            background: '#f36802',
+        }
     }
 }));
 
@@ -124,6 +127,7 @@ const HowItWorks = (props) => {
             <Button variant="contained"
                 className={classes.learnButton}
                 onClick={navigateToHowItWorks}
+                color='#f36802'
             >
                 LEARN HOW IT WORKS
             </Button>

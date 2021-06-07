@@ -12,7 +12,8 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useHistory, useLocation } from 'react-router-dom'
 
-import LogoIcon from '../../icons/LogoIcon'
+import LogoDarkIcon from '../../icons/LogoDarkIcon'
+import LogoLightIcon from '../../icons/LogoLightIcon'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     },
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
-        backgroundColor: 'grey'
+        backgroundColor: '#3e3e3e'
     },
     menuButton: {
         marginRight: theme.spacing(2),
@@ -101,19 +102,19 @@ function NavBar({ homePage }) {
             >
                 <Toolbar>
                     <IconButton onClick={navigateToHome} style={{ padding: 0 }}>
-                        <LogoIcon style={{ fontSize: '50px' }} />
+                        {homePage ? <LogoDarkIcon style={{ fontSize: '50px' }} /> : <LogoLightIcon style={{ fontSize: '50px' }} />} 
                     </IconButton>
 
                     <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'row' }}>
                         {
                             !isMobile &&
                             <>
-                                <Typography variant="h6" className={classes.title} onClick={navigateToHome}>
+                                <Typography variant="h6" className={classes.title} onClick={navigateToHome} style={{ color: homePage ? '' : '#e5e5e5', marginRight:'20px'}}>
                                     wolpa
                                 </Typography>
-                                <Button style={{ textTransform: 'none' }} color="inherit" onClick={navigateToProperties}>Properties</Button>
-                                <Button style={{ textTransform: 'none' }} color="inherit" onClick={navigateToHowItWorks}>How it Works</Button>
-                                <Button style={{ textTransform: 'none' }} color="inherit" onClick={navigateToAssistedBooking}>Assisted Booking</Button>
+                                <Button style={{ textTransform: 'none', fontFamily: 'poppins', fontWeight: homePage ? '' : '', fontSize: '15px' }} color="inherit" onClick={navigateToProperties}>Properties</Button>
+                                <Button style={{ textTransform: 'none', fontFamily: 'poppins', fontWeight: homePage ? '' : '', fontSize: '15px' }} color="inherit" onClick={navigateToHowItWorks}>How it Works</Button>
+                                <Button style={{ textTransform: 'none', fontFamily: 'poppins', fontWeight: homePage ? '' : '', fontSize: '15px' }} color="inherit" onClick={navigateToAssistedBooking}>Assisted Booking</Button>
 
                             </>
                         }
@@ -122,8 +123,8 @@ function NavBar({ homePage }) {
                         !isMobile &&
                         <>
 
-                            <Button style={{ textTransform: 'none' }} color="inherit" onClick={navigateToHome}>About Us</Button>
-                            <Button style={{ textTransform: 'none' }} color="inherit" onClick={navigateToContactUs}>Contact Us</Button>
+                            <Button style={{ textTransform: 'none', fontFamily: 'poppins', fontWeight: homePage ? '' : '', fontSize: '15px' }} color="inherit" onClick={navigateToHome}>About Us</Button>
+                            <Button style={{ textTransform: 'none', fontFamily: 'poppins', fontWeight: homePage ? '' : '', fontSize: '15px' }} color="inherit" onClick={navigateToContactUs}>Contact Us</Button>
                         </>
                     }
                     {isMobile &&

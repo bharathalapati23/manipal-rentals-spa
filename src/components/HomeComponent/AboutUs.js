@@ -31,7 +31,10 @@ const useStyles = makeStyles((theme) => ({
 		borderWidth: 'thin',
         left: '50%',
         transform: 'translate(-50%, 0)',
-        borderColor: '#f36802'
+        borderColor: '#f36802',
+        "&:hover": {
+            background: '#f36802',
+        }
 	}
 }));
 

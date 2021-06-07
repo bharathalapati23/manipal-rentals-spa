@@ -59,10 +59,17 @@ const useStyles = makeStyles((theme) => ({
 		marginBottom: '4px',
 		backgroundColor: '#f36802',
 		color: '#d5d5d5',
-		fontWeight: 'bold',
+		// fontWeight: 'bold',
 		fontSize: '20px',
 		fontFamily: 'Poppins',
-		marginBottom: '10px'
+		marginBottom: '10px',
+		border: 'solid',
+		borderWidth: 'thin',
+		borderColor: '#f36802',
+		marginTop: '6px',
+		"&:hover": {
+			background: 'transparent',
+		}
 	},
 	seeMoreButton: {
 		borderRadius: 10,
@@ -75,7 +82,10 @@ const useStyles = makeStyles((theme) => ({
 		border: 'solid',
 		borderWidth: 'thin',
 		borderColor: '#f36802',
-		marginRight: '10px'
+		marginRight: '10px',
+		"&:hover": {
+            background: '#f36802',
+        }
 	}
 }));
 
@@ -141,7 +151,7 @@ const HomeComponent = () => {
 							VIEW PROPERTIES
             			</Button>
 						<Button variant="contained"
-							className={classes.registerButton}
+							className={classes.seeMoreButton}
 						>
 							CONTACT US
             			</Button>

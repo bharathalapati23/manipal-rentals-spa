@@ -140,7 +140,8 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'bold',
         fontSize: '20px',
         fontFamily: 'Poppins',
-        marginBottom: '10px'
+        marginBottom: '10px',
+        
     },
 }));
 

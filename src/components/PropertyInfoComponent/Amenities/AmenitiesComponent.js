@@ -37,7 +37,10 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: "none",
         backgroundColor: 'transparent',
         color: '#e5e5e5'
-    }
+    },
+    indicator: {
+        backgroundColor: '#f36802',
+    },
 }));
 
 const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
@@ -58,17 +61,20 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
                 <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none' }}>
                     <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" variant="scrollable"
                         scrollButtons="auto"
+                        classes={{
+                            indicator: classes.indicator
+                        }}
                     >
                         <Tab label="Home" className={classes.tabLabel} />
                         {bedroomDetails.map((bedroom, index) => {
-                            return <Tab label={`Bedroom ${index + 1}`} className={classes.tabLabel} key={`bedroomDetails${index}`}/>
+                            return <Tab label={`Bedroom ${index + 1}`} className={classes.tabLabel} key={`bedroomDetails${index}`} />
                         })}
                     </Tabs>
                 </AppBar>
                 <div style={{ 'paddingTop': '20px' }}>
                     <HomeFeaturesComponent value={value} index={0} homeFeatures={homeFeatures} />
                     {bedroomDetails.map((bedroom, index) => {
-                        return <BedroomDetailsComponent value={value} index={index + 1} bedroomDetails={bedroom} key={`bedroomDetails${index}`}/>
+                        return <BedroomDetailsComponent value={value} index={index + 1} bedroomDetails={bedroom} key={`bedroomDetails${index}`} />
                     })}
                 </div>
             </div>}
@@ -85,7 +91,7 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
                     <Divider />
                     <Accordion className={classes.accordionStyle}>
                         <AccordionSummary
-                            expandIcon={<ExpandMoreIcon style={{ color: '#e5e5e5' }}/>}
+                            expandIcon={<ExpandMoreIcon style={{ color: '#e5e5e5' }} />}
                             aria-controls="panel1a-content"
                             id="panel1a-header"
                         >
@@ -101,7 +107,7 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
                                 <Divider />
                                 <Accordion className={classes.accordionStyle}>
                                     <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon style={{ color: '#e5e5e5' }}/>}
+                                        expandIcon={<ExpandMoreIcon style={{ color: '#e5e5e5' }} />}
                                         aria-controls="panel1a-content"
                                         id="panel1a-header"
                                     >

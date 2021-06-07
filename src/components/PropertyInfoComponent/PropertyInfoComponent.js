@@ -146,7 +146,7 @@ const PropertyInfoComponent = () => {
                             <MobileStickyBottom navigateToProperties={navigateToProperties} />
                         }
                     </>
-                    <EnquiryFormModal />
+                    <EnquiryFormModal searchId={parsedQuery['search-id']}/>
                 </>
             }
 

@@ -115,7 +115,8 @@ const initialFormState = {
     preferredZones: [],
     preferredConfig: [],
     enquiryDesc: '',
-    preferredTime: ''
+    preferredTime: '',
+    searchId: ''
 }
 
 const EnquiryComponent = () => {

@@ -67,19 +67,19 @@ export default function CardComponent({ cardObj }) {
 	const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 	let history = useHistory();
 
-	const navigateToProperty = (e, id) => {
+	const navigateToProperty = (e) => {
 		e.preventDefault()
 		e.stopPropagation()
 		if (e.target.classList[0] != 'control-arrow')
 			history.push({
 				pathname: '/property',
-				search: `?search-id=${id}`,
+				search: `?search-id=${cardObj._id}`,
 				state: { listing: cardObj }
 			})
 	}
 	return (
 		<Grid item >
-			<Card className={isMobile ? classes.mobileCard : classes.card} variant="outlined" style={{ borderRadius: '15px' }} onClick={(e) => navigateToProperty(e, cardObj._id)}>
+			<Card className={isMobile ? classes.mobileCard : classes.card} variant="outlined" style={{ borderRadius: '15px' }} onClick={(e) => navigateToProperty(e)}>
 				<CardContent>
 					<div className={isMobile ? classes.mobileCardContainer : classes.cardContainer}>
 						{isMobile &&
