@@ -3,8 +3,7 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { useMediaQuery } from 'react-responsive';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
+import Divider from '@material-ui/core/Divider';
 import Checkbox from '@material-ui/core/Checkbox';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -92,7 +91,7 @@ const MenuProps = {
 const useStyles = makeStyles((theme) => ({
     sortSelect: {
         width: '100%',
-        maxWidth: '400px',
+        
         height: '56px',
         fontFamily: 'Poppins',
         fontSize: '14px',
@@ -111,11 +110,17 @@ const useStyles = makeStyles((theme) => ({
             fontSize: 12,
         },
         opacity: 0.9,
-
+        [theme.breakpoints.up('md')]: {
+			maxWidth: '400px',
+		},
+        [theme.breakpoints.down('sm')]: {
+			width: '90%',
+            
+		},
     },
     bedroomSelect: {
         width: '100%',
-        maxWidth: '200px',
+        
         height: '56px',
         fontFamily: 'Poppins',
         fontSize: '14px',
@@ -134,6 +139,13 @@ const useStyles = makeStyles((theme) => ({
             fontSize: 12,
         },
         opacity: 0.9,
+        [theme.breakpoints.up('md')]: {
+			maxWidth: '200px',
+		},
+        [theme.breakpoints.down('sm')]: {
+			width: '90%',
+            marginBottom: '10px'
+		},
     },
     registerButton: {
         borderRadius: 10,
@@ -148,7 +160,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const SearchComponent = () => {
+const SearchComponent = ({ isMobile }) => {
     const classes = useStyles();
     const history = useHistory();
     const [bedroomSelect, setBedroomSelect] = React.useState(['Select Bedroom'])
@@ -201,62 +213,125 @@ const SearchComponent = () => {
     }
 
     return (
-        <div style={{ top: '50%', left: '50%', height: '100%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Select
-                label="Age"
-                multiple
-                disableUnderline
-                renderValue={(selected) => selected.join(', ')}
-                MenuProps={MenuProps}
-                value={zoneSelect}
-                onChange={handleZoneChange}
-                className={classes.sortSelect}
-                defaultValue="none"
-                inputProps={{
-                    classes: {
-                        icon: classes.icon,
-                    },
-                }}
-            >
-                {zones.map((zone) => (
-                    <MenuItem key={zone.name} value={zone.name}>
-                        <Checkbox checked={zoneSelect.indexOf(zone.name) > -1} />
-                        <ListItemText primary={zone.name} />
-                    </MenuItem>
-                ))}
-            </Select>
-            <Select
-                labelId="demo-mutiple-checkbox-label"
-                id="demo-mutiple-checkbox"
-                multiple
-                disableUnderline
-                input={<Input />}
-                renderValue={(selected) => selected.join(', ')}
-                MenuProps={MenuProps}
-                value={bedroomSelect}
-                onChange={handleBedroomChange}
-                className={classes.bedroomSelect}
-                inputProps={{
-                    classes: {
-                        icon: classes.icon,
-                    },
-                }}
-            >
-                {bedrooms.map((bedroom) => (
-                    <MenuItem key={bedroom.name} value={bedroom.name}>
-                        <Checkbox checked={bedroomSelect.indexOf(bedroom.name) > -1} />
-                        <ListItemText primary={bedroom.name} />
-                    </MenuItem>
-                ))}
-            </Select>
-            <Button variant="contained"
-                className={classes.registerButton}
-                onClick={navigateToProperties}
-                style={{ background: '#f36802' }}
-            >
-                SEARCH
-            </Button>
-        </div>
+        <>
+            {!isMobile &&
+                <div style={{ top: '50%', left: '50%', height: '100%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <Select
+                        label="Age"
+                        multiple
+                        disableUnderline
+                        renderValue={(selected) => selected.join(', ')}
+                        MenuProps={MenuProps}
+                        value={zoneSelect}
+                        onChange={handleZoneChange}
+                        className={classes.sortSelect}
+                        defaultValue="none"
+                        inputProps={{
+                            classes: {
+                                icon: classes.icon,
+                            },
+                        }}
+                    >
+                        {zones.map((zone) => (
+                            <MenuItem key={zone.name} value={zone.name}>
+                                <Checkbox checked={zoneSelect.indexOf(zone.name) > -1} />
+                                <ListItemText primary={zone.name} />
+                            </MenuItem>
+                        ))}
+                    </Select>
+                    <Select
+                        labelId="demo-mutiple-checkbox-label"
+                        id="demo-mutiple-checkbox"
+                        multiple
+                        disableUnderline
+                        input={<Input />}
+                        renderValue={(selected) => selected.join(', ')}
+                        MenuProps={MenuProps}
+                        value={bedroomSelect}
+                        onChange={handleBedroomChange}
+                        className={classes.bedroomSelect}
+                        inputProps={{
+                            classes: {
+                                icon: classes.icon,
+                            },
+                        }}
+                    >
+                        {bedrooms.map((bedroom) => (
+                            <MenuItem key={bedroom.name} value={bedroom.name}>
+                                <Checkbox checked={bedroomSelect.indexOf(bedroom.name) > -1} />
+                                <ListItemText primary={bedroom.name} />
+                            </MenuItem>
+                        ))}
+                    </Select>
+                    <Button variant="contained"
+                        className={classes.registerButton}
+                        onClick={navigateToProperties}
+                        style={{ background: '#f36802' }}
+                    >
+                        SEARCH
+                    </Button>
+                </div>
+            }
+            {isMobile &&
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                    <Select
+                        label="Age"
+                        multiple
+                        disableUnderline
+                        renderValue={(selected) => selected.join(', ')}
+                        MenuProps={MenuProps}
+                        value={zoneSelect}
+                        onChange={handleZoneChange}
+                        className={classes.sortSelect}
+                        defaultValue="none"
+                        inputProps={{
+                            classes: {
+                                icon: classes.icon,
+                            },
+                        }}
+                    >
+                        {zones.map((zone) => (
+                            <MenuItem key={zone.name} value={zone.name}>
+                                <Checkbox checked={zoneSelect.indexOf(zone.name) > -1} />
+                                <ListItemText primary={zone.name} />
+                            </MenuItem>
+                        ))}
+                    </Select>
+                    <Divider />
+                    <Select
+                        labelId="demo-mutiple-checkbox-label"
+                        id="demo-mutiple-checkbox"
+                        multiple
+                        disableUnderline
+                        input={<Input />}
+                        renderValue={(selected) => selected.join(', ')}
+                        MenuProps={MenuProps}
+                        value={bedroomSelect}
+                        onChange={handleBedroomChange}
+                        className={classes.bedroomSelect}
+                        inputProps={{
+                            classes: {
+                                icon: classes.icon,
+                            },
+                        }}
+                    >
+                        {bedrooms.map((bedroom) => (
+                            <MenuItem key={bedroom.name} value={bedroom.name}>
+                                <Checkbox checked={bedroomSelect.indexOf(bedroom.name) > -1} />
+                                <ListItemText primary={bedroom.name} />
+                            </MenuItem>
+                        ))}
+                    </Select>
+                    <Button variant="contained"
+                        className={classes.registerButton}
+                        onClick={navigateToProperties}
+                        style={{ background: '#f36802' }}
+                    >
+                        SEARCH
+                    </Button>
+                </div>
+            }
+        </>
     )
 }
 
