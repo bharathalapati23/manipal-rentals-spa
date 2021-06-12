@@ -5,6 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom'
 import queryString from 'query-string'
 import axios from 'axios'
+import SingleBedIcon from '@material-ui/icons/SingleBed';
 
 import AmenitiesComponent from './Amenities/AmenitiesComponent'
 import ImageGalleryComponent from './ImageGalleryComponent'
@@ -56,7 +57,10 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: 'Poppins',
         fontSize: '14px',
         fontWeight: 'bold',
-        color: '#e5e5e5'
+        color: '#e5e5e5',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     rentStyle: {
         display: 'flex',
@@ -76,7 +80,7 @@ const PropertyInfoComponent = () => {
         if (!location.state) {
             axios.get(`https://manipal-rentals-backend.herokuapp.com/posts/singlePost?objId=${parsedQuery['search-id']}`)
                 .then((res) => {
-                    const listingObj = res.data[0] 
+                    const listingObj = res.data[0]
                     console.log(res.data[0])
                     history.replace({ ...history.location, state: { listing: listingObj } })
                 })
@@ -111,15 +115,14 @@ const PropertyInfoComponent = () => {
                         </div>
                         {isMobile &&
                             <>
-                                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <div className={classes.propertyName}>
+                                    {listingInfo.title}
+                                </div>
+                                <div className={classes.zoneStyle}>
+                                    {listingInfo.zone}
                                     <div>
-                                        <div className={classes.propertyName}>
-                                            {listingInfo.title}
-                                        </div>
-                                        <div className={classes.zoneStyle}>
-                                            {listingInfo.zone}
-                                        </div>
-                                    </div>
+                                        <SingleBedIcon style={{ verticalAlign: 'middle', color: '#e5e5e5' }} />{listingInfo.bedroom}BHK
+                                            </div>
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginTop: '10px' }}>
                                     <div className={classes.rentStyle}>
@@ -146,7 +149,7 @@ const PropertyInfoComponent = () => {
                             <MobileStickyBottom navigateToProperties={navigateToProperties} />
                         }
                     </>
-                    <EnquiryFormModal searchId={parsedQuery['search-id']}/>
+                    <EnquiryFormModal searchId={parsedQuery['search-id']} />
                 </>
             }
 

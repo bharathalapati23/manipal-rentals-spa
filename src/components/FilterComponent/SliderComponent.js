@@ -73,7 +73,7 @@ const useStyles = makeStyles({
 
 export default function SliderComponent() {
     const classes = useStyles();
-    const [value, setValue] = React.useState([15000, 60000]);
+    const [value, setValue] = React.useState([0, 60000]);
     const dispatch = useDispatch();
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -105,7 +105,7 @@ export default function SliderComponent() {
                         value={value}
                         onChange={handleChange}
                         valueLabelDisplay="on"
-                        min={15000}
+                        min={0}
                         max={60000}
                         onChangeCommitted={dispatchPriceRangeFilter}
                     />

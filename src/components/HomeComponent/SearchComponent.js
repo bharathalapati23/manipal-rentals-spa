@@ -143,6 +143,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '20px',
         fontFamily: 'Poppins',
     },
+    icon: {
+        fill: '#d5d5d5',
+    },
 }));
 
 const SearchComponent = () => {
@@ -209,6 +212,11 @@ const SearchComponent = () => {
                 onChange={handleZoneChange}
                 className={classes.sortSelect}
                 defaultValue="none"
+                inputProps={{
+                    classes: {
+                        icon: classes.icon,
+                    },
+                }}
             >
                 {zones.map((zone) => (
                     <MenuItem key={zone.name} value={zone.name}>
@@ -228,6 +236,11 @@ const SearchComponent = () => {
                 value={bedroomSelect}
                 onChange={handleBedroomChange}
                 className={classes.bedroomSelect}
+                inputProps={{
+                    classes: {
+                        icon: classes.icon,
+                    },
+                }}
             >
                 {bedrooms.map((bedroom) => (
                     <MenuItem key={bedroom.name} value={bedroom.name}>

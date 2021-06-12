@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import FilterAltIcon from '@material-ui/icons/FilterAlt';
 import ListIcon from '@material-ui/icons/List';
 import Badge from '@material-ui/core/Badge';
-import FilterIcon from '../icons/BottomNavigationIcons/FilterIcon'
 
 import { useSelector } from 'react-redux';
 
@@ -20,6 +19,9 @@ const useStyles = makeStyles({
         alignItems: 'center',
         zIndex: '10000'
     },
+    badge: {
+        backgroundColor: "#f36802",
+    }
 });
 
 
@@ -50,10 +52,12 @@ const BottomNavigationComponent = ({ setFilterPage }) => {
                 setFilterPage(true)
             }}
                 style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'center', width: '50%' }}>
-                <Badge badgeContent={numFilters} color="primary" style={{ width: '100%', left: '50%' }}>
-                    <FilterAltIcon style={{ transform: 'translate(-50%, 0)'}}/>
-                </Badge>
-                <div style={{ fontFamily: 'Poppins', fontSize: '13px', lineHeight:'13px', marginBottom: '3px' }}>
+                <div style={{ width: '100%' }} >
+                    <Badge badgeContent={numFilters} classes={{ badge: classes.badge }}>
+                        <FilterAltIcon style={{ left: '50%' }} />
+                    </Badge>
+                </div>
+                <div style={{ fontFamily: 'Poppins', fontSize: '13px', lineHeight: '13px', marginBottom: '3px' }}>
                     Filters
                 </div>
             </div>
@@ -62,8 +66,8 @@ const BottomNavigationComponent = ({ setFilterPage }) => {
                 setFilterPage(false)
             }}
                 style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'center', width: '50%' }}>
-                <ListIcon style={{ width: '100%', left: '50%' }}/>
-                <div style={{ fontFamily: 'Poppins', fontSize: '13px', lineHeight:'13px', marginBottom: '3px' }}>
+                <ListIcon style={{ left: '50%', width: '100%' }} />
+                <div style={{ fontFamily: 'Poppins', fontSize: '13px', lineHeight: '13px', marginBottom: '3px' }}>
                     Listings
                 </div>
             </div>

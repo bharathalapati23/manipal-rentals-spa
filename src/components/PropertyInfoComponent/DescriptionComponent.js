@@ -42,7 +42,8 @@ const useStyles = makeStyles((theme) => ({
     },
     chipStyles: {
         marginRight: '10px',
-        fontFamily: 'Poppins'
+        fontFamily: 'Poppins',
+        fontWeight:'bold'
     }
 }));
 
