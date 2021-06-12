@@ -116,9 +116,9 @@ const HomeComponent = () => {
 		<>
 			<div className={classes.root}>
 				<NavBar homePage={true} />
-				<div style={{ top: '50%', left: '50%', height: '100%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+				
 					{!isMobile && <SearchComponent></SearchComponent>}
-				</div>
+				
 			</div>
 			{!isMobile &&
 				<div className={classes.contentArea}>
@@ -126,17 +126,17 @@ const HomeComponent = () => {
 						WHY RENT WITH WOLPA?
 					</div>
 					<div className={classes.whyRentHeading} style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', borderRadius: 15 }}>
-						<div style={{ width: '50%', backgroundColor: '#212121', marginRight: '10px' }}>
+						<div style={{ width: '50%', backgroundColor: '#212121', marginRight: '10px', borderRadius:15, color:'#d5d5d5' }}>
 							No Brokerage
 							<div>
 								For the first time in Manipal!
 							</div>
 						</div>
 						<div style={{ width: '50%', marginLeft: '10px', marginRight: '10px' }}>
-							<div style={{ marginBottom: '10px', backgroundColor: '#212121', }}>
+							<div style={{ marginBottom: '10px', backgroundColor: '#212121', borderRadius:15, color:'#d5d5d5'}}>
 								Full Assistance in Renting
 							</div>
-							<div style={{ backgroundColor: '#212121', }}>
+							<div style={{ backgroundColor: '#212121', borderRadius:15, color:'#d5d5d5' }}>
 								Book from the comfort of home
 							</div>
 						</div>

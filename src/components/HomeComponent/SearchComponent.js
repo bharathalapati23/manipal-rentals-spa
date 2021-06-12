@@ -3,6 +3,8 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { useMediaQuery } from 'react-responsive';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
 import Checkbox from '@material-ui/core/Checkbox';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -92,14 +94,13 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         maxWidth: '400px',
         height: '56px',
-        marginTop: '5px',
         fontFamily: 'Poppins',
         fontSize: '14px',
         color: '#e5e5e5',
         border: 'solid',
-        borderColor: '#121212',
+        borderColor: '#2e2e2e',
         borderWidth: 'thin',
-        backgroundColor: '#121212',
+        backgroundColor: '#2e2e2e',
         paddingLeft: '5px',
         borderRadius: '5px',
         marginRight: '10px',
@@ -109,19 +110,20 @@ const useStyles = makeStyles((theme) => ({
         "& li": {
             fontSize: 12,
         },
+        opacity: 0.9,
+
     },
     bedroomSelect: {
         width: '100%',
-        maxWidth: '100px',
+        maxWidth: '200px',
         height: '56px',
-        marginTop: '5px',
         fontFamily: 'Poppins',
         fontSize: '14px',
         color: '#e5e5e5',
         border: 'solid',
-        borderColor: '#121212',
+        borderColor: '#2e2e2e',
         borderWidth: 'thin',
-        backgroundColor: '#121212',
+        backgroundColor: '#2e2e2e',
         paddingLeft: '5px',
         borderRadius: '5px',
         marginRight: '10px',
@@ -131,42 +133,59 @@ const useStyles = makeStyles((theme) => ({
         "& li": {
             fontSize: 12,
         },
+        opacity: 0.9,
     },
     registerButton: {
         borderRadius: 10,
-        marginBottom: '4px',
-        backgroundColor: '#f36802',
+        //background: '#f36802',
         color: '#d5d5d5',
         fontWeight: 'bold',
         fontSize: '20px',
         fontFamily: 'Poppins',
-        marginBottom: '10px',
-        
     },
 }));
 
 const SearchComponent = () => {
     const classes = useStyles();
     const history = useHistory();
-    const [bedroomSelect, setBedroomSelect] = React.useState([])
-    const [zoneSelect, setZoneSelect] = React.useState([]);
+    const [bedroomSelect, setBedroomSelect] = React.useState(['Select Bedroom'])
+    const [zoneSelect, setZoneSelect] = React.useState(['Select Zone']);
 
     const handleZoneChange = (event) => {
-        setZoneSelect(event.target.value);
+        let selectedZones = event.target.value
+        if (selectedZones[0] == 'Select Zone')
+            selectedZones.splice(0, 1)
+        if (selectedZones.length === 0)
+            selectedZones.push('Select Zone')
+        setZoneSelect(selectedZones);
     };
 
     const handleBedroomChange = (event) => {
+        let selectedBedroom = event.target.value
+        if (selectedBedroom[0] == 'Select Bedroom')
+            selectedBedroom.splice(0, 1)
+        if (selectedBedroom.length === 0)
+            selectedBedroom.push('Select Bedroom')
+
         setBedroomSelect(event.target.value);
     };
 
     const navigateToProperties = () => {
-        if (!zoneSelect.length && !bedroomSelect.length)
+        let selectedZones = zoneSelect
+        if (selectedZones[0] == 'Select Zone')
+            selectedZones.splice(0, 1)
+
+        let selectedBedroom = bedroomSelect
+        if (selectedBedroom[0] == 'Select Bedroom')
+            selectedBedroom.splice(0, 1)
+
+        if (!selectedZones.length && !selectedBedroom.length)
             history.push('/properties')
         else {
             let queryString = ''
-            if (zoneSelect.length) queryString += 'zone=' + zoneSelect.join(',') + '&'
-            if (bedroomSelect.length) {
-                let bedroomValue = bedroomSelect.map((bedroom)=> {
+            if (selectedZones.length) queryString += 'zone=' + selectedZones.join(',') + '&'
+            if (selectedBedroom.length) {
+                let bedroomValue = selectedBedroom.map((bedroom) => {
                     return bedroom[0]
                 })
                 queryString += 'bedroom=' + bedroomValue.join(',')
@@ -179,17 +198,17 @@ const SearchComponent = () => {
     }
 
     return (
-        <>
+        <div style={{ top: '50%', left: '50%', height: '100%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <Select
-                labelId="demo-mutiple-checkbox-label"
-                id="demo-mutiple-checkbox"
+                label="Age"
                 multiple
-                input={<Input />}
+                disableUnderline
                 renderValue={(selected) => selected.join(', ')}
                 MenuProps={MenuProps}
                 value={zoneSelect}
                 onChange={handleZoneChange}
                 className={classes.sortSelect}
+                defaultValue="none"
             >
                 {zones.map((zone) => (
                     <MenuItem key={zone.name} value={zone.name}>
@@ -202,6 +221,7 @@ const SearchComponent = () => {
                 labelId="demo-mutiple-checkbox-label"
                 id="demo-mutiple-checkbox"
                 multiple
+                disableUnderline
                 input={<Input />}
                 renderValue={(selected) => selected.join(', ')}
                 MenuProps={MenuProps}
@@ -219,10 +239,11 @@ const SearchComponent = () => {
             <Button variant="contained"
                 className={classes.registerButton}
                 onClick={navigateToProperties}
+                style={{ background: '#f36802' }}
             >
                 SEARCH
             </Button>
-        </>
+        </div>
     )
 }
 

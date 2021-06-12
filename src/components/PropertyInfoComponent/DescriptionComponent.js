@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch } from 'react-redux'
 import { openModal } from '../../actions/enquiryModal'
+import Chip from '@material-ui/core/Chip';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -39,6 +40,10 @@ const useStyles = makeStyles((theme) => ({
         paddingRight: '10px',
         color: '#ffffff'
     },
+    chipStyles: {
+        marginRight: '10px',
+        fontFamily: 'Poppins'
+    }
 }));
 
 
@@ -92,6 +97,12 @@ const DescriptionComponent = ({ listingInfo }) => {
                     </div>
                 </>
             }
+            <div style={{ marginTop: '10px' }}>
+                <Chip label={`${listingInfo.bedroom} Bedroom`} className={classes.chipStyles} />
+                <Chip label={listingInfo.apOrBung} className={classes.chipStyles} />
+                <Chip label={listingInfo.zone} className={classes.chipStyles} />
+            </div>
+
         </>
     )
 }
