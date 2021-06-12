@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '14px',
         color: '#e5e5e5',
         border: 'solid',
-        borderColor: '#121212',
+        borderColor: 'rgba(0, 0, 0, 0.23)',
         borderWidth: 'thin',
         backgroundColor: 'transparent',
         paddingLeft:'5px',
@@ -85,6 +85,11 @@ const useStyles = makeStyles((theme) => ({
         },
         "& li": {
             fontSize: 12,
+        },
+        '&:hover': {
+            borderRadius: 1,
+            borderColor: '#fffff',
+            boxShadow: '0 0 0 0.1rem rgba(255,255,255,1)',
         },
     },
 }));
@@ -103,6 +108,7 @@ const ZoneSelect = ({ enquiryForm, setEnquiryForm }) => {
             labelId="demo-mutiple-checkbox-label"
             id="demo-mutiple-checkbox"
             multiple
+            disableUnderline
             input={<Input />}
             renderValue={(selected) => selected.join(', ')}
             MenuProps={MenuProps}

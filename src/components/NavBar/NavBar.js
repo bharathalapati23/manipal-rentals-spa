@@ -89,6 +89,11 @@ function NavBar({ homePage }) {
         history.push('/contact-us')
     }
 
+    const navigateToAboutUs = () => {
+        if (isMobile) handleClose()
+        history.push('/about-us')
+    }
+
     return (
         <div className={classes.root}>
             <AppBar position={homePage ? 'static' : 'fixed'}
@@ -123,7 +128,7 @@ function NavBar({ homePage }) {
                         !isMobile &&
                         <>
 
-                            <Button style={{ textTransform: 'none', fontFamily: 'poppins', fontWeight: homePage ? '' : '', fontSize: '15px' }} color="inherit" onClick={navigateToHome}>About Us</Button>
+                            <Button style={{ textTransform: 'none', fontFamily: 'poppins', fontWeight: homePage ? '' : '', fontSize: '15px' }} color="inherit" onClick={navigateToAboutUs}>About Us</Button>
                             <Button style={{ textTransform: 'none', fontFamily: 'poppins', fontWeight: homePage ? '' : '', fontSize: '15px' }} color="inherit" onClick={navigateToContactUs}>Contact Us</Button>
                         </>
                     }

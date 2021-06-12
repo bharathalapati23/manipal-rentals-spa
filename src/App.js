@@ -9,6 +9,7 @@ import HowItWorksComponent from './components/HowItWorks/HowItWorksComponent.js'
 import EnquiryComponent from './components/AssistedBooking/EnquiryComponent.js'
 import HomeComponent from './components/HomeComponent/HomeComponent'
 import ContactUs from './components/ContactUs'
+import AboutUsComponent from './components/AboutUsComponent'
 import './App.css'
 
 function App() {
@@ -43,6 +44,10 @@ function App() {
             <Route path='/contact-us' exact>
               <NavBar />
               <ContactUs />
+            </Route>
+            <Route path='/about-us' exact>
+              <NavBar />
+              <AboutUsComponent />
             </Route>
           </>
         </Switch>
