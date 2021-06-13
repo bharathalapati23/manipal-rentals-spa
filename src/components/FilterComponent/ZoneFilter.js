@@ -150,7 +150,7 @@ const ZoneFilter = () => {
                                 return <FormControlLabel
                                     control={
                                         <Checkbox name={zone.name}
-                                            style={{ color: 'white' }}
+                                            style={{ color: '#e0e0e0' }}
                                         />}
                                     onChange={handleZoneChange}
                                     label={zone.label}

@@ -13,7 +13,7 @@ const zones = ['Syndicate Circle', 'Venugopal Temple', 'Eshwar Nagar', 'Ananth N
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        color: 'white',
+        color: '#e0e0e0',
         width: '100%',
         backgroundColor: '#2e2e2e',
         marginTop: '20px',

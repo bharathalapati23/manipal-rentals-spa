@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '30px'
     },
     input: {
-        color: "white"
+        color: "#e0e0e0"
     },
     heading: {
         fontFamily: 'Poppins',
@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
 const CssTextField = withStyles({
     root: {
         '& label.Mui-focused': {
-            color: 'white',
+            color: '#e0e0e0',
         },
         '& .MuiInput-underline:after': {
             borderBottomColor: 'white',
@@ -236,7 +236,7 @@ const EnquiryComponent = () => {
                                 />
                             </div>
                             <Button variant="contained"
-                                style={{ borderRadius: 25, backgroundColor: '#f36802', color: 'white', fontWeight: 'bold', fontFamily: 'poppins', marginTop: '20px' }}
+                                style={{ borderRadius: 25, backgroundColor: '#f36802', color: '#e0e0e0', fontWeight: 'bold', fontFamily: 'poppins', marginTop: '20px' }}
                                 onClick={handleSubmit}
                             >
                                 CONTACT US
@@ -313,7 +313,7 @@ const EnquiryComponent = () => {
                             />
                         </div>
                         <Button variant="contained"
-                            style={{ borderRadius: 25, backgroundColor: '#f36802', color: 'white', fontWeight: 'bold', fontFamily: 'poppins', marginTop: '20px' }}
+                            style={{ borderRadius: 25, backgroundColor: '#f36802', color: '#e0e0e0', fontWeight: 'bold', fontFamily: 'poppins', marginTop: '20px' }}
                             onClick={handleSubmit}
                         >
                             CONTACT US

@@ -14,13 +14,13 @@ const useStyles = makeStyles({
         width: '100%',
         display: 'flex',
         flexDirection: 'row',
-        backgroundColor: 'grey',
+        backgroundColor: '#474747',
         height: '40px',
         alignItems: 'center',
         zIndex: '10000'
     },
     badge: {
-        backgroundColor: "#f36802",
+        // backgroundColor: "#f36802",
     }
 });
 
@@ -51,9 +51,9 @@ const BottomNavigationComponent = ({ setFilterPage }) => {
                 window.scrollTo(0, 0)
                 setFilterPage(true)
             }}
-                style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'center', width: '50%' }}>
+                style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'center', width: '50%', color:'#f36802' }}>
                 <div style={{ width: '100%' }} >
-                    <Badge badgeContent={numFilters} classes={{ badge: classes.badge }}>
+                    <Badge badgeContent={numFilters} classes={{ badge: classes.badge }} color='primary'>
                         <FilterAltIcon style={{ left: '50%' }} />
                     </Badge>
                 </div>
@@ -65,7 +65,7 @@ const BottomNavigationComponent = ({ setFilterPage }) => {
                 window.scrollTo(0, 0)
                 setFilterPage(false)
             }}
-                style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'center', width: '50%' }}>
+                style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'center', width: '50%', color:'e0e0e0' }}>
                 <ListIcon style={{ left: '50%', width: '100%' }} />
                 <div style={{ fontFamily: 'Poppins', fontSize: '13px', lineHeight: '13px', marginBottom: '3px' }}>
                     Listings

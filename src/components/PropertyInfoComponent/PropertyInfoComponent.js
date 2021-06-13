@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     propertyName: {
         fontFamily: 'Bebas Neue',
         fontSize: '25px',
-        color: '#FFFFFF',
+        color: '#e0e0e0',
         [theme.breakpoints.down('sm')]: {
             fontSize: '24px',
         },
@@ -60,11 +60,13 @@ const useStyles = makeStyles((theme) => ({
         color: '#e5e5e5',
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginTop: '5px'
     },
     rentStyle: {
         display: 'flex',
         flexDirection: 'row',
+        alignSelf: 'flex-end'
     },
 }));
 
@@ -118,20 +120,18 @@ const PropertyInfoComponent = () => {
                                 <div className={classes.propertyName}>
                                     {listingInfo.title}
                                 </div>
+
                                 <div className={classes.zoneStyle}>
                                     {listingInfo.zone}
-                                    <div>
-                                        <SingleBedIcon style={{ verticalAlign: 'middle', color: '#e5e5e5' }} />{listingInfo.bedroom}BHK
-                                            </div>
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginTop: '10px' }}>
                                     <div className={classes.rentStyle}>
-                                        <div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '20px', paddingRight: '3px', color: '#f36802' }}>Rs. {listingInfo.rent}</div>
-                                        <div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '10px', color: '#e5e5e5' }}>per month</div>
+                                        <span style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '24px', paddingRight: '3px', color: '#f36802' }}>Rs. {listingInfo.rent}</span>
+                                        <span style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '12px', color: '#e5e5e5' }}>per month</span>
                                     </div>
-                                    <div className={classes.rentStyle}>
-                                        <div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '20px', paddingRight: '3px', color: '#e5e5e5' }}>Rs. 100000</div>
-                                        <div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '10px', color: '#e5e5e5' }}>deposit</div>
+                                    <div className={classes.rentStyle} style={{ alignSelf: 'center'}}>
+                                        <span style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '19px', paddingRight: '3px', color: '#e5e5e5' }}>Rs. 100000</span>
+                                        <span style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '7px', color: '#e5e5e5' }}>deposit</span>
                                     </div>
                                 </div>
                             </>

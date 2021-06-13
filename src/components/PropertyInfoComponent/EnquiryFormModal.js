@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: '5px'
     },
     input: {
-        color: "white"
+        color: "#e0e0e0"
     },
     textFieldStyles: {
         '&.Mui-focused fieldset': {
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     submitButton: {
         borderRadius: 25,
         backgroundColor: '#f36802',
-        color: 'white',
+        color: '#e0e0e0',
         fontWeight: 'bold',
         marginTop: '20px',
         left: '50%',
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
 const CssTextField = withStyles({
     root: {
         '& label.Mui-focused': {
-            color: 'white',
+            color: '#e0e0e0',
         },
         '& .MuiInput-underline:after': {
             borderBottomColor: 'white',

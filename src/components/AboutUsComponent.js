@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     heading: {
         fontFamily: 'Bebas Neue',
         fontSize: '45px',
-        color: '#FFFFFF',
+        color: '#e0e0e0',
         [theme.breakpoints.down('sm')]: {
             fontSize: '40px',
         },
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     subHeading: {
         fontFamily: 'Bebas Neue',
         fontSize: '35px',
-        color: '#FFFFFF',
+        color: '#e0e0e0',
         [theme.breakpoints.down('sm')]: {
             fontSize: '30px',
         },
@@ -52,7 +52,7 @@ const AboutUsComponent = () => {
             <div className={classes.subHeading}>
                 We Understand Broker Problems
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', color: 'white', fontSize: '20px', fontFamily: 'poppins' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', color: '#e0e0e0', fontSize: '20px', fontFamily: 'poppins' }}>
                 <div style={{ marginBottom: '20px' }}>Welcome to Wolpa!</div>
                 <div style={{ marginBottom: '20px' }}>
                     Wolpa is a real estate platform built for the students – by the old

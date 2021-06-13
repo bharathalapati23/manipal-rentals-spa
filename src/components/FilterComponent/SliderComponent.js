@@ -11,7 +11,7 @@ import ExpandIconCompnent from './ExpandIconCompnent';
 
 const AirbnbSlider = withStyles({
     root: {
-        color: '#FFFFFF',
+        color: '#e0e0e0',
         height: 3,
         padding: '13px 0',
     },

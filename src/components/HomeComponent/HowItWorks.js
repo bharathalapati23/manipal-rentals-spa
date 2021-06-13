@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
         width: '24%',
         [theme.breakpoints.down('sm')]: {
             width: '49%',
-            marginBottom: '20px'
+            marginBottom: '4px'
         },
         backgroundColor: '#212121',
         fontFamily: 'poppins',
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: '20px',
         fontFamily: 'Bebas Neue',
         fontSize: '45px',
-        color: '#FFFFFF',
+        color: '#e0e0e0',
         [theme.breakpoints.down('sm')]: {
             fontSize: '40px',
         },

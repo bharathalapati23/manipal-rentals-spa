@@ -19,7 +19,7 @@ import HomeFeaturesComponent from './HomeFeaturesComponent'
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        backgroundColor: 'grey',
+        backgroundColor: '#2e2e2e',
         padding: '10px',
         paddingLeft: '20px',
         borderRadius: '10px'

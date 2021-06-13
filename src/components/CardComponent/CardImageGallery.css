@@ -24,6 +24,7 @@
     object-position: center center !important;
     object-fit: cover !important;
     max-height: 160px !important;
+    height: 160px;
 }
 
 #cardimages .image-gallery-svg {

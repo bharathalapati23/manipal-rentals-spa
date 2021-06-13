@@ -38,12 +38,12 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: 'Poppins',
         fontSize: '14px',
         paddingRight: '10px',
-        color: '#ffffff'
+        color: '#e0e0e0'
     },
     chipStyles: {
         marginRight: '10px',
         fontFamily: 'Poppins',
-        fontWeight:'bold'
+        fontWeight: 'bold'
     }
 }));
 
@@ -69,21 +69,15 @@ const DescriptionComponent = ({ listingInfo }) => {
                             {listingInfo.desc}
                         </div>
                     </div>
-                    <div className={classes.seeMoreProperties}>
-                        <div className={classes.rentStyle}>
-                            <div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '24px', paddingRight: '3px', color: '#f36802' }}>Rs. {listingInfo.rent}</div>
-                            <div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '12px', color: '#e5e5e5' }}>per month</div>
+                    <div className={classes.seeMoreProperties} style={{ textAlign: 'right'}}>
+                        <div>
+                            <span style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '24px', paddingRight: '3px', color: '#f36802' }}>Rs. {listingInfo.rent}</span>
+                            <span style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '12px', color: '#e5e5e5' }}>per month</span>
                         </div>
-                        <div className={classes.rentStyle}>
-                            <div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '19px', paddingRight: '3px', color: '#e5e5e5' }}>Rs. 100000</div>
-                            <div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '7px', color: '#e5e5e5' }}>deposit</div>
+                        <div>
+                            <span style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '19px', paddingRight: '3px', color: '#e5e5e5' }}>Rs. 100000</span>
+                            <span style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '7px', color: '#e5e5e5' }}>deposit</span>
                         </div>
-                        <Button variant="contained"
-                            style={{ borderRadius: 25, backgroundColor: '#f36802', color: 'white', fontWeight: 'bold' }}
-                            onClick={openEnquiryModal}
-                        >
-                            SCHEDULE PROPERTY TOUR
-                        </Button>
                     </div>
                 </div>
             }
@@ -98,10 +92,20 @@ const DescriptionComponent = ({ listingInfo }) => {
                     </div>
                 </>
             }
-            <div style={{ marginTop: '10px' }}>
-                <Chip label={`${listingInfo.bedroom} Bedroom`} className={classes.chipStyles} />
-                <Chip label={listingInfo.apOrBung} className={classes.chipStyles} />
-                <Chip label={listingInfo.zone} className={classes.chipStyles} />
+            <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                <div>
+                    <Chip label={`${listingInfo.bedroom} Bedroom`} className={classes.chipStyles} />
+                    <Chip label={listingInfo.apOrBung} className={classes.chipStyles} />
+                    <Chip label={listingInfo.zone} className={classes.chipStyles} />
+                </div>
+                {!isMobile &&
+                    <Button variant="contained"
+                        style={{ borderRadius: 25, backgroundColor: '#f36802', color: '#e0e0e0', fontWeight: 'bold' }}
+                        onClick={openEnquiryModal}
+                    >
+                        SCHEDULE PROPERTY TOUR
+                    </Button>
+                }
             </div>
 
         </>

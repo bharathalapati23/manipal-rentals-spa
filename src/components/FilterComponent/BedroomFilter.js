@@ -129,7 +129,7 @@ const BedroomFilter = () => {
                             return <FormControlLabel
                                 control={
                                     <Checkbox name={bedroom.name}
-                                        style={{ color: 'white' }}
+                                        style={{ color: '#e0e0e0' }}
                                     />}
                                 label={bedroom.label}
                                 onChange={handleBedroomChange}

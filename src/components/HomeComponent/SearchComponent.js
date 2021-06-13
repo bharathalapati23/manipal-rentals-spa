@@ -150,7 +150,7 @@ const useStyles = makeStyles((theme) => ({
     registerButton: {
         borderRadius: 10,
         //background: '#f36802',
-        color: '#d5d5d5',
+        color: '#F2F2F2',
         fontWeight: 'bold',
         fontSize: '20px',
         fontFamily: 'Poppins',

@@ -134,7 +134,7 @@ const BedroomDetailsFilter = () => {
                                     FormControlLabel
                                     control={
                                         <Checkbox name="1"
-                                            style={{ color: 'white' }}
+                                            style={{ color: '#e0e0e0' }}
                                             checked={bedroomDetails[key]}
                                         />
                                     }

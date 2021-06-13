@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: '30px',
         fontFamily: 'Bebas Neue',
         fontSize: '45px',
-        color: '#FFFFFF',
+        color: '#e0e0e0',
         [theme.breakpoints.down('sm')]: {
             fontSize: '40px',
         },
@@ -17,7 +17,8 @@ const useStyles = makeStyles((theme) => ({
     content: {
         fontFamily: 'poppins',
         color: '#d5d5d5',
-        fontSize: '20px'
+        fontSize: '20px',
+        paddingLeft: '8px'
     },
     listButton: {
 		borderRadius: 10,

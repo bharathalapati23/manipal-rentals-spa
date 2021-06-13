@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
 		marginTop: '30px',
 		fontFamily: 'Bebas Neue',
 		fontSize: '45px',
-		color: '#FFFFFF',
+		color: '#e0e0e0',
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '40px',
 		},

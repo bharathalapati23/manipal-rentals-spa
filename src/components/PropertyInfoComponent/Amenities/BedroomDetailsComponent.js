@@ -13,35 +13,35 @@ import AcUnitIcon from '@material-ui/icons/AcUnit';
 const bedroomDetailsDisplay = {
     singleBed: {
         name: 'Single Bed',
-        icon: <SingleBedIcon style={{ color: 'white' }} />
+        icon: <SingleBedIcon style={{ color: '#e0e0e0' }} />
     },
     doubleBed: {
         name: 'Double Bed',
-        icon: <SingleBedIcon style={{ color: 'white' }} />
+        icon: <SingleBedIcon style={{ color: '#e0e0e0' }} />
     },
     wardrobe: {
         name: 'Wardrobe',
-        icon: <WardrobeIcon style={{ color: 'white' }} />
+        icon: <WardrobeIcon style={{ color: '#e0e0e0' }} />
     },
     studyTable: {
         name: 'Study Table',
-        icon: <TableIcon style={{ color: 'white' }} />
+        icon: <TableIcon style={{ color: '#e0e0e0' }} />
     },
     chair: {
         name: 'Chair',
-        icon: <ChairIcon style={{ color: 'white' }} />
+        icon: <ChairIcon style={{ color: '#e0e0e0' }} />
     },
     attachedToilet: {
         name: 'Attached Toilet',
-        icon: <WeekendIcon style={{ color: 'white' }} />
+        icon: <WeekendIcon style={{ color: '#e0e0e0' }} />
     },
     attachedBalcony: {
         name: 'Attached Balcony',
-        icon: <BalconyIcon style={{ color: 'white' }} />
+        icon: <BalconyIcon style={{ color: '#e0e0e0' }} />
     },
     airConditioner: {
         name: 'Air Conditioner',
-        icon: <AcUnitIcon style={{ color: 'white' }} />
+        icon: <AcUnitIcon style={{ color: '#e0e0e0' }} />
     },
 }
 
@@ -73,14 +73,14 @@ const BedroomDetailsComponent = ({ value, index, bedroomDetails }) => {
                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
                                     <div style={{ width: `${isMobile ? '50%' : '30%'}`, display: 'flex', flexDirection: 'row' }}>
                                         {filteredBedroom.icon}
-                                        <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', color: 'white' }}>
+                                        <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', color: '#e0e0e0' }}>
                                             {filteredBedroom.name}
                                         </div>
                                     </div>
                                     {filteredBedroomDisplay[index + 1] &&
                                         (<div style={{ width: `${isMobile ? '50%' : '60%'}`, display: 'flex', flexDirection: 'row' }}>
                                             {filteredBedroomDisplay[index + 1].icon}
-                                            <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', color: 'white' }}>
+                                            <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', color: '#e0e0e0' }}>
                                                 {filteredBedroomDisplay[index + 1].name}
                                             </div>
                                         </div>

@@ -14,35 +14,35 @@ import WeekendIcon from '@material-ui/icons/Weekend';
 const homeFeaturesDisplay = {
     wifi: {
         name: 'WiFi',
-        icon: <WifiIcon style={{ color: 'white' }} />
+        icon: <WifiIcon style={{ color: '#e0e0e0' }} />
     },
     geyser: {
         name: 'Geyser',
-        icon: <GeyserIcon style={{ color: 'white' }} />
+        icon: <GeyserIcon style={{ color: '#e0e0e0' }} />
     },
     washingMachine: {
         name: 'Washing Machine',
-        icon: <WashingMachineIcon style={{ color: 'white' }} />
+        icon: <WashingMachineIcon style={{ color: '#e0e0e0' }} />
     },
     cookingHub: {
         name: 'Cooking Hub',
-        icon: <CookingHubIcon style={{ color: 'white' }} />
+        icon: <CookingHubIcon style={{ color: '#e0e0e0' }} />
     },
     fridge: {
         name: 'Fridge',
-        icon: <FridgeIcon style={{ color: 'white' }} />
+        icon: <FridgeIcon style={{ color: '#e0e0e0' }} />
     },
     couch: {
         name: 'Couch',
-        icon: <WeekendIcon style={{ color: 'white' }} />
+        icon: <WeekendIcon style={{ color: '#e0e0e0' }} />
     },
     coffeeTable: {
         name: 'Coffee Table',
-        icon: <WifiIcon style={{ color: 'white' }} />
+        icon: <WifiIcon style={{ color: '#e0e0e0' }} />
     },
     chairs: {
         name: 'Chairs',
-        icon: <ChairIcon style={{ color: 'white' }} />
+        icon: <ChairIcon style={{ color: '#e0e0e0' }} />
     },
 }
 
@@ -71,14 +71,14 @@ const HomeFeaturesComponent = ({ value, index, homeFeatures }) => {
                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%' }} >
                                     <div style={{ width: `${isMobile ? '50%' : '30%'}`, display: 'flex', flexDirection: 'row' }}>
                                         {homeFeature.icon}
-                                        <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', color: 'white' }}>
+                                        <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', color: '#e0e0e0' }}>
                                             {homeFeature.name}
                                         </div>
                                     </div>
                                     {filteredHomeFeatures[index + 1] &&
                                         (<div style={{ width: `${isMobile ? '50%' : '60%'}`, display: 'flex', flexDirection: 'row' }}>
                                             {filteredHomeFeatures[index + 1].icon}
-                                            <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', color: 'white' }}>
+                                            <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', color: '#e0e0e0' }}>
                                                 {filteredHomeFeatures[index + 1].name}
                                             </div>
                                         </div>
@@ -97,24 +97,3 @@ const HomeFeaturesComponent = ({ value, index, homeFeatures }) => {
 }
 
 export default HomeFeaturesComponent
-
-
-{/* {Object.keys(homeFeatures).map((homeFeature, index) => {
-                        if (index % 2 == 1) return
-                        return (
-                            <>
-                                <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                    <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'row' }}>
-                                        <WifiIcon style={{ color: 'white' }} />
-                                        <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', color: 'white' }}>
-                                            Wifi
-                                        </div>
-                                    </div>
-                                    <div style={{ flexGrow: 3, display: 'flex', flexDirection: 'row' }}>
-                                        <WifiIcon style={{ color: 'white' }} />
-                                        <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', color: 'white' }}>Cooking Hub</div>
-                                    </div>
-                                </div>
-                                <br></br>
-                            </>)
-                    })} */}

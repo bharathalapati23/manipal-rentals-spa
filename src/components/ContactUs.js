@@ -38,7 +38,7 @@ const MenuProps = {
 const CssTextField = withStyles({
     root: {
         '& label.Mui-focused': {
-            color: 'white',
+            color: '#e0e0e0',
         },
         '& .MuiInput-underline:after': {
             borderBottomColor: 'white',
@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         padding: '10px',
         boxSizing: 'border-box',
-        color: 'white',
+        color: '#e0e0e0',
         [theme.breakpoints.up('md')]: {
             minHeight: 'calc(100vh - 366px)'
         },
@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
     propertyName: {
         fontFamily: 'Bebas Neue',
         fontSize: '45px',
-        color: '#FFFFFF',
+        color: '#e0e0e0',
         [theme.breakpoints.down('sm')]: {
             fontSize: '40px',
         },
@@ -104,7 +104,7 @@ const useStyles = makeStyles((theme) => ({
     wolpaHeading: {
         fontFamily: 'Bebas Neue',
         fontSize: '30px',
-        color: '#FFFFFF',
+        color: '#e0e0e0',
         [theme.breakpoints.down('sm')]: {
             fontSize: '30px',
         },
@@ -130,7 +130,7 @@ const useStyles = makeStyles((theme) => ({
             width: '98%'
         },
         width: '50%',
-        marginTop: '5px',
+        marginTop: '10px',
         marginRight: '10px'
     },
     icon: {
@@ -320,7 +320,7 @@ const ContactUs = () => {
                             />
                         </div>
                         <Button variant="contained"
-                            style={{ borderRadius: 25, backgroundColor: '#f36802', color: 'white', fontWeight: 'bold', marginTop: '10px', left: '50%', transform: 'translate(-50%,0)' }}
+                            style={{ borderRadius: 25, backgroundColor: '#f36802', color: '#e0e0e0', fontWeight: 'bold', marginTop: '10px', left: '50%', transform: 'translate(-50%,0)' }}
                             onClick={handleSubmit}
                         >
                             SUBMIT DETAILS

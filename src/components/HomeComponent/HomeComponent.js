@@ -31,9 +31,20 @@ const useStyles = makeStyles((theme) => ({
 		marginTop: '10px',
 		fontFamily: 'Bebas Neue',
 		fontSize: '45px',
-		color: '#FFFFFF',
+		color: '#e0e0e0',
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '40px',
+		},
+		textAlign: 'center'
+		// letterSpacing: '0.5px'
+	},
+	whyRentDesc: {
+		marginTop: '10px',
+		fontFamily: 'Poppins',
+		fontSize: '25px',
+		color: '#E0e0e0',
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '20px',
 		},
 		textAlign: 'center'
 		// letterSpacing: '0.5px'
@@ -125,9 +136,9 @@ const HomeComponent = () => {
 					<div className={classes.whyRentHeading}>
 						WHY RENT WITH WOLPA?
 					</div>
-					<div className={classes.whyRentHeading} style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', borderRadius: 15 }}>
+					<div className={classes.whyRentDesc} style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', borderRadius: 15}}>
 						<div style={{ width: '50%', backgroundColor: '#212121', marginRight: '10px', borderRadius: 15, color: '#d5d5d5' }}>
-							No Brokerage
+							No Brokerage!
 							<div>
 								For the first time in Manipal!
 							</div>
@@ -165,8 +176,8 @@ const HomeComponent = () => {
 					<div className={classes.whyRentHeading}>
 						WHY RENT WITH WOLPA?
 					</div>
-					<div className={classes.whyRentHeading} style={{ width: '100%', backgroundColor: '#212121', borderRadius: 15 }}>
-						No Brokerage
+					<div className={classes.whyRentDesc} style={{ width: '100%', backgroundColor: '#212121', borderRadius: 15 }}>
+						No Brokerage!
 							<div>
 							For the first time in Manipal!
 							</div>
@@ -180,7 +191,7 @@ const HomeComponent = () => {
 							VIEW PROPERTIES
             			</Button>
 						<Button variant="contained"
-							className={classes.registerButton}
+							className={classes.seeMoreButton}
 						>
 							CONTACT US
             			</Button>
