@@ -70,11 +70,6 @@ const useStyles = makeStyles((theme) => ({
             borderColor: '#fffff',
             boxShadow: '0 0 0 0.1rem rgba(255,255,255,1)',
         },
-        "& .MuiSelect-select:focus": {
-            borderRadius: 1,
-            borderColor: '#fffff',
-            boxShadow: '0 0 0 0.1rem rgba(255,255,255,1)',
-        },
     },
 }));
 
