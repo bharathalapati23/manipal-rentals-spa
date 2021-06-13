@@ -24,10 +24,6 @@ const useStyles = makeStyles((theme) => ({
     },
     cardStyle: {
         width: '24%',
-        [theme.breakpoints.down('sm')]: {
-            width: '49%',
-            marginBottom: '4px'
-        },
         backgroundColor: '#212121',
         fontFamily: 'poppins',
         color: '#e5e5e5',
@@ -35,6 +31,11 @@ const useStyles = makeStyles((theme) => ({
         letterSpacing: '0.04rem',
         fontSize: '23px',
         borderRadius: '15px',
+        [theme.breakpoints.down('sm')]: {
+            width: '49%',
+            marginBottom: '4px',
+            fontSize:'18px'
+        },
     },
     cardContentStyle: {
         display: 'flex',
