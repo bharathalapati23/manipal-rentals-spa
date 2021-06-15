@@ -8,6 +8,8 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandIconCompnent from './ExpandIconCompnent';
+import { useHistory, useLocation } from 'react-router-dom'
+import queryString from 'query-string'
 
 const AirbnbSlider = withStyles({
     root: {
@@ -73,8 +75,11 @@ const useStyles = makeStyles({
 
 export default function SliderComponent() {
     const classes = useStyles();
-    const [value, setValue] = React.useState([0, 60000]);
+    const [value, setValue] = React.useState([]);
     const dispatch = useDispatch();
+
+    const history = useHistory();
+    const location = useLocation();
 
     const priceRangeFilters = useSelector((state) => state.filters.priceRange)
     React.useEffect(() => {
@@ -85,8 +90,33 @@ export default function SliderComponent() {
         setValue(newValue);
     };
 
-    const dispatchPriceRangeFilter = () => {
-        dispatch(setPriceRangeFilter(value))
+    const dispatchPriceRangeFilter = (event, newValue) => {
+        console.log(newValue + 'newValue')
+        const parsedLocation = queryString.parse(location.search);
+        parsedLocation.budget = newValue
+
+        let newLocationString = ''
+        Object.keys(parsedLocation).map((filter, index) => {
+            if (filter === 'page') return
+            if (filter === 'budgetMax' || filter === 'budgetMin') {
+                newLocationString += filter + '=' + parsedLocation[filter] + '&'
+            }
+            if (parsedLocation[filter].length) {
+                newLocationString += filter + '='
+                newLocationString += parsedLocation[filter]
+                if (index !== Object.keys(parsedLocation).length - 1)
+                    newLocationString += '&'
+            }
+            
+        })
+        history.push({
+            pathname: '/properties',
+            search: `?${newLocationString}`,
+        })
+        console.log(newLocationString)
+
+
+        // dispatch(setPriceRangeFilter(value))
     }
 
     const [expanded, setExpanded] = React.useState(true);

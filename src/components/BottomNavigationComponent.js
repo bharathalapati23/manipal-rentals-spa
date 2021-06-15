@@ -44,6 +44,10 @@ const BottomNavigationComponent = ({ setFilterPage }) => {
         if (filter.bedroomDetails[bedroomDetail])
             numFilters++
     })
+    if(filter.priceRange) {
+        if(filter.priceRange[0]!=0 || filter.priceRange[1]!=60000)
+            numFilters++
+    }
 
     return (
         <div className={classes.stickToBottom}>

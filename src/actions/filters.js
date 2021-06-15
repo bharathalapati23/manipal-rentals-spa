@@ -111,6 +111,10 @@ export const setLocationFilter = (parsedLocation) => async (dispatch) => {
             }
             dispatch({ type: 'SET_BEDROOM_DETAILS_FILTER', payload: newBedroomDetails })
         }
+        if (Object.keys(parsedLocation).includes('budget')) {
+            const budgetArr = parsedLocation.budget.split(',').map((budget) => Number(budget))
+            dispatch({ type: 'SET_PRICE_FILTER', payload: budgetArr })
+        }
 
     } catch (error) {
         console.log(error.message)
