@@ -3,7 +3,7 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import { setPriceRangeFilter } from '../../actions/filters'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -75,6 +75,12 @@ export default function SliderComponent() {
     const classes = useStyles();
     const [value, setValue] = React.useState([0, 60000]);
     const dispatch = useDispatch();
+
+    const priceRangeFilters = useSelector((state) => state.filters.priceRange)
+    React.useEffect(() => {
+        setValue(priceRangeFilters)
+    }, [priceRangeFilters])
+
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };

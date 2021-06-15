@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
     cardContentStyle: {
         display: 'flex',
         flexDirection: 'column',
+        textAlign: 'center'
     },
     iconStyle: {
         fontSize: '100px',

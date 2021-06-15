@@ -114,6 +114,18 @@ const FooterComponent = () => {
         history.push('/assisted-booking')
     }
 
+    const navigateToAboutUs = () => {
+		history.push({
+			pathname: '/about-us'
+		})
+	}
+
+    const navigateToContactUs = () => {
+		history.push({
+			pathname: '/contact-us'
+		})
+	}
+
     return (
         <>
             { isMobile &&
@@ -130,7 +142,7 @@ const FooterComponent = () => {
                                 <div className={classes.linkStyle}>
                                     &nbsp;.&nbsp;
                                 </div>
-                                <div className={classes.linkStyle}>
+                                <div className={classes.linkStyle} onClick={navigateToAboutUs}>
                                     About Us
                                 </div>
                             </div>
@@ -144,7 +156,7 @@ const FooterComponent = () => {
                                 <div className={classes.linkStyle}>
                                     &nbsp;.&nbsp;
                                 </div>
-                                <div className={classes.linkStyle} onClick={navigateToAssistedBooking}>
+                                <div className={classes.linkStyle} onClick={navigateToContactUs}>
                                     Contact Us
                                 </div>
                             </div>
@@ -152,13 +164,13 @@ const FooterComponent = () => {
                                 Property Tour
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <div className={classes.linkStyle}>
+                                <div className={classes.linkStyle} onClick={navigateToAssistedBooking}>
                                     Visit today
                                 </div>
                                 <div className={classes.linkStyle}>
                                     &nbsp;.&nbsp;
                                 </div>
-                                <div className={classes.linkStyle}>
+                                <div className={classes.linkStyle} onClick={navigateToAssistedBooking}>
                                     Schedule Tour
                                 </div>
                             </div>
@@ -222,7 +234,7 @@ const FooterComponent = () => {
                                 <div className={classes.linkStyle}>
                                     &nbsp;.&nbsp;
                                 </div>
-                                <div className={classes.linkStyle}>
+                                <div className={classes.linkStyle} onClick={navigateToAboutUs}>
                                     About Us
                                 </div>
                             </div>
@@ -236,7 +248,7 @@ const FooterComponent = () => {
                                 <div className={classes.linkStyle}>
                                     &nbsp;.&nbsp;
                                 </div>
-                                <div className={classes.linkStyle} onClick={navigateToAssistedBooking}>
+                                <div className={classes.linkStyle} onClick={navigateToContactUs}>
                                     Contact Us
                                 </div>
                             </div>
@@ -247,10 +259,10 @@ const FooterComponent = () => {
                                 <div className={classes.linkStyle}>
                                     Visit today
                                 </div>
-                                <div className={classes.linkStyle}>
+                                <div className={classes.linkStyle} onClick={navigateToAssistedBooking}>
                                     &nbsp;.&nbsp;
                                 </div>
-                                <div className={classes.linkStyle}>
+                                <div className={classes.linkStyle} onClick={navigateToAssistedBooking}>
                                     Schedule Tour
                                 </div>
                             </div>

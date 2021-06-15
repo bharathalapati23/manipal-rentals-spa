@@ -89,6 +89,9 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('md')]: {
             width: '100%'
         },
+        [theme.breakpoints.down('sm')]: {
+            marginTop: '50px'
+        },
         width: '50%',
         textAlign: 'center',
     },

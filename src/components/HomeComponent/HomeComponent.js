@@ -119,6 +119,18 @@ const HomeComponent = () => {
 		})
 	}
 
+	const navigateToContactUs = () => {
+		history.push({
+			pathname: '/contact-us'
+		})
+	}
+
+	const navigateToAboutUs = () => {
+		history.push({
+			pathname: '/about-us'
+		})
+	}
+
 	React.useEffect(() => {
 		window.scrollTo(0, 0)
 	}, [location])
@@ -136,7 +148,7 @@ const HomeComponent = () => {
 					<div className={classes.whyRentHeading}>
 						WHY RENT WITH WOLPA?
 					</div>
-					<div className={classes.whyRentDesc} style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', borderRadius: 15}}>
+					<div className={classes.whyRentDesc} style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', borderRadius: 15 }}>
 						<div style={{ width: '50%', backgroundColor: '#212121', marginRight: '10px', borderRadius: 15, color: '#d5d5d5' }}>
 							No Brokerage!
 							<div>
@@ -163,12 +175,13 @@ const HomeComponent = () => {
             			</Button>
 						<Button variant="contained"
 							className={classes.seeMoreButton}
+							onClick={navigateToContactUs}
 						>
 							CONTACT US
             			</Button>
 					</div>
 					<HowItWorks navigateToHowItWorks={navigateToHowItWorks} />
-					<AboutUs />
+					<AboutUs navigateToAboutUs={navigateToAboutUs}/>
 				</div>
 			}
 			{isMobile &&
@@ -192,12 +205,13 @@ const HomeComponent = () => {
             			</Button>
 						<Button variant="contained"
 							className={classes.seeMoreButton}
+							onClick={navigateToContactUs}
 						>
 							CONTACT US
             			</Button>
 					</div>
 					<HowItWorks navigateToHowItWorks={navigateToHowItWorks} />
-					<AboutUs />
+					<AboutUs navigateToAboutUs={navigateToAboutUs}/>
 				</div>
 
 			}

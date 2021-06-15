@@ -115,7 +115,7 @@ function getStepContent(step, classes) {
         case 3:
             return (
                 <div className={classes.contentStyle}>
-                    We shall assist you with the rental agreement and documentation and further steps tille move -in.
+                    We shall assist you with the rental agreement and documentation and further steps till move-in.
                     Pay the deposit and move in.
                     <Card variant="outlined" style={{ borderRadius: '15px' }} className={classes.cardStyle}>
                         <CardContent>

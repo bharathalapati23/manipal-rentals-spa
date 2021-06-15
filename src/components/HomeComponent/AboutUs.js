@@ -21,25 +21,46 @@ const useStyles = makeStyles((theme) => ({
         paddingLeft: '8px'
     },
     listButton: {
-		borderRadius: 10,
-		marginBottom: '4px',
-		backgroundColor: 'transparent',
-		color: '#d5d5d5',
-		fontSize: '20px',
-		fontFamily: 'Poppins',
-		borderColor: '#e5e5e5',
-		border: 'solid',
-		borderWidth: 'thin',
+        borderRadius: 10,
+        marginBottom: '4px',
+        backgroundColor: 'transparent',
+        color: '#d5d5d5',
+        fontSize: '20px',
+        fontFamily: 'Poppins',
+        borderColor: '#e5e5e5',
+        border: 'solid',
+        borderWidth: 'thin',
         left: '50%',
         transform: 'translate(-50%, 0)',
         borderColor: '#f36802',
         "&:hover": {
             background: '#f36802',
         }
-	}
+    },
+    learnButton: {
+        marginTop: '10px',
+        borderRadius: 10,
+        marginBottom: '4px',
+        backgroundColor: 'transparent',
+        color: '#d5d5d5',
+        fontSize: '20px',
+        fontFamily: 'Poppins',
+        borderColor: '#e5e5e5',
+        border: 'solid',
+        borderWidth: 'thin',
+        left: '50%',
+        transform: 'translate(-50%, 0)',
+        borderColor: '#f36802',
+        [theme.breakpoints.down('xs')]: {
+            width: '100%',
+        },
+        "&:hover": {
+            background: '#f36802',
+        }
+    }
 }));
 
-const AboutUs = () => {
+const AboutUs = ({ navigateToAboutUs }) => {
     const classes = useStyles()
 
     return (
@@ -54,6 +75,13 @@ const AboutUs = () => {
                 pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
                 laborum.
             </div>
+            <Button variant="contained"
+                className={classes.learnButton}
+                onClick={navigateToAboutUs}
+                color='#f36802'
+            >
+                LEARN ABOUT US
+            </Button>
             <div className={classes.heading}>
                 DO YOU OWN A PROPERTY?
             </div>

@@ -39,7 +39,8 @@ const useStyles = makeStyles((theme) => ({
         left: '0 !important'
     },
     menuItemRoot: {
-        justifyContent: "center"
+        justifyContent: "center",
+        fontFamily: 'poppins'
     }
 }));
 
@@ -154,15 +155,17 @@ function NavBar({ homePage }) {
                                     style: {
                                         width: "100%",
                                         maxWidth: "100%",
-                                        borderRadius: 0
+                                        borderRadius: 0,
+                                        backgroundColor: 'grey'
                                     }
                                 }}
                                 PopoverClasses={{ paper: classes.popoverPaper }}
                             >
+                                <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToHome}>Home</MenuItem>
                                 <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToProperties}>Properties</MenuItem>
                                 <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToHowItWorks}>How it Works</MenuItem>
                                 <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToAssistedBooking}>Assisted Booking</MenuItem>
-                                <MenuItem onClick={handleClose} classes={{ root: classes.menuItemRoot }}>About Us</MenuItem>
+                                <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToAboutUs}>About Us</MenuItem>
                                 <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToContactUs}>Contact Us</MenuItem>
                             </Menu>
                         </IconButton>

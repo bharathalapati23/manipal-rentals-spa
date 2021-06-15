@@ -22,7 +22,7 @@ const bedroomDetails = {
 
 const initialState = {
     bedroom: [],
-    priceRange: [],
+    priceRange: [0, 60000],
     homeFeatures: homeFeatures,
     zone:[],
     accomodationType: [],

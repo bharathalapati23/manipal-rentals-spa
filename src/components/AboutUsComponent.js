@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         marginTop: '80px',
         [theme.breakpoints.down('sm')]: {
-            marginTop: '50px',
+            marginTop: '60px',
         },
         width: '100%',
         maxWidth: '1000px',
@@ -16,8 +16,8 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('md')]: {
             width: '100%',
         },
-        paddingLeft: '8px',
-        paddingRight: '8px',
+        paddingLeft: '16px',
+        paddingRight: '16px',
         boxSizing: 'border-box',
     },
     heading: {
@@ -43,6 +43,10 @@ const useStyles = makeStyles((theme) => ({
 
 const AboutUsComponent = () => {
     const classes = useStyles()
+
+    React.useEffect(() => {
+		window.scrollTo(0, 0)
+	}, [])
 
     return (
         <div className={classes.root}>
