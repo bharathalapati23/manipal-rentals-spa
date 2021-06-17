@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#2e2e2e',
         marginRight: '20px',
         borderRadius: '10px',
-        padding: '10px',
+        padding: '20px',
         [theme.breakpoints.up('lg')]: {
             maxWidth: '67%'
         },

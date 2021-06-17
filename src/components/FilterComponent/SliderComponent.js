@@ -107,7 +107,7 @@ export default function SliderComponent() {
                 if (index !== Object.keys(parsedLocation).length - 1)
                     newLocationString += '&'
             }
-            
+
         })
         history.push({
             pathname: '/properties',
@@ -144,6 +144,12 @@ export default function SliderComponent() {
                         min={0}
                         max={60000}
                         onChangeCommitted={dispatchPriceRangeFilter}
+                        valueLabelFormat={value =>
+                            <div style={{ fontFamily: 'poppins' }}>
+                                <span style={{ fontFamily: 'none'}}>₹</span>
+                                {value}
+                            </div>
+                        }
                     />
                     {/* <Typography id="range-slider" gutterBottom>
                         Rs.{value[0]} - Rs.{value[1]}

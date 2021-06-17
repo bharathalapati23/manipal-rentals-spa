@@ -76,7 +76,7 @@ export default function CardComponent({ cardObj }) {
 	}
 	return (
 		<Grid item >
-			<Card className={isMobile ? classes.mobileCard : classes.card} variant="outlined" style={{ borderRadius: '15px', marginBottom:'8px', paddingBottom:'0px' }} onClick={(e) => navigateToProperty(e)}>
+			<Card className={isMobile ? classes.mobileCard : classes.card} variant="outlined" style={{ borderRadius: '15px', marginBottom: '8px', paddingBottom: '0px' }} onClick={(e) => navigateToProperty(e)}>
 				<CardContent>
 					<div className={isMobile ? classes.mobileCardContainer : classes.cardContainer}>
 						{isMobile &&
@@ -87,7 +87,7 @@ export default function CardComponent({ cardObj }) {
 								flexDirection: 'row',
 								justifyContent: 'space-between',
 								alignItems: 'center',
-								paddingBottom:'5px',
+								paddingBottom: '5px',
 
 							}}>
 								<div>
@@ -111,13 +111,16 @@ export default function CardComponent({ cardObj }) {
 								flexDirection: 'row',
 								justifyContent: 'space-between',
 								alignItems: 'center',
-								paddingTop:'5px',
+								paddingTop: '5px',
 							}}>
 								<div color="textSecondary" style={{
 									display: 'flex',
 									flexDirection: 'row',
 								}}>
-									<div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '20px', paddingRight: '3px', color: '#f36802' }}>Rs. {cardObj.rent}</div>
+									<div style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '20px', paddingRight: '3px', color: '#f36802' }}>
+										<span style={{ fontFamily: 'Bebas Neue', fontSize: '22px', marginRight: '2px', fontWeight: 'normal' }}>₹</span>
+										{cardObj.rent}
+									</div>
 									<div style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '8px', color: '#e5e5e5', alignSelf: 'flex-start' }}>per month</div>
 								</div>
 							</div>}
@@ -135,10 +138,12 @@ export default function CardComponent({ cardObj }) {
 									<div className={classes.title} color="textSecondary" style={{ fontFamily: 'Poppins', verticalAlign: 'middle', color: '#e5e5e5' }}>
 										<SingleBedIcon style={{ verticalAlign: 'middle', color: '#e5e5e5' }} />
 										{cardObj.bedroom}BHK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<GroupIcon style={{  verticalAlign: 'middle', color: '#e5e5e5' }} /> 3 capacity
+										<GroupIcon style={{ verticalAlign: 'middle', color: '#e5e5e5' }} /> 3 capacity
 									</div>
-									<div color="textSecondary" style={{ fontFamily: 'Poppins', verticalAlign: 'middle', color: '#f36802', marginTop:'3px' }}>
-										Rs. {cardObj.rent}/month
+									<div color="textSecondary" style={{ fontFamily: 'Poppins', verticalAlign: 'middle', color: '#f36802', marginTop: '3px', fontSize: '24px', fontWeight: 'bold' }}>
+										<span style={{ fontFamily: 'Bebas Neue', fontSize: '26px', marginRight: '2px', fontWeight: 'lighter' }}>₹</span>
+										{cardObj.rent}
+										<span style={{ fontSize: '14px', color: '#d0d0d0', fontWeight: 'lighter'}}> per month</span>
         							</div>
 								</div>
 

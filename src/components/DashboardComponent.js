@@ -105,28 +105,15 @@ export default function DashboardComponent() {
 	const parsedQuery = queryString.parse(location.search);
 
 	useEffect(() => {
-		if (!Object.keys(parsedQuery).length) dispatch(clearFilters())
-
-		// else if (Object.keys(parsedQuery).includes('page')) {
-		// 	setPage(Number(parsedQuery.page))
-		// 	window.scrollTo(0, 0)
-		// }
-
+		if (!Object.keys(parsedQuery).length) {
+			dispatch(clearFilters())
+		}
 		else {
-			// if (Object.keys(parsedQuery).includes('zone')) {
-			// 	dispatch(setZoneFilter(parsedQuery.zone.split(',')))
-			// }
 			dispatch(setLocationFilter(parsedQuery))
 		}
 		if (!isFilterPage)
 			window.scrollTo(0, 0)
 	}, [location])
-
-	// if (location.search) {
-	// 	if (Object.keys(parsedQuery).includes('zone') || Object.keys(parsedQuery).includes('page')) {
-	// 		window.scrollTo(0, 0)
-	// 	}
-	// }
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
@@ -169,8 +156,6 @@ export default function DashboardComponent() {
 						break
 					}
 				}
-				// if(bedroomDetailsFlag)
-				// 	break
 			}
 		})
 
@@ -182,24 +167,6 @@ export default function DashboardComponent() {
 
 	const handleChangePage = (event, newPage) => {
 		setPage(newPage)
-		// history.push({
-		// 	pathname: '/',
-		// 	search: `${location.search}&page=${newPage}`,
-		// })
-		// parsedQuery.page = newPage
-		// let newLocationString = ''
-		// Object.keys(parsedQuery).map((filter) => {
-		//     if(parsedQuery[filter].length) {
-		//         newLocationString += filter + '='
-		//         newLocationString += parsedQuery[filter]
-		//         newLocationString += '&'
-		//     }
-		// })
-
-		// history.push({
-		//     pathname: '/',
-		//     search: `?${newLocationString}`,
-		// })
 	};
 
 	//Pagination
@@ -310,13 +277,6 @@ export default function DashboardComponent() {
 					</>
 				}
 			</div>
-			{/* <Pagination
-				total={85}
-				showTotal={(total, range) => `${range[0]}-${range[1]} of ${total} items`}
-				defaultPageSize={20}
-				defaultCurrent={1}
-			/> */}
-
 			{isMobile && <BottomNavigationComponent setFilterPage={setFilterPage} />}
 		</>
 	);

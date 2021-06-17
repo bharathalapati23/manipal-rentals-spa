@@ -156,7 +156,7 @@ function NavBar({ homePage }) {
                                         width: "100%",
                                         maxWidth: "100%",
                                         borderRadius: 0,
-                                        backgroundColor: 'grey'
+                                        backgroundColor: 'rgb(247,242,240,1)'
                                     }
                                 }}
                                 PopoverClasses={{ paper: classes.popoverPaper }}

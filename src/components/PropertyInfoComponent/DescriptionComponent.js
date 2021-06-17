@@ -71,11 +71,13 @@ const DescriptionComponent = ({ listingInfo }) => {
                     </div>
                     <div className={classes.seeMoreProperties} style={{ textAlign: 'right'}}>
                         <div>
-                            <span style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '24px', paddingRight: '3px', color: '#f36802' }}>Rs. {listingInfo.rent}</span>
+                            <span style={{ fontFamily: 'Bebas Neue', fontSize: '26px', marginRight: '2px', fontWeight: 'normal', color: '#f36802' }}>₹</span>
+                            <span style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '24px', paddingRight: '3px', color: '#f36802' }}>{listingInfo.rent}</span>
                             <span style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '12px', color: '#e5e5e5' }}>per month</span>
                         </div>
-                        <div>
-                            <span style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '19px', paddingRight: '3px', color: '#e5e5e5' }}>Rs. 100000</span>
+                        <div style={{ marginTop: '5px'}}>
+                            <span style={{ fontFamily: 'Bebas Neue', fontSize: '21px', marginRight: '2px', fontWeight: 'normal', color: '#e5e5e5', marginTop: '20px' }}>₹</span>
+                            <span style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '19px', paddingRight: '3px', color: '#e5e5e5' }}>100000</span>
                             <span style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '7px', color: '#e5e5e5' }}>deposit</span>
                         </div>
                     </div>
