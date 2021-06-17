@@ -2,6 +2,7 @@ import * as api from '../api'
 
 export const getPosts = (sortOrder) => async (dispatch) => {
     try {
+        dispatch({ type: 'SET_LOADING_TRUE' })
         const { data } = await api.fetchPosts(sortOrder);
         dispatch({ type: 'FETCH_ALL', payload: data })
         dispatch({ type: 'SET_LOADING_FALSE'})

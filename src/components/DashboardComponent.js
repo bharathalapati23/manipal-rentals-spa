@@ -55,7 +55,9 @@ const useStyles = makeStyles((theme) => ({
 		marginTop: '20px'
 	},
 	formControl: {
-		margin: theme.spacing(3),
+		"& .Mui-focused .MuiOutlinedInput-notchedOutline": {
+			border: "1px solid black",
+		},
 	},
 	sortSelect: {
 		width: '200px',
@@ -230,7 +232,9 @@ export default function DashboardComponent() {
 										</div>
 									</div>
 									<div style={{ alignSelf: 'center' }}>
-										<FormControl variant="outlined" size="small">
+										<FormControl variant="outlined" size="small" classes={{
+											root: classes.formControl
+										}}>
 											<Select
 												native
 												defaultValue={0}
@@ -247,9 +251,9 @@ export default function DashboardComponent() {
 												}}
 											>
 												Sort By:
-												<option value={0}>Recently Added</option>
-												<option value={1}>Price:High to Low</option>
-												<option value={2}>Price:Low to High</option>
+												<option style={{ backgroundColor: '#212121'}} value={0}>Recently Added</option>
+												<option style={{ backgroundColor: '#212121'}} value={1}>Price:High to Low</option>
+												<option style={{ backgroundColor: '#212121'}} value={2}>Price:Low to High</option>
 											</Select>
 										</FormControl>
 									</div>
