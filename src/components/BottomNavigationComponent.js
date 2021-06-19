@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import FilterAltIcon from '@material-ui/icons/FilterAlt';
 import ListIcon from '@material-ui/icons/List';
 import Badge from '@material-ui/core/Badge';
-
+import FilterAltOutlinedIcon from '@material-ui/icons/FilterAltOutlined';
 import { useSelector } from 'react-redux';
 
 
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
         width: '100%',
         display: 'flex',
         flexDirection: 'row',
-        backgroundColor: 'grey',
+        backgroundColor: '#2e2e2e',
         height: '40px',
         alignItems: 'center',
         zIndex: '10000'
@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 
 
 
-const BottomNavigationComponent = ({ setFilterPage }) => {
+const BottomNavigationComponent = ({ setFilterPage, isFilterPage }) => {
     const classes = useStyles();
     const filter = useSelector((state) => state.filters)
 
@@ -44,8 +44,8 @@ const BottomNavigationComponent = ({ setFilterPage }) => {
         if (filter.bedroomDetails[bedroomDetail])
             numFilters++
     })
-    if(filter.priceRange) {
-        if(filter.priceRange[0]!=0 || filter.priceRange[1]!=60000)
+    if (filter.priceRange) {
+        if (filter.priceRange[0] != 0 || filter.priceRange[1] != 60000)
             numFilters++
     }
 
@@ -55,10 +55,13 @@ const BottomNavigationComponent = ({ setFilterPage }) => {
                 window.scrollTo(0, 0)
                 setFilterPage(true)
             }}
-                style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'center', width: '50%' }}>
+                style={{
+                    display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'center', width: '50%',
+                    color: isFilterPage ? '#d0d0d0' : 'grey' 
+                }}>
                 <div style={{ width: '100%' }} >
                     <Badge badgeContent={numFilters} classes={{ badge: classes.badge }}>
-                        <FilterAltIcon style={{ left: '50%' }} />
+                        {isFilterPage ? <FilterAltIcon style={{ left: '50%' }} /> : <FilterAltOutlinedIcon />}
                     </Badge>
                 </div>
                 <div style={{ fontFamily: 'Poppins', fontSize: '13px', lineHeight: '13px', marginBottom: '3px' }}>
@@ -69,7 +72,7 @@ const BottomNavigationComponent = ({ setFilterPage }) => {
                 window.scrollTo(0, 0)
                 setFilterPage(false)
             }}
-                style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'center', width: '50%' }}>
+                style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'center', width: '50%', color: isFilterPage ? 'grey' : '#d0d0d0' }}>
                 <ListIcon style={{ left: '50%', width: '100%' }} />
                 <div style={{ fontFamily: 'Poppins', fontSize: '13px', lineHeight: '13px', marginBottom: '3px' }}>
                     Listings

@@ -281,7 +281,7 @@ export default function DashboardComponent() {
 					</>
 				}
 			</div>
-			{isMobile && <BottomNavigationComponent setFilterPage={setFilterPage} />}
+			{isMobile && <BottomNavigationComponent setFilterPage={setFilterPage} isFilterPage={isFilterPage}/>}
 		</>
 	);
 }
