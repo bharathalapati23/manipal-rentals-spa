@@ -48,6 +48,9 @@ const useStyles = makeStyles((theme) => ({
         // margin: theme.spacing(3),
         margin: '0 auto'
     },
+    label: {
+        fontFamily: 'poppins'
+    },
     accordionStyle: {
         boxShadow: "none",
         backgroundColor: 'transparent',
@@ -138,6 +141,9 @@ const BedroomDetailsFilter = () => {
                                             checked={bedroomDetails[key]}
                                         />
                                     }
+                                    classes={{
+                                        label: classes.label,
+                                    }}
                                     label={displayNameBedroomDetails[key]}
                                     onChange={(event) => handleFilterChange(event, key)}
                                     key={`${index}bedroomdetailsfilter`}

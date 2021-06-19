@@ -21,6 +21,7 @@ const useStyles = makeStyles({
     },
     badge: {
         backgroundColor: "#f36802",
+        color: 'white'
     }
 });
 

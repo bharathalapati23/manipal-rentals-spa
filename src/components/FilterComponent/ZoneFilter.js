@@ -63,6 +63,9 @@ const useStyles = makeStyles((theme) => ({
         // margin: theme.spacing(3),
         margin: '0 auto'
     },
+    label: {
+        fontFamily: 'poppins'
+    },
     accordionStyle: {
         boxShadow: "none",
         backgroundColor: 'transparent',
@@ -111,15 +114,15 @@ const ZoneFilter = () => {
         parsedLocation.zone = changedZones
         let newLocationString = ''
         Object.keys(parsedLocation).map((filter, index) => {
-            if(filter === 'page') return
-            if(parsedLocation[filter].length) {
+            if (filter === 'page') return
+            if (parsedLocation[filter].length) {
                 newLocationString += filter + '='
                 newLocationString += parsedLocation[filter]
-                if(index !== Object.keys(parsedLocation).length-1)
-                newLocationString += '&'
+                if (index !== Object.keys(parsedLocation).length - 1)
+                    newLocationString += '&'
             }
         })
-        
+
         history.push({
             pathname: '/properties',
             search: `?${newLocationString}`,
@@ -152,6 +155,9 @@ const ZoneFilter = () => {
                                         <Checkbox name={zone.name}
                                             style={{ color: '#e0e0e0' }}
                                         />}
+                                    classes={{
+                                        label: classes.label,
+                                    }}
                                     onChange={handleZoneChange}
                                     label={zone.label}
                                     checked={zone.checked}

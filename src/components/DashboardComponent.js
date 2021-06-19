@@ -216,7 +216,7 @@ export default function DashboardComponent() {
 						<FilterCardComponent />
 					</div>
 				}
-				{isFilterPage && isMobile && <MobileFilterComponent />}
+				{isFilterPage && isMobile && <MobileFilterComponent setFilterPage={setFilterPage}/>}
 
 				{!isFilterPage &&
 					<>

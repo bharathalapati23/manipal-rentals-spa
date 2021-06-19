@@ -30,10 +30,11 @@ const bedroomObj = {
 
 const initialConfig = {
     refId: 0,
-    title:'',
+    title: '',
     bedroom: 0,
     rent: 0,
     bathroom: 0,
+    deposit: 0,
     desc: '',
     zone: 'Syndicate Circle',
     apOrBung: 'Apartment',
@@ -184,6 +185,21 @@ const UploadComponent = () => {
                     }}
                     name='rent'
                     label='Rent'
+                />
+                <TextField
+                    type={"number"}
+                    variant="outlined"
+                    fullWidth
+                    onChange={(event) => {
+                        if (event.target.value < 1) {
+                            event.target.value = 0
+                        }
+                        else {
+                            setPostData({ ...postData, deposit: event.target.value })
+                        }
+                    }}
+                    name='deposit'
+                    label='Deposit'
                 />
                 <TextField
                     type={"number"}

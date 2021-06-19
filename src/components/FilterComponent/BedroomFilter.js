@@ -38,7 +38,10 @@ const initialBedroomState = [
 const useStyles = makeStyles((theme) => ({
     formControl: {
         // margin: theme.spacing(3),
-        margin: '0 auto'
+        margin: '0 auto',
+    },
+    label: {
+        fontFamily: 'poppins'
     },
     heading: {
         fontFamily: 'Poppins',
@@ -92,15 +95,15 @@ const BedroomFilter = () => {
         parsedLocation.bedroom = changedBedrooms
         let newLocationString = ''
         Object.keys(parsedLocation).map((filter, index) => {
-            if(filter === 'page') return
-            if(parsedLocation[filter].length) {
+            if (filter === 'page') return
+            if (parsedLocation[filter].length) {
                 newLocationString += filter + '='
                 newLocationString += parsedLocation[filter]
-                if(index !== Object.keys(parsedLocation).length-1)
-                newLocationString += '&'
+                if (index !== Object.keys(parsedLocation).length - 1)
+                    newLocationString += '&'
             }
         })
-        
+
         history.push({
             pathname: '/properties',
             search: `?${newLocationString}`,
@@ -129,8 +132,11 @@ const BedroomFilter = () => {
                             return <FormControlLabel
                                 control={
                                     <Checkbox name={bedroom.name}
-                                        style={{ color: '#e0e0e0' }}
+                                        style={{ color: '#e0e0e0', fontFamily: 'poppins' }}
                                     />}
+                                classes={{
+                                    label: classes.label,
+                                }}
                                 label={bedroom.label}
                                 onChange={handleBedroomChange}
                                 checked={bedroom.checked}
