@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
         boxSizing: 'border-box',
     },
     heading: {
-        fontFamily: 'Bebas Neue',
+        fontFamily: 'Poppins',
         fontSize: '45px',
         color: '#e0e0e0',
         [theme.breakpoints.down('sm')]: {
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center'
     },
     subHeading: {
-        fontFamily: 'Bebas Neue',
+        fontFamily: 'Poppins',
         fontSize: '35px',
         color: '#e0e0e0',
         [theme.breakpoints.down('sm')]: {
@@ -51,7 +51,7 @@ const AboutUsComponent = () => {
     return (
         <div className={classes.root}>
             <div className={classes.heading}>
-                ABOUT US
+                About Us
             </div>
             <div className={classes.subHeading}>
                 We Understand Broker Problems

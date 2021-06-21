@@ -46,9 +46,10 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: 10
     },
     filterHeading: {
-        fontFamily: 'Bebas Neue',
+        fontFamily: 'Poppins',
         color: '#E5E5E5',
-        fontSize: '30px'
+        fontSize: '30px',
+        marginBottom: '15px'
     },
     input: {
         color: "#e0e0e0"
@@ -161,7 +162,7 @@ const EnquiryComponent = () => {
                     <>
                         <div className={classes.desktopEnquiryForm}>
                             <Typography variant="h5" component="h2" className={classes.filterHeading}>
-                                FILL IN THE FORM BELOW
+                                Fill in the form below
         		            </Typography>
                             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginBottom: '40px' }}>
                                 <div style={{ width: '49%' }}>
@@ -247,7 +248,7 @@ const EnquiryComponent = () => {
                 {isMobile &&
                     <div className={classes.desktopEnquiryForm}>
                         <Typography variant="h5" component="h2" className={classes.filterHeading}>
-                            FILL IN THE FORM BELOW
+                        Fill in the form below
                         </Typography>
                         <div>
                             <div className={classes.heading}>Name</div>

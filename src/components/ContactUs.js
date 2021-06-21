@@ -96,16 +96,17 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
     },
     propertyName: {
-        fontFamily: 'Bebas Neue',
+        fontFamily: 'Poppins',
         fontSize: '45px',
         color: '#e0e0e0',
         [theme.breakpoints.down('sm')]: {
             fontSize: '40px',
         },
-        textAlign: 'center'
+        textAlign: 'center',
+        marginBottom: '15px'
     },
     wolpaHeading: {
-        fontFamily: 'Bebas Neue',
+        fontFamily: 'Poppins',
         fontSize: '30px',
         color: '#e0e0e0',
         [theme.breakpoints.down('sm')]: {
@@ -161,7 +162,7 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: '5px'
     },
     filterHeading: {
-        fontFamily: 'Bebas Neue',
+        fontFamily: 'Poppins',
         color: '#E5E5E5',
         fontSize: '30px'
     },
@@ -220,7 +221,7 @@ const ContactUs = () => {
         <>
             <div className={classes.root}>
                 <div className={classes.propertyName}>
-                    CONTACT US
+                    Contact Us
                 </div>
                 <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row' }}>
                     <div className={classes.formComponent}>

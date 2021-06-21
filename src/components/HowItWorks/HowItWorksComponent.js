@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
         boxSizing: 'border-box',
     },
     propertyName: {
-        fontFamily: 'Bebas Neue',
+        fontFamily: 'Poppins',
         fontSize: '45px',
         color: '#e0e0e0',
         [theme.breakpoints.down('sm')]: {
@@ -37,11 +37,11 @@ const HowItWorksComponent = () => {
     return (
         <div className={classes.root}>
             <div className={classes.propertyName}>
-                WHY RENT WITH WOLPA?
+                Why Rent with Wolpa?
             </div>
             <WhyUsCardsComponent />
             <div className={classes.propertyName} style={{ marginTop: '20px', textAlign:'center' }}>
-                HOW IT WORKS
+                How it works
             </div>
             <VerticalStepperComponent />
         </div>

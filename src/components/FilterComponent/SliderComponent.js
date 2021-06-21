@@ -145,7 +145,7 @@ export default function SliderComponent() {
                         max={60000}
                         onChangeCommitted={dispatchPriceRangeFilter}
                         valueLabelFormat={value =>
-                            <div style={{ fontFamily: 'poppins' }}>
+                            <div style={{ fontFamily: 'Bebas Neue' }}>
                                 <span style={{ fontFamily: 'none'}}>₹</span>
                                 {value}
                             </div>

@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
         boxSizing: 'border-box'
     },
     propertyName: {
-        fontFamily: 'Bebas Neue',
+        fontFamily: 'Poppins',
         fontSize: '25px',
         color: '#e0e0e0',
         [theme.breakpoints.down('sm')]: {

@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
     heading: {
         marginTop: '30px',
-        fontFamily: 'Bebas Neue',
+        fontFamily: 'Poppins',
         fontSize: '45px',
         color: '#e0e0e0',
         [theme.breakpoints.down('sm')]: {
@@ -83,7 +83,7 @@ const AboutUs = ({ navigateToAboutUs }) => {
                 LEARN ABOUT US
             </Button>
             <div className={classes.heading}>
-                DO YOU OWN A PROPERTY?
+                Do you own a property?
             </div>
             <Button variant="contained"
                 className={classes.listButton}

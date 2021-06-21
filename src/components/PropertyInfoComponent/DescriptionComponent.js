@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'bold'
     },
     descTitle: {
-        fontFamily: 'Bebas Neue',
+        fontFamily: 'Poppins',
         fontSize: '20px',
         color: '#e5e5e5'
     },
@@ -63,19 +63,19 @@ const DescriptionComponent = ({ listingInfo }) => {
                 <div className={classes.root}>
                     <div className={classes.descContainer}>
                         <div className={classes.descTitle}>
-                            DESCRIPTION
+                            Description
         	            </div>
                         <div className={classes.description}>
                             {listingInfo.desc}
                         </div>
                     </div>
-                    <div className={classes.seeMoreProperties} style={{ textAlign: 'right'}}>
+                    <div className={classes.seeMoreProperties} style={{ textAlign: 'right' }}>
                         <div>
                             <span style={{ fontFamily: 'Bebas Neue', fontSize: '26px', marginRight: '2px', fontWeight: 'normal', color: '#f36802' }}>₹</span>
                             <span style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '24px', paddingRight: '3px', color: '#f36802' }}>{listingInfo.rent}</span>
                             <span style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '12px', color: '#e5e5e5' }}>per month</span>
                         </div>
-                        <div style={{ marginTop: '5px'}}>
+                        <div style={{ marginTop: '5px' }}>
                             <span style={{ fontFamily: 'Bebas Neue', fontSize: '21px', marginRight: '2px', fontWeight: 'normal', color: '#e5e5e5', marginTop: '20px' }}>₹</span>
                             <span style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '19px', paddingRight: '3px', color: '#e5e5e5' }}>100000</span>
                             <span style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '7px', color: '#e5e5e5' }}>deposit</span>
@@ -86,8 +86,8 @@ const DescriptionComponent = ({ listingInfo }) => {
             {
                 isMobile &&
                 <>
-                    <Typography variant="h5" component="h2" className={classes.descTitle} style={{ fontFamily: 'Bebas Neue' }}>
-                        DESCRIPTION
+                    <Typography variant="h5" component="h2" className={classes.descTitle} style={{ fontFamily: 'Poppins' }}>
+                        Description
         	        </Typography>
                     <div className={classes.description}>
                         {listingInfo.desc}

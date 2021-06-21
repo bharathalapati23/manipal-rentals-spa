@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     },
     whyRentHeading: {
         marginTop: '20px',
-        fontFamily: 'Bebas Neue',
+        fontFamily: 'Poppins',
         fontSize: '45px',
         color: '#e0e0e0',
         [theme.breakpoints.down('sm')]: {
@@ -108,7 +108,7 @@ const HowItWorks = (props) => {
 
 
             <div className={classes.whyRentHeading}>
-                HOW IT WORKS
+                How it works
 				</div>
             <div className={classes.root}>
                 {cardsConfigArr.map((cardConfig) => {

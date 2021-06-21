@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 const useStyles = makeStyles((theme) => ({
 	whyRentHeading: {
 		marginTop: '30px',
-		fontFamily: 'Bebas Neue',
+		fontFamily: 'Poppins',
 		fontSize: '45px',
 		color: '#e0e0e0',
 		[theme.breakpoints.down('sm')]: {
@@ -31,7 +31,7 @@ const PropertiesDescription = () => {
     return (
         <>
             <div className={classes.whyRentHeading}>
-                PROPERTIES BY WOLPA
+                Properties by Wolpa
 					</div>
             <div className={classes.cardContent} style={{ marginBottom: '10px', backgroundColor: '#212121', }}>
                 Identify your best fit. Our properties are carefull chosen to meet the requirements of the university or college students

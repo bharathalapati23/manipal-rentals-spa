@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '10px'
     },
     amenitiesTitle: {
-        fontFamily: 'Bebas Neue',
+        fontFamily: 'Poppins',
         fontSize: '28px',
         color: '#e5e5e5'
     },
@@ -56,7 +56,7 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
         <>
             { !isMobile && <div className={classes.root}>
                 <Typography variant="h5" component="h2" className={classes.amenitiesTitle}>
-                    AMENITIES
+                    Amenities
         	    </Typography>
                 <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none' }}>
                     <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" variant="scrollable"
@@ -81,7 +81,7 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
             {isMobile &&
                 <div>
                     <Typography variant="h5" component="h2" className={classes.amenitiesTitle}>
-                        AMENITIES
+                    Amenities
         	        </Typography>
 
                 </div>

@@ -8,6 +8,7 @@ import AboutUs from './AboutUs'
 import SearchComponent from './SearchComponent'
 import PropertiesDescription from './PropertiesDescription'
 import { useHistory, useLocation } from 'react-router-dom'
+import bgImg from '../../assets/home-background.jpg'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 		},
 
 		boxSizing: 'border-box',
-		backgroundImage: 'url(https://www.manipalthetalk.org/wp-content/uploads/2017/08/image2.jpg)',
+		backgroundImage: `url(${bgImg})`,
 		backgroundSize: 'cover',
 		backgroundPosition: 'center center'
 	},
@@ -29,14 +30,13 @@ const useStyles = makeStyles((theme) => ({
 	},
 	whyRentHeading: {
 		marginTop: '10px',
-		fontFamily: 'Bebas Neue',
+		fontFamily: 'Poppins',
 		fontSize: '45px',
 		color: '#e0e0e0',
 		[theme.breakpoints.down('sm')]: {
 			fontSize: '40px',
 		},
 		textAlign: 'center'
-		// letterSpacing: '0.5px'
 	},
 	whyRentDesc: {
 		marginTop: '10px',
@@ -47,7 +47,6 @@ const useStyles = makeStyles((theme) => ({
 			fontSize: '20px',
 		},
 		textAlign: 'center'
-		// letterSpacing: '0.5px'
 	},
 	contentArea: {
 		width: '100%',
@@ -70,7 +69,6 @@ const useStyles = makeStyles((theme) => ({
 		marginBottom: '4px',
 		backgroundColor: '#f36802',
 		color: '#d5d5d5',
-		// fontWeight: 'bold',
 		fontSize: '20px',
 		fontFamily: 'Poppins',
 		marginBottom: '10px',
@@ -137,6 +135,7 @@ const HomeComponent = () => {
 
 	return (
 		<>
+		
 			<div className={classes.root}>
 				<NavBar homePage={true} />
 
@@ -146,7 +145,7 @@ const HomeComponent = () => {
 			{!isMobile &&
 				<div className={classes.contentArea}>
 					<div className={classes.whyRentHeading}>
-						WHY RENT WITH WOLPA?
+						Why rent with Wolpa?
 					</div>
 					<div className={classes.whyRentDesc} style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', borderRadius: 15 }}>
 						<div style={{ width: '50%', backgroundColor: '#212121', marginRight: '10px', borderRadius: 15, color: '#d5d5d5' }}>
@@ -187,7 +186,7 @@ const HomeComponent = () => {
 			{isMobile &&
 				<div className={classes.contentArea}>
 					<div className={classes.whyRentHeading}>
-						WHY RENT WITH WOLPA?
+						Why rent with Wolpa?
 					</div>
 					<div className={classes.whyRentDesc} style={{ width: '100%', backgroundColor: '#212121', borderRadius: 15 }}>
 						No Brokerage!
