@@ -6,10 +6,10 @@ const useStyles = makeStyles((theme) => ({
 	whyRentHeading: {
 		marginTop: '30px',
 		fontFamily: 'Poppins',
-		fontSize: '40px',
+		fontSize: '35px',
 		color: '#e0e0e0',
 		[theme.breakpoints.down('sm')]: {
-            fontSize: '30px',
+            fontSize: '27px',
         },
 		textAlign: 'center'
 	},

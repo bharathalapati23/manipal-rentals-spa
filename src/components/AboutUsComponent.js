@@ -34,11 +34,21 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '35px',
         color: '#e0e0e0',
         [theme.breakpoints.down('sm')]: {
-            fontSize: '30px',
+            fontSize: '27px',
         },
         textAlign: 'center',
         marginBottom: '20px'
     },
+    contentStyle: {
+        display: 'flex',
+        flexDirection: 'column',
+        color: '#e0e0e0',
+        fontSize: '20px',
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '18px',
+        },
+        fontFamily: 'poppins'
+    }
 }));
 
 const AboutUsComponent = () => {
@@ -56,7 +66,7 @@ const AboutUsComponent = () => {
             <div className={classes.subHeading}>
                 We Understand Rental Problems
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', color: '#e0e0e0', fontSize: '20px', fontFamily: 'poppins' }}>
+            <div className={classes.contentStyle}>
                 <div style={{ marginBottom: '20px' }}>Welcome to Wolpa!</div>
                 <div style={{ marginBottom: '20px' }}>
                     Wolpa is a real estate tech-platform built for the students, by the old students from Manipal.
