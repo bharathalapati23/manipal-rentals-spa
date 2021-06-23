@@ -37,9 +37,10 @@ const useStyles = makeStyles((theme) => ({
         "&:hover": {
             background: '#f36802',
         },
+        textTransform: 'none',
         [theme.breakpoints.down('xs')]: {
-            width: '100%',
-        },
+			fontSize: '16px',
+		},
     },
     learnButton: {
         marginTop: '10px',
@@ -55,12 +56,13 @@ const useStyles = makeStyles((theme) => ({
         left: '50%',
         transform: 'translate(-50%, 0)',
         borderColor: '#f36802',
-        [theme.breakpoints.down('xs')]: {
-            width: '100%',
-        },
         "&:hover": {
             background: '#f36802',
-        }
+        },
+        textTransform: 'none',
+        [theme.breakpoints.down('xs')]: {
+			fontSize: '16px',
+		},
     }
 }));
 
@@ -83,7 +85,7 @@ const AboutUs = ({ navigateToAboutUs }) => {
                 onClick={navigateToAboutUs}
                 color='#f36802'
             >
-                LEARN ABOUT US
+                Learn about us
             </Button>
             <div className={classes.heading}>
                 Do you own a property?
@@ -91,7 +93,7 @@ const AboutUs = ({ navigateToAboutUs }) => {
             <Button variant="contained"
                 className={classes.listButton}
             >
-                LIST WITH US
+                List with us
             </Button>
         </>
     )

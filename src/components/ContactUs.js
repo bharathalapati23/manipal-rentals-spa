@@ -333,18 +333,20 @@ const ContactUs = () => {
                     <div className={classes.contactDetails}>
                         <div className={classes.wolpaHeading}>
                             WOLPA ACCO SERVICES
+                        </div>
+                        <div style={{ marginTop: '20px'}}>
+                            <div className={classes.subHeadings}>
+                                {/* <LocationOnIcon className={classes.iconStyle} /> */}
+                                <div>Manipal 576104</div>
                             </div>
-                        <div className={classes.subHeadings}>
-                            <LocationOnIcon className={classes.iconStyle} />
-                            <div>Manipal 576104</div>
-                        </div>
-                        <div className={classes.subHeadings}>
-                            <PhoneIcon className={classes.iconStyle} />
-                            <div>+919876543210</div>
-                        </div>
-                        <div className={classes.subHeadings}>
-                            <MailOutlineIcon className={classes.iconStyle} />
-                            <div>xyz@email.com</div>
+                            <div className={classes.subHeadings}>
+                                {/* <PhoneIcon className={classes.iconStyle} /> */}
+                                <div>P: +919876543210</div>
+                            </div>
+                            <div className={classes.subHeadings}>
+                                {/* <MailOutlineIcon className={classes.iconStyle} /> */}
+                                <div>E: xyz@email.com</div>
+                            </div>
                         </div>
                         <div style={{ marginTop: '40px' }}>
                             <FacebookIcon style={{ fontSize: '80px' }} />

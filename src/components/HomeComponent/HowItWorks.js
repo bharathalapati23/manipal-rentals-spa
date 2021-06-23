@@ -70,12 +70,13 @@ const useStyles = makeStyles((theme) => ({
         left: '50%',
         transform: 'translate(-50%, 0)',
         borderColor: '#f36802',
-        [theme.breakpoints.down('xs')]: {
-            width: '100%',
-        },
         "&:hover": {
             background: '#f36802',
-        }
+        },
+        textTransform: 'none',
+        [theme.breakpoints.down('xs')]: {
+			fontSize: '16px',
+		},
     }
 }));
 
@@ -130,7 +131,7 @@ const HowItWorks = (props) => {
                 onClick={navigateToHowItWorks}
                 color='#f36802'
             >
-                LEARN HOW IT WORKS
+                Learn how it works
             </Button>
         </>
     )

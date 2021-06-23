@@ -94,7 +94,11 @@ const useStyles = makeStyles((theme) => ({
 		marginRight: '10px',
 		"&:hover": {
 			background: '#f36802',
-		}
+		},
+		textTransform: 'none',
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '16px',
+		},
 	}
 }));
 
@@ -170,13 +174,13 @@ const HomeComponent = () => {
 							className={classes.seeMoreButton}
 							onClick={navigateToProperties}
 						>
-							VIEW PROPERTIES
+							View Properties
             			</Button>
 						<Button variant="contained"
 							className={classes.seeMoreButton}
 							onClick={navigateToContactUs}
 						>
-							CONTACT US
+							Contact Us
             			</Button>
 					</div>
 					<HowItWorks navigateToHowItWorks={navigateToHowItWorks} />
@@ -200,13 +204,13 @@ const HomeComponent = () => {
 							className={classes.seeMoreButton}
 							onClick={navigateToProperties}
 						>
-							VIEW PROPERTIES
+							View Properties
             			</Button>
 						<Button variant="contained"
 							className={classes.seeMoreButton}
 							onClick={navigateToContactUs}
 						>
-							CONTACT US
+							Contact Us
             			</Button>
 					</div>
 					<HowItWorks navigateToHowItWorks={navigateToHowItWorks} />
