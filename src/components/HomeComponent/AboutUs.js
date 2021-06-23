@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: 'poppins',
         color: '#d5d5d5',
         fontSize: '20px',
-        paddingLeft: '8px'
+        paddingLeft: '8px',
     },
     listButton: {
         borderRadius: 10,

@@ -8,6 +8,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useHistory, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { clearFilters } from '../actions/filters.js'
+import { useSelector } from 'react-redux'
 
 const zones = ['Syndicate Circle', 'Venugopal Temple', 'Eshwar Nagar', 'Ananth Nagar', 'End Point Road', 'Perampalli Road', 'Vidyaratna Nagar']
 
@@ -64,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
 const FooterComponent = () => {
     const classes = useStyles();
     const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
+    const showFooter = useSelector((state) => state.footer)
 
     const history = useHistory();
     const location = useLocation();
@@ -131,7 +133,7 @@ const FooterComponent = () => {
 
     return (
         <>
-            { isMobile &&
+            { isMobile && showFooter &&
                 <div className={classes.root} style={{ marginBottom: `${isPropertiesPage ? '40px' : ''}` }}>
                     <div className={classes.topPart}>
                         <div className={classes.box1}>

@@ -10,13 +10,18 @@ import ZoneFilter from './ZoneFilter.js'
 import ApartmentFilter from './ApartmentFilter.js'
 import BedroomFilter from './BedroomFilter'
 import BedroomDetailsFilter from './BedroomDetailsFilter.js'
+import { useDispatch } from 'react-redux'
+import { hideFooter, showFooter } from '../../actions/footer'
 
 const useStyles = makeStyles((theme) => ({
     filterContainer: {
         position: 'sticky',
         margin: '20px',
         fontFamily: 'Poppins',
-        width: '100%'
+        width: '100%',
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: '50px',
+        },
     },
     formControl: {
         // margin: theme.spacing(3),
@@ -37,14 +42,23 @@ const useStyles = makeStyles((theme) => ({
 
 const MobileFilterComponent = ({ setFilterPage }) => {
     const classes = useStyles();
+    const dispatch = useDispatch()
+
+    React.useEffect(() => {
+        dispatch(hideFooter())
+        return () => {
+            dispatch(showFooter())
+
+        }
+    }, [])
 
     return (
         <div className={classes.filterContainer}>
-            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Typography variant="h4" component="h2" className={classes.filterHeading}>
                     FILTERS
         	    </Typography>
-                <CloseOutlinedIcon style={{ color:'#d0d0d0', fontSize: '35px' }} onClick={() => setFilterPage(false)}/>
+                <CloseOutlinedIcon style={{ color: '#d0d0d0', fontSize: '35px' }} onClick={() => setFilterPage(false)} />
 
             </div>
             <SliderComponent />

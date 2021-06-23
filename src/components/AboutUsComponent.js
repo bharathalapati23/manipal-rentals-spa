@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '40px',
         color: '#e0e0e0',
         [theme.breakpoints.down('sm')]: {
-            fontSize: '40px',
+            fontSize: '35px',
         },
         textAlign: 'center'
     },
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '35px',
         color: '#e0e0e0',
         [theme.breakpoints.down('sm')]: {
-            fontSize: '27px',
+            fontSize: '24px',
         },
         textAlign: 'center',
         marginBottom: '20px'
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
         color: '#e0e0e0',
         fontSize: '20px',
         [theme.breakpoints.down('sm')]: {
-            fontSize: '18px',
+            fontSize: '15px',
         },
         fontFamily: 'poppins'
     }
