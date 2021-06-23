@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandIconCompnent from './ExpandIconCompnent';
 import { useHistory, useLocation } from 'react-router-dom'
 import queryString from 'query-string'
+import { useMediaQuery } from 'react-responsive';
 
 const initialApartmentState = [
     {
@@ -54,7 +55,8 @@ const useStyles = makeStyles((theme) => ({
 
 const ApartmentFilter = () => {
     const classes = useStyles();
-    const dispatch = useDispatch();
+    const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
+
     const history = useHistory();
     const location = useLocation();
 
@@ -104,7 +106,7 @@ const ApartmentFilter = () => {
 
     };
 
-    const [expanded, setExpanded] = React.useState(true);
+    const [expanded, setExpanded] = React.useState(!isMobile);
     const handleExpand = (event, isExpanded) => {
         setExpanded(isExpanded)
     }
@@ -114,7 +116,7 @@ const ApartmentFilter = () => {
     // console.log('apartmentfilters', selectedApartmentFilters)
 
     return (
-        <Accordion className={classes.accordionStyle} defaultExpanded onChange={handleExpand}>
+        <Accordion className={classes.accordionStyle} defaultExpanded={!isMobile} onChange={handleExpand}>
             <AccordionSummary
                 expandIcon={<ExpandIconCompnent expanded={expanded} value={selectedApartmentFilters} />}
                 aria-controls="panel1a-content"

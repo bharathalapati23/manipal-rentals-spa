@@ -1,6 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles((theme) => ({
     heading: {
@@ -39,8 +40,8 @@ const useStyles = makeStyles((theme) => ({
         },
         textTransform: 'none',
         [theme.breakpoints.down('xs')]: {
-			fontSize: '16px',
-		},
+            fontSize: '16px',
+        },
     },
     learnButton: {
         marginTop: '10px',
@@ -61,8 +62,8 @@ const useStyles = makeStyles((theme) => ({
         },
         textTransform: 'none',
         [theme.breakpoints.down('xs')]: {
-			fontSize: '16px',
-		},
+            fontSize: '16px',
+        },
     }
 }));
 
@@ -75,7 +76,7 @@ const AboutUs = ({ navigateToAboutUs }) => {
                 About Us
             </div>
             <div className={classes.content}>
-                Wolpa was started by students from Manipal, with the aim to make off-campus student accommodation hassle-free for students. 
+                Wolpa was started by students from Manipal, with the aim to make off-campus student accommodation hassle-free for students.
                 You can find the home of your choice to rent from with no issues, we own the property search for you.
                 We aim to find the place where you need to be, without charging that brokerage fee!
                 A range of accommodation related services coming your way, sit back and enjoy your time in Manipal!
@@ -90,11 +91,14 @@ const AboutUs = ({ navigateToAboutUs }) => {
             <div className={classes.heading}>
                 Do you own a property?
             </div>
-            <Button variant="contained"
-                className={classes.listButton}
-            >
-                List with us
-            </Button>
+                <Button variant="contained"
+                    className={classes.listButton}
+                    onClick={() => {
+                        window.open('https://docs.google.com/forms/d/1ZV5x2ATZHvMQ0cGvQSqDO4JH580G1DLzJFVNUmJEqOk/edit', "_blank")
+                    }}
+                >
+                    List with us
+                </Button>
         </>
     )
 }

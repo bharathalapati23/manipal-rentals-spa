@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
-import { setPriceRangeFilter } from '../../actions/filters'
+import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux'
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -76,7 +76,7 @@ const useStyles = makeStyles({
 export default function SliderComponent() {
     const classes = useStyles();
     const [value, setValue] = React.useState([]);
-    const dispatch = useDispatch();
+    const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 
     const history = useHistory();
     const location = useLocation();
@@ -119,15 +119,21 @@ export default function SliderComponent() {
         // dispatch(setPriceRangeFilter(value))
     }
 
-    const [expanded, setExpanded] = React.useState(true);
+    const [expanded, setExpanded] = React.useState(!isMobile);
     const handleExpand = (event, isExpanded) => {
         setExpanded(isExpanded)
     }
 
+    let priceRangeFilter
+    if (priceRangeFilters) {
+        if (priceRangeFilters[0] != 0 || priceRangeFilters[1] != 60000)
+            priceRangeFilter = 1
+    }
+
     return (
-        <Accordion defaultExpanded className={classes.accordionStyle} onChange={handleExpand}>
+        <Accordion defaultExpanded={!isMobile} className={classes.accordionStyle} onChange={handleExpand}>
             <AccordionSummary
-                expandIcon={<ExpandIconCompnent expanded={expanded} />}
+                expandIcon={<ExpandIconCompnent expanded={expanded} value={priceRangeFilter}/>}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
             >
