@@ -107,11 +107,8 @@ const useStyles = makeStyles((theme) => ({
     },
     wolpaHeading: {
         fontFamily: 'Poppins',
-        fontSize: '30px',
+        fontSize: '27px',
         color: '#e0e0e0',
-        [theme.breakpoints.down('sm')]: {
-            fontSize: '30px',
-        },
         textAlign: 'center'
     },
     subHeadings: {
@@ -226,7 +223,7 @@ const ContactUs = () => {
                 <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row' }}>
                     <div className={classes.formComponent}>
                         <div className={classes.wolpaHeading}>
-                            REQUEST FOR SUPPORT
+                            Request for support
                         </div>
                         {!isMobile &&
                             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -332,7 +329,7 @@ const ContactUs = () => {
                     </div>
                     <div className={classes.contactDetails}>
                         <div className={classes.wolpaHeading}>
-                            WOLPA ACCO SERVICES
+                            Wolpa acco services
                         </div>
                         <div style={{ marginTop: '20px'}}>
                             <div className={classes.subHeadings}>
