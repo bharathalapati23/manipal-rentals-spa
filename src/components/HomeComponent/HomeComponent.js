@@ -31,11 +31,11 @@ const useStyles = makeStyles((theme) => ({
 	whyRentHeading: {
 		marginTop: '10px',
 		fontFamily: 'Poppins',
-		fontSize: '45px',
+		fontSize: '40px',
 		color: '#e0e0e0',
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '40px',
-		},
+            fontSize: '30px',
+        },
 		textAlign: 'center'
 	},
 	whyRentDesc: {

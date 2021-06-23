@@ -6,10 +6,10 @@ const useStyles = makeStyles((theme) => ({
     heading: {
         marginTop: '30px',
         fontFamily: 'Poppins',
-        fontSize: '45px',
+        fontSize: '40px',
         color: '#e0e0e0',
         [theme.breakpoints.down('sm')]: {
-            fontSize: '40px',
+            fontSize: '30px',
         },
         textAlign: 'center'
         // letterSpacing: '0.5px'
@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: '4px',
         backgroundColor: 'transparent',
         color: '#d5d5d5',
+        marginTop: '10px',
         fontSize: '20px',
         fontFamily: 'Poppins',
         borderColor: '#e5e5e5',
@@ -35,7 +36,10 @@ const useStyles = makeStyles((theme) => ({
         borderColor: '#f36802',
         "&:hover": {
             background: '#f36802',
-        }
+        },
+        [theme.breakpoints.down('xs')]: {
+            width: '100%',
+        },
     },
     learnButton: {
         marginTop: '10px',
@@ -69,11 +73,10 @@ const AboutUs = ({ navigateToAboutUs }) => {
                 About Us
             </div>
             <div className={classes.content}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                laborum.
+                Wolpa was started by students from Manipal, with the aim to make off-campus student accommodation hassle-free for students. 
+                You can find the home of your choice to rent from with no issues, we own the property search for you.
+                We aim to find the place where you need to be, without charging that brokerage fee!
+                A range of accommodation related services coming your way, sit back and enjoy your time in Manipal!
             </div>
             <Button variant="contained"
                 className={classes.learnButton}

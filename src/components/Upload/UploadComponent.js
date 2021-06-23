@@ -67,26 +67,6 @@ const UploadComponent = () => {
         console.log(posts)
     }, [posts])
 
-    const uploadImage = async () => {
-        const formData = new FormData()
-        formData.append('file', images[0])
-        formData.append('upload_preset', 'ypjwoflk')
-        try {
-            Axios.post('https://api.cloudinary.com/v1_1/dkmd4aqmt/image/upload', formData, {
-                folder: 'testing'
-            }).then((resp) => {
-                console.log(resp)
-            })
-        } catch (error) {
-            console.log(error)
-        }
-
-
-        // const res = await fetch('https://api.cloudinary.com/v1_1/dkmd4aqmt/image/upload', { method: 'POST', body: formData })
-        // const file = await res.json()
-        // console.log(file.url)
-    }
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const promises = []
@@ -105,9 +85,6 @@ const UploadComponent = () => {
             console.log('finalObj', finalObj)
             dispatch(createPost(finalObj))
         });
-        // //console.log(postData)
-        //uploadImage()
-
     };
 
 
@@ -122,13 +99,30 @@ const UploadComponent = () => {
         }
     }
 
+    // dev
+    // const handleUpload = (image) => {
+    //     return new Promise((resolve, reject) => {
+    //         const formData = new FormData()
+    //         formData.append('file', image)
+    //         formData.append('upload_preset', 'ypjwoflk')
+    //         try {
+    //             Axios.post('https://api.cloudinary.com/v1_1/dkmd4aqmt/image/upload', formData)
+    //                 .then((resp) => {
+    //                     resolve(resp.data.url)
+    //                 })
+    //         } catch (error) {
+    //             console.log(error)
+    //         }
+    //     })
+    // }
+
     const handleUpload = (image) => {
         return new Promise((resolve, reject) => {
             const formData = new FormData()
             formData.append('file', image)
-            formData.append('upload_preset', 'ypjwoflk')
+            formData.append('upload_preset', 'ohavfant')
             try {
-                Axios.post('https://api.cloudinary.com/v1_1/dkmd4aqmt/image/upload', formData)
+                Axios.post('https://api.cloudinary.com/v1_1/dojfndzbj/image/upload', formData)
                     .then((resp) => {
                         resolve(resp.data.url)
                     })
@@ -137,7 +131,6 @@ const UploadComponent = () => {
             }
         })
     }
-
     const clear = (e) => {
     };
 

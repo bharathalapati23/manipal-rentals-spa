@@ -6,11 +6,11 @@ const useStyles = makeStyles((theme) => ({
 	whyRentHeading: {
 		marginTop: '30px',
 		fontFamily: 'Poppins',
-		fontSize: '45px',
+		fontSize: '40px',
 		color: '#e0e0e0',
 		[theme.breakpoints.down('sm')]: {
-			fontSize: '40px',
-		},
+            fontSize: '30px',
+        },
 		textAlign: 'center'
 	},
 	cardContent: {
@@ -34,7 +34,7 @@ const PropertiesDescription = () => {
                 Properties by Wolpa
 					</div>
             <div className={classes.cardContent} style={{ marginBottom: '10px', backgroundColor: '#212121', }}>
-                Identify your best fit. Our properties are carefull chosen to meet the requirements of the university or college students
+                Identify your best fit. Our properties are carefully chosen to meet the requirements of the university or college students
 					<ul style={{ columns: isMobile ? 1 : 2 }}>
                     <li>Closest Zone to your college</li>
                     <li>Amenities in your home and specific rooms</li>
