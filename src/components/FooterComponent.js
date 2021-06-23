@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
             paddingLeft: '10px',
             paddingRight: '10px',
         },
+        [theme.breakpoints.down('sm')]: {
+            textAlign: 'center'
+        },
         [theme.breakpoints.up('lg')]: {
             paddingLeft: '30px',
             paddingRight: '30px',
@@ -35,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'space-around',
         paddingBottom: '10px',
-        paddingTop: '30px'
+        paddingTop: '30px',
     },
     box1: {
         flexGrow: 2,
@@ -135,7 +138,7 @@ const FooterComponent = () => {
                             <div>
                                 Company Name
                             </div>
-                            <div style={{ display: 'flex', flexDirection: 'row' }}>
+                            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
                                 <div className={classes.linkStyle} onClick={navigateToHome}>
                                     Home
                                 </div>
@@ -149,7 +152,7 @@ const FooterComponent = () => {
                             <div>
                                 Need Help?
                             </div>
-                            <div style={{ display: 'flex', flexDirection: 'row' }}>
+                            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
                                 <div className={classes.linkStyle} onClick={navigateToHowItWorks}>
                                     How it works
                                 </div>
@@ -163,7 +166,7 @@ const FooterComponent = () => {
                             <div>
                                 Property Tour
                             </div>
-                            <div style={{ display: 'flex', flexDirection: 'row' }}>
+                            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
                                 <div className={classes.linkStyle} onClick={navigateToAssistedBooking}>
                                     Visit today
                                 </div>
@@ -177,7 +180,7 @@ const FooterComponent = () => {
                             <div>
                                 Zones
                                     </div>
-                            <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+                            <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
                                 {zones.map((zone, index) => {
                                     return (
                                         <React.Fragment key={`footerzone${index}`}>

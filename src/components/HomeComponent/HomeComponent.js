@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
 		border: 'solid',
 		borderWidth: 'thin',
 		borderColor: '#f36802',
-		marginRight: '10px',
+		
 		"&:hover": {
 			background: '#f36802',
 		},
@@ -173,6 +173,7 @@ const HomeComponent = () => {
 						<Button variant="contained"
 							className={classes.seeMoreButton}
 							onClick={navigateToProperties}
+							style={{ marginRight: '10px' }}
 						>
 							View Properties
             			</Button>
@@ -203,6 +204,7 @@ const HomeComponent = () => {
 						<Button variant="contained"
 							className={classes.seeMoreButton}
 							onClick={navigateToProperties}
+							style={{ marginRight: '10px' }}
 						>
 							View Properties
             			</Button>
