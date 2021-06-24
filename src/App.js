@@ -24,7 +24,7 @@ function App() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Flats, Houses, Apartments for rental accommodation | Manipal" />
         <meta property="og:description" content="Flats, Houses, Apartments for rental accommodation | Manipal" />
-        <meta property="og:image" content="https://res.cloudinary.com/dojfndzbj/image/upload/v1624558085/wolpa_logo_dark-04_mik2yf.jpg" />
+        <meta property="og:image:secure_url" content="https://res.cloudinary.com/dojfndzbj/image/upload/v1624558085/wolpa_logo_dark-04_mik2yf.jpg" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content="wolpa.in" />
