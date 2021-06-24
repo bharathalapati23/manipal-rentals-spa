@@ -17,18 +17,22 @@ function App() {
   return (
     <>
       <Helmet>
+        <title>Flats, Houses, Apartments for rental accommodation | Manipal</title>
         <meta name="description" content="Flats, Houses, Apartments for rental accommodation | Manipal" />
-        <meta property="og:title" content="Flats, Houses, Apartments for rental accommodation at Wolpa | Manipal" />
+
         <meta property="og:url" content="https://www.wolpa.in/" />
-        <meta property="og:description" content="Flats, Houses, Apartments for rental accommodation | Manipal" />
-        <meta property="og:image:secure_url"
-          content="https://res.cloudinary.com/dojfndzbj/image/upload/v1624558085/wolpa_logo_dark-04_mik2yf.jpg" />
-
         <meta property="og:type" content="website" />
+        <meta property="og:title" content="Flats, Houses, Apartments for rental accommodation | Manipal" />
+        <meta property="og:description" content="Flats, Houses, Apartments for rental accommodation | Manipal" />
+        <meta property="og:image" content="https://res.cloudinary.com/dojfndzbj/image/upload/v1624558085/wolpa_logo_dark-04_mik2yf.jpg" />
 
-        <meta property="og:image:width" content="300" />
-        <meta property="og:image:height" content="300" />
-        <title>Flats, Houses, Apartments for rental accommodation at Wolpa | Manipal</title>
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="wolpa.in" />
+        <meta property="twitter:url" content="https://www.wolpa.in/" />
+        <meta name="twitter:title" content="Flats, Houses, Apartments for rental accommodation | Manipal" />
+        <meta name="twitter:description" content="Flats, Houses, Apartments for rental accommodation | Manipal" />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dojfndzbj/image/upload/v1624558085/wolpa_logo_dark-04_mik2yf.jpg" />
+
       </Helmet>
       <Router>
 
