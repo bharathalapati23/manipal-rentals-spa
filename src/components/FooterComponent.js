@@ -120,16 +120,16 @@ const FooterComponent = () => {
     }
 
     const navigateToAboutUs = () => {
-		history.push({
-			pathname: '/about-us'
-		})
-	}
+        history.push({
+            pathname: '/about-us'
+        })
+    }
 
     const navigateToContactUs = () => {
-		history.push({
-			pathname: '/contact-us'
-		})
-	}
+        history.push({
+            pathname: '/contact-us'
+        })
+    }
 
     return (
         <>
@@ -138,7 +138,7 @@ const FooterComponent = () => {
                     <div className={classes.topPart}>
                         <div className={classes.box1}>
                             <div>
-                                Company Name
+                                Wolpa
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
                                 <div className={classes.linkStyle} onClick={navigateToHome}>
@@ -230,7 +230,7 @@ const FooterComponent = () => {
                     <div className={classes.topPart}>
                         <div className={classes.box1}>
                             <div>
-                                Company Name
+                                Wolpa
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
                                 <div className={classes.linkStyle} onClick={navigateToHome}>

@@ -77,7 +77,7 @@ const DescriptionComponent = ({ listingInfo }) => {
                         </div>
                         <div style={{ marginTop: '5px' }}>
                             <span style={{ fontFamily: 'Bebas Neue', fontSize: '21px', marginRight: '2px', fontWeight: 'normal', color: '#e5e5e5', marginTop: '20px' }}>₹</span>
-                            <span style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '19px', paddingRight: '3px', color: '#e5e5e5' }}>100000</span>
+                            <span style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '19px', paddingRight: '3px', color: '#e5e5e5' }}>{listingInfo.deposit}</span>
                             <span style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '7px', color: '#e5e5e5' }}>deposit</span>
                         </div>
                     </div>

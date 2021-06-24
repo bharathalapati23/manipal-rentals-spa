@@ -133,7 +133,7 @@ export default function SliderComponent() {
     return (
         <Accordion defaultExpanded={!isMobile} className={classes.accordionStyle} onChange={handleExpand}>
             <AccordionSummary
-                expandIcon={<ExpandIconCompnent expanded={expanded} value={priceRangeFilter}/>}
+                expandIcon={<ExpandIconCompnent expanded={expanded} value={priceRangeFilter} />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
             >
@@ -146,20 +146,20 @@ export default function SliderComponent() {
                     <AirbnbSlider
                         value={value}
                         onChange={handleChange}
-                        valueLabelDisplay="on"
+                        valueLabelDisplay="off"
                         min={0}
                         max={60000}
                         onChangeCommitted={dispatchPriceRangeFilter}
-                        valueLabelFormat={value =>
-                            <div style={{ fontFamily: 'Poppins' }}>
-                                <span style={{ fontFamily: 'Bebas Neue'}}>₹</span>
-                                {value}
-                            </div>
-                        }
+                        // valueLabelFormat={value =>
+                        //     <div style={{ fontFamily: 'Poppins' }}>
+                        //         <span style={{ fontFamily: 'Bebas Neue' }}>₹</span>
+                        //         {value}
+                        //     </div>
+                        // }
                     />
-                    {/* <Typography id="range-slider" gutterBottom>
-                        Rs.{value[0]} - Rs.{value[1]}
-                    </Typography> */}
+                    <Typography id="range-slider" gutterBottom style={{ fontFamily: 'Poppins', display: 'flex', justifyContent: 'center' }}>
+                        <span style={{ fontFamily: 'Bebas Neue', marginRight: '1px' }}>₹</span>{value[0]} - <span style={{ fontFamily: 'Bebas Neue', marginRight: '1px' }}>₹</span>{value[1]}
+                    </Typography>
                 </div>
             </AccordionDetails>
         </Accordion>

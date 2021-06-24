@@ -136,7 +136,7 @@ const PropertyInfoComponent = () => {
                                     </div>
                                     <div className={classes.rentStyle} style={{ alignSelf: 'center', display: 'flex', alignItems: 'center' }}>
                                         <span style={{ fontFamily: 'Bebas Neue', fontSize: '21px', marginRight: '2px', fontWeight: 'normal', color: '#e5e5e5', marginTop: '1px' }}>₹</span>
-                                        <span style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '19px', paddingRight: '3px', color: '#e5e5e5' }}>100000</span>
+                                        <span style={{ fontFamily: 'Poppins', fontWeight: 'bold', fontSize: '19px', paddingRight: '3px', color: '#e5e5e5' }}>{listingInfo.deposit}</span>
                                         <span style={{ fontFamily: 'Poppins', fontSize: '12px', marginTop: '7px', color: '#e5e5e5' }}>deposit</span>
                                     </div>
                                 </div>

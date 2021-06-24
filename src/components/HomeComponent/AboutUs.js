@@ -76,10 +76,10 @@ const AboutUs = ({ navigateToAboutUs }) => {
                 About Us
             </div>
             <div className={classes.content}>
-                Wolpa was started by students from Manipal, with the aim to make off-campus student accommodation hassle-free for students.
-                You can find the home of your choice to rent from with no issues, we own the property search for you.
-                We aim to find the place where you need to be, without charging that brokerage fee!
-                A range of accommodation related services coming your way, sit back and enjoy your time in Manipal!
+            Wolpa was started by students from Manipal, with the aim to make off-campus student accommodation hassle-free. 
+            Hunting homes, dealing with intermediaries, collecting the security deposit, maintaining the upkeep of the property have all been a challenge, 
+            in an otherwise easy-going college life. At Wolpa, we want to identify the place where you need to be, without charging that brokerage fee! 
+            A range of accommodation related services coming your way, sit back and enjoy your time in Manipal! Wolpa shall own property hunt for you.
             </div>
             <Button variant="contained"
                 className={classes.learnButton}
