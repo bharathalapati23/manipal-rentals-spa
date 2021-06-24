@@ -16,7 +16,7 @@ import { Helmet } from 'react-helmet';
 function App() {
   return (
     <>
-      <Helmet>
+      {/* <Helmet>
         <title>Flats, Houses, Apartments for rental accommodation | Manipal</title>
         <meta name="description" content="Flats, Houses, Apartments for rental accommodation | Manipal" />
 
@@ -33,7 +33,7 @@ function App() {
         <meta name="twitter:description" content="Flats, Houses, Apartments for rental accommodation | Manipal" />
         <meta name="twitter:image" content="https://res.cloudinary.com/dojfndzbj/image/upload/v1624558085/wolpa_logo_dark-04_mik2yf.jpg" />
 
-      </Helmet>
+      </Helmet> */}
       <Router>
 
         <Switch>
