@@ -22,6 +22,7 @@
     "react-device-detect": "^1.17.0",
     "react-dom": "^17.0.2",
     "react-file-base64": "^1.0.3",
+    "react-helmet": "^6.1.0",
     "react-image-gallery": "^1.0.9",
     "react-intersection-observer": "^8.31.1",
     "react-navigation": "^4.4.4",

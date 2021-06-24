@@ -11,10 +11,25 @@ import HomeComponent from './components/HomeComponent/HomeComponent'
 import ContactUs from './components/ContactUs'
 import AboutUsComponent from './components/AboutUsComponent'
 import './App.css'
+import { Helmet } from 'react-helmet';
 
 function App() {
   return (
     <>
+      <Helmet>
+        <meta name="description" content="Flats, Houses, Apartments for rental accommodation | Manipal" />
+        <meta property="og:title" content="Flats, Houses, Apartments for rental accommodation at Wolpa | Manipal" />
+        <meta property="og:url" content="https://www.wolpa.in/" />
+        <meta property="og:description" content="Flats, Houses, Apartments for rental accommodation | Manipal" />
+        <meta property="og:image:secure_url"
+          content="https://res.cloudinary.com/dojfndzbj/image/upload/v1624553699/wolpa_logo_dark-04_sfkqkn.png" />
+
+        <meta property="og:type" content="website" />
+
+        <meta property="og:image:width" content="300" />
+        <meta property="og:image:height" content="300" />
+        <title>Flats, Houses, Apartments for rental accommodation at Wolpa | Manipal</title>
+      </Helmet>
       <Router>
 
         <Switch>
