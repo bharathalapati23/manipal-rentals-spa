@@ -144,7 +144,7 @@ const HomeComponent = () => {
 			<div className={classes.root}>
 				<NavBar homePage={true} />
 
-				<SearchComponent isMobile={isMobile}></SearchComponent>
+				
 
 			</div>
 			{!isMobile &&
