@@ -8,6 +8,7 @@ import CookingHubIcon from '../../../icons/Amenities/Home/CookingHubIcon'
 import FridgeIcon from '../../../icons/Amenities/Home/FridgeIcon'
 import GeyserIcon from '../../../icons/Amenities/Home/GeyserIcon'
 import WashingMachineIcon from '../../../icons/Amenities/Home/WashingMachineIcon'
+import TableIcon from '../../../icons/Amenities/Bedroom/TableIcon'
 import WeekendIcon from '@material-ui/icons/Weekend';
 
 
@@ -38,7 +39,7 @@ const homeFeaturesDisplay = {
     },
     coffeeTable: {
         name: 'Coffee Table',
-        icon: <WifiIcon style={{ color: '#e0e0e0' }} />
+        icon: <TableIcon style={{ color: '#e0e0e0' }} />
     },
     chairs: {
         name: 'Chairs',
