@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 @import "~react-image-gallery/styles/css/image-gallery.css";
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
 html, body {
     margin: 0;
 }	
@@ -21,6 +20,3 @@ html, body {
 .cls-1{fill:#2e2e2e;}.cls-2,.cls-3{fill:none;stroke-miterlimit:10;}.cls-2{stroke:#2e2e2e;stroke-width:0.38px;}.cls-3{stroke:#ff5d00;stroke-width:0.41px;}
 
 .clslight-1{fill:#e4e4e4;}.clslight-2,.clslight-3{fill:none;stroke-miterlimit:10;}.clslight-2{stroke:#e4e4e4;stroke-width:0.38px;}.clslight-3{stroke:#ff5d00;stroke-width:0.41px;}
-
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Roboto+Condensed&family=Roboto+Slab:wght@600&display=swap');
