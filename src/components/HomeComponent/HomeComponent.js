@@ -8,7 +8,6 @@ import AboutUs from './AboutUs'
 import SearchComponent from './SearchComponent'
 import PropertiesDescription from './PropertiesDescription'
 import { useHistory, useLocation } from 'react-router-dom'
-import bgImg from '../../assets/home-background.jpg'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -20,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 		boxSizing: 'border-box',
 		//backgroundImage: `url(${bgImg})`,
-		backgroundImage: `url(https://res.cloudinary.com/dojfndzbj/image/upload/f_auto,q_auto/v1624614300/home-background_nr4uah.jpg)`,
+		//backgroundImage: `url(https://res.cloudinary.com/dojfndzbj/image/upload/f_auto,q_auto/v1624614300/home-background_nr4uah.jpg)`,
 		backgroundSize: 'cover',
 		backgroundPosition: 'center center'
 	},
@@ -35,8 +34,8 @@ const useStyles = makeStyles((theme) => ({
 		fontSize: '35px',
 		color: '#e0e0e0',
 		[theme.breakpoints.down('sm')]: {
-            fontSize: '27px',
-        },
+			fontSize: '27px',
+		},
 		textAlign: 'center'
 	},
 	whyRentDesc: {
@@ -92,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
 		border: 'solid',
 		borderWidth: 'thin',
 		borderColor: '#f36802',
-		
+
 		"&:hover": {
 			background: '#f36802',
 		},
@@ -140,8 +139,15 @@ const HomeComponent = () => {
 
 	return (
 		<>
-		
-			<div className={classes.root}>
+
+			<div className={classes.root}
+				style={{
+					backgroundImage:
+						isMobile
+							? `url(https://res.cloudinary.com/dojfndzbj/image/upload/f_auto,q_auto/v1624614300/home-background_nr4uah.jpg)`
+							: 'url(https://res.cloudinary.com/dojfndzbj/image/upload/v1624611856/home-background_obxll3.jpg)'
+				}}
+			>
 				<NavBar homePage={true} />
 
 				<SearchComponent isMobile={isMobile}></SearchComponent>
@@ -186,7 +192,7 @@ const HomeComponent = () => {
             			</Button>
 					</div>
 					<HowItWorks navigateToHowItWorks={navigateToHowItWorks} />
-					<AboutUs navigateToAboutUs={navigateToAboutUs}/>
+					<AboutUs navigateToAboutUs={navigateToAboutUs} />
 				</div>
 			}
 			{isMobile &&
@@ -217,7 +223,7 @@ const HomeComponent = () => {
             			</Button>
 					</div>
 					<HowItWorks navigateToHowItWorks={navigateToHowItWorks} />
-					<AboutUs navigateToAboutUs={navigateToAboutUs}/>
+					<AboutUs navigateToAboutUs={navigateToAboutUs} />
 				</div>
 
 			}
