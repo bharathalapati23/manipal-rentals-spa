@@ -144,7 +144,7 @@ const HomeComponent = () => {
 				style={{
 					backgroundImage:
 						isMobile
-							? `url(https://res.cloudinary.com/dojfndzbj/image/upload/f_auto,q_20/v1624614300/home-background_nr4uah.jpg)`
+							? `url(https://res.cloudinary.com/dojfndzbj/image/upload/f_auto,q_1/v1624614300/home-background_nr4uah.jpg)`
 							: 'url(https://res.cloudinary.com/dojfndzbj/image/upload/f_auto,q_auto/v1624611856/home-background_obxll3.jpg)'
 				}}
 			>

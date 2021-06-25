@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import NavBar from './components/NavBar/NavBar'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import DashboardComponent from './components/DashboardComponent'
+//import DashboardComponent from './components/DashboardComponent'
+
 import UploadComponent from './components/Upload/UploadComponent'
 import PropertyInfoComponent from './components/PropertyInfoComponent/PropertyInfoComponent.js'
 import FooterComponent from './components/FooterComponent.js'
@@ -13,36 +14,21 @@ import AboutUsComponent from './components/AboutUsComponent'
 import './App.css'
 import { Helmet } from 'react-helmet';
 
+const DashboardComponent = lazy(() => import('./components/DashboardComponent'))
+
 function App() {
   return (
     <>
-      {/* <Helmet>
-        <title>Flats, Houses, Apartments for rental accommodation | Manipal</title>
-        <meta name="description" content="Flats, Houses, Apartments for rental accommodation | Manipal" />
-
-        <meta property="og:url" content="https://www.wolpa.in/" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Flats, Houses, Apartments for rental accommodation | Manipal" />
-        <meta property="og:description" content="Flats, Houses, Apartments for rental accommodation | Manipal" />
-        <meta property="og:image:secure_url" itemprop="image" content="https://res.cloudinary.com/dojfndzbj/image/upload/v1624558085/wolpa_logo_dark-04_mik2yf.jpg" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:domain" content="wolpa.in" />
-        <meta property="twitter:url" content="https://www.wolpa.in/" />
-        <meta name="twitter:title" content="Flats, Houses, Apartments for rental accommodation | Manipal" />
-        <meta name="twitter:description" content="Flats, Houses, Apartments for rental accommodation | Manipal" />
-        <meta name="twitter:image" content="https://res.cloudinary.com/dojfndzbj/image/upload/v1624558085/wolpa_logo_dark-04_mik2yf.jpg" />
-
-      </Helmet> */}
       <Router>
-
         <Switch>
           <Route path='/' exact> <HomeComponent /> </Route>
           <>
 
             <Route path='/properties' exact>
               <NavBar />
-              <DashboardComponent />
+              <Suspense fallback={<div style={{ marginTop: '200px'}}>loading...</div>}>
+                <DashboardComponent />
+              </Suspense>
             </Route>
             <Route path='/upload' exact>
               <NavBar />
