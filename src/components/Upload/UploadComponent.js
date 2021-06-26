@@ -226,6 +226,7 @@ const UploadComponent = () => {
                     <option value={'Eshwar Nagar'}>Eshwar Nagar</option>
                     <option value={'Venugopal Temple'}>Venugopal Temple</option>
                     <option value={'Ananth Nagar'}>Ananth Nagar</option>
+                    <option value={'Perampalli Road'}>Perampalli Road</option>
                 </Select>
                 <Select
                     native

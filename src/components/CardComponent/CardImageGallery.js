@@ -28,10 +28,12 @@ const CardImageGallery = ({ images, navigateToProperty }) => {
 		e.stopPropagation()
     }
 
+    console.log(images)
     let imagesArr = images.map((image) => {
+        let lowQualityImage = image.replace('upload/', 'upload/f_auto,q_10/')
         return {
-            original: image,
-            thumbnail: image
+            original: lowQualityImage,
+            thumbnail: lowQualityImage
         }
     })
 

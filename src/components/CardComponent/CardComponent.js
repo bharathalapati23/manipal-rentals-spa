@@ -135,10 +135,9 @@ export default function CardComponent({ cardObj }) {
 									</div>
 								</div>
 								<div>
-									<div className={classes.title} color="textSecondary" style={{ fontFamily: 'Poppins', verticalAlign: 'middle', color: '#e5e5e5' }}>
-										<SingleBedIcon style={{ verticalAlign: 'middle', color: '#e5e5e5' }} />
-										{cardObj.bedroom}BHK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<GroupIcon style={{ verticalAlign: 'middle', color: '#e5e5e5' }} /> 3 capacity
+									<div className={classes.title} color="textSecondary" style={{ fontFamily: 'Poppins', verticalAlign: 'middle', color: '#e5e5e5', fontSize: '18px' }}>
+										<SingleBedIcon style={{ verticalAlign: 'middle', color: '#e5e5e5', fontSize: '24px' }} />
+										{cardObj.bedroom}BHK
 									</div>
 									<div color="textSecondary" style={{ fontFamily: 'Poppins', verticalAlign: 'middle', color: '#f36802', marginTop: '3px', fontSize: '24px', fontWeight: 'bold' }}>
 										<span style={{ fontFamily: 'Bebas Neue', fontSize: '26px', marginRight: '2px', fontWeight: 'lighter' }}>₹</span>
