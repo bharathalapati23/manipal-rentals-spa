@@ -25,12 +25,12 @@ const CardImageGallery = ({ images, navigateToProperty }) => {
 
     const onImageSlide = (e) => {
         e.preventDefault()
-		e.stopPropagation()
+        e.stopPropagation()
     }
 
     console.log(images)
     let imagesArr = images.map((image) => {
-        let lowQualityImage = image.replace('upload/', 'upload/f_auto,q_10/')
+        let lowQualityImage = image.replace('upload/', 'upload/c_scale,f_auto,h_600,q_auto/')
         return {
             original: lowQualityImage,
             thumbnail: lowQualityImage
