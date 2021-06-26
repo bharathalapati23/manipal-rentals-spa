@@ -18,6 +18,10 @@
     max-height: 400px !important;
 }
 
+#propertyinfoimages .image-gallery-image img{
+    height: 400px;
+}
+
 #propertyinfoimages .image-gallery-content.fullscreen img{
     object-position: center center !important;
     object-fit: contain !important;
@@ -30,7 +34,8 @@
     }
     #propertyinfoimages .image-gallery-image{
         height: 35vh !important;
-    
-    
+    }
+    #propertyinfoimages .image-gallery-thumbnail-image{
+        height: 100px !important;
     }
   }
