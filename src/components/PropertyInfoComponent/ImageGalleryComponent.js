@@ -7,22 +7,27 @@ const ImageGalleryComponent = ({ images }) => {
     const [nloaded, isNLoaded] = useState(0)
     const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 
-    let imagesArr=  images.map((image)=> {
+    let imagesArr = images.map((image) => {
+        let lowQualityImage
+        if (isMobile)
+            lowQualityImage = image.replace('upload/', 'upload/c_scale,f_auto,h_600,q_auto/')
+        else
+            lowQualityImage = image.replace('upload/', 'upload/f_auto,q_auto/')
         return {
-            original: image,
-            thumbnail: image
+            original: lowQualityImage,
+            thumbnail: lowQualityImage
         }
     })
 
     console.log(imagesArr)
 
     return (
-        <div id={'propertyinfoimages'} style={{ visibility: `${nloaded == imagesArr.length ? 'visible': 'hidden'}` }}>
+        <div id={'propertyinfoimages'} style={{ visibility: `${nloaded == imagesArr.length ? 'visible' : 'hidden'}` }}>
             <ImageGallery items={imagesArr} thumbnailPosition={isMobile ? 'bottom' : 'right'}
                 onImageLoad={() => {
                     isNLoaded(nloaded + 1)
-                }} 
-                showPlayButton={false}/>
+                }}
+                showPlayButton={false} />
         </div>
     )
 }
