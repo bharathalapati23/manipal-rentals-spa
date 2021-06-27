@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
 const CardImageGallery = ({ images, navigateToProperty }) => {
     const classes = useStyles();
     const [nloaded, isNLoaded] = useState(0)
+    const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 
     const onImageSlide = (e) => {
         e.preventDefault()
@@ -30,7 +31,11 @@ const CardImageGallery = ({ images, navigateToProperty }) => {
 
     console.log(images)
     let imagesArr = images.map((image) => {
-        let lowQualityImage = image.replace('upload/', 'upload/c_scale,f_auto,h_600,q_auto/')
+        let lowQualityImage 
+        if(isMobile)
+            lowQualityImage = image.replace('upload/', 'upload/c_scale,f_auto,h_600,q_auto/')
+        else 
+            lowQualityImage = image.replace('upload/', 'upload/c_scale,f_auto,h_300,q_auto/')
         return {
             original: lowQualityImage,
             thumbnail: lowQualityImage

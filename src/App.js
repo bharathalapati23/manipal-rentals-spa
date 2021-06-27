@@ -11,6 +11,7 @@ import FooterComponent from './components/FooterComponent.js'
 //import HomeComponent from './components/HomeComponent/HomeComponent'
 //import ContactUs from './components/ContactUs'
 //import AboutUsComponent from './components/AboutUsComponent'
+import HomeComponent from './components/HomeComponent/HomeComponent'
 import './App.css'
 import LoadingComponent from './components/LoadingComponent'
 
@@ -21,7 +22,6 @@ const HowItWorksComponent = lazy(() => import('./components/HowItWorks/HowItWork
 const EnquiryComponent = lazy(() => import('./components/AssistedBooking/EnquiryComponent.js'))
 const ContactUs = lazy(() => import('./components/ContactUs'))
 const AboutUsComponent = lazy(() => import('./components/AboutUsComponent'))
-const HomeComponent = lazy(() => import('./components/HomeComponent/HomeComponent'))
 
 function App() {
   return (
@@ -29,9 +29,7 @@ function App() {
       <Router>
         <Switch>
           <Route path='/' exact>
-            <Suspense fallback={<LoadingComponent />}>
-              <HomeComponent />
-            </Suspense>
+            <HomeComponent />
           </Route>
           <>
 
