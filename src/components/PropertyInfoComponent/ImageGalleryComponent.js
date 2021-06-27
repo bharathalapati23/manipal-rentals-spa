@@ -19,15 +19,14 @@ const ImageGalleryComponent = ({ images }) => {
         }
     })
 
-    console.log(imagesArr)
-
     return (
         <div id={'propertyinfoimages'} style={{ visibility: `${nloaded == imagesArr.length ? 'visible' : 'hidden'}`, height: isMobile ? '' : '400px' }}>
             <ImageGallery items={imagesArr} thumbnailPosition={isMobile ? 'bottom' : 'right'}
                 onImageLoad={() => {
                     isNLoaded(nloaded + 1)
                 }}
-                showPlayButton={false} />
+                showPlayButton={false} 
+                showFullscreenButton={!isMobile}/>
         </div>
     )
 }
