@@ -46,7 +46,7 @@ const BottomNavigationComponent = ({ setFilterPage, isFilterPage }) => {
             numFilters++
     })
     if (filter.priceRange) {
-        if (filter.priceRange[0] != 0 || filter.priceRange[1] != 60000)
+        if (filter.priceRange[0] != 0 || filter.priceRange[1] != 40000)
             numFilters++
     }
 

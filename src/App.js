@@ -12,7 +12,7 @@ import HomeComponent from './components/HomeComponent/HomeComponent'
 import ContactUs from './components/ContactUs'
 import AboutUsComponent from './components/AboutUsComponent'
 import './App.css'
-import { Helmet } from 'react-helmet';
+import LoadingComponent from './components/LoadingComponent'
 
 const DashboardComponent = lazy(() => import('./components/DashboardComponent'))
 const PropertyInfoComponent = lazy(() => import('./components/PropertyInfoComponent/PropertyInfoComponent.js'))
@@ -28,7 +28,7 @@ function App() {
 
             <Route path='/properties' exact>
               <NavBar />
-              <Suspense fallback={<div style={{ marginTop: '200px' }}>loading...</div>}>
+              <Suspense fallback={<LoadingComponent />}>
                 <DashboardComponent />
               </Suspense>
             </Route>
@@ -38,7 +38,7 @@ function App() {
             </Route>
             <Route path='/property' exact>
               <NavBar />
-              <Suspense fallback={<div style={{ marginTop: '200px' }}>loading...</div>}>
+              <Suspense fallback={<LoadingComponent />}>
                 <PropertyInfoComponent />
               </Suspense>
             </Route>

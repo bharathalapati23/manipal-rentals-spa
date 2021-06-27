@@ -5,8 +5,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { useMediaQuery } from 'react-responsive';
 import Grid from '@material-ui/core/Grid';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
 import './Carousel.css'
 import SingleBedIcon from '@material-ui/icons/SingleBed';
 import GroupIcon from '@material-ui/icons/Group';

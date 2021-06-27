@@ -252,8 +252,8 @@ export default function DashboardComponent() {
 											>
 												Sort By:
 												<option style={{ backgroundColor: '#212121'}} value={0}>Recently Added</option>
-												<option style={{ backgroundColor: '#212121'}} value={1}>Price:High to Low</option>
-												<option style={{ backgroundColor: '#212121'}} value={2}>Price:Low to High</option>
+												<option style={{ backgroundColor: '#212121'}} value={1}>Price: High to Low</option>
+												<option style={{ backgroundColor: '#212121'}} value={2}>Price: Low to High</option>
 											</Select>
 										</FormControl>
 									</div>

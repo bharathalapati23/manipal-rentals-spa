@@ -126,7 +126,7 @@ export default function SliderComponent() {
 
     let priceRangeFilter
     if (priceRangeFilters) {
-        if (priceRangeFilters[0] != 0 || priceRangeFilters[1] != 60000)
+        if (priceRangeFilters[0] != 0 || priceRangeFilters[1] != 40000)
             priceRangeFilter = 1
     }
 
@@ -148,7 +148,7 @@ export default function SliderComponent() {
                         onChange={handleChange}
                         valueLabelDisplay="off"
                         min={0}
-                        max={60000}
+                        max={40000}
                         onChangeCommitted={dispatchPriceRangeFilter}
                         // valueLabelFormat={value =>
                         //     <div style={{ fontFamily: 'Poppins' }}>

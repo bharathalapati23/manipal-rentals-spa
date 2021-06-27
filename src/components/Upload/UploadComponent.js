@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Button, Typography, Paper, Select, Switch } from '@material-ui/core'
-import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
 
 import useStyles from '../styles';
 
 import { createPost, getPosts } from '../../actions/posts.js'
-import { storage } from '../Firebase'
 
 import SwitchComponent from './SwitchComponent'
 import Accordion from '@material-ui/core/Accordion';
