@@ -1,8 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import CountUp from "react-countup";
-import VisibilitySensor from 'react-visibility-sensor';
 import { useMediaQuery } from 'react-responsive';
+import Ticker from './Ticker'
 import Divider from '@material-ui/core/Divider'
 
 const useStyles = makeStyles((theme) => ({
@@ -61,16 +60,7 @@ const NumberCounter = () => {
                 <div className={classes.gridContainer}>
                     <div className={classes.gridItem} style={{ borderRight: 'solid', borderWidth: 'thin' }}>
                         <div className={classes.numberStyle}>
-                            {!firstCounterDone ?
-                                <CountUp end={42} onEnd={() => {
-                                    setFirstCounterDone(true)
-                                }}>
-                                    {({ countUpRef, start }) => (
-                                        <VisibilitySensor onChange={start} delayedCall>
-                                            <span ref={countUpRef} />
-                                        </VisibilitySensor>
-                                    )}
-                                </CountUp> : 42}
+                            <Ticker end={42} />
                         </div>
                         <div>
                             Communities
@@ -78,16 +68,7 @@ const NumberCounter = () => {
                     </div>
                     <div className={classes.gridItem} style={{ borderRight: 'solid', borderWidth: 'thin' }}>
                         <div className={classes.numberStyle}>
-                            {!secondCounterDone ?
-                                <CountUp end={48} onEnd={() => {
-                                    setSecondCounterDone(true)
-                                }}>
-                                    {({ countUpRef, start }) => (
-                                        <VisibilitySensor onChange={start} delayedCall>
-                                            <span ref={countUpRef} />
-                                        </VisibilitySensor>
-                                    )}
-                                </CountUp> : 48}
+                            <Ticker end={48} />
                         </div>
                         <div>
                             Independent Homes
@@ -95,16 +76,7 @@ const NumberCounter = () => {
                     </div>
                     <div className={classes.gridItem} style={{ borderRight: 'solid', borderWidth: 'thin' }}>
                         <div className={classes.numberStyle}>
-                            {!thirdCounterDone ?
-                                <CountUp end={33} onEnd={() => {
-                                    setThirdCounterDone(true)
-                                }}>
-                                    {({ countUpRef, start }) => (
-                                        <VisibilitySensor onChange={start} delayedCall>
-                                            <span ref={countUpRef} />
-                                        </VisibilitySensor>
-                                    )}
-                                </CountUp> : 33}
+                            <Ticker end={33} />
                         </div>
                         <div>
                             Property Managers
@@ -112,16 +84,7 @@ const NumberCounter = () => {
                     </div>
                     <div className={classes.gridItem}>
                         <div className={classes.numberStyle}>
-                            {!fourthCounterDone ?
-                                <CountUp end={194} onEnd={() => {
-                                    setFourthCounterDone(true)
-                                }}>
-                                    {({ countUpRef, start }) => (
-                                        <VisibilitySensor onChange={start} delayedCall>
-                                            <span ref={countUpRef} />
-                                        </VisibilitySensor>
-                                    )}
-                                </CountUp> : 194}
+                            <Ticker end={194} />
                         </div>
                         <div>
                             Home Owners
@@ -132,18 +95,9 @@ const NumberCounter = () => {
             {isMobile &&
                 <>
                     <div className={classes.gridContainer}>
-                        <div className={classes.gridItem} style={{ borderRight: 'solid', borderWidth: 'thin' }}>
-                            <div className={classes.numberStyle}>
-                                {!firstCounterDone ?
-                                    <CountUp end={42} onEnd={() => {
-                                        setFirstCounterDone(true)
-                                    }}>
-                                        {({ countUpRef, start }) => (
-                                            <VisibilitySensor onChange={start} delayedCall>
-                                                <span ref={countUpRef} />
-                                            </VisibilitySensor>
-                                        )}
-                                    </CountUp> : 42}
+                        <div className={classes.gridItem} style={{ borderRight: 'solid', borderWidth: 'thin', borderColor: '#e5e5e5' }}>
+                            <div className={classes.numberStyle} >
+                                <Ticker end={42} />
                             </div>
                             <div>
                                 Communities
@@ -151,36 +105,18 @@ const NumberCounter = () => {
                         </div>
                         <div className={classes.gridItem} style={{ borderWidth: 'thin' }}>
                             <div className={classes.numberStyle}>
-                                {!secondCounterDone ?
-                                    <CountUp end={48} onEnd={() => {
-                                        setSecondCounterDone(true)
-                                    }}>
-                                        {({ countUpRef, start }) => (
-                                            <VisibilitySensor onChange={start} delayedCall>
-                                                <span ref={countUpRef} />
-                                            </VisibilitySensor>
-                                        )}
-                                    </CountUp> : 48}
+                                <Ticker end={48} />
                             </div>
                             <div>
                                 Independent Homes
                         </div>
                         </div>
                     </div>
-                    <Divider style={{ backgroundColor: '#e5e5e5' }}/>
+                    <Divider style={{ backgroundColor: '#e5e5e5' }} />
                     <div className={classes.gridContainer}>
-                        <div className={classes.gridItem} style={{ borderRight: 'solid', borderWidth: 'thin' }}>
-                            <div className={classes.numberStyle}>
-                                {!thirdCounterDone ?
-                                    <CountUp end={33} onEnd={() => {
-                                        setThirdCounterDone(true)
-                                    }}>
-                                        {({ countUpRef, start }) => (
-                                            <VisibilitySensor onChange={start} delayedCall>
-                                                <span ref={countUpRef} />
-                                            </VisibilitySensor>
-                                        )}
-                                    </CountUp> : 33}
+                        <div className={classes.gridItem} style={{ borderRight: 'solid', borderWidth: 'thin', borderColor: '#e5e5e5' }}>
+                            <div className={classes.numberStyle} >
+                                <Ticker end={33} />
                             </div>
                             <div>
                                 Property Managers
@@ -188,16 +124,7 @@ const NumberCounter = () => {
                         </div>
                         <div className={classes.gridItem}>
                             <div className={classes.numberStyle}>
-                                {!fourthCounterDone ?
-                                    <CountUp end={194} onEnd={() => {
-                                        setFourthCounterDone(true)
-                                    }}>
-                                        {({ countUpRef, start }) => (
-                                            <VisibilitySensor onChange={start} delayedCall>
-                                                <span ref={countUpRef} />
-                                            </VisibilitySensor>
-                                        )}
-                                    </CountUp> : 194}
+                                <Ticker end={194} />
                             </div>
                             <div>
                                 Home Owners
