@@ -12,7 +12,7 @@ const ImageGalleryComponent = ({ images }) => {
         if (isMobile)
             lowQualityImage = image.replace('upload/', 'upload/c_scale,f_auto,h_600,q_auto/')
         else
-            lowQualityImage = image.replace('upload/', 'upload/f_auto,q_auto/')
+            lowQualityImage = image.replace('upload/', 'upload/f_auto,h_600,q_auto/')
         return {
             original: lowQualityImage,
             thumbnail: lowQualityImage

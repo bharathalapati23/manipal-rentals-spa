@@ -26,10 +26,15 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         margin: '0 auto',
         padding: '8px',
+        paddingTop: '1px',
         [theme.breakpoints.down('md')]: {
             width: '100%',
             marginLeft: '0px'
         },
+        [theme.breakpoints.up('md')]: {
+			paddingLeft: '14px',
+			paddingRight: '14px',
+		},
         boxSizing: 'border-box'
     },
     propertyName: {

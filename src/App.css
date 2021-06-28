@@ -8,15 +8,15 @@ html, body {
 .st0{fill:#2E2E2E;}
 .st1{fill:#E5E5E5;}
 .st2{fill:#E4E4E4;}
-.st3{fill:none;stroke:#2E2E2E;stroke-width:12.7883;stroke-miterlimit:10;}
-.st4{fill:none;stroke:#FF5D00;stroke-width:13;stroke-miterlimit:10;}
-.st5{fill:none;stroke:#2E2E2E;stroke-width:0.384;stroke-miterlimit:10;}
-.st6{fill:none;stroke:#FF5D00;stroke-width:0.3903;stroke-miterlimit:10;}
-.st7{fill:none;stroke:#E4E4E4;stroke-width:12.7883;stroke-miterlimit:10;}
-.st8{fill:none;stroke:#E5E5E5;stroke-width:0.384;stroke-miterlimit:10;}
+.st3{fill:none;stroke:#2E2E2E;stroke-width:12.7883;strokeMiterlimit:10;}
+.st4{fill:none;stroke:#FF5D00;stroke-width:13;strokeMiterlimit:10;}
+.st5{fill:none;stroke:#2E2E2E;stroke-width:0.384;strokeMiterlimit:10;}
+.st6{fill:none;stroke:#FF5D00;stroke-width:0.3903;strokeMiterlimit:10;}
+.st7{fill:none;stroke:#E4E4E4;stroke-width:12.7883;strokeMiterlimit:10;}
+.st8{fill:none;stroke:#E5E5E5;stroke-width:0.384;strokeMiterlimit:10;}
 
 .MuiTouchRipple-root {display: none}
 
-.cls-1{fill:#2e2e2e;}.cls-2,.cls-3{fill:none;stroke-miterlimit:10;}.cls-2{stroke:#2e2e2e;stroke-width:0.38px;}.cls-3{stroke:#ff5d00;stroke-width:0.41px;}
+.cls-1{fill:#2e2e2e;}.cls-2,.cls-3{fill:none;strokeMiterlimit:10;}.cls-2{stroke:#2e2e2e;stroke-width:0.38px;}.cls-3{stroke:#ff5d00;stroke-width:0.41px;}
 
-.clslight-1{fill:#e4e4e4;}.clslight-2,.clslight-3{fill:none;stroke-miterlimit:10;}.clslight-2{stroke:#e4e4e4;stroke-width:0.38px;}.clslight-3{stroke:#ff5d00;stroke-width:0.41px;}
+.clslight-1{fill:#e4e4e4;}.clslight-2,.clslight-3{fill:none;strokeMiterlimit:10;}.clslight-2{stroke:#e4e4e4;stroke-width:0.38px;}.clslight-3{stroke:#ff5d00;stroke-width:0.41px;}

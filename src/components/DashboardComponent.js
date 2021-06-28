@@ -34,11 +34,13 @@ const useStyles = makeStyles((theme) => ({
 			width: '100%',
 			// paddingBottom: '40px'
 		},
-		[theme.breakpoints.up('lg')]: {
-			// minWidth: '950px',
-		},
 		paddingLeft: '8px',
 		paddingRight: '8px',
+		[theme.breakpoints.up('lg')]: {
+			paddingLeft: '20px',
+			paddingRight: '20px',
+		},
+		
 		boxSizing: 'border-box',
 		// flexWrap: 'wrap',
 		// justifyContent: 'center',
@@ -216,7 +218,7 @@ export default function DashboardComponent() {
 						<FilterCardComponent />
 					</div>
 				}
-				{isFilterPage && isMobile && <MobileFilterComponent setFilterPage={setFilterPage}/>}
+				{isFilterPage && isMobile && <MobileFilterComponent setFilterPage={setFilterPage} />}
 
 				{!isFilterPage &&
 					<>
@@ -251,9 +253,9 @@ export default function DashboardComponent() {
 												}}
 											>
 												Sort By:
-												<option style={{ backgroundColor: '#212121'}} value={0}>Recently Added</option>
-												<option style={{ backgroundColor: '#212121'}} value={1}>Price: High to Low</option>
-												<option style={{ backgroundColor: '#212121'}} value={2}>Price: Low to High</option>
+												<option style={{ backgroundColor: '#212121' }} value={0}>Recently Added</option>
+												<option style={{ backgroundColor: '#212121' }} value={1}>Price: High to Low</option>
+												<option style={{ backgroundColor: '#212121' }} value={2}>Price: Low to High</option>
 											</Select>
 										</FormControl>
 									</div>
@@ -281,7 +283,7 @@ export default function DashboardComponent() {
 					</>
 				}
 			</div>
-			{isMobile && <BottomNavigationComponent setFilterPage={setFilterPage} isFilterPage={isFilterPage}/>}
+			{isMobile && <BottomNavigationComponent setFilterPage={setFilterPage} isFilterPage={isFilterPage} />}
 		</>
 	);
 }

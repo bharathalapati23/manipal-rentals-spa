@@ -22,7 +22,8 @@ const useStyles = makeStyles((theme) => ({
         margin: '20px',
         fontFamily: 'Poppins',
         backgroundColor: '#2e2e2e',
-        borderRadius: '10px'
+        borderRadius: '10px',
+        marginLeft: '0px'
     },
     formControl: {
         // margin: theme.spacing(3),
