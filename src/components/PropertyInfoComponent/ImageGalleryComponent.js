@@ -20,14 +20,17 @@ const ImageGalleryComponent = ({ images }) => {
     })
 
     return (
-        <div id={'propertyinfoimages'} style={{ visibility: `${nloaded == imagesArr.length ? 'visible' : 'hidden'}`, height: isMobile ? '' : '400px' }}>
-            <ImageGallery items={imagesArr} thumbnailPosition={isMobile ? 'bottom' : 'right'}
-                onImageLoad={() => {
-                    isNLoaded(nloaded + 1)
-                }}
-                showPlayButton={false} 
-                showFullscreenButton={!isMobile}/>
-        </div>
+        <>
+            <div id={'propertyinfoimages'} style={{ visibility: `${nloaded == imagesArr.length ? 'visible' : 'hidden'}`, height: isMobile ? '' : '400px' }}>
+                <ImageGallery items={imagesArr} thumbnailPosition={isMobile ? 'bottom' : 'right'}
+                    onImageLoad={() => {
+                        isNLoaded(nloaded + 1)
+                    }}
+                    showPlayButton={false}
+                    showFullscreenButton={!isMobile} />
+            </div>
+            
+        </>
     )
 }
 

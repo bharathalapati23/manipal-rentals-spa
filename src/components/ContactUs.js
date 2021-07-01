@@ -10,25 +10,6 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import axios from 'axios'
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-    anchorOrigin: {
-        vertical: "bottom",
-        horizontal: "left"
-    },
-    transformOrigin: {
-        vertical: "top",
-        horizontal: "left"
-    },
-    getContentAnchorEl: null,
-    PaperProps: {
-        style: {
-            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-            width: 250,
-        },
-    },
-};
 
 const CssTextField = withStyles({
     root: {
@@ -326,14 +307,14 @@ const ContactUs = () => {
                         <div className={classes.wolpaHeading}>
                             Wolpa acco services
                         </div>
-                        <div style={{ marginTop: '20px'}}>
+                        <div style={{ marginTop: '20px' }}>
                             <div className={classes.subHeadings}>
                                 {/* <LocationOnIcon className={classes.iconStyle} /> */}
                                 <div>Manipal 576104</div>
                             </div>
                             <div className={classes.subHeadings}>
                                 {/* <PhoneIcon className={classes.iconStyle} /> */}
-                                <div>P: +919876543210</div>
+                                <div>P: +919591798639</div>
                             </div>
                             <div className={classes.subHeadings}>
                                 {/* <MailOutlineIcon className={classes.iconStyle} /> */}
@@ -341,9 +322,16 @@ const ContactUs = () => {
                             </div>
                         </div>
                         <div style={{ marginTop: '40px' }}>
-                            <FacebookIcon style={{ fontSize: '80px' }} />
-                            <InstagramIcon style={{ fontSize: '80px' }} />
-                            <TwitterIcon style={{ fontSize: '80px' }} />
+                            <FacebookIcon style={{ fontSize: '80px', cursor: 'pointer' }}
+                                onClick={() => {
+                                    window.open('https://www.facebook.com/wolpamanipal', "_blank")
+                                }}
+                            />
+                            <InstagramIcon style={{ fontSize: '80px', cursor: 'pointer' }}
+                                onClick={() => {
+                                    window.open('https://www.instagram.com/wolpa.in/', "_blank")
+                                }}
+                            />
                         </div>
                     </div>
                 </div>

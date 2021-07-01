@@ -155,7 +155,7 @@ const VerticalStepperComponent = () => {
                             }
                           }}>{label}</StepLabel>
                         <StepContent>
-                            <Typography>{getStepContent(index, classes)}</Typography>
+                            {getStepContent(index, classes)}
                         </StepContent>
                     </Step>
                 ))}

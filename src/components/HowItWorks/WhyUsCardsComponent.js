@@ -83,9 +83,9 @@ const WhyUsCardsComponent = (props) => {
 
     return (
         <div className={classes.root}>
-            {cardsConfigArr.map((cardConfig) => {
+            {cardsConfigArr.map((cardConfig, index) => {
                 return (
-                    <Card variant="outlined" className={props.enquiryForm ? classes.enquiryCardStyle: classes.cardStyle}>
+                    <Card variant="outlined" className={props.enquiryForm ? classes.enquiryCardStyle: classes.cardStyle} key={`${index}whyuscard`}>
                         <CardContent className={classes.cardContentStyle}>
                             <div style={{ margin: '0 auto' }}>
                                 {cardConfig.icon}

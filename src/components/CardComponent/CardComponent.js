@@ -10,7 +10,6 @@ import SingleBedIcon from '@material-ui/icons/SingleBed';
 import GroupIcon from '@material-ui/icons/Group';
 import { useHistory } from 'react-router-dom'
 import CardImageGallery from './CardImageGallery'
-import ImageGalleryComponent from '../PropertyInfoComponent/ImageGalleryComponent'
 import { Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({

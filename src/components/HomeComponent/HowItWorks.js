@@ -112,9 +112,9 @@ const HowItWorks = (props) => {
                 How it works
 				</div>
             <div className={classes.root}>
-                {cardsConfigArr.map((cardConfig) => {
+                {cardsConfigArr.map((cardConfig, index) => {
                     return (
-                        <Card variant="outlined" className={classes.cardStyle}>
+                        <Card variant="outlined" className={classes.cardStyle} key={`${index}howitworkscard`}>
                             <CardContent className={classes.cardContentStyle}>
                                 <div style={{ margin: '0 auto' }}>
                                     {cardConfig.icon}

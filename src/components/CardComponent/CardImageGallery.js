@@ -29,7 +29,6 @@ const CardImageGallery = ({ images, navigateToProperty }) => {
         e.stopPropagation()
     }
 
-    console.log(images)
     let imagesArr = images.map((image) => {
         let lowQualityImage 
         if(isMobile)

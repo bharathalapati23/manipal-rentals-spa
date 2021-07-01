@@ -98,8 +98,8 @@ export default function DashboardComponent() {
 	const history = useHistory();
 	const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 	const [isFilterPage, setFilterPage] = useState(false)
-	const posts = useSelector((state) => state.posts)
-	const realposts = [...posts, ...posts, ...posts]
+	const realposts = useSelector((state) => state.posts)
+	//const realposts = [...posts, ...posts, ...posts]
 	const [page, setPage] = React.useState(1);
 
 	const filter = useSelector((state) => state.filters)

@@ -3,12 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider'
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import TwitterIcon from '@material-ui/icons/Twitter';
 import { useMediaQuery } from 'react-responsive';
 import { useHistory, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { clearFilters } from '../actions/filters.js'
 import { useSelector } from 'react-redux'
+import IconButton from '@material-ui/core/IconButton';
 
 const zones = ['Syndicate Circle', 'Venugopal Temple', 'Eshwar Nagar', 'Ananth Nagar', 'End Point Road', 'Perampalli Road', 'Vidyaratna Nagar']
 
@@ -314,15 +314,22 @@ const FooterComponent = () => {
                         </div>
                         <div className={classes.box3}>
                             <div style={{ textAlign: 'right' }}>
-                                +911234567890
+                                +919591798639
                             </div>
                             <div style={{ textAlign: 'right' }}>
-                                +919876543210
+                                +918970133397
                             </div>
                             <div style={{ textAlign: 'right', marginTop: '20px' }}>
-                                <FacebookIcon style={{ fontSize: '50px' }} />
-                                <InstagramIcon style={{ fontSize: '50px' }} />
-                                <TwitterIcon style={{ fontSize: '50px' }} />
+                                <FacebookIcon style={{ fontSize: '50px', cursor: 'pointer' }}
+                                    onClick={() => {
+                                        window.open('https://www.facebook.com/wolpamanipal', "_blank")
+                                    }}
+                                />
+                                <InstagramIcon style={{ fontSize: '50px', cursor: 'pointer' }}
+                                    onClick={() => {
+                                        window.open('https://www.instagram.com/wolpa.in/', "_blank")
+                                    }}
+                                />
                             </div>
                         </div>
                     </div>
