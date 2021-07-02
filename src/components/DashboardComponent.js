@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 			paddingLeft: '20px',
 			paddingRight: '20px',
 		},
-		
+
 		boxSizing: 'border-box',
 		// flexWrap: 'wrap',
 		// justifyContent: 'center',
@@ -99,29 +99,63 @@ export default function DashboardComponent() {
 	const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 	const [isFilterPage, setFilterPage] = useState(false)
 	const realposts = useSelector((state) => state.posts)
-	//const realposts = [...posts, ...posts, ...posts]
 	const [page, setPage] = React.useState(1);
+	//let page = 1
 
 	const filter = useSelector((state) => state.filters)
 	const dispatch = useDispatch();
 
 
-	const parsedQuery = queryString.parse(location.search);
+	const parsedLocation = queryString.parse(location.search);
 
 	useEffect(() => {
-		if (!Object.keys(parsedQuery).length) {
+		if (!Object.keys(parsedLocation).length) {
 			dispatch(clearFilters())
 		}
 		else {
-			dispatch(setLocationFilter(parsedQuery))
+			dispatch(setLocationFilter(parsedLocation))
+			if(parsedLocation.page) {
+				setPage(Number(parsedLocation.page))
+				console.log(page, 'page')
+			}
+			else 
+				setPage(1)
 		}
 		if (!isFilterPage)
 			window.scrollTo(0, 0)
+		
 	}, [location])
 
-	useEffect(() => {
-		window.scrollTo(0, 0)
-	}, [page])
+	// useEffect(() => {
+	// 	window.scrollTo(0, 0)
+	// }, [page])
+
+	const handleChangePage = (event, newPage) => {
+		//setPage(newPage)
+		parsedLocation.page = newPage
+		let newLocationString = ''
+		Object.keys(parsedLocation).map((filter, index) => {
+			if (filter === 'page') {
+				newLocationString += filter + '='
+				newLocationString += parsedLocation[filter]
+				if (index !== Object.keys(parsedLocation).length - 1)
+					newLocationString += '&'
+			}
+			if (parsedLocation[filter].length) {
+				newLocationString += filter + '='
+				newLocationString += parsedLocation[filter]
+				if (index !== Object.keys(parsedLocation).length - 1)
+					newLocationString += '&'
+			}
+		})
+
+		console.log(newLocationString)
+		history.push({
+			pathname: '/properties',
+			search: `?${newLocationString}`,
+		})
+
+	};
 
 
 	const filteredPosts = realposts.filter((listing) => {
@@ -169,10 +203,6 @@ export default function DashboardComponent() {
 		return true
 	})
 
-	const handleChangePage = (event, newPage) => {
-		setPage(newPage)
-	};
-
 	//Pagination
 	const pagePosts = filteredPosts.slice((page - 1) * 10, page * 10)
 
@@ -188,7 +218,7 @@ export default function DashboardComponent() {
 	}
 
 	useEffect(() => {
-		setPage(1)
+		//setPage(1)
 	}, [filter])
 
 
