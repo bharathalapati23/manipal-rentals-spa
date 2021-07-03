@@ -43,7 +43,11 @@ const useStyles = makeStyles((theme) => ({
     chipStyles: {
         marginRight: '10px',
         fontFamily: 'Poppins',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        [theme.breakpoints.down('xs')]: {
+            marginRight: '5px',
+            fontSize: '12px',
+        },
     }
 }));
 
