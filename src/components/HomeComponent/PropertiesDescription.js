@@ -11,7 +11,8 @@ const useStyles = makeStyles((theme) => ({
 		[theme.breakpoints.down('sm')]: {
             fontSize: '27px',
         },
-		textAlign: 'center'
+		textAlign: 'center',
+        marginBottom: '10px'
 	},
 	cardContent: {
 		fontFamily: 'poppins',

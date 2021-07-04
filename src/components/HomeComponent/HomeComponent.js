@@ -159,17 +159,18 @@ const HomeComponent = () => {
 						Why rent with Wolpa?
 					</div>
 					<div className={classes.whyRentDesc} style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', borderRadius: 15 }}>
-						<div style={{ width: '50%', backgroundColor: '#212121', marginRight: '10px', borderRadius: 15, color: '#d5d5d5' }}>
+						<div style={{ width: '50%', backgroundColor: '#212121', marginRight: '10px', borderRadius: 15, color: '#d5d5d5', padding: '10px',
+					display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
 							No Brokerage!
 							<div>
 								For the first time in Manipal!
 							</div>
 						</div>
 						<div style={{ width: '50%', marginLeft: '10px', marginRight: '10px' }}>
-							<div style={{ marginBottom: '10px', backgroundColor: '#212121', borderRadius: 15, color: '#d5d5d5' }}>
+							<div style={{ marginBottom: '10px', backgroundColor: '#212121', borderRadius: 15, color: '#d5d5d5', padding: '8px' }}>
 								Full Assistance in Renting
 							</div>
-							<div style={{ backgroundColor: '#212121', borderRadius: 15, color: '#d5d5d5' }}>
+							<div style={{ backgroundColor: '#212121', borderRadius: 15, color: '#d5d5d5', padding: '8px' }}>
 								Book from the comfort of home
 							</div>
 						</div>
@@ -200,7 +201,7 @@ const HomeComponent = () => {
 					<div className={classes.whyRentHeading}>
 						Why rent with Wolpa?
 					</div>
-					<div className={classes.whyRentDesc} style={{ width: '100%', backgroundColor: '#212121', borderRadius: 15 }}>
+					<div className={classes.whyRentDesc} style={{ width: '100%', backgroundColor: '#212121', borderRadius: 15, padding:'8px', boxSizing: 'border-box' }}>
 						No Brokerage!
 							<div>
 							For the first time in Manipal!
