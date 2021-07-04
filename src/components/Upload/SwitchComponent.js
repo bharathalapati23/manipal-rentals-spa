@@ -4,7 +4,7 @@ import { Switch } from '@material-ui/core'
 
 const SwitchComponent = ({ name, feature, postData, setPostData, bedroomIndex }) => {
     const handleChange = (event) => {
-        console.log(postData.homeFeatures[name]);
+        
         if (feature == 'home') {
             setPostData({
                 ...postData,

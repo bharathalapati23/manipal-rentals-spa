@@ -26,6 +26,7 @@ const initialHomeFeatures = {
     couch: false,
     coffeeTable: false,
     chairs: false,
+    tv: false
 }
 
 const displayNameHomeFeatures = {
@@ -37,6 +38,7 @@ const displayNameHomeFeatures = {
     couch: 'Couch',
     coffeeTable: 'Coffee Table',
     chairs: 'Chairs',
+    tv: 'TV'
 }
 
 const useStyles = makeStyles((theme) => ({

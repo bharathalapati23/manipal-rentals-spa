@@ -171,7 +171,7 @@ const ContactUs = () => {
     }, [])
 
     const handleSubmit = () => {
-        console.log(enquiryForm)
+        
         setSubmitClicked(true)
         if (enquiryForm.name.length && enquiryForm.contactNumber.length) {
             handleSuccessOpen()
@@ -317,17 +317,20 @@ const ContactUs = () => {
                                 <div>P: +919591798639</div>
                             </div>
                             <div className={classes.subHeadings}>
+                                <div><span style={{ visibility: 'hidden' }}>P: </span>+918970133397</div>
+                            </div>
+                            <div className={classes.subHeadings}>
                                 {/* <MailOutlineIcon className={classes.iconStyle} /> */}
-                                <div>E: xyz@email.com</div>
+                                <div>E: hello@wolpa.in</div>
                             </div>
                         </div>
                         <div style={{ marginTop: '40px' }}>
-                            <FacebookIcon style={{ fontSize: '80px', cursor: 'pointer' }}
+                            <FacebookIcon style={{ fontSize: '50px', cursor: 'pointer' }}
                                 onClick={() => {
                                     window.open('https://www.facebook.com/wolpamanipal', "_blank")
                                 }}
                             />
-                            <InstagramIcon style={{ fontSize: '80px', cursor: 'pointer' }}
+                            <InstagramIcon style={{ fontSize: '50px', cursor: 'pointer' }}
                                 onClick={() => {
                                     window.open('https://www.instagram.com/wolpa.in/', "_blank")
                                 }}
@@ -346,7 +349,7 @@ const ContactUs = () => {
          		    </Typography>
                     <div className={classes.heading}>
                         Thank you for placing your enquiry, our representative will get in touch shortly.
-                        Call us on 9876543210 to connect with us immediately.
+                        Call us on +919591798639 to connect with us immediately.
                     </div>
                 </div>
             </Modal>

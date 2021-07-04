@@ -142,7 +142,7 @@ const EnquiryComponent = () => {
     };
 
     const handleSubmit = () => {
-        console.log(enquiryForm)
+       
         setSubmitClicked(true)
         if (enquiryForm.name.length && enquiryForm.contactNumber.length && enquiryForm.maxBudget.length) {
             handleSuccessOpen()
@@ -331,7 +331,7 @@ const EnquiryComponent = () => {
          		    </Typography>
                     <div className={classes.heading}>
                         Thank you for placing your enquiry, our representative will get in touch shortly.
-                        Call us on 9876543210 to connect with us immediately.
+                        Call us on +919591798639 to connect with us immediately.
                     </div>
                 </div>
             </Modal>

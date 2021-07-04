@@ -10,7 +10,7 @@ import { clearFilters } from '../actions/filters.js'
 import { useSelector } from 'react-redux'
 import IconButton from '@material-ui/core/IconButton';
 
-const zones = ['Syndicate Circle', 'Venugopal Temple', 'Eshwar Nagar', 'Ananth Nagar', 'End Point Road', 'Perampalli Road', 'Vidyaratna Nagar']
+const zones = ['Eshwar Nagar', 'Ananth Nagar', 'End Point Road', 'Perampalli Road']
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -73,7 +73,7 @@ const FooterComponent = () => {
     const dispatch = useDispatch();
 
     const navigateToPropertiesZoneFilter = (event, zone) => {
-        console.log(zone)
+       
         dispatch(clearFilters())
         history.push({
             pathname: '/properties',

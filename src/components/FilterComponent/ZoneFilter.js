@@ -16,16 +16,6 @@ import queryString from 'query-string'
 
 const initialZoneState = [
     {
-        label: 'Syndicate Circle',
-        checked: false,
-        name: 'Syndicate Circle'
-    },
-    {
-        label: 'Venugopal Temple',
-        checked: false,
-        name: 'Venugopal Temple'
-    },
-    {
         label: 'Eshwar Nagar',
         checked: false,
         name: 'Eshwar Nagar'
@@ -45,12 +35,6 @@ const initialZoneState = [
         checked: false,
         name: 'Perampalli Road'
     },
-    {
-        label: 'Vidyaratna Nagar',
-        checked: false,
-        name: 'Vidyaratna Nagar'
-    },
-
 ]
 
 

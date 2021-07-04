@@ -7,6 +7,7 @@ const homeFeatures = {
     couch: false,
     coffeeTable: false,
     chairs: false,
+    tv: false,
 }
 
 const bedroomDetails = {

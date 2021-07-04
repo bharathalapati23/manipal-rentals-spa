@@ -12,16 +12,6 @@ import { useHistory } from 'react-router-dom'
 
 const zones = [
     {
-        label: 'Syndicate Circle',
-        checked: false,
-        name: 'Syndicate Circle'
-    },
-    {
-        label: 'Venugopal Temple',
-        checked: false,
-        name: 'Venugopal Temple'
-    },
-    {
         label: 'Eshwar Nagar',
         checked: false,
         name: 'Eshwar Nagar'
@@ -41,12 +31,6 @@ const zones = [
         checked: false,
         name: 'Perampalli Road'
     },
-    {
-        label: 'Vidyaratna Nagar',
-        checked: false,
-        name: 'Vidyaratna Nagar'
-    },
-
 ]
 
 const bedrooms = [

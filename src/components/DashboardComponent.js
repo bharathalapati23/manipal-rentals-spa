@@ -116,7 +116,7 @@ export default function DashboardComponent() {
 			dispatch(setLocationFilter(parsedLocation))
 			if(parsedLocation.page) {
 				setPage(Number(parsedLocation.page))
-				console.log(page, 'page')
+				
 			}
 			else 
 				setPage(1)
@@ -149,7 +149,7 @@ export default function DashboardComponent() {
 			}
 		})
 
-		console.log(newLocationString)
+		
 		history.push({
 			pathname: '/properties',
 			search: `?${newLocationString}`,

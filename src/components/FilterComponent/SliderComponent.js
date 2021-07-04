@@ -91,7 +91,7 @@ export default function SliderComponent() {
     };
 
     const dispatchPriceRangeFilter = (event, newValue) => {
-        console.log(newValue + 'newValue')
+       
         const parsedLocation = queryString.parse(location.search);
         parsedLocation.budget = newValue
 
@@ -113,7 +113,7 @@ export default function SliderComponent() {
             pathname: '/properties',
             search: `?${newLocationString}`,
         })
-        console.log(newLocationString)
+       
 
 
         // dispatch(setPriceRangeFilter(value))

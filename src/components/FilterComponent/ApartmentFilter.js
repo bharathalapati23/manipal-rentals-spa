@@ -113,7 +113,7 @@ const ApartmentFilter = () => {
 
     const selectedApartmentFilters = accomodationTypeFilters.length
 
-    // console.log('apartmentfilters', selectedApartmentFilters)
+    
 
     return (
         <Accordion className={classes.accordionStyle} defaultExpanded={!isMobile} onChange={handleExpand}>

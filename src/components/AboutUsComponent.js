@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     heading: {
         fontFamily: 'Poppins',
         fontSize: '40px',
-        color: '#e0e0e0',
+        color: '#e5e5e5',
         [theme.breakpoints.down('sm')]: {
             fontSize: '35px',
         },
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     subHeading: {
         fontFamily: 'Poppins',
         fontSize: '35px',
-        color: '#e0e0e0',
+        color: '#e5e5e5',
         [theme.breakpoints.down('sm')]: {
             fontSize: '24px',
         },
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     contentStyle: {
         display: 'flex',
         flexDirection: 'column',
-        color: '#e0e0e0',
+        color: '#e5e5e5',
         fontSize: '20px',
         [theme.breakpoints.down('sm')]: {
             fontSize: '15px',

@@ -10,12 +10,16 @@ import GeyserIcon from '../../../icons/Amenities/Home/GeyserIcon'
 import WashingMachineIcon from '../../../icons/Amenities/Home/WashingMachineIcon'
 import TableIcon from '../../../icons/Amenities/Bedroom/TableIcon'
 import WeekendIcon from '@material-ui/icons/Weekend';
-
+import TvIcon from '@material-ui/icons/Tv';
 
 const homeFeaturesDisplay = {
     wifi: {
         name: 'WiFi',
         icon: <WifiIcon style={{ color: '#e0e0e0' }} />
+    },
+    tv: {
+        name: 'TV',
+        icon: <TvIcon style={{ color: '#e0e0e0' }} />
     },
     geyser: {
         name: 'Geyser',
@@ -56,7 +60,6 @@ const HomeFeaturesComponent = ({ value, index, homeFeatures }) => {
         if (!homeFeatures[homeFeature] === false)
             filteredHomeFeatures.push(homeFeaturesDisplay[homeFeature])
     })
-    console.log(filteredHomeFeatures)
 
     return (
         <div

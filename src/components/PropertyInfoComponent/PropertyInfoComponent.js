@@ -88,7 +88,7 @@ const PropertyInfoComponent = () => {
             axios.get(`https://manipal-rentals-backend.herokuapp.com/posts/singlePost?objId=${parsedQuery['search-id']}`)
                 .then((res) => {
                     const listingObj = res.data[0]
-                    console.log(res.data[0])
+                    
                     history.replace({ ...history.location, state: { listing: listingObj } })
                 })
         }
