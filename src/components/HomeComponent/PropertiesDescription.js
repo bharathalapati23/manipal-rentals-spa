@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
 		fontFamily: 'poppins',
 		color: '#d5d5d5',
 		fontSize: '20px',
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '16px',
+        },
 		boxSizing: 'border-box',
 		padding: '20px',
         paddingBottom:'10px',

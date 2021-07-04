@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
         color: '#d5d5d5',
         fontSize: '20px',
         paddingLeft: '8px',
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '16px',
+        },
     },
     listButton: {
         borderRadius: 10,
