@@ -11,6 +11,7 @@ import WashingMachineIcon from '../../../icons/Amenities/Home/WashingMachineIcon
 import TableIcon from '../../../icons/Amenities/Bedroom/TableIcon'
 import WeekendIcon from '@material-ui/icons/Weekend';
 import TvIcon from '@material-ui/icons/Tv';
+import NoMeetingRoomIcon from '@material-ui/icons/NoMeetingRoom';
 
 const homeFeaturesDisplay = {
     wifi: {
@@ -68,7 +69,7 @@ const HomeFeaturesComponent = ({ value, index, homeFeatures }) => {
         >
             {hidden && (
                 <Box style={{ width: '100%', verticalAlign: 'center' }}>
-                    {filteredHomeFeatures.map((homeFeature, index) => {
+                    {filteredHomeFeatures.length ? filteredHomeFeatures.map((homeFeature, index) => {
                         if (index % 2 == 1) return
                         return (
                             <React.Fragment key={`homefeature${index}`}>
@@ -91,7 +92,21 @@ const HomeFeaturesComponent = ({ value, index, homeFeatures }) => {
                                 </div>
                                 <br></br>
                             </React.Fragment>)
-                    })}
+                    }) : null}
+                    {
+                        !filteredHomeFeatures.length ?
+                            <>
+                                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
+                                    <div style={{ width: `${isMobile ? '50%' : '30%'}`, display: 'flex', flexDirection: 'row' }}>
+                                        <NoMeetingRoomIcon style={{ color: '#e0e0e0' }} />
+                                        <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', color: '#e0e0e0' }}>
+                                            Unfurnished
+                                    </div>
+                                    </div>
+                                </div>
+                                <br></br>
+                            </> : null
+                    }
 
                 </Box>
             )

@@ -8,6 +8,7 @@ import TableIcon from '../../../icons/Amenities/Bedroom/TableIcon'
 import ChairIcon from '../../../icons/Amenities/Home/ChairIcon'
 import BalconyIcon from '../../../icons/Amenities/Bedroom/BalconyIcon'
 import AcUnitIcon from '@material-ui/icons/AcUnit';
+import NoMeetingRoomIcon from '@material-ui/icons/NoMeetingRoom';
 
 
 const bedroomDetailsDisplay = {
@@ -66,7 +67,7 @@ const BedroomDetailsComponent = ({ value, index, bedroomDetails }) => {
         >
             {hidden && (
                 <Box style={{ width: '100%', verticalAlign: 'center' }}>
-                    {filteredBedroomDisplay.map((filteredBedroom, index) => {
+                    {filteredBedroomDisplay.length ? filteredBedroomDisplay.map((filteredBedroom, index) => {
                         if (index % 2 == 1) return
                         return (
                             <React.Fragment key={`bedroomdetails${index}`}>
@@ -89,8 +90,21 @@ const BedroomDetailsComponent = ({ value, index, bedroomDetails }) => {
                                 </div>
                                 <br></br>
                             </React.Fragment>)
-                    })}
-
+                    }) : null}
+                    {
+                        !filteredBedroomDisplay.length ?
+                            <>
+                                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
+                                    <div style={{ width: `${isMobile ? '50%' : '30%'}`, display: 'flex', flexDirection: 'row' }}>
+                                        <NoMeetingRoomIcon style={{ color: '#e0e0e0' }} />
+                                        <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', color: '#e0e0e0' }}>
+                                            Unfurnished
+                                    </div>
+                                    </div>
+                                </div>
+                                <br></br>
+                            </> : null
+                    }
                 </Box>
             )}
         </div>
