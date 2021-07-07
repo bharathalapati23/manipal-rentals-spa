@@ -148,7 +148,7 @@ const EnquiryComponent = () => {
             handleSuccessOpen()
             setEnquiryForm(initialFormState)
             setSubmitClicked(false)
-            axios.post(`https://manipal-rentals-backend.herokuapp.com/leads`, enquiryForm)
+            axios.post(`https://wolpa-rentals-backend.herokuapp.com/leads`, enquiryForm)
                 .then(res => {
                     
                 })

@@ -85,7 +85,7 @@ const PropertyInfoComponent = () => {
 
     React.useEffect(() => {
         if (!location.state) {
-            axios.get(`https://manipal-rentals-backend.herokuapp.com/posts/singlePost?objId=${parsedQuery['search-id']}`)
+            axios.get(`https://wolpa-rentals-backend.herokuapp.com/posts/singlePost?objId=${parsedQuery['search-id']}`)
                 .then((res) => {
                     const listingObj = res.data[0]
                     
