@@ -111,6 +111,7 @@ export default function DashboardComponent() {
 	useEffect(() => {
 		if (!Object.keys(parsedLocation).length) {
 			dispatch(clearFilters())
+			setPage(1)
 		}
 		else {
 			dispatch(setLocationFilter(parsedLocation))
