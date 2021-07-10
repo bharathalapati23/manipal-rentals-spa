@@ -73,7 +73,7 @@ const FooterComponent = () => {
     const dispatch = useDispatch();
 
     const navigateToPropertiesZoneFilter = (event, zone) => {
-       
+
         dispatch(clearFilters())
         history.push({
             pathname: '/properties',
@@ -163,6 +163,16 @@ const FooterComponent = () => {
                                 </div>
                                 <div className={classes.linkStyle} onClick={navigateToContactUs}>
                                     Contact Us
+                                </div>
+                                <div className={classes.linkStyle}>
+                                    &nbsp;.&nbsp;
+                                </div>
+                                <div className={classes.linkStyle}
+                                    onClick={() => {
+                                        window.open('https://docs.google.com/forms/d/1ZV5x2ATZHvMQ0cGvQSqDO4JH580G1DLzJFVNUmJEqOk/edit', "_blank")
+                                    }}
+                                >
+                                    List with us
                                 </div>
                             </div>
                             <div>
@@ -255,6 +265,16 @@ const FooterComponent = () => {
                                 </div>
                                 <div className={classes.linkStyle} onClick={navigateToContactUs}>
                                     Contact Us
+                                </div>
+                                <div className={classes.linkStyle}>
+                                    &nbsp;.&nbsp;
+                                </div>
+                                <div className={classes.linkStyle}
+                                    onClick={() => {
+                                        window.open('https://docs.google.com/forms/d/1ZV5x2ATZHvMQ0cGvQSqDO4JH580G1DLzJFVNUmJEqOk/edit', "_blank")
+                                    }}
+                                >
+                                    List with us
                                 </div>
                             </div>
                             <div>

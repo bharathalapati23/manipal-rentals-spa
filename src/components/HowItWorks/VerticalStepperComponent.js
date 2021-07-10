@@ -105,8 +105,7 @@ function getStepContent(step, classes) {
                                 Booking fee
                             </div>
                             <div>
-                                Pay one time fee of INR 1000 per room, includes service charges for setting up your
-                                room prior to move -in.
+                                Pay one time fee of INR 1000 per room as service charges. Room can be cleaned and set-up additionally before move-in.
                             </div>
                         </CardContent>
                     </Card>
@@ -149,11 +148,11 @@ const VerticalStepperComponent = () => {
                             label: classes.stepTitle,
                             root: classes.stepperIcon,
                         }}
-                        StepIconProps={{
-                            classes: {
-                              root: classes.stepperIcon,
-                            }
-                          }}>{label}</StepLabel>
+                            StepIconProps={{
+                                classes: {
+                                    root: classes.stepperIcon,
+                                }
+                            }}>{label}</StepLabel>
                         <StepContent>
                             {getStepContent(index, classes)}
                         </StepContent>
