@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         color: '#e5e5e5',
         fontSize: '20px',
+        textAlign: 'justify',
         [theme.breakpoints.down('sm')]: {
             fontSize: '15px',
         },
