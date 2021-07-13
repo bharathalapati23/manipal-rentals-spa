@@ -70,7 +70,7 @@ function getStepContent(step, classes) {
         case 1:
             return (
                 <div className={classes.contentStyle}>
-                    Place a request for for property tour at your convenience by filling out form with your personal information.
+                    Place a request for property tour at your convenience by filling out form with your personal information.
                     <Card variant="outlined" style={{ borderRadius: '15px' }} className={classes.cardStyle}>
                         <CardContent>
                             {/* <div style={{ display:'flex', flexDirection:'row'}}>
@@ -98,7 +98,7 @@ function getStepContent(step, classes) {
             return (
                 <div className={classes.contentStyle}>
                     Pay booking token to block a room. If in demand, you shall be placed in a waiting list
-                    and intimidated within 72 hours of booking
+                    and intimated within 72 hours of booking
                     <Card variant="outlined" style={{ borderRadius: '15px' }} className={classes.cardStyle}>
                         <CardContent>
                             <div style={{ fontSize: '18px', color: '#f36802' }}>
