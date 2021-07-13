@@ -62,7 +62,7 @@ const AboutUsComponent = () => {
     return (
         <div className={classes.root}>
             <div className={classes.heading}>
-                About Us....
+                About Us
             </div>
             <div className={classes.subHeading}>
                 We Understand Rental Problems

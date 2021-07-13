@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useMediaQuery } from 'react-responsive';
-import BottomNavigationComponent from './BottomNavigationComponent'
-import FilterCardComponent from './FilterComponent/FilterCardComponent'
-import MobileFilterComponent from './FilterComponent/MobileFilterComponent.js'
+import BottomNavigationComponent from '../BottomNavigationComponent'
+import FilterCardComponent from '../FilterComponent/FilterCardComponent'
+import MobileFilterComponent from '../FilterComponent/MobileFilterComponent.js'
 import Grid from '@material-ui/core/Grid';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 
-import CardComponent from './CardComponent/CardComponent'
+import CardComponent from '../CardComponent/CardComponent'
 import { useDispatch, useSelector } from 'react-redux';
-import { getPosts, clearPosts } from '../actions/posts.js'
+import { getPosts, clearPosts } from '../../actions/posts.js'
 import { useLocation, useHistory } from 'react-router-dom'
 import queryString from 'query-string'
-import { setZoneFilter, clearFilters, setLocationFilter } from '../actions/filters.js'
+import { setZoneFilter, clearFilters, setLocationFilter } from '../../actions/filters.js'
 
-import NoResultsComponent from './NoResultsComponent'
+import NoResultsComponent from '../NoResultsComponent'
 import Pagination from '@material-ui/lab/Pagination';
 
 const useStyles = makeStyles((theme) => ({
@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-export default function DashboardComponent() {
+export default function ApprovalDashboard() {
 	const classes = useStyles();
 	const location = useLocation();
 	const history = useHistory();

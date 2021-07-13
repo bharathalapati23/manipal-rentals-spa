@@ -27,8 +27,12 @@ const bedroomObj = {
 }
 
 const initialConfig = {
-    refId: 0,
+    name: '',
+    emailId: '',
     title: '',
+    uploadPersonType: '',
+    address: '',
+    phoneNo: '',
     bedroom: 0,
     rent: 0,
     bathroom: 0,
@@ -47,6 +51,7 @@ const initialConfig = {
         couch: false,
         coffeeTable: false,
         chairs: false,
+        tv:false
     }
 }
 
@@ -57,16 +62,15 @@ const UploadComponent = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
 
-    //const posts = useSelector((state) => state.posts)
     const posts = 1
 
-    // console.log(postData)
     useEffect(() => {
         console.log(posts)
     }, [posts])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log(postData)
         const promises = []
         const x = []
 
@@ -98,29 +102,13 @@ const UploadComponent = () => {
     }
 
     // dev
-    // const handleUpload = (image) => {
-    //     return new Promise((resolve, reject) => {
-    //         const formData = new FormData()
-    //         formData.append('file', image)
-    //         formData.append('upload_preset', 'ypjwoflk')
-    //         try {
-    //             Axios.post('https://api.cloudinary.com/v1_1/dkmd4aqmt/image/upload', formData)
-    //                 .then((resp) => {
-    //                     resolve(resp.data.url)
-    //                 })
-    //         } catch (error) {
-    //             console.log(error)
-    //         }
-    //     })
-    // }
-
     const handleUpload = (image) => {
         return new Promise((resolve, reject) => {
             const formData = new FormData()
             formData.append('file', image)
-            formData.append('upload_preset', 'ohavfant')
+            formData.append('upload_preset', 'ypjwoflk')
             try {
-                Axios.post('https://api.cloudinary.com/v1_1/dojfndzbj/image/upload', formData)
+                Axios.post('https://api.cloudinary.com/v1_1/dkmd4aqmt/image/upload', formData)
                     .then((resp) => {
                         resolve(resp.data.url)
                     })
@@ -129,6 +117,22 @@ const UploadComponent = () => {
             }
         })
     }
+
+    // const handleUpload = (image) => {
+    //     return new Promise((resolve, reject) => {
+    //         const formData = new FormData()
+    //         formData.append('file', image)
+    //         formData.append('upload_preset', 'ohavfant')
+    //         try {
+    //             Axios.post('https://api.cloudinary.com/v1_1/dojfndzbj/image/upload', formData)
+    //                 .then((resp) => {
+    //                     resolve(resp.data.url)
+    //                 })
+    //         } catch (error) {
+    //             console.log(error)
+    //         }
+    //     })
+    // }
     const clear = (e) => {
     };
 
@@ -152,15 +156,34 @@ const UploadComponent = () => {
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
                 <Typography variant="h6">Create a Listing</Typography>
-                <TextField type={"number"} name="refId" variant="outlined" label="Reference Id" fullWidth value={postData.refId} onChange={(e) => setPostData({ ...postData, refId: e.target.value })} />
+                <TextField name="name" variant="outlined" label="Name" fullWidth value={postData.name} onChange={(e) => setPostData({ ...postData, name: e.target.value })} />
+                <TextField name="emailId" variant="outlined" label="Email ID" fullWidth value={postData.emailId} onChange={(e) => setPostData({ ...postData, emailId: e.target.value })} />
                 <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
+                <Select
+                    native
+                    defaultValue='Home Owner'
+                    onChange={(e) => setPostData({ ...postData, uploadPersonType: e.target.value })}
+                >
+                    <option value={'Home Owner'}>Home Owner</option>
+                    <option value={'Real Estate Agent'}>Real Estate Agent</option>
+                    <option value={'Property Manager'}>Property Manager</option>
+                </Select>
+                <TextField name="address" variant="outlined" label="Home address" fullWidth value={postData.address} onChange={(e) => setPostData({ ...postData, address: e.target.value })} />
+                <TextField
+                    type={"number"}
+                    variant="outlined"
+                    fullWidth
+                    onChange={(e) => setPostData({ ...postData, phoneNo: e.target.value })}
+                    name='phonenumber'
+                    label='Phone Number'
+                />
                 <TextField
                     type={"number"}
                     variant="outlined"
                     fullWidth
                     onChange={bedroomChange}
                     name='bedroom'
-                    label='Bedroom'
+                    label='Number of bedrooms'
                 />
                 <TextField
                     type={"number"}
@@ -175,7 +198,7 @@ const UploadComponent = () => {
                         }
                     }}
                     name='rent'
-                    label='Rent'
+                    label='Expected Rental'
                 />
                 <TextField
                     type={"number"}
@@ -190,24 +213,9 @@ const UploadComponent = () => {
                         }
                     }}
                     name='deposit'
-                    label='Deposit'
+                    label='Expected Deposit'
                 />
-                <TextField
-                    type={"number"}
-                    variant="outlined"
-                    fullWidth
-                    onChange={(event) => {
-                        if (event.target.value < 1) {
-                            event.target.value = 0
-                        }
-                        else {
-                            setPostData({ ...postData, bathroom: event.target.value })
-                        }
-                    }}
-                    name='bathroom'
-                    label='Bathroom'
-                />
-                <TextField name="desc" variant="outlined" label="Desc" fullWidth multiline rows={4} value={postData.desc} onChange={(e) => setPostData({ ...postData, desc: e.target.value })} />
+                <TextField name="desc" variant="outlined" label="Description" fullWidth multiline rows={4} value={postData.desc} onChange={(e) => setPostData({ ...postData, desc: e.target.value })} />
                 <div className={classes.fileInput}>
                     <input type='file' multiple onChange={handleChange}></input>
                 </div>

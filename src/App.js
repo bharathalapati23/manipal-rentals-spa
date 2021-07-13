@@ -22,6 +22,7 @@ const HowItWorksComponent = lazy(() => import('./components/HowItWorks/HowItWork
 const EnquiryComponent = lazy(() => import('./components/AssistedBooking/EnquiryComponent.js'))
 const ContactUs = lazy(() => import('./components/ContactUs'))
 const AboutUsComponent = lazy(() => import('./components/AboutUsComponent'))
+const ApprovalDashboard = lazy(() => import('./components/ApprovalPage/ApprovalDashboard'))
 
 function App() {
   return (
@@ -73,6 +74,12 @@ function App() {
               <NavBar />
               <Suspense fallback={<LoadingComponent />}>
                 <AboutUsComponent />
+              </Suspense>
+            </Route>
+            <Route path='/approval-dashboard' exact>
+              <NavBar />
+              <Suspense fallback={<LoadingComponent />}>
+                <ApprovalDashboard />
               </Suspense>
             </Route>
           </>
