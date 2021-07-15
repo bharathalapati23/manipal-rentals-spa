@@ -7,6 +7,7 @@ import HowItWorks from './HowItWorks'
 import AboutUs from './AboutUs'
 import SearchComponent from './SearchComponent'
 import PropertiesDescription from './PropertiesDescription'
+import TestimonialComponent from './TestimonialComponent'
 import { useHistory, useLocation } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
@@ -159,8 +160,10 @@ const HomeComponent = () => {
 						Why rent with Wolpa?
 					</div>
 					<div className={classes.whyRentDesc} style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', borderRadius: 15 }}>
-						<div style={{ width: '50%', backgroundColor: '#212121', marginRight: '10px', borderRadius: 15, color: '#d5d5d5', padding: '10px',
-					display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+						<div style={{
+							width: '50%', backgroundColor: '#212121', marginRight: '10px', borderRadius: 15, color: '#d5d5d5', padding: '10px',
+							display: 'flex', flexDirection: 'column', justifyContent: 'center'
+						}}>
 							No Brokerage!
 							<div>
 								For the first time in Manipal!
@@ -194,6 +197,7 @@ const HomeComponent = () => {
 					</div>
 					<HowItWorks navigateToHowItWorks={navigateToHowItWorks} />
 					<AboutUs navigateToAboutUs={navigateToAboutUs} />
+					<TestimonialComponent />
 				</div>
 			}
 			{isMobile &&
@@ -201,7 +205,7 @@ const HomeComponent = () => {
 					<div className={classes.whyRentHeading}>
 						Why rent with Wolpa?
 					</div>
-					<div className={classes.whyRentDesc} style={{ width: '100%', backgroundColor: '#212121', borderRadius: 15, padding:'8px', boxSizing: 'border-box' }}>
+					<div className={classes.whyRentDesc} style={{ width: '100%', backgroundColor: '#212121', borderRadius: 15, padding: '8px', boxSizing: 'border-box' }}>
 						No Brokerage!
 							<div>
 							For the first time in Manipal!
@@ -225,6 +229,7 @@ const HomeComponent = () => {
 					</div>
 					<HowItWorks navigateToHowItWorks={navigateToHowItWorks} />
 					<AboutUs navigateToAboutUs={navigateToAboutUs} />
+					<TestimonialComponent />
 				</div>
 
 			}
