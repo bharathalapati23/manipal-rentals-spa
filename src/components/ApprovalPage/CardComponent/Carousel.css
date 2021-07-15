@@ -1,0 +1,19 @@
+.carousel .thumb img {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+
+.legend {
+    visibility: hidden;
+}
+
+@media (min-width:960px) {
+
+    .carousel .slide img {
+        max-height: 150px;  /* change this to whatever you want */
+        width: auto;
+    }
+  
+  }

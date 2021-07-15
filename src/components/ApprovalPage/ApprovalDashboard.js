@@ -8,9 +8,9 @@ import Grid from '@material-ui/core/Grid';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 
-import CardComponent from '../CardComponent/CardComponent'
+import CardComponent from './CardComponent/CardComponent'
 import { useDispatch, useSelector } from 'react-redux';
-import { getPosts, clearPosts } from '../../actions/posts.js'
+import { getUploads, clearUploads } from '../../actions/uploads'
 import { useLocation, useHistory } from 'react-router-dom'
 import queryString from 'query-string'
 import { setZoneFilter, clearFilters, setLocationFilter } from '../../actions/filters.js'
@@ -98,7 +98,7 @@ export default function ApprovalDashboard() {
 	const history = useHistory();
 	const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 	const [isFilterPage, setFilterPage] = useState(false)
-	const realposts = useSelector((state) => state.posts)
+	const realposts = useSelector((state) => state.uploads)
 	const [page, setPage] = React.useState(1);
 	//let page = 1
 
@@ -211,11 +211,11 @@ export default function ApprovalDashboard() {
 
 	const getListings = (sortOrder) => {
 		if (Number(sortOrder) == 0)
-			dispatch(getPosts({ rent: 0 }));
+			dispatch(getUploads({ rent: 0 }));
 		else if (Number(sortOrder) === 1)
-			dispatch(getPosts({ rent: -1 }));
+			dispatch(getUploads({ rent: -1 }));
 		else
-			dispatch(getPosts({ rent: 1 }));
+			dispatch(getUploads({ rent: 1 }));
 	}
 
 	useEffect(() => {
@@ -272,7 +272,7 @@ export default function ApprovalDashboard() {
 												native
 												defaultValue={0}
 												onChange={(e) => {
-													dispatch(clearPosts())
+													dispatch(clearUploads())
 													getListings(e.target.value)
 												}}
 												className={classes.sortSelect}

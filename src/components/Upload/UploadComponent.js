@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import useStyles from '../styles';
 
-import { createPost, getPosts } from '../../actions/posts.js'
+import { createUpload, getUploads } from '../../actions/uploads'
 
 import SwitchComponent from './SwitchComponent'
 import Accordion from '@material-ui/core/Accordion';
@@ -85,14 +85,14 @@ const UploadComponent = () => {
                 images: [...x]
             }
             console.log('finalObj', finalObj)
-            dispatch(createPost(finalObj))
+            dispatch(createUpload(finalObj))
         });
     };
 
 
 
     useEffect(() => {
-        dispatch(getPosts());
+        dispatch(getUploads());
     }, [dispatch]);
 
     const handleChange = e => {
