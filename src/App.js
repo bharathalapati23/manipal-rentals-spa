@@ -14,6 +14,7 @@ import FooterComponent from './components/FooterComponent.js'
 import HomeComponent from './components/HomeComponent/HomeComponent'
 import './App.css'
 import LoadingComponent from './components/LoadingComponent'
+import UploadListing from './components/Upload/UploadListing'
 
 const DashboardComponent = lazy(() => import('./components/DashboardComponent'))
 const PropertyInfoComponent = lazy(() => import('./components/PropertyInfoComponent/PropertyInfoComponent.js'))
@@ -43,7 +44,7 @@ function App() {
             <Route path='/upload' exact>
               <NavBar />
               <Suspense fallback={<LoadingComponent />}>
-                <UploadComponent />
+                <UploadListing />
               </Suspense>
             </Route>
             <Route path='/property' exact>
