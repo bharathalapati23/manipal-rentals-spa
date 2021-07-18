@@ -100,6 +100,7 @@ export default function DashboardComponent() {
 	const [isFilterPage, setFilterPage] = useState(false)
 	const realposts = useSelector((state) => state.posts)
 	const [page, setPage] = React.useState(1);
+	const [sortOrder, setSortOrder] = React.useState(0)
 	//let page = 1
 
 	const filter = useSelector((state) => state.filters)
@@ -110,26 +111,21 @@ export default function DashboardComponent() {
 
 	useEffect(() => {
 		if (!Object.keys(parsedLocation).length) {
+			getListings(0)
 			dispatch(clearFilters())
 			setPage(1)
+			setSortOrder(0)
 		}
 		else {
 			dispatch(setLocationFilter(parsedLocation))
-			if(parsedLocation.page) {
-				setPage(Number(parsedLocation.page))
-				
-			}
-			else 
-				setPage(1)
+			parsedLocation.page ? setPage(Number(parsedLocation.page)) : setPage(1)
+			parsedLocation.order ? setSortOrder(parsedLocation.order) : setSortOrder(0)
+			parsedLocation.order ? getListings(parsedLocation.order) : getListings(0)
 		}
 		if (!isFilterPage)
 			window.scrollTo(0, 0)
-		
-	}, [location])
 
-	// useEffect(() => {
-	// 	window.scrollTo(0, 0)
-	// }, [page])
+	}, [location])
 
 	const handleChangePage = (event, newPage) => {
 		//setPage(newPage)
@@ -150,7 +146,36 @@ export default function DashboardComponent() {
 			}
 		})
 
+
+		history.push({
+			pathname: '/properties',
+			search: `?${newLocationString}`,
+		})
+
+	};
+
+	const handleSortChange = (event, newPage) => {
+		dispatch(clearPosts())
+		//getListings(event.target.value)
 		
+		parsedLocation.order = Number(event.target.value)
+		let newLocationString = ''
+		Object.keys(parsedLocation).map((filter, index) => {
+			if (filter === 'page' || filter === 'order') {
+				newLocationString += filter + '='
+				newLocationString += parsedLocation[filter]
+				if (index !== Object.keys(parsedLocation).length - 1)
+					newLocationString += '&'
+			}
+			else if (parsedLocation[filter].length) {
+				newLocationString += filter + '='
+				newLocationString += parsedLocation[filter]
+				if (index !== Object.keys(parsedLocation).length - 1)
+					newLocationString += '&'
+			}
+		})
+
+
 		history.push({
 			pathname: '/properties',
 			search: `?${newLocationString}`,
@@ -218,15 +243,6 @@ export default function DashboardComponent() {
 			dispatch(getPosts({ rent: 1 }));
 	}
 
-	useEffect(() => {
-		//setPage(1)
-	}, [filter])
-
-
-	useEffect(() => {
-		getListings(0)
-	}, [dispatch]);
-
 	const noOfResults = {
 		start: (page - 1) * 10 + 1,
 		end: 0,
@@ -270,11 +286,8 @@ export default function DashboardComponent() {
 										}}>
 											<Select
 												native
-												defaultValue={0}
-												onChange={(e) => {
-													dispatch(clearPosts())
-													getListings(e.target.value)
-												}}
+												value={sortOrder}
+												onChange={handleSortChange}
 												className={classes.sortSelect}
 												MenuProps={{ classes: { paper: classes.dropdownStyle } }}
 												inputProps={{
