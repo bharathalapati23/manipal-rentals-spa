@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import MenuIcon from '@material-ui/icons/Menu';
+import PhoneIcon from '@material-ui/icons/Phone';
 import { useMediaQuery } from 'react-responsive';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: '5px',
         color: '#2E2E2E',
         fontWeight: 'bolder',
-        cursor:'pointer'
+        cursor: 'pointer'
     },
     popoverPaper: {
         left: '0 !important'
@@ -108,14 +109,14 @@ function NavBar({ homePage }) {
             >
                 <Toolbar>
                     <IconButton onClick={navigateToHome} style={{ padding: 0 }}>
-                        {homePage ? <LogoDarkIcon style={{ fontSize: '50px' }} /> : <LogoLightIcon style={{ fontSize: '50px' }} />} 
+                        {homePage ? <LogoDarkIcon style={{ fontSize: '50px' }} /> : <LogoLightIcon style={{ fontSize: '50px' }} />}
                     </IconButton>
 
                     <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'row' }}>
                         {
                             !isMobile &&
                             <>
-                                <Typography variant="h6" className={classes.title} onClick={navigateToHome} style={{ color: homePage ? '' : '#e5e5e5', marginRight:'20px'}}>
+                                <Typography variant="h6" className={classes.title} onClick={navigateToHome} style={{ color: homePage ? '' : '#e5e5e5', marginRight: '20px' }}>
                                     wolpa
                                 </Typography>
                                 <Button style={{ textTransform: 'none', fontFamily: 'poppins', fontWeight: homePage ? '' : '', fontSize: '15px' }} color="inherit" onClick={navigateToProperties}>Properties</Button>
@@ -134,41 +135,46 @@ function NavBar({ homePage }) {
                         </>
                     }
                     {isMobile &&
-                        <IconButton edge="end" className={classes.menuButton} color="inherit" aria-label="menu">
-                            {!Boolean(anchorEl) ? <MenuIcon onClick={handleClick} /> : <CloseIcon />}
-                            <Menu
-                                id="simple-menu"
-                                anchorEl={anchorEl}
-                                getContentAnchorEl={null}
-                                keepMounted
-                                open={Boolean(anchorEl)}
-                                onClose={handleClose}
-                                anchorOrigin={{
-                                    vertical: "bottom",
-                                    horizontal: "center"
-                                }}
-                                transformOrigin={{
-                                    vertical: "top",
-                                    horizontal: "center"
-                                }}
-                                PaperProps={{
-                                    style: {
-                                        width: "100%",
-                                        maxWidth: "100%",
-                                        borderRadius: 0,
-                                        backgroundColor: 'rgb(247,242,240,1)'
-                                    }
-                                }}
-                                PopoverClasses={{ paper: classes.popoverPaper }}
-                            >
-                                <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToHome}>Home</MenuItem>
-                                <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToProperties}>Properties</MenuItem>
-                                <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToHowItWorks}>How it Works</MenuItem>
-                                <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToAssistedBooking}>Assisted Booking</MenuItem>
-                                <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToAboutUs}>About Us</MenuItem>
-                                <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToContactUs}>Contact Us</MenuItem>
-                            </Menu>
-                        </IconButton>
+                        <>
+                            <IconButton color="inherit">
+                                <PhoneIcon onClick={() => { window.open('tel:919591798639'); }} />
+                            </IconButton>
+                            <IconButton edge="end" className={classes.menuButton} color="inherit" aria-label="menu">
+                                {!Boolean(anchorEl) ? <MenuIcon onClick={handleClick} /> : <CloseIcon />}
+                                <Menu
+                                    id="simple-menu"
+                                    anchorEl={anchorEl}
+                                    getContentAnchorEl={null}
+                                    keepMounted
+                                    open={Boolean(anchorEl)}
+                                    onClose={handleClose}
+                                    anchorOrigin={{
+                                        vertical: "bottom",
+                                        horizontal: "center"
+                                    }}
+                                    transformOrigin={{
+                                        vertical: "top",
+                                        horizontal: "center"
+                                    }}
+                                    PaperProps={{
+                                        style: {
+                                            width: "100%",
+                                            maxWidth: "100%",
+                                            borderRadius: 0,
+                                            backgroundColor: 'rgb(247,242,240,1)'
+                                        }
+                                    }}
+                                    PopoverClasses={{ paper: classes.popoverPaper }}
+                                >
+                                    <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToHome}>Home</MenuItem>
+                                    <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToProperties}>Properties</MenuItem>
+                                    <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToHowItWorks}>How it Works</MenuItem>
+                                    <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToAssistedBooking}>Assisted Booking</MenuItem>
+                                    <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToAboutUs}>About Us</MenuItem>
+                                    <MenuItem classes={{ root: classes.menuItemRoot }} onClick={navigateToContactUs}>Contact Us</MenuItem>
+                                </Menu>
+                            </IconButton>
+                        </>
                     }
                 </Toolbar>
             </AppBar>
