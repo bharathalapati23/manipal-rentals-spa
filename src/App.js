@@ -1,16 +1,9 @@
 import React, { lazy, Suspense } from 'react'
 import NavBar from './components/NavBar/NavBar'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-//import DashboardComponent from './components/DashboardComponent'
+import ReactGa from 'react-ga'
 
-//import UploadComponent from './components/Upload/UploadComponent'
-//import PropertyInfoComponent from './components/PropertyInfoComponent/PropertyInfoComponent.js'
 import FooterComponent from './components/FooterComponent.js'
-//import HowItWorksComponent from './components/HowItWorks/HowItWorksComponent.js'
-//import EnquiryComponent from './components/AssistedBooking/EnquiryComponent.js'
-//import HomeComponent from './components/HomeComponent/HomeComponent'
-//import ContactUs from './components/ContactUs'
-//import AboutUsComponent from './components/AboutUsComponent'
 import HomeComponent from './components/HomeComponent/HomeComponent'
 import './App.css'
 import LoadingComponent from './components/LoadingComponent'
@@ -24,6 +17,11 @@ const ContactUs = lazy(() => import('./components/ContactUs'))
 const AboutUsComponent = lazy(() => import('./components/AboutUsComponent'))
 
 function App() {
+  React.useEffect(() => {
+    ReactGa.initialize('')
+
+    ReactGa.pageview('/')
+  }, [])
   return (
     <>
       <Router>
