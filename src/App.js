@@ -18,7 +18,7 @@ const AboutUsComponent = lazy(() => import('./components/AboutUsComponent'))
 
 function App() {
   React.useEffect(() => {
-    ReactGa.initialize('')
+    ReactGa.initialize('UA-202721696-1')
 
     ReactGa.pageview('/')
   }, [])
