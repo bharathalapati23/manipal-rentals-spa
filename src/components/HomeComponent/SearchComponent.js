@@ -73,7 +73,7 @@ const MenuProps = {
 };
 
 const useStyles = makeStyles((theme) => ({
-    sortSelect: {
+    bedroomSelect: {
         width: '100%',
         
         height: '56px',
@@ -102,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
             
 		},
     },
-    bedroomSelect: {
+    sortSelect: {
         width: '100%',
         
         height: '56px',
@@ -124,7 +124,7 @@ const useStyles = makeStyles((theme) => ({
         },
         opacity: 0.9,
         [theme.breakpoints.up('md')]: {
-			maxWidth: '200px',
+			maxWidth: '250px',
 		},
         [theme.breakpoints.down('sm')]: {
 			width: '90%',
@@ -147,7 +147,7 @@ const useStyles = makeStyles((theme) => ({
 const SearchComponent = ({ isMobile }) => {
     const classes = useStyles();
     const history = useHistory();
-    const [bedroomSelect, setBedroomSelect] = React.useState(['Select Bedroom'])
+    const [bedroomSelect, setBedroomSelect] = React.useState(['Select Home Configuration'])
     const [zoneSelect, setZoneSelect] = React.useState(['Select Zone']);
 
     const handleZoneChange = (event) => {
@@ -201,29 +201,6 @@ const SearchComponent = ({ isMobile }) => {
             {!isMobile &&
                 <div style={{ top: '50%', left: '50%', height: '100%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <Select
-                        label="Age"
-                        multiple
-                        disableUnderline
-                        renderValue={(selected) => selected.join(', ')}
-                        MenuProps={MenuProps}
-                        value={zoneSelect}
-                        onChange={handleZoneChange}
-                        className={classes.sortSelect}
-                        defaultValue="none"
-                        inputProps={{
-                            classes: {
-                                icon: classes.icon,
-                            },
-                        }}
-                    >
-                        {zones.map((zone) => (
-                            <MenuItem key={zone.name} value={zone.name}>
-                                <Checkbox checked={zoneSelect.indexOf(zone.name) > -1} />
-                                <ListItemText primary={zone.name} />
-                            </MenuItem>
-                        ))}
-                    </Select>
-                    <Select
                         labelId="demo-mutiple-checkbox-label"
                         id="demo-mutiple-checkbox"
                         multiple
@@ -244,6 +221,29 @@ const SearchComponent = ({ isMobile }) => {
                             <MenuItem key={bedroom.name} value={bedroom.name}>
                                 <Checkbox checked={bedroomSelect.indexOf(bedroom.name) > -1} />
                                 <ListItemText primary={bedroom.name} />
+                            </MenuItem>
+                        ))}
+                    </Select>
+                    <Select
+                        label="Age"
+                        multiple
+                        disableUnderline
+                        renderValue={(selected) => selected.join(', ')}
+                        MenuProps={MenuProps}
+                        value={zoneSelect}
+                        onChange={handleZoneChange}
+                        className={classes.sortSelect}
+                        defaultValue="none"
+                        inputProps={{
+                            classes: {
+                                icon: classes.icon,
+                            },
+                        }}
+                    >
+                        {zones.map((zone) => (
+                            <MenuItem key={zone.name} value={zone.name}>
+                                <Checkbox checked={zoneSelect.indexOf(zone.name) > -1} />
+                                <ListItemText primary={zone.name} />
                             </MenuItem>
                         ))}
                     </Select>

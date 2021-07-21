@@ -1,6 +1,27 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+
+
+const CssTextField = withStyles({
+    root: {
+        '& label.Mui-focused': {
+            color: '#e0e0e0',
+        },
+        '& .MuiInput-underline:after': {
+            borderBottomColor: 'white',
+        },
+        '& .MuiOutlinedInput-root': {
+            '&:hover fieldset': {
+                borderColor: 'white',
+            },
+            '&.Mui-focused fieldset': {
+                borderColor: 'white',
+            },
+        },
+    },
+})(TextField);
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -43,6 +64,44 @@ const useStyles = makeStyles((theme) => ({
         },
         boxSizing: 'border-box',
     },
+    input: {
+        color: "#e0e0e0"
+    },
+    textFieldStyles: {
+        '&.Mui-focused fieldset': {
+            borderColor: 'green',
+        },
+        width: '100%',
+        marginTop: '5px',
+        backgroundColor: '#2e2e2e',
+    },
+    desktopEnquiryForm: {
+        flexGrow: 2,
+        backgroundColor: '#2e2e2e',
+        borderRadius: '10px',
+        padding: '20px',
+        [theme.breakpoints.up('lg')]: {
+            width: '100%',
+            maxWidth: '700px'
+        },
+        [theme.breakpoints.down('md')]: {
+            margin: '0 auto'
+        },
+        marginTop: '30px',
+        marginLeft: '40px',
+        marginRight: '40px'
+    },
+    filterHeading: {
+        fontFamily: 'Poppins',
+        color: '#E5E5E5',
+        fontSize: '28px',
+        marginBottom: '15px'
+    },
+    heading: {
+        fontFamily: 'Poppins',
+        color: '#E5E5E5',
+        paddingTop: '5px'
+    },
 }));
 
 const UploadListing = () => {
@@ -51,18 +110,30 @@ const UploadListing = () => {
     return (
         <div className={classes.root}>
             <Typography variant="h5" component="h2" className={classes.mainHeading}>
-                Fill in the form below
+                List Your Home
         	</Typography>
             <div className={classes.description}>
                 We are building this platform to increase the ease of viewing properties
                 for students from Manipal. If you or any one in your network has a home
                 to be rented out, you could list it on our platform at no cost and start
                 getting enquiries.
-                <div style={{ paddingTop: '10px'}}>
+                <div style={{ paddingTop: '10px' }}>
                     We request to share below details for creating your listing.
                 </div>
             </div>
-            
+            <div className={classes.desktopEnquiryForm}>
+                <Typography variant="h5" component="h2" className={classes.filterHeading}>
+                    Fill in the form below
+        		</Typography>
+                <div className={classes.heading}>Name</div>
+                <CssTextField variant="outlined"
+                    InputProps={{
+                        className: classes.input
+                    }}
+                    className={classes.textFieldStyles}
+                />
+            </div>
+
         </div>
     )
 }
