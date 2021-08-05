@@ -334,7 +334,7 @@ const FooterComponent = () => {
                         </div>
                         <div className={classes.box3}>
                             <div style={{ textAlign: 'right' }}>
-                                +919591798639
+                                +919480265115
                             </div>
                             <div style={{ textAlign: 'right' }}>
                                 +918970133397

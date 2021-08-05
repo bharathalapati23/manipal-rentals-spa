@@ -194,7 +194,7 @@ const EnquiryFormModal = ({ searchId }) => {
          		    </Typography>
                     <div className={classes.heading}>
                         Thank you for placing your enquiry, our representative will get in touch shortly.
-                        Call us on +919591798639 to connect with us immediately.
+                        Call us on +918970133397 to connect with us immediately.
                     </div>
                 </div>
             </Modal>
