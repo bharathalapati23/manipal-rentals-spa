@@ -11,6 +11,13 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const testimonialArr = [
     {
+        role: 'Kiran',
+        flat: 'Owner',
+        rating: 5,
+        testimonial: 'Thank you so much for making it like cake walk to find a new tenant to my flat in this platform. I truly appreciate the digital platform which served the purpose, specially in this situation.',
+        pic: 'https://st4.depositphotos.com/1000507/24488/v/600/depositphotos_244889634-stock-illustration-user-profile-picture-isolate-background.jpg'
+    },
+    {
         role: 'Nikhil',
         flat: 'Student',
         rating: 5,
@@ -65,6 +72,8 @@ const useStyles = makeStyles((theme) => ({
         },
         boxSizing: 'border-box',
         padding: '35px',
+        // paddingLeft: '10px',
+        // paddingRight: '10px',
         paddingTop: '0px',
         textAlign: 'center',
         display: 'flex',
