@@ -88,6 +88,14 @@ const useStyles = makeStyles((theme) => ({
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
     },
+    unknownPicContainer: {
+        width: '70%',
+        height: 'auto',
+        borderRadius: '50%',
+        paddingBottom: '70%',
+        backgroundSize: 'cover',
+        backgroundPosition: 'bottom 10px center',
+    },
     role: {
         fontSize: '17px',
         [theme.breakpoints.down('sm')]: {
@@ -133,7 +141,10 @@ const TestimonialComponent = () => {
                     {testimonialArr.map((testimonial) => {
                         return (
                             <div className={classes.testimonialContainer}>
-                                <div className={classes.picContainer} style={{ backgroundImage: `url(${testimonial.pic})`}}></div>
+                                <div 
+                                    className={`${testimonial.role == 'Kiran' ? classes.unknownPicContainer : classes.picContainer}`} 
+                                    style={{ backgroundImage: `url(${testimonial.pic})`}}>
+                                </div>
                                 <div className={classes.role}>
                                     {testimonial.role}
                                 </div>
