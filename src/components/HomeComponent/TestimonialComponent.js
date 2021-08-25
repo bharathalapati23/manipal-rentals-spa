@@ -168,7 +168,10 @@ const TestimonialComponent = () => {
             {testimonialArr.map((testimonial) => {
                         return (
                             <div className={classes.testimonialContainer}>
-                                <div className={classes.picContainer} style={{ backgroundImage: `url(${testimonial.pic})`}}></div>
+                                <div 
+                                    className={`${testimonial.role == 'Kiran' ? classes.unknownPicContainer : classes.picContainer}`} 
+                                    style={{ backgroundImage: `url(${testimonial.pic})`}}>
+                                </div>
                                 <div className={classes.role}>
                                     {testimonial.role}
                                 </div>
