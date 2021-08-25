@@ -137,7 +137,7 @@ function NavBar({ homePage }) {
                     {isMobile &&
                         <>
                             <IconButton color="inherit">
-                                <PhoneIcon onClick={() => { window.open('tel:918970133397'); }} />
+                                <PhoneIcon onClick={() => { window.open('tel:919591798639'); }} />
                             </IconButton>
                             <IconButton edge="end" className={classes.menuButton} color="inherit" aria-label="menu">
                                 {!Boolean(anchorEl) ? <MenuIcon onClick={handleClick} /> : <CloseIcon />}
