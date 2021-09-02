@@ -47,10 +47,6 @@ const NumberCounter = () => {
     const classes = useStyles()
     const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 
-    const [firstCounterDone, setFirstCounterDone] = React.useState(false)
-    const [secondCounterDone, setSecondCounterDone] = React.useState(false)
-    const [thirdCounterDone, setThirdCounterDone] = React.useState(false)
-    const [fourthCounterDone, setFourthCounterDone] = React.useState(false)
 
     return (
         <>

@@ -14,6 +14,7 @@ import { getPosts, clearPosts } from '../actions/posts.js'
 import { useLocation, useHistory } from 'react-router-dom'
 import queryString from 'query-string'
 import { setZoneFilter, clearFilters, setLocationFilter } from '../actions/filters.js'
+import { openCTAModal } from '../actions/ctaModal'
 
 import NoResultsComponent from './NoResultsComponent'
 import Pagination from '@material-ui/lab/Pagination';
@@ -110,6 +111,36 @@ export default function DashboardComponent() {
 	const parsedLocation = queryString.parse(location.search);
 
 	useEffect(() => {
+		let ctaTimeOut = null
+		const currentDate = new Date()
+		const ctaShownDateString = localStorage.getItem('ctaShownDate')
+		const ctaShownDate = new Date(ctaShownDateString)
+		let showCTA = false
+		if (ctaShownDate) {
+			let dateDiff = currentDate.getTime() - ctaShownDate.getTime()
+			dateDiff = dateDiff / (1000 * 60)
+			console.log(currentDate, ctaShownDate, dateDiff)
+
+			if (dateDiff > 2)
+				showCTA = true
+		}
+		if (!ctaShownDate) {
+			showCTA = true
+		}
+		if (showCTA === true) {
+			ctaTimeOut = setTimeout(function () {
+				localStorage.setItem('ctaShownDate', currentDate.toString())
+				dispatch(openCTAModal())
+			}, 5000);
+		}
+		return () => {
+			if(ctaTimeOut) {
+				clearTimeout(ctaTimeOut)
+			}
+		}
+	}, [])
+
+	useEffect(() => {
 		if (!Object.keys(parsedLocation).length) {
 			getListings(0)
 			dispatch(clearFilters())
@@ -157,7 +188,7 @@ export default function DashboardComponent() {
 	const handleSortChange = (event, newPage) => {
 		dispatch(clearPosts())
 		//getListings(event.target.value)
-		
+
 		parsedLocation.order = Number(event.target.value)
 		let newLocationString = ''
 		Object.keys(parsedLocation).map((filter, index) => {

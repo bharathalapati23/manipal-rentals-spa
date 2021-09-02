@@ -7,6 +7,7 @@ import FooterComponent from './components/FooterComponent.js'
 import HomeComponent from './components/HomeComponent/HomeComponent'
 import './App.css'
 import LoadingComponent from './components/LoadingComponent'
+import CTAModal from './components/CTAModal/CTAModal'
 
 const DashboardComponent = lazy(() => import('./components/DashboardComponent'))
 const PropertyInfoComponent = lazy(() => import('./components/PropertyInfoComponent/PropertyInfoComponent.js'))
@@ -76,6 +77,7 @@ function App() {
           </>
         </Switch>
         <FooterComponent />
+        <CTAModal />
       </Router>
     </>
   )

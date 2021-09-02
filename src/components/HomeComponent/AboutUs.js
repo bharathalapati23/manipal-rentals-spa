@@ -2,6 +2,10 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import NumberCounter from './NumberCounter'
+import { useInView } from 'react-intersection-observer';
+import { useDispatch } from 'react-redux'
+import { openCTAModal } from '../../actions/ctaModal'
+import { LooksOneTwoTone } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
     heading: {
@@ -13,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
             fontSize: '27px',
         },
         textAlign: 'center',
-        marginBottom:'10px'
+        marginBottom: '10px'
         // letterSpacing: '0.5px'
     },
     content: {
@@ -75,6 +79,41 @@ const useStyles = makeStyles((theme) => ({
 
 const AboutUs = ({ navigateToAboutUs }) => {
     const classes = useStyles()
+    const dispatch = useDispatch()
+
+    const { ref, inView } = useInView({
+        /* Optional options */
+        threshold: 0,
+        rootMargin: '-880px 0px 0px 0px',
+        initialInView: false,
+        triggerOnce: true
+    });
+
+    React.useEffect(() => {
+        if (inView === true) {
+            const currentDate = new Date()
+            const ctaShownDateString = localStorage.getItem('ctaShownDate')
+            const ctaShownDate = new Date(ctaShownDateString)
+            let showCTA = false
+            if (ctaShownDate) {
+                let dateDiff = currentDate.getTime() - ctaShownDate.getTime()
+                dateDiff = dateDiff / (1000 * 60)
+                console.log(currentDate, ctaShownDate, dateDiff)
+
+                if (dateDiff > 2)
+                    showCTA = true
+            }
+            if (!ctaShownDate) {
+                showCTA = true
+            }
+
+            if (showCTA === true) {
+                localStorage.setItem('ctaShownDate', currentDate.toString())
+                dispatch(openCTAModal())
+            }
+
+        }
+    }, [inView])
 
     return (
         <>
@@ -95,7 +134,7 @@ const AboutUs = ({ navigateToAboutUs }) => {
                 Learn about us
             </Button>
             <NumberCounter />
-            <div className={classes.heading}>
+            <div className={classes.heading} ref={ref}>
                 Do you own a property?
             </div>
             <Button variant="contained"
