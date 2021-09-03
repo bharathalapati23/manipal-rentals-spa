@@ -5,7 +5,6 @@ import NumberCounter from './NumberCounter'
 import { useInView } from 'react-intersection-observer';
 import { useDispatch } from 'react-redux'
 import { openCTAModal } from '../../actions/ctaModal'
-import { LooksOneTwoTone } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
     heading: {
@@ -84,7 +83,7 @@ const AboutUs = ({ navigateToAboutUs }) => {
     const { ref, inView } = useInView({
         /* Optional options */
         threshold: 0,
-        rootMargin: '-880px 0px 0px 0px',
+        rootMargin: '-80px 0px 0px 0px',
         initialInView: false,
         triggerOnce: true
     });
