@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import MenuIcon from '@material-ui/icons/Menu';
 import PhoneIcon from '@material-ui/icons/Phone';
+import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import { useMediaQuery } from 'react-responsive';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -138,6 +139,9 @@ function NavBar({ homePage }) {
                         <>
                             <IconButton color="inherit">
                                 <PhoneIcon onClick={() => { window.open('tel:919591798639'); }} />
+                            </IconButton>
+                            <IconButton color="inherit">
+                                <WhatsAppIcon onClick={() => { window.open('https://api.whatsapp.com/send?phone=919591798639'); }} />
                             </IconButton>
                             <IconButton edge="end" className={classes.menuButton} color="inherit" aria-label="menu">
                                 {!Boolean(anchorEl) ? <MenuIcon onClick={handleClick} /> : <CloseIcon />}
