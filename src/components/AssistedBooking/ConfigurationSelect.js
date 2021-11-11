@@ -1,11 +1,10 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-
-import Select from '@material-ui/core/Select';
-import Input from '@material-ui/core/Input';
-import Checkbox from '@material-ui/core/Checkbox';
-import MenuItem from '@material-ui/core/MenuItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import { styled } from '@mui/material/styles';
+import Select from '@mui/material/Select';
+import Input from '@mui/material/Input';
+import Checkbox from '@mui/material/Checkbox';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemText from '@mui/material/ListItemText';
 
 const bedrooms = [
     {
@@ -45,36 +44,33 @@ const MenuProps = {
     },
 };
 
-const useStyles = makeStyles((theme) => ({
-    sortSelect: {
-        width: '100%',
-        height: '56px',
-        marginTop: '5px',
-        fontFamily: 'Poppins',
-        fontSize: '14px',
-        color: '#e5e5e5',
-        border: 'solid',
-        borderColor: 'rgba(0, 0, 0, 0.23)',
-        borderWidth: 'thin',
-        backgroundColor: 'transparent',
-        paddingLeft: '5px',
-        borderRadius: '5px',
-        "& option": {
-            backgroundColor: "#black",
-        },
-        "& li": {
-            fontSize: 12,
-        },
-        '&:hover': {
-            borderRadius: 1,
-            borderColor: '#fffff',
-            boxShadow: '0 0 0 0.1rem rgba(255,255,255,1)',
-        },
+const SelectComponent = styled(Select)(({ theme }) => ({
+    width: '100%',
+    height: '56px',
+    marginTop: '5px',
+    fontFamily: 'Poppins',
+    fontSize: '14px',
+    color: '#e5e5e5',
+    border: 'solid',
+    borderColor: 'rgba(0, 0, 0, 0.23)',
+    borderWidth: 'thin',
+    backgroundColor: 'transparent',
+    paddingLeft: '5px',
+    borderRadius: '5px',
+    "& option": {
+        backgroundColor: "#black",
+    },
+    "& li": {
+        fontSize: 12,
+    },
+    '&:hover': {
+        borderRadius: 1,
+        borderColor: '#fffff',
+        boxShadow: '0 0 0 0.1rem rgba(255,255,255,1)',
     },
 }));
 
 const ConfigurationSelect = ({ enquiryForm, setEnquiryForm }) => {
-    const classes = useStyles()
     const personName = enquiryForm.preferredConfig
 
     const handleChange = (event) => {
@@ -82,7 +78,7 @@ const ConfigurationSelect = ({ enquiryForm, setEnquiryForm }) => {
     };
 
     return (
-        <Select
+        <SelectComponent
             labelId="demo-mutiple-checkbox-label"
             id="demo-mutiple-checkbox"
             multiple
@@ -92,7 +88,6 @@ const ConfigurationSelect = ({ enquiryForm, setEnquiryForm }) => {
             MenuProps={MenuProps}
             value={personName}
             onChange={handleChange}
-            className={classes.sortSelect}
         >
             {bedrooms.map((bedroom) => (
                 <MenuItem key={bedroom.name} value={bedroom.name}>
@@ -100,7 +95,7 @@ const ConfigurationSelect = ({ enquiryForm, setEnquiryForm }) => {
                     <ListItemText primary={bedroom.name} />
                 </MenuItem>
             ))}
-        </Select>
+        </SelectComponent>
     )
 }
 
