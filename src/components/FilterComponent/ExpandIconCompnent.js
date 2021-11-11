@@ -1,6 +1,6 @@
 import React from 'react'
-import Badge from '@material-ui/core/Badge';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Badge from '@mui/material/Badge';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
 const ExpandIconCompnent = ({ expanded, value }) => {

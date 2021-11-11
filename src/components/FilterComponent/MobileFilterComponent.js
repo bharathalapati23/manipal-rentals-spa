@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react'
 import SliderComponent from './SliderComponent'
-import Box from '@material-ui/core/Box';
-import Divider from '@material-ui/core/Divider';
-import Typography from '@material-ui/core/Typography';
-import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
+import { styled } from '@mui/material/styles';
+import Divider from '@mui/material/Divider';
+import Typography from '@mui/material/Typography';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import HomeFeaturesFilter from './HomeFeaturesFilter.js'
 import ZoneFilter from './ZoneFilter.js'
 import ApartmentFilter from './ApartmentFilter.js'
@@ -13,35 +12,25 @@ import BedroomDetailsFilter from './BedroomDetailsFilter.js'
 import { useDispatch } from 'react-redux'
 import { hideFooter, showFooter } from '../../actions/footer'
 
-const useStyles = makeStyles((theme) => ({
-    filterContainer: {
-        position: 'sticky',
-        margin: '20px',
-        fontFamily: 'Poppins',
-        width: '100%',
-        [theme.breakpoints.down('sm')]: {
-            marginBottom: '50px',
-        },
+const FilterContainer = styled('div')(({ theme }) => ({
+    position: 'sticky',
+    margin: '20px',
+    fontFamily: 'Poppins',
+    width: '100%',
+    [theme.breakpoints.down('md')]: {
+        marginBottom: '50px',
     },
-    formControl: {
-        // margin: theme.spacing(3),
-        margin: '0 auto'
-    },
-    filterHeading: {
-        padding: '10px',
-        fontFamily: 'Poppins',
-        fontWeight: 'bold',
-        color: '#e5e5e5'
-    },
-    heading: {
-        fontFamily: 'Poppins',
-        textAlign: 'center',
-        fontWeight: 'bold',
-    }
+}));
+
+const FilterHeading = styled(Typography)(({ theme }) => ({
+    textAlign: 'center',
+    padding: '10px',
+    fontFamily: 'Poppins',
+    fontWeight: 'bold',
+    color: '#E5E5E5'
 }));
 
 const MobileFilterComponent = ({ setFilterPage }) => {
-    const classes = useStyles();
     const dispatch = useDispatch()
 
     React.useEffect(() => {
@@ -53,11 +42,11 @@ const MobileFilterComponent = ({ setFilterPage }) => {
     }, [])
 
     return (
-        <div className={classes.filterContainer}>
+        <FilterContainer>
             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Typography variant="h4" component="h2" className={classes.filterHeading}>
+                <FilterHeading variant="h4" component="h2">
                     FILTERS
-        	    </Typography>
+        	    </FilterHeading>
                 <CloseOutlinedIcon style={{ color: '#d0d0d0', fontSize: '35px' }} onClick={() => setFilterPage(false)} />
 
             </div>
@@ -71,7 +60,7 @@ const MobileFilterComponent = ({ setFilterPage }) => {
             <div style={{ height: '5px' }}>
 
             </div>
-        </div>
+        </FilterContainer>
     )
 }
 

@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import Checkbox from '@material-ui/core/Checkbox';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import Typography from '@material-ui/core/Typography';
-import FormControl from '@material-ui/core/FormControl';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { styled } from '@mui/material/styles';
+import Checkbox from '@mui/material/Checkbox';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import FormControl from '@mui/material/FormControl';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import { useHistory, useLocation } from 'react-router-dom'
-import { setZoneFilter } from '../../actions/filters.js'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import ExpandIconCompnent from './ExpandIconCompnent';
 import queryString from 'query-string'
 
@@ -37,34 +36,30 @@ const initialZoneState = [
     },
 ]
 
-
-const useStyles = makeStyles((theme) => ({
-    heading: {
-        fontFamily: 'Poppins',
-        textAlign: 'center',
-    },
-    formControl: {
-        // margin: theme.spacing(3),
-        margin: '0 auto'
-    },
-    label: {
+const CustomAccordion = styled(Accordion)(() => ({
+    boxShadow: "none",
+    backgroundColor: 'transparent',
+    color: '#e5e5e5',
+    boxShadow: "none",
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    "& span.MuiTypography-root": {
         fontFamily: 'poppins'
     },
-    accordionStyle: {
-        boxShadow: "none",
-        backgroundColor: 'transparent',
-        color: '#e5e5e5',
-        boxShadow: "none",
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column'
-    }
 }));
 
+const Heading = styled(Typography)(({ theme }) => ({
+    fontFamily: 'Poppins',
+    textAlign: 'center',
+}));
+
+const CustomFormControl = styled(FormControl)(() => ({
+    width: '100%',
+    alignItems: 'center'
+}));
 
 const ZoneFilter = () => {
-    const classes = useStyles();
-    const dispatch = useDispatch();
     const history = useHistory();
     const location = useLocation();
     const zoneFilters = useSelector((state) => state.filters.zone)
@@ -121,17 +116,16 @@ const ZoneFilter = () => {
 
     return (
         <>
-            {/* <Divider /> */}
-            <Accordion className={classes.accordionStyle} onChange={handleExpand}>
+            <CustomAccordion onChange={handleExpand}>
                 <AccordionSummary
                     expandIcon={<ExpandIconCompnent expanded={expanded} value={zoneFilters.length} />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <Typography className={classes.heading}>Zone</Typography>
+                    <Heading>Zone</Heading>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <FormControl required component="fieldset" className={classes.formControl}>
+                    <CustomFormControl required component="fieldset">
                         <FormGroup>
                             {zoneState.map((zone, index) => {
                                 return <FormControlLabel
@@ -139,9 +133,6 @@ const ZoneFilter = () => {
                                         <Checkbox name={zone.name}
                                             style={{ color: '#e0e0e0' }}
                                         />}
-                                    classes={{
-                                        label: classes.label,
-                                    }}
                                     onChange={handleZoneChange}
                                     label={zone.label}
                                     checked={zone.checked}
@@ -149,9 +140,9 @@ const ZoneFilter = () => {
                                 />
                             })}
                         </FormGroup>
-                    </FormControl>
+                    </CustomFormControl>
                 </AccordionDetails>
-            </Accordion>
+            </CustomAccordion>
         </>
     )
 }

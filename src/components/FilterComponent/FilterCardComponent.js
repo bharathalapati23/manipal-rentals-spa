@@ -1,64 +1,52 @@
-import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react'
+import { styled } from '@mui/material/styles';
 import SliderComponent from './SliderComponent'
-import Box from '@material-ui/core/Box';
-import Divider from '@material-ui/core/Divider';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-
+import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux'
 import HomeFeaturesFilter from './HomeFeaturesFilter.js'
 import ZoneFilter from './ZoneFilter.js'
 import ApartmentFilter from './ApartmentFilter.js'
 import BedroomFilter from './BedroomFilter.js'
 import BedroomDetailsFilter from './BedroomDetailsFilter.js'
-
 import { useInView } from 'react-intersection-observer';
 
-
-const useStyles = makeStyles((theme) => ({
-    filterContainer: {
-        position: 'sticky',
-        margin: '20px',
-        fontFamily: 'Poppins',
-        backgroundColor: '#2e2e2e',
-        borderRadius: '10px',
-        marginLeft: '0px'
-    },
-    formControl: {
-        // margin: theme.spacing(3),
-        margin: '0 auto'
-    },
-    filterHeading: {
-        textAlign: 'center',
-        padding: '10px',
-        fontFamily: 'Poppins',
-        fontWeight: 'bold',
-        color: '#E5E5E5'
-    },
-    heading: {
-        fontFamily: 'Poppins',
-        textAlign: 'center',
-    },
-    applyFilters: {
-        width: '200px',
-        margin: '0 auto',
-        // left: '50%',
-        // transform: 'translate(-50%, 0)',
-        position: 'fixed',
-        top: '80px',
-        marginLeft: '40px',
-        backgroundColor: '#2e2e2e',
-        color: '#e5e5e5',
-        fontFamily: 'Poppins'
-
-    }
+const FilterContainer = styled('div')(() => ({
+    position: 'sticky',
+    margin: '20px',
+    fontFamily: 'Poppins',
+    backgroundColor: '#2e2e2e',
+    borderRadius: '10px',
+    marginLeft: '0px'
 }));
 
-const FilterCardComponent = () => {
-    const classes = useStyles();
-    const dispatch = useDispatch();
+const ApplyFilterButton = styled(Button)(({ theme }) => ({
+    width: '200px',
+    margin: '0 auto',
+    position: 'fixed',
+    top: '80px',
+    marginLeft: '40px',
+    backgroundColor: '#2e2e2e',
+    color: '#e5e5e5',
+    fontFamily: 'Poppins'
+}));
 
+const FilterHeading = styled(Typography)(({ theme }) => ({
+    textAlign: 'center',
+    padding: '10px',
+    fontFamily: 'Poppins',
+    fontWeight: 'bold',
+    color: '#E5E5E5'
+}));
+
+const CustomDivider = styled(Divider)(({ theme }) => ({
+    borderWidth: '0',
+}));
+
+
+const FilterCardComponent = () => {
     const { ref, inView } = useInView({
         /* Optional options */
         threshold: 0,
@@ -70,43 +58,37 @@ const FilterCardComponent = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
     }
 
-    return (
-        <>
-            <div className={classes.filterContainer} ref={ref}>
-                <Box
-                    spacing={3}
-                    border={1}
-                    borderRadius={10}
-                    borderColor="rgba(0,0,0,0.2)"
-                >
-                    <div style={{display:'flex', flexDirection:'row', justifyContent: 'center', position:'relative'}}>
-                        <Typography variant="h5" component="h2" className={classes.filterHeading}>
-                            FILTERS
-        		        </Typography>
-                        {/* <Button size="small" variant="outlined" style={{height:'30px', alignSelf: 'flex-end', position:'absolute', right:'0%', bottom:'2%', fontSize:'10px'}}>
-                            Clear
-                        </Button> */}
-                    </div>
-                    <Divider />
-                    <SliderComponent />
-                    <Divider />
-                    <BedroomFilter />
-                    <Divider />
-                    <ApartmentFilter />
-                    <Divider />
-                    <ZoneFilter />
-                    <Divider />
-                    <HomeFeaturesFilter />
-                    <Divider />
-                    <BedroomDetailsFilter />
-                    <div style={{ height: '5px' }}>
-
-                    </div>
-                </Box>
-            </div>
-            {!inView && <Button variant="contained" className={classes.applyFilters} onClick={scrollToTop}>APPLY MORE FILTERS</Button>}
-        </>
-    )
+    return <>
+        <FilterContainer ref={ref}>
+            <Box
+                spacing={3}
+                border={1}
+                borderRadius="10px"
+                borderColor="rgba(0,0,0,0.2)"
+            >
+                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', position: 'relative' }}>
+                    <FilterHeading variant="h5" component="h2">
+                        FILTERS
+                    </FilterHeading>
+                </div>
+                <CustomDivider />
+                <SliderComponent />
+                <CustomDivider/>
+                <BedroomFilter />
+                <CustomDivider />
+                <ApartmentFilter />
+                <CustomDivider />
+                <ZoneFilter />
+                <CustomDivider />
+                <HomeFeaturesFilter />
+                <CustomDivider />
+                <BedroomDetailsFilter />
+                <div style={{ height: '5px' }}>
+                </div>
+            </Box>
+        </FilterContainer>
+        {!inView && <ApplyFilterButton variant="contained" onClick={scrollToTop}>APPLY MORE FILTERS</ApplyFilterButton>}
+    </>;
 }
 
 export default FilterCardComponent

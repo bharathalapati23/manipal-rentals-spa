@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import Checkbox from '@material-ui/core/Checkbox';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Divider from '@material-ui/core/Divider';
-import Typography from '@material-ui/core/Typography';
-import FormControl from '@material-ui/core/FormControl';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { setHomeFeaturesFilter } from '../../actions/filters.js'
+import { styled } from '@mui/material/styles';
+import Checkbox from '@mui/material/Checkbox';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import FormControl from '@mui/material/FormControl';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import { useSelector, useDispatch } from 'react-redux'
 import ExpandIconCompnent from './ExpandIconCompnent';
 import queryString from 'query-string'
@@ -41,33 +38,30 @@ const displayNameHomeFeatures = {
     tv: 'TV'
 }
 
-const useStyles = makeStyles((theme) => ({
-    heading: {
-        fontFamily: 'Poppins',
-        textAlign: 'center',
-    },
-    formControl: {
-        // margin: theme.spacing(3),
-        margin: '0 auto'
-    },
-    label: {
+const CustomAccordion = styled(Accordion)(() => ({
+    boxShadow: "none",
+    backgroundColor: 'transparent',
+    color: '#e5e5e5',
+    boxShadow: "none",
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    "& span.MuiTypography-root": {
         fontFamily: 'poppins'
-    },
-    accordionStyle: {
-        boxShadow: "none",
-        backgroundColor: 'transparent',
-        color: '#e5e5e5',
-        boxShadow: "none",
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column'
     },
 }));
 
-const HomeFeaturesFilter = () => {
-    const classes = useStyles();
-    const dispatch = useDispatch()
+const Heading = styled(Typography)(({ theme }) => ({
+    fontFamily: 'Poppins',
+    textAlign: 'center',
+}));
 
+const CustomFormControl = styled(FormControl)(() => ({
+    width: '100%',
+    alignItems: 'center'
+}));
+
+const HomeFeaturesFilter = () => {
     const history = useHistory();
     const location = useLocation();
 
@@ -85,7 +79,6 @@ const HomeFeaturesFilter = () => {
             [key]: event.target.checked
         }
         setHomeFeatures(newHomeFeatures)
-        // dispatch(setHomeFeaturesFilter(newHomeFeatures))
         Object.keys(newHomeFeatures).map((newHomeFeature) => {
             if (newHomeFeatures[newHomeFeature] === true)
                 homeFeaturesFilterArr.push(newHomeFeature)
@@ -122,16 +115,16 @@ const HomeFeaturesFilter = () => {
 
     return (
         <>
-            <Accordion className={classes.accordionStyle} onChange={handleExpand}>
+            <CustomAccordion onChange={handleExpand}>
                 <AccordionSummary
                     expandIcon={<ExpandIconCompnent expanded={expanded} value={selectedHomeFeatures} />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <Typography className={classes.heading}>Home Features</Typography>
+                    <Heading>Home Features</Heading>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <FormControl required component="fieldset" className={classes.formControl}>
+                    <CustomFormControl required component="fieldset">
                         <FormGroup>
                             {Object.keys(homeFeatures).map((key, index) => {
                                 return <
@@ -142,18 +135,15 @@ const HomeFeaturesFilter = () => {
                                             checked={homeFeatures[key]}
                                         />
                                     }
-                                    classes={{
-                                        label: classes.label,
-                                    }}
                                     label={displayNameHomeFeatures[key]}
                                     onChange={(event) => handleFilterChange(event, key)}
                                     key={`${index}homefeaturefilter`}
                                 />
                             })}
                         </FormGroup>
-                    </FormControl>
+                    </CustomFormControl>
                 </AccordionDetails>
-            </Accordion>
+            </CustomAccordion>
         </>
     )
 }

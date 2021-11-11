@@ -1,30 +1,27 @@
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Slider from '@material-ui/core/Slider';
+import makeStyles from '@mui/styles/makeStyles';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import Slider, { SliderThumb } from '@mui/material/Slider';
 import { useMediaQuery } from 'react-responsive';
-import { useDispatch, useSelector } from 'react-redux'
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
+import { useSelector } from 'react-redux'
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandIconCompnent from './ExpandIconCompnent';
 import { useHistory, useLocation } from 'react-router-dom'
 import queryString from 'query-string'
 
-const AirbnbSlider = withStyles({
-    root: {
-        color: '#e0e0e0',
-        height: 3,
-        padding: '13px 0',
-    },
-    thumb: {
+const AirbnbSlider = styled(Slider)(({ theme }) => ({
+    color: '#e0e0e0',
+    height: 3,
+    padding: '13px 0',
+    '& .MuiSlider-thumb': {
         height: 27,
         width: 27,
         backgroundColor: '#fff',
         border: '1px solid currentColor',
-        marginTop: -12,
-        marginLeft: -13,
-        '& .bar': {
+        '& .airbnb-bar': {
             // display: inline-block !important;
             height: 9,
             width: 1,
@@ -33,11 +30,10 @@ const AirbnbSlider = withStyles({
             marginRight: 1,
         },
     },
-    active: {},
-    track: {
+    '& .MuiSlider-track': {
         height: 3,
     },
-    rail: {
+    '& .MuiSlider-rail': {
         color: '#717171',
         opacity: 1,
         height: 3,
@@ -50,31 +46,41 @@ const AirbnbSlider = withStyles({
             color: '#e5e5e5',
         },
     },
-})(Slider);
+}));
 
+function AirbnbThumbComponent(props) {
+    const { children, ...other } = props;
+    return (
+        <SliderThumb {...other}>
+            {children}
+            <span className="airbnb-bar" />
+            <span className="airbnb-bar" />
+            <span className="airbnb-bar" />
+        </SliderThumb>
+    );
+}
 
-const useStyles = makeStyles({
-    root: {
-        width: 200,
-        margin: '0 auto'
-    },
-    heading: {
-        fontFamily: 'Poppins',
-        textAlign: 'center',
-    },
-    accordionStyle: {
-        boxShadow: "none",
-        backgroundColor: 'transparent',
-        color: '#e5e5e5',
-        boxShadow: "none",
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column'
-    }
-});
+const SliderRoot = styled('div')(() => ({
+    width: 200,
+    margin: '0 auto'
+}));
+
+const CustomAccordion = styled(Accordion)(() => ({
+    boxShadow: "none",
+    backgroundColor: 'transparent',
+    color: '#e5e5e5',
+    boxShadow: "none",
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column'
+}));
+
+const Heading = styled(Typography)(({ theme }) => ({
+    fontFamily: 'Poppins',
+    textAlign: 'center',
+}));
 
 export default function SliderComponent() {
-    const classes = useStyles();
     const [value, setValue] = React.useState([]);
     const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 
@@ -91,7 +97,7 @@ export default function SliderComponent() {
     };
 
     const dispatchPriceRangeFilter = (event, newValue) => {
-       
+
         const parsedLocation = queryString.parse(location.search);
         parsedLocation.budget = newValue
 
@@ -113,7 +119,7 @@ export default function SliderComponent() {
             pathname: '/properties',
             search: `?${newLocationString}`,
         })
-       
+
 
 
         // dispatch(setPriceRangeFilter(value))
@@ -131,18 +137,16 @@ export default function SliderComponent() {
     }
 
     return (
-        <Accordion defaultExpanded={!isMobile} className={classes.accordionStyle} onChange={handleExpand}>
+        <CustomAccordion defaultExpanded={!isMobile} onChange={handleExpand}>
             <AccordionSummary
                 expandIcon={<ExpandIconCompnent expanded={expanded} value={priceRangeFilter} />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
             >
-                <Typography className={classes.heading}>Budget</Typography>
+                <Heading>Budget</Heading>
             </AccordionSummary>
             <AccordionDetails>
-
-                <div className={classes.root}>
-
+                <SliderRoot>
                     <AirbnbSlider
                         value={value}
                         onChange={handleChange}
@@ -150,18 +154,13 @@ export default function SliderComponent() {
                         min={0}
                         max={40000}
                         onChangeCommitted={dispatchPriceRangeFilter}
-                        // valueLabelFormat={value =>
-                        //     <div style={{ fontFamily: 'Poppins' }}>
-                        //         <span style={{ fontFamily: 'Bebas Neue' }}>₹</span>
-                        //         {value}
-                        //     </div>
-                        // }
+                        components={{ Thumb: AirbnbThumbComponent }}
                     />
                     <Typography id="range-slider" gutterBottom style={{ fontFamily: 'Poppins', display: 'flex', justifyContent: 'center' }}>
-                        <span style={{ fontFamily: 'Bebas Neue', marginRight: '1px' }}>₹</span>{value[0]} - <span style={{ fontFamily: 'Bebas Neue', marginRight: '1px' }}>₹</span>{value[1]}
+                        <span style={{ fontFamily: 'Bebas Neue', marginRight: '1px' }}>₹</span>{value[0]} - <span style={{ fontFamily: 'Bebas Neue', marginLeft: '2px' }}>₹</span>{value[1]}
                     </Typography>
-                </div>
+                </SliderRoot>
             </AccordionDetails>
-        </Accordion>
+        </CustomAccordion>
     );
 }
