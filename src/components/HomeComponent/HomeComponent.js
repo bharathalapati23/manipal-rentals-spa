@@ -1,7 +1,8 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import { styled } from '@mui/material/styles';
 import { useMediaQuery } from 'react-responsive';
-import Button from '@material-ui/core/Button';
+import Button from '@mui/material/Button';
 import NavBar from '../NavBar/NavBar'
 import HowItWorks from './HowItWorks'
 import AboutUs from './AboutUs'
@@ -10,20 +11,31 @@ import PropertiesDescription from './PropertiesDescription'
 import TestimonialComponent from './TestimonialComponent'
 import { useHistory, useLocation } from 'react-router-dom'
 
-const useStyles = makeStyles((theme) => ({
-	root: {
-		width: '100%',
-		height: '100vh',
-		[theme.breakpoints.down('sm')]: {
-			height: '80vh',
-		},
-
-		boxSizing: 'border-box',
-		//backgroundImage: `url(${bgImg})`,
-		//backgroundImage: `url(https://res.cloudinary.com/dojfndzbj/image/upload/f_auto,q_auto/v1624614300/home-background_nr4uah.jpg)`,
-		backgroundSize: 'cover',
-		backgroundPosition: 'center center'
+const StyledRoot = styled('div')(({ theme }) => ({
+	width: '100%',
+	height: '100vh',
+	[theme.breakpoints.down('md')]: {
+		height: '80vh',
 	},
+	boxSizing: 'border-box',
+	backgroundSize: 'cover',
+	backgroundPosition: 'center center'
+}));
+
+const useStyles = makeStyles((theme) => ({
+	// root: {
+	// 	width: '100%',
+	// 	height: '100vh',
+	// 	[theme.breakpoints.down('md')]: {
+	// 		height: '80vh',
+	// 	},
+
+	// 	boxSizing: 'border-box',
+	// 	//backgroundImage: `url(${bgImg})`,
+	// 	//backgroundImage: `url(https://res.cloudinary.com/dojfndzbj/image/upload/f_auto,q_auto/v1624614300/home-background_nr4uah.jpg)`,
+	// 	backgroundSize: 'cover',
+	// 	backgroundPosition: 'center center'
+	// },
 	backgroundImage: {
 		objectFit: 'cover',
 		width: '100%',
@@ -34,9 +46,9 @@ const useStyles = makeStyles((theme) => ({
 		fontFamily: 'Poppins',
 		fontSize: '35px',
 		color: '#e0e0e0',
-		[theme.breakpoints.down('sm')]: {
-			fontSize: '27px',
-		},
+		// [theme.breakpoints.down('md')]: {
+		// 	fontSize: '27px',
+		// },
 		textAlign: 'center'
 	},
 	whyRentDesc: {
@@ -44,9 +56,9 @@ const useStyles = makeStyles((theme) => ({
 		fontFamily: 'Poppins',
 		fontSize: '25px',
 		color: '#E0e0e0',
-		[theme.breakpoints.down('sm')]: {
-			fontSize: '20px',
-		},
+		// [theme.breakpoints.down('md')]: {
+		// 	fontSize: '20px',
+		// },
 		textAlign: 'center'
 	},
 	contentArea: {
@@ -97,9 +109,9 @@ const useStyles = makeStyles((theme) => ({
 			background: '#f36802',
 		},
 		textTransform: 'none',
-		[theme.breakpoints.down('xs')]: {
-			fontSize: '16px',
-		},
+		// [theme.breakpoints.down('sm')]: {
+		// 	fontSize: '16px',
+		// },
 	}
 }));
 
@@ -141,7 +153,7 @@ const HomeComponent = () => {
 	return (
 		<>
 
-			<div className={classes.root}
+			<StyledRoot
 				style={{
 					backgroundImage:
 						isMobile
@@ -153,7 +165,7 @@ const HomeComponent = () => {
 
 				<SearchComponent isMobile={isMobile}></SearchComponent>
 
-			</div>
+			</StyledRoot>
 			{!isMobile &&
 				<div className={classes.contentArea}>
 					<div className={classes.whyRentHeading}>

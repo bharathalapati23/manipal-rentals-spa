@@ -1,86 +1,74 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import StepContent from '@material-ui/core/StepContent';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import { styled } from '@mui/material/styles';
+import Stepper from '@mui/material/Stepper';
+import Step from '@mui/material/Step';
+import StepLabel from '@mui/material/StepLabel';
+import StepContent from '@mui/material/StepContent';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '80%',
-        margin: '0 auto',
-        maxWidth: '700px'
-    },
-    button: {
-        marginTop: theme.spacing(1),
-        marginRight: theme.spacing(1),
-    },
-    actionsContainer: {
-        marginBottom: theme.spacing(2),
-    },
-    resetContainer: {
-        padding: theme.spacing(3),
-    },
-    stepperStyle: {
-        backgroundColor: 'transparent',
-        color: '#e5e5e5',
-        fontFamily: 'poppins'
-    },
-    stepTitle: {
+const CustomContentDiv = styled('div')(({ theme }) => ({
+    fontFamily: 'Poppins'
+}));
+
+const CustomCard = styled(Card)(({ theme }) => ({
+    backgroundColor: '#2e2e2e',
+    fontFamily: 'poppins',
+    color: '#e5e5e5',
+    marginTop: '10px',
+    boxSizing: 'border-box',
+}));
+
+const RootDiv = styled('div')(({ theme }) => ({
+    width: '80%',
+    margin: '0 auto',
+    maxWidth: '700px',
+    padding: '24px',
+    boxSizing: 'border-box'
+}));
+
+const CustomStepper = styled(Stepper)(({ theme }) => ({
+    backgroundColor: 'transparent',
+    color: '#e5e5e5',
+    fontFamily: 'poppins'
+}));
+
+const CustomStepLabel = styled(StepLabel)(({ theme }) => ({
+    "& .MuiStepLabel-label": {
         fontSize: '20px',
         fontFamily: 'poppins',
         '&.MuiStepLabel-label': {
             color: '#e5e5e5'
         },
     },
-    stepperIcon: {
-        color: '#f36802 !important',
+    '& .MuiStepLabel-iconContainer': {
+        '& .MuiSvgIcon-root': {
+            color: '#f36802 !important',
+        },
         '&.MuiStepIcon-text': {
             fill: 'black !important'
         }
-
-    },
-    contentStyle: {
-        fontFamily: 'Poppins'
-    },
-    cardStyle: {
-        backgroundColor: '#2e2e2e',
-        fontFamily: 'poppins',
-        color: '#e5e5e5',
-        marginTop: '10px',
-        boxSizing: 'border-box',
-    },
+    }
 }));
 
 function getSteps() {
     return ['Select your home', 'Schedule property tour', 'Confirm your slot', 'Move in'];
 }
 
-function getStepContent(step, classes) {
+function getStepContent(step) {
     switch (step) {
         case 0:
             return (
-                <div className={classes.contentStyle}>
+                <CustomContentDiv>
                     Filter out budget, zone, accomodation type and amenities to get matches suiting your requirements.
-                </div>
+                </CustomContentDiv>
             )
         case 1:
             return (
-                <div className={classes.contentStyle}>
+                <CustomContentDiv>
                     Place a request for property tour at your convenience by filling out form with your personal information.
-                    <Card variant="outlined" style={{ borderRadius: '15px' }} className={classes.cardStyle}>
+                    <CustomCard variant="outlined" style={{ borderRadius: '15px' }}>
                         <CardContent>
-                            {/* <div style={{ display:'flex', flexDirection:'row'}}>
-                                <div style={{flexGrow:1, textAlign: 'right'}}>
-                                    Viewing Charges:
-                                </div>
-                                <div style={{flexGrow:3}}>
-                                    &nbsp;&nbsp;The below charges would apply to have a view of properties
-                                </div>
-                            </div> */}
                             <div style={{ fontSize: '18px', color: '#f36802' }}>
                                 Viewing Charges
                             </div>
@@ -91,15 +79,15 @@ function getStepContent(step, classes) {
                                 INR 500 - 3 Homes | INR 700 - 5 HOMES | INR 1000 - Unlimited
                             </div>
                         </CardContent>
-                    </Card>
-                </div>
+                    </CustomCard>
+                </CustomContentDiv>
             )
         case 2:
             return (
-                <div className={classes.contentStyle}>
+                <CustomContentDiv>
                     Pay booking token to block a room. If in demand, you shall be placed in a waiting list
                     and intimated within 72 hours of booking
-                    <Card variant="outlined" style={{ borderRadius: '15px' }} className={classes.cardStyle}>
+                    <CustomCard variant="outlined" style={{ borderRadius: '15px' }}>
                         <CardContent>
                             <div style={{ fontSize: '18px', color: '#f36802' }}>
                                 Booking fee
@@ -108,15 +96,15 @@ function getStepContent(step, classes) {
                                 Pay one time fee of INR 1000 per room as service charges. Room can be cleaned and set-up additionally before move-in.
                             </div>
                         </CardContent>
-                    </Card>
-                </div>
+                    </CustomCard>
+                </CustomContentDiv>
             )
         case 3:
             return (
-                <div className={classes.contentStyle}>
+                <CustomContentDiv>
                     We shall assist you with the rental agreement and documentation and further steps till move-in.
                     Pay the deposit and move in.
-                    <Card variant="outlined" style={{ borderRadius: '15px' }} className={classes.cardStyle}>
+                    <CustomCard variant="outlined" style={{ borderRadius: '15px' }}>
                         <CardContent>
                             <div style={{ fontSize: '18px', color: '#f36802' }}>
                                 Security Deposit
@@ -126,8 +114,8 @@ function getStepContent(step, classes) {
                                 access while moving out.
                             </div>
                         </CardContent>
-                    </Card>
-                </div>
+                    </CustomCard>
+                </CustomContentDiv>
             )
         default:
             return `Unknown step`
@@ -135,31 +123,21 @@ function getStepContent(step, classes) {
 }
 
 const VerticalStepperComponent = () => {
-    const classes = useStyles();
-    const [activeStep, setActiveStep] = React.useState(0);
     const steps = getSteps();
 
     return (
-        <div className={classes.root}>
-            <Stepper activeStep={activeStep} orientation="vertical" className={classes.stepperStyle}>
+        <RootDiv>
+            <CustomStepper orientation="vertical" >
                 {steps.map((label, index) => (
                     <Step key={label} active={true} >
-                        <StepLabel classes={{
-                            label: classes.stepTitle,
-                            root: classes.stepperIcon,
-                        }}
-                            StepIconProps={{
-                                classes: {
-                                    root: classes.stepperIcon,
-                                }
-                            }}>{label}</StepLabel>
+                        <CustomStepLabel>{label}</CustomStepLabel>
                         <StepContent>
-                            {getStepContent(index, classes)}
+                            {getStepContent(index)}
                         </StepContent>
                     </Step>
                 ))}
-            </Stepper>
-        </div>
+            </CustomStepper>
+        </RootDiv>
     );
 }
 
