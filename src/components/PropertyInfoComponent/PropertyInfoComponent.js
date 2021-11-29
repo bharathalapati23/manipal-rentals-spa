@@ -127,6 +127,8 @@ const PropertyInfoComponent = () => {
     } else setListingInfo(location.state.listing);
   }, [location]);
 
+  console.log(listingInfo);
+
   const navigateToProperties = () => {
     history.push({
       pathname: "/properties",
@@ -137,11 +139,9 @@ const PropertyInfoComponent = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const Active = false;
-
   return (
     <>
-      {!Active && (
+      {!listingInfo.active && (
         <div className={classes.Box}>
           <h3 className={classes.boxTitle}>PROPERTY RENTED OUT</h3>
         </div>
