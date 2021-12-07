@@ -4,7 +4,6 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -22,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#2e2e2e',
         padding: '10px',
         paddingLeft: '20px',
-        borderRadius: '10px'
+        borderRadius: '10px',
     },
     amenitiesTitle: {
         fontFamily: 'Poppins',
@@ -54,10 +53,10 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
 
     return (
         <>
-            { !isMobile && <div className={classes.root}>
+            {!isMobile && <div className={classes.root} >
                 <Typography variant="h5" component="h2" className={classes.amenitiesTitle}>
                     Amenities
-        	    </Typography>
+                </Typography>
                 <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none' }}>
                     <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" variant="scrollable"
                         scrollButtons="auto"
@@ -81,12 +80,12 @@ const AmenitiesComponent = ({ homeFeatures, bedroomDetails }) => {
             {isMobile &&
                 <div>
                     <Typography variant="h5" component="h2" className={classes.amenitiesTitle}>
-                    Amenities
-        	        </Typography>
+                        Amenities
+                    </Typography>
 
                 </div>
             }
-            { isMobile &&
+            {isMobile &&
                 <>
                     <Divider />
                     <Accordion className={classes.accordionStyle}>

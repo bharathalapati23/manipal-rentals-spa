@@ -101,7 +101,7 @@ const HomeFeaturesComponent = ({ value, index, homeFeatures }) => {
                                         <NoMeetingRoomIcon style={{ color: '#e0e0e0' }} />
                                         <div style={{ paddingLeft: '10px', fontFamily: 'Poppins', color: '#e0e0e0' }}>
                                             Unfurnished
-                                    </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <br></br>

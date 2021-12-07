@@ -12,6 +12,8 @@ import ImageGalleryComponent from './ImageGalleryComponent'
 import DescriptionComponent from './DescriptionComponent'
 import MobileStickyBottom from './MobileStickyBottom'
 import EnquiryFormModal from './EnquiryFormModal'
+import LoadingComponent from '../LoadingComponent';
+import LocationComponent from './LocationTool/LocationComponent';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -32,9 +34,9 @@ const useStyles = makeStyles((theme) => ({
             marginLeft: '0px'
         },
         [theme.breakpoints.up('md')]: {
-			paddingLeft: '14px',
-			paddingRight: '14px',
-		},
+            paddingLeft: '14px',
+            paddingRight: '14px',
+        },
         boxSizing: 'border-box'
     },
     propertyName: {
@@ -71,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
     rentStyle: {
         display: 'flex',
         flexDirection: 'row',
-        alignSelf: 'flex-end'
+        alignSelf: 'flex-end',
     },
 }));
 
@@ -88,7 +90,7 @@ const PropertyInfoComponent = () => {
             axios.get(`https://wolpa-rentals-backend.herokuapp.com/posts/singlePost?objId=${parsedQuery['search-id']}`)
                 .then((res) => {
                     const listingObj = res.data[0]
-                    
+
                     history.replace({ ...history.location, state: { listing: listingObj } })
                 })
         }
@@ -103,12 +105,12 @@ const PropertyInfoComponent = () => {
     }
 
     React.useEffect(() => {
-		window.scrollTo(0, 0)
-	}, [])
+        window.scrollTo(0, 0)
+    }, [])
 
     return (
         <>
-            { listingInfo &&
+            {listingInfo &&
                 <>
                     <div className={classes.root}>
                         {!isMobile &&
@@ -147,12 +149,31 @@ const PropertyInfoComponent = () => {
                                 </div>
                             </>
                         }
-                        <div style={{ 'paddingTop': '20px' }}>
+                        <div style={{ 'paddingTop': '20px', paddingBottom: '20px' }}>
                             <DescriptionComponent listingInfo={listingInfo} />
                         </div>
                         <div style={{ 'paddingTop': '20px' }}>
-                            <AmenitiesComponent homeFeatures={listingInfo.homeFeatures} bedroomDetails={listingInfo.bedroomDetails} />
+                            {!isMobile &&
+                                <div style={{ 'paddingTop': '40px', 'marginLeft': '80%' }}>
+                                    <LocationComponent />
+                                </div>
+                            }
+                            {
+                                isMobile &&
+                                <LocationComponent />
+                            }
                         </div>
+                        <div style={{ 'paddingTop': '20px' }}>
+                            {!isMobile &&
+                                <div style={{ 'maxWidth': "70%", 'marginTop': '-430px' }}>
+                                    <AmenitiesComponent homeFeatures={listingInfo.homeFeatures} bedroomDetails={listingInfo.bedroomDetails} />
+                                </div>
+                            }
+                            {isMobile &&
+                                <AmenitiesComponent homeFeatures={listingInfo.homeFeatures} bedroomDetails={listingInfo.bedroomDetails} />
+                            }
+                        </div>
+
 
                     </div>
                     <>
