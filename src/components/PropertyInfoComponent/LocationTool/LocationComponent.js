@@ -44,10 +44,6 @@ const LocationComponent = () => {
     const [expanded, setExpanded] = React.useState(false);
     const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    }
-
     const permanentDestination = ["Coin Circle", "Syndicate Circle", "Tiger Circle", "Manipal Lake", "Dee Tee", "MIT", "KMC", "DOC", "TAPMI",]
     return (
         <div className={classes.root}>
