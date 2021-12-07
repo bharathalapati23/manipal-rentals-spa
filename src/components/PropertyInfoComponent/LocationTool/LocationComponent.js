@@ -38,7 +38,6 @@ const useStyles = makeStyles(() => ({
 }));
 
 
-
 const LocationComponent = () => {
 
     const classes = useStyles()
