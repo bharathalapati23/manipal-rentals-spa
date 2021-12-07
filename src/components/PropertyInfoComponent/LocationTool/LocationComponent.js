@@ -41,7 +41,6 @@ const useStyles = makeStyles(() => ({
 const LocationComponent = () => {
 
     const classes = useStyles()
-    const [expanded, setExpanded] = React.useState(false);
     const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
 
     const permanentDestination = ["Coin Circle", "Syndicate Circle", "Tiger Circle", "Manipal Lake", "Dee Tee", "MIT", "KMC", "DOC", "TAPMI",]
