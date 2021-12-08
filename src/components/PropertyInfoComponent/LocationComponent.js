@@ -20,7 +20,11 @@ const useStyles = makeStyles(() => ({
         fontFamily: 'Poppins',
         fontSize: '25px',
         paddingLeft: '5px',
-        fontWeight: 600
+    },
+    mobileLocationTitle: {
+        fontFamily: 'Poppins',
+        fontSize: '20px',
+        color: '#e5e5e5'
     },
     locationInfoDesktop: {
         color: '#D0D0D0',
@@ -43,7 +47,7 @@ const useStyles = makeStyles(() => ({
         backgroundColor: 'transparent',
         color: '#e5e5e5',
         marginTop: '5px',
-        paddingLeft: '16px',
+        
         paddingRight: '16px'
     },
 }));
@@ -86,7 +90,7 @@ const LocationComponent = ({ distanceMatrix }) => {
                                 id="panel1a-header"
                                 style={{ padding: '0' }}
                             >
-                                <Typography variant="h5" component="h2" >Location </Typography>
+                                <Typography variant="h5" component="h2" className={classes.mobileLocationTitle}>Location </Typography>
                             </AccordionSummary>
                             <AccordionDetails>
                                 <div style={{ display: 'flex', padding: '5px 0px 0px 30px', flexDirection: 'column', gap: '12px' }} >

@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     },
     amenitiesTitle: {
         fontFamily: 'Poppins',
-        fontSize: '28px',
+        fontSize: '20px',
         color: '#e5e5e5'
     },
     tabLabel: {
