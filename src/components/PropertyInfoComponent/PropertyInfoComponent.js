@@ -5,8 +5,8 @@ import { useMediaQuery } from 'react-responsive';
 import { useHistory } from 'react-router-dom'
 import queryString from 'query-string'
 import axios from 'axios'
-import SingleBedIcon from '@material-ui/icons/SingleBed';
 
+import LocationComponent from './LocationComponent';
 import AmenitiesComponent from './Amenities/AmenitiesComponent'
 import ImageGalleryComponent from './ImageGalleryComponent'
 import DescriptionComponent from './DescriptionComponent'
@@ -32,9 +32,9 @@ const useStyles = makeStyles((theme) => ({
             marginLeft: '0px'
         },
         [theme.breakpoints.up('md')]: {
-			paddingLeft: '14px',
-			paddingRight: '14px',
-		},
+            paddingLeft: '14px',
+            paddingRight: '14px',
+        },
         boxSizing: 'border-box'
     },
     propertyName: {
@@ -88,7 +88,7 @@ const PropertyInfoComponent = () => {
             axios.get(`https://wolpa-rentals-backend.herokuapp.com/posts/singlePost?objId=${parsedQuery['search-id']}`)
                 .then((res) => {
                     const listingObj = res.data[0]
-                    
+                    console.log(listingObj)
                     history.replace({ ...history.location, state: { listing: listingObj } })
                 })
         }
@@ -103,12 +103,12 @@ const PropertyInfoComponent = () => {
     }
 
     React.useEffect(() => {
-		window.scrollTo(0, 0)
-	}, [])
+        window.scrollTo(0, 0)
+    }, [])
 
     return (
         <>
-            { listingInfo &&
+            {listingInfo &&
                 <>
                     <div className={classes.root}>
                         {!isMobile &&
@@ -150,10 +150,22 @@ const PropertyInfoComponent = () => {
                         <div style={{ 'paddingTop': '20px' }}>
                             <DescriptionComponent listingInfo={listingInfo} />
                         </div>
-                        <div style={{ 'paddingTop': '20px' }}>
-                            <AmenitiesComponent homeFeatures={listingInfo.homeFeatures} bedroomDetails={listingInfo.bedroomDetails} />
-                        </div>
-
+                        {
+                            !isMobile &&
+                            <div style={{ 'paddingTop': '20px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <AmenitiesComponent homeFeatures={listingInfo.homeFeatures} bedroomDetails={listingInfo.bedroomDetails} />
+                                <div><LocationComponent distanceMatrix={listingInfo.manipalDistanceMatrix} /></div>
+                            </div>
+                        }
+                        {
+                            isMobile &&
+                            <>
+                                <LocationComponent distanceMatrix={listingInfo.manipalDistanceMatrix} />
+                                <div>
+                                    <AmenitiesComponent homeFeatures={listingInfo.homeFeatures} bedroomDetails={listingInfo.bedroomDetails} />
+                                </div>
+                            </>
+                        }
                     </div>
                     <>
                         {isMobile &&
