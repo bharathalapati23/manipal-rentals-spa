@@ -93,7 +93,7 @@ const LocationComponent = ({ distanceMatrix }) => {
                                 <Typography variant="h5" component="h2" className={classes.mobileLocationTitle}>Location </Typography>
                             </AccordionSummary>
                             <AccordionDetails>
-                                <div style={{ display: 'flex', padding: '5px 0px 0px 30px', flexDirection: 'column', gap: '12px' }} >
+                                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '7px', margin: '0 auto' }} >
                                     {distanceMatrix.map((distanceObj) => {
                                         return (
                                             <>
