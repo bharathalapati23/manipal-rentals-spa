@@ -157,7 +157,7 @@ export default function DashboardComponent() {
 	const handleSortChange = (event, newPage) => {
 		dispatch(clearPosts())
 		//getListings(event.target.value)
-		
+
 		parsedLocation.order = Number(event.target.value)
 		let newLocationString = ''
 		Object.keys(parsedLocation).map((filter, index) => {
@@ -305,7 +305,7 @@ export default function DashboardComponent() {
 									</div>
 								</div>
 								{!filteredPosts.length && <NoResultsComponent />}
-								{filteredPosts.length &&
+								{filteredPosts.length ?
 									<>
 										{pagePosts.map((cardObj, index) => (
 											<CardComponent cardObj={cardObj} key={`Card${index}`} />
@@ -320,7 +320,7 @@ export default function DashboardComponent() {
 											onChange={handleChangePage}
 											page={page}
 										/>
-									</>
+									</> : <></>
 								}
 							</Grid>
 						</div>
