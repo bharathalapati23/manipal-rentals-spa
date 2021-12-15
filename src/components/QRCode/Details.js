@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
   },
   detailsForm: {
     backgroundColor: "#2e2e2e",
-    marginRight: "20px",
     borderRadius: "10px",
     padding: "20px",
     color: "#E5E5E5",
@@ -43,6 +42,8 @@ const useStyles = makeStyles((theme) => ({
     margin: "20px 25px",
     [theme.breakpoints.down("sm")]: {
       fontSize: "13px",
+      margin: "10px 10px",
+      textAlign: "left",
     },
   },
   details: {
@@ -84,15 +85,29 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "2vh",
   },
   modalStyle: {
+    position: "absolute",
     width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: "10%",
-    [theme.breakpoints.down("sm")]: {
-      marginTop: "30%",
-    },
+    maxWidth: "500px",
+    backgroundColor: "#121212",
+    // border: '10px solid #000',
+    top: "50%",
+    left: "50%",
+    WebkitTransform: "translate(-50%, -50%)",
+    transform: "translate(-50%, -50%)",
+    boxSizing: "border-box",
+    paddingLeft: "10px",
+    paddingRight: "10px",
+    paddingBottom: "20px",
+    paddingTop: "20px",
+    //   width: "100%",
+    //   display: "flex",
+    //   flexDirection: "column",
+    //   justifyContent: "center",
+    //   alignItems: "center",
+    //   marginTop: "10%",
+    //   [theme.breakpoints.down("sm")]: {
+    //     marginTop: "30%",
+    //   },
   },
   modalText: {
     fontFamily: "poppins",
@@ -146,6 +161,7 @@ const Details = () => {
   const [detailsForm, setDetailsForm] = useState(initialFormState);
   const [submitClicked, setSubmitClicked] = React.useState(false);
   const [openSuccessModal, setOpenSuccessModal] = React.useState(false);
+  const [saveClicked, setSaveClicked] = React.useState(false);
   const [saved, setSaved] = React.useState(
     localStorage.getItem("name") !== null &&
       localStorage.getItem("contactNo") !== null
@@ -169,7 +185,10 @@ const Details = () => {
   };
 
   const handleSave = () => {
-    setSaved(true);
+    setSaveClicked(true);
+    if (detailsForm.name.length && detailsForm.contactNo.length) {
+      setSaved(true);
+    }
     console.log(detailsForm);
   };
 
@@ -177,13 +196,27 @@ const Details = () => {
     setSubmitClicked(true);
     console.log(detailsForm);
 
-    if (detailsForm.name.length && detailsForm.contactNo.length) {
+    if (
+      detailsForm.propertyName.length &&
+      detailsForm.houseNo.length &&
+      detailsForm.totalFloors.length &&
+      detailsForm.configuration.length &&
+      detailsForm.furnishing.length &&
+      detailsForm.rental.length &&
+      detailsForm.deposit.length &&
+      detailsForm.movingOut.length
+    ) {
       handleSuccessOpen();
       setDetailsForm(initialFormState);
       setSubmitClicked(false);
       axios
-        .post(`https://wolpa-rentals-backend.herokuapp.com/leads`, detailsForm)
-        .then((res) => {});
+        .post(
+          `https://wolpa-rentals-backend.herokuapp.com/qrCodeInfo`,
+          detailsForm
+        )
+        .then((res) => {
+          console.log(res.data);
+        });
     }
   };
   return (
@@ -202,9 +235,9 @@ const Details = () => {
                 <CssTextField
                   variant="outlined"
                   value={detailsForm.name}
-                  error={submitClicked && !detailsForm.name.length}
+                  error={saveClicked && !detailsForm.name.length}
                   helperText={
-                    submitClicked && !detailsForm.name.length
+                    saveClicked && !detailsForm.name.length
                       ? "This field is required."
                       : ""
                   }
@@ -226,9 +259,9 @@ const Details = () => {
                   variant="outlined"
                   value={detailsForm.contactNo}
                   type="number"
-                  error={submitClicked && !detailsForm.contactNo.length}
+                  error={saveClicked && !detailsForm.contactNo.length}
                   helperText={
-                    submitClicked && !detailsForm.contactNo.length
+                    saveClicked && !detailsForm.contactNo.length
                       ? "This field is required."
                       : ""
                   }

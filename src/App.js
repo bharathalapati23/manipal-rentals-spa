@@ -8,7 +8,7 @@ import HomeComponent from "./components/HomeComponent/HomeComponent";
 import "./App.css";
 import LoadingComponent from "./components/LoadingComponent";
 import QRCode from "./components/QRCode/QRCode";
-import Details from "./components/Details/Details";
+import Details from "./components/QRCode/Details";
 
 const DashboardComponent = lazy(() =>
   import("./components/DashboardComponent")
