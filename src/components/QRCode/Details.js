@@ -10,7 +10,7 @@ import { FormControl, Select, MenuItem } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: "10vh",
+    marginTop: "80px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -164,7 +164,7 @@ const Details = () => {
   const [saveClicked, setSaveClicked] = React.useState(false);
   const [saved, setSaved] = React.useState(
     localStorage.getItem("name") !== null &&
-      localStorage.getItem("contactNo") !== null
+    localStorage.getItem("contactNo") !== null
   );
   useEffect(() => {
     if (saved) {
@@ -189,7 +189,12 @@ const Details = () => {
     if (detailsForm.name.length && detailsForm.contactNo.length) {
       setSaved(true);
     }
-    console.log(detailsForm);
+    axios.post(`https://wolpa-rentals-backend.herokuapp.com/qrCodeInfo`, detailsForm)
+      .then(res => {
+        localStorage.setItem("contactNo", detailsForm.contactNo);
+        localStorage.setItem("name", detailsForm.name);
+        localStorage.setItem("excelRow", res.data?.excelRow);
+      })
   };
 
   const handleSubmit = () => {
@@ -209,6 +214,7 @@ const Details = () => {
       handleSuccessOpen();
       setDetailsForm(initialFormState);
       setSubmitClicked(false);
+      detailsForm.excelRow = localStorage.getItem("excelRow")
       axios
         .post(
           `https://wolpa-rentals-backend.herokuapp.com/qrCodeInfo`,
@@ -246,7 +252,6 @@ const Details = () => {
                   }}
                   onChange={(e) => {
                     setDetailsForm({ ...detailsForm, name: e.target.value });
-                    localStorage.setItem("name", e.target.value);
                   }}
                   className={classes.textFieldStyles}
                 />
@@ -273,7 +278,6 @@ const Details = () => {
                       ...detailsForm,
                       contactNo: e.target.value,
                     });
-                    localStorage.setItem("contactNo", e.target.value);
                   }}
                   className={classes.textFieldStyles}
                 />
