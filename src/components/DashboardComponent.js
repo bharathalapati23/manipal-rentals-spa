@@ -1,333 +1,380 @@
-import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { useMediaQuery } from 'react-responsive';
-import BottomNavigationComponent from './BottomNavigationComponent'
-import FilterCardComponent from './FilterComponent/FilterCardComponent'
-import MobileFilterComponent from './FilterComponent/MobileFilterComponent.js'
-import Grid from '@material-ui/core/Grid';
-import Select from '@material-ui/core/Select';
-import FormControl from '@material-ui/core/FormControl';
+import React, { useState, useEffect } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { useMediaQuery } from "react-responsive";
+import BottomNavigationComponent from "./BottomNavigationComponent";
+import FilterCardComponent from "./FilterComponent/FilterCardComponent";
+import MobileFilterComponent from "./FilterComponent/MobileFilterComponent.js";
+import Grid from "@material-ui/core/Grid";
+import Select from "@material-ui/core/Select";
+import FormControl from "@material-ui/core/FormControl";
 
-import CardComponent from './CardComponent/CardComponent'
-import { useDispatch, useSelector } from 'react-redux';
-import { getPosts, clearPosts } from '../actions/posts.js'
-import { useLocation, useHistory } from 'react-router-dom'
-import queryString from 'query-string'
-import { setZoneFilter, clearFilters, setLocationFilter } from '../actions/filters.js'
+import CardComponent from "./CardComponent/CardComponent";
+import { useDispatch, useSelector } from "react-redux";
+import { getPosts, clearPosts } from "../actions/posts.js";
+import { useLocation, useHistory } from "react-router-dom";
+import queryString from "query-string";
+import {
+  setZoneFilter,
+  clearFilters,
+  setLocationFilter,
+} from "../actions/filters.js";
 
-import NoResultsComponent from './NoResultsComponent'
-import Pagination from '@material-ui/lab/Pagination';
+import NoResultsComponent from "./NoResultsComponent";
+import Pagination from "@material-ui/lab/Pagination";
 
 const useStyles = makeStyles((theme) => ({
-	root: {
-		display: 'flex',
-		marginTop: '80px',
-		[theme.breakpoints.down('sm')]: {
-			marginTop: '50px',
-		},
-		width: '100%',
-		maxWidth: '1300px',
-		justifyContent: 'center',
-		flexDirection: 'row',
-		margin: 'auto',
-		[theme.breakpoints.down('md')]: {
-			width: '100%',
-			// paddingBottom: '40px'
-		},
-		paddingLeft: '8px',
-		paddingRight: '8px',
-		[theme.breakpoints.up('lg')]: {
-			paddingLeft: '20px',
-			paddingRight: '20px',
-		},
+  root: {
+    display: "flex",
+    marginTop: "80px",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "50px",
+    },
+    width: "100%",
+    maxWidth: "1300px",
+    justifyContent: "center",
+    flexDirection: "row",
+    margin: "auto",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      // paddingBottom: '40px'
+    },
+    paddingLeft: "8px",
+    paddingRight: "8px",
+    [theme.breakpoints.up("lg")]: {
+      paddingLeft: "20px",
+      paddingRight: "20px",
+    },
 
-		boxSizing: 'border-box',
-		// flexWrap: 'wrap',
-		// justifyContent: 'center',
-		// alignItems: 'center'
-	},
-	filterContainer: {
-		flexGrow: '1'
-	},
-	cardContainer: {
-		// border: '1 1 solid', 
-		// borderStyle: 'solid', 
-		display: 'flex',
-		flexGrow: '5',
-		marginTop: '20px'
-	},
-	formControl: {
-		"& .Mui-focused .MuiOutlinedInput-notchedOutline": {
-			border: "1px solid black",
-		},
-	},
-	sortSelect: {
-		width: '200px',
-		fontFamily: 'Poppins',
-		fontSize: '14px',
-		color: '#e5e5e5',
-		border: 'solid',
-		borderColor: '#d0d0d0',
-		borderWidth: 'thin',
-		backgroundColor: '#121212',
-		"& option": {
-			backgroundColor: "#black",
-		},
-		"& li": {
-			fontSize: 12,
-		},
-	},
-	dropdownStyle: {
-		backgroundColor: 'black'
-	},
-	selectIcon: {
-		fill: '#e5e5e5'
-	},
-	paginationStyles: {
-		color: '#e5e5e5',
-		'& .MuiPaginationItem-root': {
-			backgroundColor: 'transparent',
-			color: '#e5e5e5',
-		},
-	}
+    boxSizing: "border-box",
+    // flexWrap: 'wrap',
+    // justifyContent: 'center',
+    // alignItems: 'center'
+  },
+  filterContainer: {
+    flexGrow: "1",
+  },
+  cardContainer: {
+    // border: '1 1 solid',
+    // borderStyle: 'solid',
+    display: "flex",
+    flexGrow: "5",
+    marginTop: "20px",
+  },
+  formControl: {
+    "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
+      border: "1px solid black",
+    },
+  },
+  sortSelect: {
+    width: "200px",
+    fontFamily: "Poppins",
+    fontSize: "14px",
+    color: "#e5e5e5",
+    border: "solid",
+    borderColor: "#d0d0d0",
+    borderWidth: "thin",
+    backgroundColor: "#121212",
+    "& option": {
+      backgroundColor: "#black",
+    },
+    "& li": {
+      fontSize: 12,
+    },
+  },
+  dropdownStyle: {
+    backgroundColor: "black",
+  },
+  selectIcon: {
+    fill: "#e5e5e5",
+  },
+  paginationStyles: {
+    color: "#e5e5e5",
+    "& .MuiPaginationItem-root": {
+      backgroundColor: "transparent",
+      color: "#e5e5e5",
+    },
+  },
 }));
 
 export default function DashboardComponent() {
-	const classes = useStyles();
-	const location = useLocation();
-	const history = useHistory();
-	const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
-	const [isFilterPage, setFilterPage] = useState(false)
-	const realposts = useSelector((state) => state.posts)
-	const [page, setPage] = React.useState(1);
-	const [sortOrder, setSortOrder] = React.useState(0)
-	//let page = 1
+  const classes = useStyles();
+  const location = useLocation();
+  const history = useHistory();
+  const isMobile = useMediaQuery({ query: `(max-width: 960px)` });
+  const [isFilterPage, setFilterPage] = useState(false);
+  const realposts = useSelector((state) => state.posts);
+  const [page, setPage] = React.useState(1);
+  const [sortOrder, setSortOrder] = React.useState(0);
+  //let page = 1
 
-	const filter = useSelector((state) => state.filters)
-	const dispatch = useDispatch();
+  const filter = useSelector((state) => state.filters);
+  const dispatch = useDispatch();
 
+  const parsedLocation = queryString.parse(location.search);
 
-	const parsedLocation = queryString.parse(location.search);
+  useEffect(() => {
+    if (!Object.keys(parsedLocation).length) {
+      getListings(0);
+      dispatch(clearFilters());
+      setPage(1);
+      setSortOrder(0);
+    } else {
+      dispatch(setLocationFilter(parsedLocation));
+      parsedLocation.page ? setPage(Number(parsedLocation.page)) : setPage(1);
+      parsedLocation.order
+        ? setSortOrder(parsedLocation.order)
+        : setSortOrder(0);
+      parsedLocation.order ? getListings(parsedLocation.order) : getListings(0);
+    }
+    if (!isFilterPage) window.scrollTo(0, 0);
+  }, [location]);
 
-	useEffect(() => {
-		if (!Object.keys(parsedLocation).length) {
-			getListings(0)
-			dispatch(clearFilters())
-			setPage(1)
-			setSortOrder(0)
-		}
-		else {
-			dispatch(setLocationFilter(parsedLocation))
-			parsedLocation.page ? setPage(Number(parsedLocation.page)) : setPage(1)
-			parsedLocation.order ? setSortOrder(parsedLocation.order) : setSortOrder(0)
-			parsedLocation.order ? getListings(parsedLocation.order) : getListings(0)
-		}
-		if (!isFilterPage)
-			window.scrollTo(0, 0)
+  const handleChangePage = (event, newPage) => {
+    //setPage(newPage)
+    parsedLocation.page = newPage;
+    let newLocationString = "";
+    Object.keys(parsedLocation).map((filter, index) => {
+      if (filter === "page") {
+        newLocationString += filter + "=";
+        newLocationString += parsedLocation[filter];
+        if (index !== Object.keys(parsedLocation).length - 1)
+          newLocationString += "&";
+      }
+      if (parsedLocation[filter].length) {
+        newLocationString += filter + "=";
+        newLocationString += parsedLocation[filter];
+        if (index !== Object.keys(parsedLocation).length - 1)
+          newLocationString += "&";
+      }
+    });
 
-	}, [location])
+    history.push({
+      pathname: "/properties",
+      search: `?${newLocationString}`,
+    });
+  };
 
-	const handleChangePage = (event, newPage) => {
-		//setPage(newPage)
-		parsedLocation.page = newPage
-		let newLocationString = ''
-		Object.keys(parsedLocation).map((filter, index) => {
-			if (filter === 'page') {
-				newLocationString += filter + '='
-				newLocationString += parsedLocation[filter]
-				if (index !== Object.keys(parsedLocation).length - 1)
-					newLocationString += '&'
-			}
-			if (parsedLocation[filter].length) {
-				newLocationString += filter + '='
-				newLocationString += parsedLocation[filter]
-				if (index !== Object.keys(parsedLocation).length - 1)
-					newLocationString += '&'
-			}
-		})
+  const handleSortChange = (event, newPage) => {
+    dispatch(clearPosts());
+    //getListings(event.target.value)
 
+    parsedLocation.order = Number(event.target.value);
+    let newLocationString = "";
+    Object.keys(parsedLocation).map((filter, index) => {
+      if (filter === "page" || filter === "order") {
+        newLocationString += filter + "=";
+        newLocationString += parsedLocation[filter];
+        if (index !== Object.keys(parsedLocation).length - 1)
+          newLocationString += "&";
+      } else if (parsedLocation[filter].length) {
+        newLocationString += filter + "=";
+        newLocationString += parsedLocation[filter];
+        if (index !== Object.keys(parsedLocation).length - 1)
+          newLocationString += "&";
+      }
+    });
 
-		history.push({
-			pathname: '/properties',
-			search: `?${newLocationString}`,
-		})
+    history.push({
+      pathname: "/properties",
+      search: `?${newLocationString}`,
+    });
+  };
 
-	};
+  const filteredPosts = realposts.filter((listing) => {
+    if (filter.bedroom.length && !filter.bedroom.includes(listing.bedroom))
+      return false;
 
-	const handleSortChange = (event, newPage) => {
-		dispatch(clearPosts())
-		//getListings(event.target.value)
+    if (filter.zone.length && !filter.zone.includes(listing.zone)) return false;
 
-		parsedLocation.order = Number(event.target.value)
-		let newLocationString = ''
-		Object.keys(parsedLocation).map((filter, index) => {
-			if (filter === 'page' || filter === 'order') {
-				newLocationString += filter + '='
-				newLocationString += parsedLocation[filter]
-				if (index !== Object.keys(parsedLocation).length - 1)
-					newLocationString += '&'
-			}
-			else if (parsedLocation[filter].length) {
-				newLocationString += filter + '='
-				newLocationString += parsedLocation[filter]
-				if (index !== Object.keys(parsedLocation).length - 1)
-					newLocationString += '&'
-			}
-		})
+    if (
+      filter.accomodationType.length &&
+      !filter.accomodationType.includes(listing.apOrBung)
+    )
+      return false;
 
+    if (
+      filter.priceRange.length &&
+      (listing.rent > filter.priceRange[1] ||
+        listing.rent < filter.priceRange[0])
+    )
+      return false;
 
-		history.push({
-			pathname: '/properties',
-			search: `?${newLocationString}`,
-		})
+    // Home Features
+    let homeFeaturesFlag = false;
+    let homeFeaturesFilterPresent = false;
 
-	};
+    Object.keys(filter.homeFeatures).map((homeFeature) => {
+      if (
+        filter.homeFeatures[homeFeature] === true &&
+        listing.homeFeatures[homeFeature] === true
+      )
+        homeFeaturesFlag = true;
+      if (filter.homeFeatures[homeFeature] === true)
+        homeFeaturesFilterPresent = true;
+    });
 
+    if (homeFeaturesFilterPresent && homeFeaturesFlag === false) return false;
 
-	const filteredPosts = realposts.filter((listing) => {
-		if (filter.bedroom.length && !filter.bedroom.includes(listing.bedroom)) return false
+    // Bedroom Details
+    let bedroomDetailsFlag = false;
+    let bedroomDetailsFilterPresent = false;
 
-		if (filter.zone.length && !filter.zone.includes(listing.zone)) return false
+    Object.keys(filter.bedroomDetails).map((bedroomDetail) => {
+      if (filter.bedroomDetails[bedroomDetail] === true) {
+        bedroomDetailsFilterPresent = true;
+        for (
+          let bedroomNo = 0;
+          bedroomNo < listing.bedroomDetails.length;
+          bedroomNo++
+        ) {
+          if (listing.bedroomDetails[bedroomNo][bedroomDetail] === true) {
+            bedroomDetailsFlag = true;
+            break;
+          }
+        }
+      }
+    });
 
-		if (filter.accomodationType.length && !filter.accomodationType.includes(listing.apOrBung)) return false
+    if (bedroomDetailsFilterPresent && bedroomDetailsFlag === false)
+      return false;
 
-		if (filter.priceRange.length && (listing.rent > filter.priceRange[1] || listing.rent < filter.priceRange[0])) return false
+    return true;
+  });
 
-		// Home Features
-		let homeFeaturesFlag = false
-		let homeFeaturesFilterPresent = false
+  //Pagination
+  const pagePosts = filteredPosts.slice((page - 1) * 10, page * 10);
 
-		Object.keys(filter.homeFeatures).map((homeFeature) => {
-			if (filter.homeFeatures[homeFeature] === true && listing.homeFeatures[homeFeature] === true)
-				homeFeaturesFlag = true
-			if (filter.homeFeatures[homeFeature] === true)
-				homeFeaturesFilterPresent = true
-		})
+  const totalPages = Math.ceil(filteredPosts.length / 10);
 
-		if (homeFeaturesFilterPresent && homeFeaturesFlag === false)
-			return false
+  const getListings = (sortOrder) => {
+    if (Number(sortOrder) === 0) dispatch(getPosts({ rent: 0 }));
+    else if (Number(sortOrder) === 1) dispatch(getPosts({ rent: -1 }));
+    else dispatch(getPosts({ rent: 1 }));
+  };
 
-		// Bedroom Details
-		let bedroomDetailsFlag = false
-		let bedroomDetailsFilterPresent = false
+  const noOfResults = {
+    start: (page - 1) * 10 + 1,
+    end: 0,
+    total: filteredPosts.length,
+  };
 
-		Object.keys(filter.bedroomDetails).map((bedroomDetail) => {
-			if (filter.bedroomDetails[bedroomDetail] === true) {
-				bedroomDetailsFilterPresent = true
-				for (let bedroomNo = 0; bedroomNo < listing.bedroomDetails.length; bedroomNo++) {
-					if (listing.bedroomDetails[bedroomNo][bedroomDetail] === true) {
-						bedroomDetailsFlag = true
-						break
-					}
-				}
-			}
-		})
+  if (page * 10 - filteredPosts.length < 10 && page * 10 > filteredPosts.length)
+    noOfResults.end = filteredPosts.length;
+  else noOfResults.end = page * 10;
 
-		if (bedroomDetailsFilterPresent && bedroomDetailsFlag === false)
-			return false
+  return (
+    <>
+      <div className={`${classes.root}`}>
+        {!isMobile && (
+          <div className={classes.filterContainer}>
+            <FilterCardComponent />
+          </div>
+        )}
+        {isFilterPage && isMobile && (
+          <MobileFilterComponent setFilterPage={setFilterPage} />
+        )}
 
-		return true
-	})
-
-	//Pagination
-	const pagePosts = filteredPosts.slice((page - 1) * 10, page * 10)
-
-	const totalPages = Math.ceil(filteredPosts.length / 10)
-
-	const getListings = (sortOrder) => {
-		if (Number(sortOrder) == 0)
-			dispatch(getPosts({ rent: 0 }));
-		else if (Number(sortOrder) === 1)
-			dispatch(getPosts({ rent: -1 }));
-		else
-			dispatch(getPosts({ rent: 1 }));
-	}
-
-	const noOfResults = {
-		start: (page - 1) * 10 + 1,
-		end: 0,
-		total: filteredPosts.length
-	}
-
-	if (page * 10 - filteredPosts.length < 10 && page * 10 > filteredPosts.length)
-		noOfResults.end = filteredPosts.length
-	else
-		noOfResults.end = page * 10
-
-
-
-	return (
-		<>
-			<div className={`${classes.root}`}>
-				{
-					!isMobile &&
-					<div className={classes.filterContainer}>
-						<FilterCardComponent />
-					</div>
-				}
-				{isFilterPage && isMobile && <MobileFilterComponent setFilterPage={setFilterPage} />}
-
-				{!isFilterPage &&
-					<>
-						<div className={classes.cardContainer}>
-							<Grid container direction={'column'}>
-								<div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '4px' }}>
-									<div style={{ fontFamily: 'Poppins', color: '#E5E5E5', display: 'flex', flexDirection: 'column' }}>
-										<div style={{ fontSize: '20px' }}>
-											Properties
-										</div>
-										<div style={{ fontSize: '14px' }}>
-											{noOfResults.start} - {noOfResults.end} of {noOfResults.total} results
-										</div>
-									</div>
-									<div style={{ alignSelf: 'center' }}>
-										<FormControl variant="outlined" size="small" classes={{
-											root: classes.formControl
-										}}>
-											<Select
-												native
-												value={sortOrder}
-												onChange={handleSortChange}
-												className={classes.sortSelect}
-												MenuProps={{ classes: { paper: classes.dropdownStyle } }}
-												inputProps={{
-													classes: {
-														icon: classes.selectIcon,
-													},
-												}}
-											>
-												Sort By:
-												<option style={{ backgroundColor: '#212121' }} value={0}>Recently Added</option>
-												<option style={{ backgroundColor: '#212121' }} value={1}>Price: High to Low</option>
-												<option style={{ backgroundColor: '#212121' }} value={2}>Price: Low to High</option>
-											</Select>
-										</FormControl>
-									</div>
-								</div>
-								{!filteredPosts.length && <NoResultsComponent />}
-								{filteredPosts.length ?
-									<>
-										{pagePosts.map((cardObj, index) => (
-											<CardComponent cardObj={cardObj} key={`Card${index}`} />
-										))}
-										<Pagination
-											count={totalPages}
-											color="primary"
-											variant="outlined"
-											shape="rounded"
-											style={{ alignSelf: 'center' }}
-											className={classes.paginationStyles}
-											onChange={handleChangePage}
-											page={page}
-										/>
-									</> : <></>
-								}
-							</Grid>
-						</div>
-					</>
-				}
-			</div>
-			{isMobile && <BottomNavigationComponent setFilterPage={setFilterPage} isFilterPage={isFilterPage} />}
-		</>
-	);
+        {!isFilterPage && (
+          <>
+            <div className={classes.cardContainer}>
+              <Grid container direction={"column"}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    paddingBottom: "4px",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontFamily: "Poppins",
+                      color: "#E5E5E5",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <div style={{ fontSize: "20px" }}>Properties</div>
+                    <div style={{ fontSize: "14px" }}>
+                      {noOfResults.start} - {noOfResults.end} of{" "}
+                      {noOfResults.total} results
+                    </div>
+                  </div>
+                  <div style={{ alignSelf: "center" }}>
+                    <FormControl
+                      variant="outlined"
+                      size="small"
+                      classes={{
+                        root: classes.formControl,
+                      }}
+                    >
+                      <Select
+                        native
+                        value={sortOrder}
+                        onChange={handleSortChange}
+                        className={classes.sortSelect}
+                        MenuProps={{
+                          classes: { paper: classes.dropdownStyle },
+                        }}
+                        inputProps={{
+                          classes: {
+                            icon: classes.selectIcon,
+                          },
+                        }}
+                      >
+                        Sort By:
+                        <option
+                          style={{ backgroundColor: "#212121" }}
+                          value={0}
+                        >
+                          Recently Added
+                        </option>
+                        <option
+                          style={{ backgroundColor: "#212121" }}
+                          value={1}
+                        >
+                          Price: High to Low
+                        </option>
+                        <option
+                          style={{ backgroundColor: "#212121" }}
+                          value={2}
+                        >
+                          Price: Low to High
+                        </option>
+                      </Select>
+                    </FormControl>
+                  </div>
+                </div>
+                {!filteredPosts.length && <NoResultsComponent />}
+                {filteredPosts.length ? (
+                  <>
+                    {pagePosts.map((cardObj, index) => (
+                      <CardComponent cardObj={cardObj} key={`Card${index}`} />
+                    ))}
+                    <Pagination
+                      count={totalPages}
+                      color="primary"
+                      variant="outlined"
+                      shape="rounded"
+                      style={{ alignSelf: "center" }}
+                      className={classes.paginationStyles}
+                      onChange={handleChangePage}
+                      page={page}
+                    />
+                  </>
+                ) : (
+                  <></>
+                )}
+              </Grid>
+            </div>
+          </>
+        )}
+      </div>
+      {isMobile && (
+        <BottomNavigationComponent
+          setFilterPage={setFilterPage}
+          isFilterPage={isFilterPage}
+        />
+      )}
+    </>
+  );
 }
