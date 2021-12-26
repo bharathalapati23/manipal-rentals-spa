@@ -88,6 +88,10 @@ const Details = () => {
     setOpenSuccessModal(false);
   };
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [saved])
+
   return (
     <div className={classes.root}>
       <Stepper className={classes.stepperStyle} activeStep={saved ? 1 : 0}>
