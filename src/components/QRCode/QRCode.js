@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import code from "./qr-code-image.png";
+import code from "./qrcode.png";
 
 const useStyles = makeStyles((theme) => ({
   code: {

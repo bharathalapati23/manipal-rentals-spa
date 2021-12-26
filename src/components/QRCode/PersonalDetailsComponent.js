@@ -111,8 +111,6 @@ const PersonalDetailsComponent = ({ setSaved }) => {
         }
         axios.post(`https://wolpa-rentals-backend.herokuapp.com/qrCodeInfo`, detailsForm)
             .then(res => {
-                localStorage.setItem("contactNo", detailsForm.contactNo);
-                localStorage.setItem("name", detailsForm.name);
                 localStorage.setItem("excelRow", res.data?.excelRow);
             })
     };
