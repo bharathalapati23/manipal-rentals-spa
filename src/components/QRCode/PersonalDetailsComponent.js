@@ -109,7 +109,7 @@ const PersonalDetailsComponent = ({ setSaved }) => {
         if (detailsForm.name.length && detailsForm.contactNo.length) {
             setSaved(true);
         }
-        axios.post(`https://wolpa-rentals-backend.herokuapp.com/qrCodeInfo`, detailsForm)
+        axios.post(`https://manipal-rentals-backend.herokuapp.com/qrCodeInfo`, detailsForm)
             .then(res => {
                 localStorage.setItem("excelRow", res.data?.excelRow);
             })

@@ -115,7 +115,7 @@ const HomeDetailsComponent = ({ handleSuccessOpen }) => {
             detailsForm.excelRow = localStorage.getItem("excelRow")
             axios
                 .post(
-                    `https://wolpa-rentals-backend.herokuapp.com/qrCodeInfo`,
+                    `https://manipal-rentals-backend.herokuapp.com/qrCodeInfo`,
                     detailsForm
                 )
                 .then((res) => {
